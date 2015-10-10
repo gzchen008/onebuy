@@ -1,17 +1,13 @@
 package com.vanroid.weixin.pojo;
 
 /**
- * �����˺ŷ�����Ϣ
  * 
  * @author liufeng
  * @date 2013-11-09
  */
 public class WeixinGroup {
-	// ����id
 	private int id;
-	// �������
 	private String name;
-	// �����ڵ��û���
 	private int count;
 
 	public int getId() {

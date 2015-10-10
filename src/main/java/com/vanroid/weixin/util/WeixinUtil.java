@@ -16,7 +16,7 @@ import javax.net.ssl.TrustManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.vanroid.weixin.pojo.AccessToken;
 import com.vanroid.weixin.pojo.JsApiTicket;
 
@@ -27,12 +27,11 @@ import com.vanroid.weixin.pojo.JsApiTicket;
  * @date 2013-08-09
  */
 public class WeixinUtil {
-	Logger log = LoggerFactory.getLogger(WeixinUtil.class);
+	private static Logger log = LoggerFactory.getLogger(WeixinUtil.class);
 	
 	// 获取access_token的接口地址（GET） 限200（次/天）
 	public final static String access_token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 
-	private Gson gson = new Gson();
 	/**
 	 * 获取access_token
 	 * 
@@ -44,17 +43,17 @@ public class WeixinUtil {
 		AccessToken accessToken = null;
 
 		String requestUrl = access_token_url.replace("APPID", appid).replace("APPSECRET", appsecret);
-		Gson jsonObject = httpRequest(requestUrl, "GET", null);
+		JsonObject JsonObject = httpRequest(requestUrl, "GET", null);
 		// 如果请求成功
-		if (null != jsonObject) {
+		if (null != JsonObject) {
 			try {
 				accessToken = new AccessToken();
-				accessToken.setToken(jsonObject.getString("access_token"));
-				accessToken.setExpiresIn(jsonObject.getInt("expires_in"));
+				accessToken.setToken(JsonObject.get("access_token").getAsString());
+				accessToken.setExpiresIn(JsonObject.get("expires_in").getAsInt());
 			} catch (Exception e) {
 				accessToken = null;
 				// 获取token失败
-				log.error("获取token失败 errcode:"+jsonObject.getInt("errcode")+" errmsg:"+ jsonObject.getString("errmsg"));
+				log.error("获取token失败 errcode:{} errmsg:{}", JsonObject.get("errcode").getAsInt(), JsonObject.get("errmsg").getAsString());
 			}
 		}
 		return accessToken;
@@ -66,10 +65,10 @@ public class WeixinUtil {
 	 * @param requestUrl 请求地址
 	 * @param requestMethod 请求方式（GET、POST）
 	 * @param outputStr 提交的数据
-	 * @return JSONObject(通过JSONObject.get(key)的方式获取json对象的属性值)
+	 * @return JsonObject(通过JsonObject.get(key)的方式获取json对象的属性值)
 	 */
-	public static Gson httpRequest(String requestUrl, String requestMethod, String outputStr) {
-		Gson jsonObject = null;
+	public static JsonObject httpRequest(String requestUrl, String requestMethod, String outputStr) {
+		JsonObject jsonObject = new JsonObject();
 		StringBuffer buffer = new StringBuffer();
 		try {
 			// 创建SSLContext对象，并使用我们指定的信任管理器初始化
@@ -115,7 +114,7 @@ public class WeixinUtil {
 			inputStream.close();
 			inputStream = null;
 			httpUrlConn.disconnect();
-			jsonObject = Gson(buffer.toString());
+			jsonObject = jsonObject.getAsJsonObject(buffer.toString());
 		} catch (ConnectException ce) {
 			log.error("Weixin server connection timed out.");
 		} catch (Exception e) {
@@ -133,12 +132,12 @@ public class WeixinUtil {
 	public static JsApiTicket getJsApiTicket(String token) {
 		String reUrl = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi";
 		reUrl = reUrl.replace("ACCESS_TOKEN", token);
-		JSONObject json = CommonUtil.httpsRequest(reUrl, "GET", null);
+		JsonObject json = CommonUtil.httpsRequest(reUrl, "GET", null);
 		JsApiTicket jsApiTicket = null;
 		if(json != null){
 			jsApiTicket = new JsApiTicket();
-			jsApiTicket.setTicket(json.getString("ticket"));
-			jsApiTicket.setExpireIn(json.getString("expires_in"));
+			jsApiTicket.setTicket(json.get("ticket").getAsString());
+			jsApiTicket.setExpireIn(json.get("expires_in").getAsString());
 		}
 		return jsApiTicket;
 		
