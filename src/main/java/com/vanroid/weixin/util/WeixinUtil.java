@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.vanroid.weixin.pojo.AccessToken;
 import com.vanroid.weixin.pojo.JsApiTicket;
 
@@ -68,7 +69,7 @@ public class WeixinUtil {
 	 * @return JsonObject(通过JsonObject.get(key)的方式获取json对象的属性值)
 	 */
 	public static JsonObject httpRequest(String requestUrl, String requestMethod, String outputStr) {
-		JsonObject jsonObject = new JsonObject();
+		JsonObject jsonObject = null;
 		StringBuffer buffer = new StringBuffer();
 		try {
 			// 创建SSLContext对象，并使用我们指定的信任管理器初始化
@@ -114,7 +115,7 @@ public class WeixinUtil {
 			inputStream.close();
 			inputStream = null;
 			httpUrlConn.disconnect();
-			jsonObject = jsonObject.getAsJsonObject(buffer.toString());
+			jsonObject = (JsonObject) new JsonParser().parse(buffer.toString());
 		} catch (ConnectException ce) {
 			log.error("Weixin server connection timed out.");
 		} catch (Exception e) {

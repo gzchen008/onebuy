@@ -19,4 +19,9 @@ public interface UserService extends BaseService<User>{
 	 * 用户登录
 	 */
 	User login(User user);
+	/**
+	 * 通过OpeniD加载用户信息
+	 * @return
+	 */
+	User getByOpenId(String openId);
 }

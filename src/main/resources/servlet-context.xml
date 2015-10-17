@@ -41,6 +41,7 @@
 				<property name="excludedUrls">
 					<list>
 						<value>/login</value>
+						<value>/weixinCallback</value>
 					</list>
 				</property>
 			</bean>

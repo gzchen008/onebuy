@@ -28,12 +28,13 @@ public class Kind implements Serializable{
 		this.kid = kid;
 	}
 	@Column(length=15)
-	private String kind;
-	public String getKind(){
-		return kind;
+	private String kindName;
+
+	public String getKindName() {
+		return kindName;
 	}
-	public void setKind(String kind){
-		this.kind = kind;
+	public void setKindName(String kindName) {
+		this.kindName = kindName;
 	}
 	public Kind() {
 		super();

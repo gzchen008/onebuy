@@ -28,12 +28,20 @@
 			</list>
 		</property>
 	</bean>
-	<!-- 微信配置 
+	<!-- 微信配置 -->
 	<bean id="shopConfig" class="com.xianchumo.shop.conf.ShopConfig">
-		<property name="appid" value="${weixin.appid}" />
-		<property name="secret" value="${weixin.secret}" />
+		<property name="appid" value="wx360ead161feb89ca" />
+		<property name="secret" value="19339cf31bae1c6c161596fbaaa1150c" />
+		<property name="weixinCallbackUrl" value="http://xianchumo.eicp.net/shop/user/weixinCallback" />
+<!-- 		<property name="weixinCallbackUrl" value="http://xianchumo.tunnel.mobi/shop/user/weixinCallback" /> -->
 	</bean>
-	-->
+	<!-- 获得token的线程 -->
+	<bean id="tokenThread" class="com.vanroid.weixin.thread.TokenThread">
+	</bean>
+	<!-- 初始化程序操作 -->
+	<bean id="initShop" class="com.xianchumo.shop.conf.InitShop">
+	</bean>
+
 	<!-- 配置数据源 -->
 	<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">

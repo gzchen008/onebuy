@@ -21,24 +21,23 @@ public class User implements Serializable {
 	@Column(name = "uid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long uid;
-	@Column(length = 40)
+	@Column(length = 40, unique = true)
 	private String openid;
 	@Column(length = 100)
 	private String password;
-	@Column(length = 12)
+	@Column(length = 70)
 	private String name;
 	@Column(length = 11, unique = true)
 	private String phone;
 	@ManyToOne(targetEntity = Address.class)
-	//常用地址
+	// 常用地址
 	@JoinColumn(name = "address_id", referencedColumnName = "aid", nullable = true)
 	private Address address;
 	@OneToOne(targetEntity = Grade.class, mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Grade grade;
 	@OneToOne(targetEntity = Wallet.class, mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id")
 	private Wallet wallet;
-	@OneToOne(targetEntity = ShoppingCart.class, mappedBy = "user")
+	@OneToOne(targetEntity = ShoppingCart.class, mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private ShoppingCart shoppingCart;
 
 	public Long getUid() {

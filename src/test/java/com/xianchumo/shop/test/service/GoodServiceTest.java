@@ -21,11 +21,17 @@ public class GoodServiceTest {
 
 	@Test
 	public void testAdd() {
-
 		Good entity = new Good();
-		entity.setName("香蕉");
+		GoodInfo gi = new GoodInfo();
+		gi.setGood(entity);
+		gi.setCook("直接食用");
+		gi.setImgs(new String[] { "/upload/goods/1.png", "/upload/goods/2.png", "/upload/goods/3.png" });
+		gi.setIntroduce("进口大苹果，好吃，大又甜");
+		entity.setInfo(gi);
+		entity.setName("苹果");
 		entity.setUnit("公斤");
 		entity.setNowPrice(15.6);
+		entity.setQuantity("500g");
 		Kind kind = new Kind();
 		kind.setKid(1l);
 		entity.setKind(kind);

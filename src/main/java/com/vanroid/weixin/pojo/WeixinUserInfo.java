@@ -107,4 +107,12 @@ public class WeixinUserInfo {
 	public void setHeadImgUrl(String headImgUrl) {
 		this.headImgUrl = headImgUrl;
 	}
+
+	@Override
+	public String toString() {
+		return "WeixinUserInfo [openId=" + openId + ", subscribe=" + subscribe + ", subscribeTime=" + subscribeTime
+				+ ", nickname=" + nickname + ", sex=" + sex + ", country=" + country + ", province=" + province
+				+ ", city=" + city + ", language=" + language + ", headImgUrl=" + headImgUrl + "]";
+	}
+	
 }

@@ -43,4 +43,9 @@ public class UserServiceImpl extends BaseServiceImpl<User>implements UserService
 	public User login(User user) {
 		return userDao.loadByOpenId(user.getOpenid());
 	}
+
+	@Override
+	public User getByOpenId(String openId) {
+		return userDao.loadByOpenId(openId);
+	}
 }

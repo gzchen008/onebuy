@@ -1,6 +1,7 @@
 package com.xianchumo.shop.filter;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -32,7 +33,12 @@ public class ShopFilter extends CharacterEncodingFilter {
 
 	private String getRootPath(HttpServletRequest request) {
 		String rootPath = request.getContextPath();
-		logger.info("uri:"+request.getRequestURI());
+		logger.info("uri:" + request.getRequestURI());
+		Enumeration<String> pn = request.getParameterNames();
+		while (pn.hasMoreElements()) {
+			String name = pn.nextElement();
+			logger.info("[debug params]" + name + ":" + request.getParameter(name));
+		}
 		return rootPath;
 	}
 

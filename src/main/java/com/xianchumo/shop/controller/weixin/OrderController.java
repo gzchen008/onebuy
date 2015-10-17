@@ -22,6 +22,7 @@ import com.xianchumo.shop.util.ShopUtil;
  * @description
  */
 @Controller
+@RequestMapping(value="order")
 public class OrderController {
 	@Autowired
 	private ShoppingCartService shoppingCartService;
@@ -37,22 +38,25 @@ public class OrderController {
 		//生成订单
 		Order order = orderService.createOrder(shoppingCart);
 		session.setAttribute("order", order);
-		return "index";
+		orderService.add(order);
+		return "weixin/order";
 	}
 
 	/**
-	 * 付款
+	 * 付款页面
 	 */
-	@RequestMapping(value = "/pay")
-	public String pay() {
-		return "index";
+	@RequestMapping(value = "/payment")
+	public String payment() {
+		
+		return "weixin/payment";
 	}
 
 	/**
 	 * 取消订单
 	 */
 	@RequestMapping(value = "/cancelOrder")
-	public String cancelOrder() {
+	public String cancelOrder(HttpSession session) {
+		session.getAttribute("");
 		return "index";
 	}
 

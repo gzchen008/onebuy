@@ -21,20 +21,22 @@
 			padding-top:10px;
 			img{
 				.fl();
-				width:72px;
-				height:72px;
-				border-radius:16px;
+				width:80px;
+				height:80px;
+				border-radius:20px;
 				margin-left:10px;
 				margin-right:6px;
 			}
 			.account-detail{
 				.fl();
 				h3{
-					font-size:20px;
+					font-size:18px;
 					color:@black;
-					font-weight:100;
+					font-weight:500;
 				}
-				.price{		
+				.price{	
+					margin-bottom:5px;	
+					.clearfix();
 					span{
 						.fl();
 						font-size:16px;	
@@ -47,17 +49,36 @@
 						color:@black;
 					}
 				}
+				.shopping-cart{
+					.clearfix();
+					float:none;
+					span{
+						width:30px;
+						height:30px;
+					}
+					input{
+						width:30px;
+						height:32px;
+					}
+				}
 
 			}
 			.trash{
-				.fl();
+				.fr();
+				padding-right:10px;
 				span{
 					display:block;
-					width:24px;
-					height:24px;
+					width:30px;
+					height:30px;
 					background-image:url("../../img/trash.png");
 					background-size:100% 100%;
-					margin-top:32px;
+					margin-top:16px;
+				}
+				i{
+					display:block;
+					font-size:14px;
+					color:@green;
+					margin-top:5px;
 				}
 			}
 		}

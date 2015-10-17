@@ -1,0 +1,94 @@
+@charset "utf-8";
+@import "comment";
+
+body{
+	width:100%;
+	height:100%;
+	background-image:url("../../img/registbg.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.container{
+	width:100%;
+	height:100%;
+	padding-top:@height;
+	form{
+		width:80%;
+		margin:0 auto;
+		margin-top:182px;
+		.filed{
+			width:100%;
+			height:36px;
+			background-color:rgba(0,0,0,0.3);
+			margin-bottom:6px;
+			span{
+				.fl();
+				width:24px;
+				height:24px;
+				background-size:100% 100%;
+				margin-left:12px;
+				margin-top:6px;
+				margin-right:12px;
+			}
+			#phone{
+				background-image:url("../../img/01.png");
+			}
+			#check{
+				background-image:url("../../img/02.png");
+			}
+			#pw{
+				background-image:url("../../img/03.png");			
+			}
+			input{
+				.fl();
+				width:80%;
+				height:36px;
+				font-family:@family;
+				font-size:14px;
+				font-weight:100;
+			}
+			#password{
+				width:50%;
+			}
+			input::-webkit-input-placeholder {
+				color:@white;
+			}
+			input:-moz-placeholder{
+				color: @white;
+			}
+			input::-moz-placeholder{
+				color: @white;
+			}
+			input:-ms-input-placeholder{
+				color: @white;
+			}
+			button{
+				.fr();
+				border:none;
+				padding:5px;
+				background-color:rgba(0,0,0,0.5);
+				margin-top:5px;
+				margin-right:12px;
+				color:@white;
+				font-family:@family;
+			}
+		}
+		#regist{
+			width:100%;
+			margin-top:24px;
+			button{
+				display:block;
+				width:85%;
+				height:36px;
+				margin:0 auto;
+				line-height:36px;
+				color:@white;
+				background-color:@green;
+				border:none;
+				border-radius:15px;
+				font-size:20px;
+				font-family:@family;
+			}
+		}
+	}
+}

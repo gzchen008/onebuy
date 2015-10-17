@@ -20,7 +20,7 @@ public class KindServiceTest {
 	public void testAdd() {
 		
 		Kind kind = new Kind();
-		kind.setKind("水果");
+		kind.setKindName("水果");
 		kindService.add(kind );
 	}
 

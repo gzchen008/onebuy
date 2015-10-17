@@ -28,7 +28,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  */
 @Entity
 @Table(name = "good")
-// @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Good implements Serializable {
 	@Id
 	@Column(name = "gid")
@@ -42,10 +41,10 @@ public class Good implements Serializable {
 	protected double freePrice;// 特价
 	protected int allowance;// 余量
 	protected String photoUrl;// 商品图片
-	@Column(length = 25, nullable = false, columnDefinition = "default 500g")
+	@Column(length = 25, nullable = false)
 	private String quantity; // 每单位净含量，如0.5kg 200g
 	@ManyToOne(targetEntity = Kind.class)
-	@JoinColumn(name = "kind", referencedColumnName = "kind_id", nullable = false)
+	@JoinColumn(name = "kind_id", referencedColumnName = "kind_id", nullable = false)
 	protected Kind kind;
 	@OneToOne(targetEntity = GoodInfo.class, cascade = CascadeType.ALL, mappedBy = "good", fetch = FetchType.LAZY)
 	protected GoodInfo info;// 商品信息

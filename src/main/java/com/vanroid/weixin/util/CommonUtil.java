@@ -16,7 +16,10 @@ import javax.net.ssl.TrustManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.vanroid.weixin.pojo.Token;
 
 /**
@@ -83,7 +86,8 @@ public class CommonUtil {
 			inputStream.close();
 			inputStream = null;
 			conn.disconnect();
-			jsonObject = jsonObject.getAsJsonObject(buffer.toString());
+			JsonParser  jsonParser  = new JsonParser();
+			jsonObject = (JsonObject) jsonParser.parse(buffer.toString());
 		} catch (ConnectException ce) {
 			log.error("连接超时：{}", ce);
 		} catch (Exception e) {

@@ -95,15 +95,18 @@
           background-size: 100% 100%;
           .tooltip {
             display: inline-block;
+            width:24px;
+            height:24px;
             position: absolute;
-            top: -1%;
-            left: -45%;
-            min-width: 10px;
-            padding: 1px 3px;
-            background-color: #B40000;
-            border-radius: 10px;
+            top: -40%;
+            left: 50%;
+            background-image: url("../../img/redRadiusTip.png");
+            background-size: 100% 100%;
+            border-radius: 50%;
             color: @white;
             font-size: 10px;
+            text-align: center;
+            line-height: 24px;
             transform: scale(0.7);
           }
         }
@@ -134,13 +137,14 @@
 //背景灰色
 @rose: #F43A52;
 //圆角弧度
+@family:"幼圆";
 .border-raduis {
   border-radius: 10px;
 }
 
 @font-size: 28px;
 //字体
-.font(@family:"微软雅黑",@size:@font-size,@cor:@grey,@weight:100) {
+.font(@family:"幼圆",@size:@font-size,@cor:@grey,@weight:100) {
   font-family: @family;
   font-size: @size;
   color: @cor;
@@ -244,14 +248,14 @@ a {
     background-position: center center;
   }
   span:nth-of-type(1) {
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
+    border-top-left-radius: 18px;
+    border-bottom-left-radius: 18px;
     background-image: url("../../img/01.2 -.png");
     .adjust-background();
   }
   span:nth-of-type(2) {
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
     background-image: url("../../img/01.2 +.png");
     .adjust-background();
   }
