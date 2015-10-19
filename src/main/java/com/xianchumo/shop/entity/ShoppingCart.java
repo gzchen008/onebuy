@@ -57,7 +57,17 @@ public class ShoppingCart implements Serializable {
 	public void setCartItems(Set<CartItem> cartItems) {
 		this.cartItems = cartItems;
 	}
-
+	/**
+	 * 商品总数
+	 * @return
+	 */
+	public int getAmount(){
+		int sum =0;
+		for(CartItem oi : cartItems){
+			sum+=oi.getQuantity();
+		}
+		return sum;
+	}
 	/**
 	 * 总价
 	 */

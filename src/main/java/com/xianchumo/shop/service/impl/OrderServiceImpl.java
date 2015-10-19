@@ -1,12 +1,13 @@
 package com.xianchumo.shop.service.impl;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.xianchumo.shop.dao.BaseDao;
-import com.xianchumo.shop.entity.Address;
 import com.xianchumo.shop.entity.Merchant;
 import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.entity.OrderState;
@@ -43,8 +44,10 @@ public class OrderServiceImpl extends BaseServiceImpl<Order>
 		//网点
 		//TODO
 		Merchant merchant = new Merchant();
+		merchant.setMid(1l);
 		order.setMerchant(merchant);
 		
+		order.setOrderTime(new Date());
 		dao.save(order);
 		return order;
 	}

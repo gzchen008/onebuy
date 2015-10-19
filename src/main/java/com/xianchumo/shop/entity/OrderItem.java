@@ -1,5 +1,7 @@
 package com.xianchumo.shop.entity;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -72,5 +74,11 @@ public class OrderItem{
 			hash = hash * 31 + this.gid.hashCode();
 		}
 		return hash;
+	}
+	public double getSubtotal() {
+		BigDecimal b1 = new BigDecimal(good.getNowPrice() + "");
+		BigDecimal b2 = new BigDecimal(amount + "");
+		BigDecimal b3 = b1.multiply(b2);
+		return b3.doubleValue();
 	}
 }

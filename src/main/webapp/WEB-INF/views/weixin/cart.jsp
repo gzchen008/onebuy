@@ -57,7 +57,7 @@
 
 <div class="pay">
     <span>商品总额:</span> <i id="total">￥${shoppingCart.total }</i>
-    <button type="submit">去结算(1)</button>
+    <a href="${rootPath}/order/payment"><button  type="submit">去结算(1)</button></a>
 </div>
 <%@include file="nav-footer.jsp" %>
 <script>
@@ -119,6 +119,7 @@
         $("#total").html("￥"+res.total);
         $(".tooltip").html("￥"+res.total);
     }
+ 
 </script>
 
 </body>

@@ -35,7 +35,7 @@ label {
   z-index: 30;
   width: 100%;
   height: 44px;
-  background-color: #5dc890;
+  background-color: #5DC890;
 }
 .header .backspace {
   float: left;
@@ -66,7 +66,7 @@ label {
   height: 44px;
   line-height: 44px;
   text-align: center;
-  font-family: "微软雅黑";
+  font-family: "幼圆";
   font-size: 24px;
   color: #ffffff;
   font-weight: 100;
@@ -136,15 +136,18 @@ label {
 }
 .footer ul li a #icon3 .tooltip {
   display: inline-block;
+  width: 24px;
+  height: 24px;
   position: absolute;
-  top: -1%;
-  left: -45%;
-  min-width: 10px;
-  padding: 1px 3px;
-  background-color: #B40000;
-  border-radius: 10px;
+  top: -40%;
+  left: 50%;
+  background-image: url("../../img/redRadiusTip.png");
+  background-size: 100% 100%;
+  border-radius: 50%;
   color: #ffffff;
   font-size: 10px;
+  text-align: center;
+  line-height: 24px;
   transform: scale(0.7);
 }
 .footer ul li a #icon4 {
@@ -155,7 +158,7 @@ label {
   border-radius: 10px;
 }
 html {
-  font-family: "微软雅黑";
+  font-family: "幼圆";
   font-size: 28px;
   color: #757575;
   font-weight: 100;
@@ -193,16 +196,16 @@ a {
   display: inline;
 }
 .shopping-num span:nth-of-type(1) {
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
   background-image: url("../../img/01.2 -.png");
   background-size: 80% 80%;
   background-repeat: no-repeat;
   background-position: center center;
 }
 .shopping-num span:nth-of-type(2) {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
   background-image: url("../../img/01.2 +.png");
   background-size: 80% 80%;
   background-repeat: no-repeat;
@@ -261,7 +264,7 @@ a {
 .product-info .information .cost span {
   float: left;
   display: inline;
-  color: #f43a52;
+  color: #F43A52;
   font-size: 24px;
   font-weight: 500;
 }
@@ -274,7 +277,7 @@ a {
 }
 .product-info .information .norms i {
   display: inline-block;
-  background-color: #5dc890;
+  background-color: #5DC890;
   color: #ffffff;
   font-size: 24px;
   font-weight: 100;
@@ -283,10 +286,11 @@ a {
 }
 .product-info .information .dispatching {
   padding: 12px 10px;
+  padding-top: 7px;
 }
 .product-info .information .dispatching i {
   color: #212121;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
 }
 .product-info .information .dispatching .p-right span {
@@ -298,4 +302,63 @@ a {
   font-size: 16px;
   color: #f43952;
   font-weight: 500;
+}
+.product-info .information .dispatching .p-right .toRight {
+  display: inline-block;
+  width: 30px;
+  height: 25px;
+  background-image: url("../../img/toRight.png");
+  background-size: 100% 100%;
+  vertical-align: middle;
+  margin-top: 3px;
+}
+.product-info .information .dispatching .time-tip {
+  display: inline-block;
+  margin-left: -10px;
+}
+.product-info .information .dispatching .comment {
+  font-size: 16px;
+}
+.product-info .information .dispatching .one-recommend {
+  *zoom: 1;
+}
+.product-info .information .dispatching .one-recommend .norms-span {
+  display: block;
+  float: left;
+  height: 60px;
+  line-height: 60px;
+  color: #757575;
+}
+.product-info .information .dispatching .one-recommend img,
+.product-info .information .dispatching .one-recommend .next-page {
+  width: 50px;
+  height: 50px;
+  float: right;
+  margin: 5px 0;
+}
+.product-info .information .dispatching .one-recommend .next-page {
+  background: url("../../img/toRight.png") no-repeat;
+  background-position: center center;
+  background-size: 75% 75%;
+  margin-top: 3px;
+}
+.product-info .information .dispatching .one-recommend:before,
+.product-info .information .dispatching .one-recommend:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.product-info .information .dispatching .one-recommend:after {
+  clear: both;
+}
+.product-info .information .dispatching .more {
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 100%;
+  text-align: center;
+  color: #5dc890;
+}
+.product-info .information .one-rec {
+  padding: 0 10px;
 }

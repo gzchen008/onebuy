@@ -1,6 +1,7 @@
 package com.xianchumo.shop.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -9,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -32,6 +32,10 @@ public class Order implements Serializable {
 	private Merchant merchant;
 	@OneToMany(targetEntity = OrderItem.class, mappedBy = "order")
 	private Set<OrderItem> goods;
+	/**
+	 * 下单时间
+	 */
+	private Date orderTime;
 	/**
 	 * 所属用户
 	 */
@@ -103,6 +107,34 @@ public class Order implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+
+	public Date getOrderTime() {
+		return orderTime;
+	}
+
+	public void setOrderTime(Date orderTime) {
+		this.orderTime = orderTime;
+	}
+
+	/**
+	 * 总价
+	 */
+	public double getTotal() {
+		double sum = 0;
+		for (OrderItem oi : goods) {
+			sum += oi.getSubtotal();
+		}
+		return sum;
+	}
+	
+	public int getAmount(){
+		int sum =0;
+		for(OrderItem oi : goods){
+			sum+=oi.getAmount();
+		}
+		return sum;
 	}
 
 	@Override

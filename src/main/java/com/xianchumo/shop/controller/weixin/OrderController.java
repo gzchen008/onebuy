@@ -39,7 +39,7 @@ public class OrderController {
 		Order order = orderService.createOrder(shoppingCart);
 		session.setAttribute("order", order);
 		orderService.add(order);
-		return "weixin/order";
+		return "weixin/payment";
 	}
 
 	/**

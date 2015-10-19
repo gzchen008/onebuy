@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; chaRset=utf-8" />
+	<title>产品详情</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="../style/css/comment.css">
+	<link rel="stylesheet" type="text/css" href="../style/css/product-info.css">
+	<link rel="stylesheet" href="../style/css/slider.css" type="text/css">
+	<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+</head>
+<body class="product-info">
+	<div class="header">
+		<span class="backspace"></span>
+		<h3>产品详情</h3>
+		<span class="share"></span>
+	</div>
+	<div class="slider">
+		<ul>
+			<li>
+				<a href="http://www.jb51.net" target="_blank"><img src="../img/1.png"></a>
+			</li>
+			<li>
+				<a href="http://www.jb51.net" target="_blank"><img src="../img/1.png"></a>
+			</li>
+			<li>
+				<a href="http://www.jb51.net" target="_blank"><img src="../img/1.png"></a>
+			</li>
+			<li>
+				<a href="http://www.jb51.net" target="_blank"><img src="../img/1.png"></a>
+			</li>
+			<li>
+				<a href="http://www.jb51.net" target="_blank"><img src="../img/1.png"></a>
+			</li>
+		</ul>
+	</div>
+	<div class="information">
+		<h4>进口小白菜</h4>
+		<div class="cost">
+			<span>￥20.00</span>
+			<div class="shopping-num" ng-controller="count">
+				<span ng-click="subtract(1,counter)"></span>
+				<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+				<span ng-click="add(1,counter)"></span>
+			</div>
+		</div>
+		<div class="divider"></div>
+		<div class="norms">
+			<span class="norms-span">规格</span>
+			<i>500g/袋</i>
+		</div>
+		<div class="divider"></div>
+		<div class="dispatching">
+			<span class="norms-span">配送服务</span>
+			<i class="time-tip">可选时间点送达，请至少提前一小时下单</i>
+		</div>
+		<div class="divider"></div>
+		<!--<div class="dispatching">-->
+			<!--<span class="norms-span">商品评价</span>-->
+			<!--<div class="p-right"><span><i>98%</i>好评</span><i class="toRight"></i></div>-->
+		<!--</div>-->
+		<!--<div class="divider"></div>-->
+		<div class="dispatching">
+			<span class="norms-span">菜谱推荐</span>
+		</div>
+		<div class="divider"></div>
+		<div class="dispatching one-rec">
+			<a class="one-recommend" href="#"><span class="norms-span">蒜蓉小白菜</span><span class="next-page"></span><img src="../img/vedetable.jpg"></a>
+		</div>
+		<div class="divider"></div>
+		<div class="dispatching one-rec">
+			<a class="one-recommend" href="#"><span class="norms-span">白菜炒瘦肉</span><span class="next-page"></span><img src="../img/vedetable.jpg"></a>
+		</div>
+		<div class="divider"></div>
+		<div class="dispatching">
+			<a class="more" href="#"><span class="norms-span">点此查看更多</span></a>
+		</div>
+		<div class="divider"></div>
+		<div class="dispatching">
+			<span class="norms-span">商品评价</span>
+		</div>
+		<div class="divider"></div>
+		<div class="dispatching">
+			<span class="norms-span comment">太白金星：很新鲜很美味</span>
+		</div>
+		<div class="divider"></div>
+		<div class="dispatching">
+			<span class="norms-span comment">三三两：吃起来味道不错，菜谱很贴心</span>
+		</div>
+		<div class="divider"></div>
+		<div class="dispatching">
+			<a class="more" href="#"><span class="norms-span">点此查看更多</span></a>
+		</div>
+		<div class="divider"></div>
+	</div>
+	<div class="footer">
+		<ul>
+			<li>
+				<a href="#">
+					<span>
+						<span class="footer-icon" id="icon1"></span>
+						<i>首页</i>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<span>
+						<span class="footer-icon" id="icon2"></span>
+						<i>产品</i>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<span>
+						<span class="footer-icon" id="icon3">
+							<span class="tooltip">￥20</span>
+						</span>
+						<i>购物车</i>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<span>
+						<span class="footer-icon" id="icon4"></span>
+						<i>我</i>
+					</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="../js/angular.min.js"></script>
+	<script type="text/javascript" src="../js/yxMobileSlider.js"></script>
+	<script type="text/javascript" src="../js/controllers.js"></script>
+	<script type="text/javascript" src="../js/product-info.js"></script>
+</body>
+</html>
