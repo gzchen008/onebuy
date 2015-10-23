@@ -1,6 +1,7 @@
 package com.xianchumo.shop.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -29,10 +29,11 @@ public class User implements Serializable {
 	private String name;
 	@Column(length = 11, unique = true)
 	private String phone;
-	@ManyToOne(targetEntity = Address.class)
-	// 常用地址
-	@JoinColumn(name = "address_id", referencedColumnName = "aid", nullable = true)
-	private Address address;
+	/**
+	 * 用户地址列表 
+	 */
+	@ManyToOne(targetEntity = Address.class,fetch=FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.REMOVE})
+	private Set<Address> addresses;
 	@OneToOne(targetEntity = Grade.class, mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Grade grade;
 	@OneToOne(targetEntity = Wallet.class, mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -72,12 +73,12 @@ public class User implements Serializable {
 		this.phone = phone;
 	}
 
-	public Address getAddress() {
-		return address;
+	public Set<Address> getAddresses() {
+		return addresses;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setAddresses(Set<Address> addresses) {
+		this.addresses = addresses;
 	}
 
 	public Grade getGrade() {
@@ -136,8 +137,10 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", openid=" + openid + ", password=" + password + ", name=" + name + ", phone="
-				+ phone + ", address=" + address + ", grade=" + grade + ", wallet=" + wallet + ", shoppingCart="
+				+ phone + ", addresses=" + addresses + ", grade=" + grade + ", wallet=" + wallet + ", shoppingCart="
 				+ shoppingCart + "]";
 	}
+
+
 
 }

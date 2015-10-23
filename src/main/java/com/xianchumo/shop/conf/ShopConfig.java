@@ -6,6 +6,7 @@ public class ShopConfig {
 	/**
 	 * 微信回调地址
 	 */
+	
 	private String weixinCallbackUrl;
 	private static String ORIGIN_WEIXIN_CALLBACK ="https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
 	public String getAppid() {

@@ -2,6 +2,8 @@ package com.xianchumo.shop.controller.weixin;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,26 +11,47 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.xianchumo.shop.entity.Address;
+import com.xianchumo.shop.entity.AddressBase;
 import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.entity.User;
+import com.xianchumo.shop.service.AddressBaseService;
 import com.xianchumo.shop.service.AddressService;
+import com.xianchumo.shop.util.JsonUtil;
+import com.xianchumo.shop.util.ShopUtil;
 
 @Controller
 @RequestMapping(value = "/address")
 public class AddressController {
 	@Autowired
 	private AddressService addressService;
+	@Autowired
+	private AddressBaseService addressBaseService;
 
 	/**
-	 * 添加地址
+	 * 添加地址页面
 	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/add")
-	public String add() {
-		Address address = new Address("广东省", "广州市", "天河区");
+	public String add(HttpServletRequest httpRequest, HttpSession session) {
+		// 找出广州的直接下级
+		List<AddressBase> lsAb = addressBaseService.findChildByName("广州市");
+		httpRequest.setAttribute("lsAb", lsAb);
+		return "weixin/add-address";
+	}
+
+	/**
+	 * 保存地址
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/save")
+	public String save(Address address, HttpServletRequest request, HttpSession session) {
+		request.setAttribute("address", address);
+		User user = (User) session.getAttribute("user");
+		address.setUser(user);
 		addressService.add(address);
-		return "index";
+		return "weixin/chooseAdressPayment";
 	}
 
 	/**
@@ -50,17 +73,18 @@ public class AddressController {
 		User user = (User) session.getAttribute("user");
 		Order order = (Order) session.getAttribute("order");
 		order.setAddress(address);
-		
+
 		return "";
 	}
 
 	/**
-	 * 地址查询
+	 * 查询子地址 返加json 用于地址联动
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/find")
-	public String delete() {
-		return "index";
+	@RequestMapping(value = "/findChildById")
+	public void findChildById(Long pid, HttpServletResponse response) {
+		List<AddressBase> abs = addressBaseService.findChild(pid);
+		JsonUtil.outPut(response, abs);
 	}
 }

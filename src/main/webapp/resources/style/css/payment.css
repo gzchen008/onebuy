@@ -35,7 +35,7 @@ label {
   z-index: 30;
   width: 100%;
   height: 44px;
-  background-color: #5DC890;
+  background-color: #5dc890;
 }
 .header .backspace {
   float: left;
@@ -45,6 +45,7 @@ label {
   background-image: url("../../img/返回 48.png");
   background-size: 100% 100%;
   margin-top: 10px;
+  margin-left: 10px;
 }
 .header .share {
   float: right;
@@ -67,9 +68,49 @@ label {
   line-height: 44px;
   text-align: center;
   font-family: "幼圆";
-  font-size: 24px;
+  font-size: 22px;
   color: #ffffff;
-  font-weight: 100;
+  font-weight: 400;
+}
+.header ._search {
+  float: left;
+  display: inline;
+  width: 83%;
+  height: 30px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-top: 6px;
+  font-size: 22px;
+}
+.header ._search span {
+  width: 24px;
+  height: 24px;
+  margin-top: 3px;
+  margin-right: 10px;
+  background-size: 100% 100%;
+}
+.header ._search span:nth-of-type(1) {
+  float: left;
+  display: inline;
+  margin-left: 10px;
+  background-image: url("../../img/search.png");
+}
+.header ._search span:nth-of-type(2) {
+  float: right;
+  display: inline;
+  background-image: url("../../img/x.png");
+}
+.header ._search form {
+  display: inline-block;
+}
+.header ._search .search-you-want {
+  display: block;
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  width: 100%;
+  font-size: 16px;
 }
 .footer {
   position: fixed;
@@ -159,9 +200,9 @@ label {
 }
 html {
   font-family: "幼圆";
-  font-size: 28px;
+  font-size: 24px;
   color: #757575;
-  font-weight: 100;
+  font-weight: 400;
 }
 i {
   font-style: normal;
@@ -171,6 +212,9 @@ a {
 }
 .list-inline {
   display: inline-block;
+}
+[placeholder] {
+  font-family: '幼圆';
 }
 .divider {
   display: block;
@@ -231,6 +275,51 @@ a {
   -webkit-appearance: none;
   vertical-align: top;
 }
+.love-search {
+  *zoom: 1;
+}
+.love-search:before,
+.love-search:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.love-search:after {
+  clear: both;
+}
+.love-search li {
+  float: left;
+  display: inline;
+  width: 30%;
+  padding-bottom: 5px;
+  border: solid 1px #cccccc;
+  border-radius: 15px;
+  margin-right: 7px;
+}
+.love-search li a {
+  display: block;
+  width: 100%;
+}
+.love-search li a img {
+  display: block;
+  width: 100%;
+  height: 90px;
+}
+.love-search li a i {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  color: #212121;
+}
+.love-search li a span {
+  font-size: 14px;
+}
+.love-search li a span:nth-of-type(1) {
+  color: #f43a52;
+}
+.love-search li a span:nth-of-type(2) {
+  color: #212121;
+}
 .container {
   padding-top: 44px;
   padding-bottom: 64px;
@@ -260,11 +349,47 @@ a {
   margin-right: 6px;
   background-image: url("../../img/addAddress.png");
 }
+.container .address a .address-after {
+  margin-left: 6px;
+  background-image: url("../../img/address.png") !important;
+}
+.container .address a .receiver-detail {
+  width: 74%;
+  float: left;
+  display: inline;
+  padding-top: 20px;
+}
+.container .address a .receiver-detail p {
+  font-size: 16px;
+  color: #212121;
+  font-weight: 500;
+}
+.container .address a .receiver-detail p i {
+  float: right;
+  display: inline;
+}
+.container .address a .receiver-detail p:nth-of-type(2) {
+  margin-top: 12px;
+  font-size: 14px;
+}
 .container .address a span:nth-of-type(2) {
   float: right;
   display: inline;
   margin-right: 10px;
   background-image: url("../../img/toRight.png");
+}
+.container .address .after-choose-address {
+  *zoom: 1;
+  line-height: normal;
+}
+.container .address .after-choose-address:before,
+.container .address .after-choose-address:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.container .address .after-choose-address:after {
+  clear: both;
 }
 .container .grey-divider {
   width: 100%;
@@ -316,6 +441,7 @@ a {
   display: block;
   color: #212121;
   font-weight: 500;
+  margin-bottom: 1px;
 }
 .container .goods-list ul li a .right .name span {
   font-size: 20px;
@@ -347,12 +473,12 @@ a {
 }
 .container .regulations ul li {
   padding: 0 10px;
+  margin-bottom: 2px;
   border-bottom: solid 1px #cccccc;
 }
 .container .regulations ul li a {
   height: 45px;
   line-height: 45px;
-  margin-top: 1px;
   display: block;
   color: #212121;
   font-weight: 100;
@@ -389,7 +515,7 @@ a {
 }
 .container .regulations ul li a span:nth-of-type(2) em {
   font-style: normal;
-  color: #F43A52;
+  color: #f43a52;
   font-size: 18px;
   margin-right: 10px;
 }
@@ -435,11 +561,6 @@ a {
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-  -webkit-transition: position 0.5s;
-  -moz-transition: position 0.5s;
-  -ms-transition: position 0.5s;
-  -o-transition: position 0.5s;
-  transition: position 0.5s;
 }
 .container .regulations ul li a .on {
   background-color: #5BC58D;
@@ -466,6 +587,9 @@ a {
   line-height: 20px;
   text-align: left;
   font-size: 14px;
+}
+.container .regulations ul li:last-child {
+  margin-bottom: 0;
 }
 .container .regulations ul .constrain-li {
   height: 60px;
@@ -527,13 +651,13 @@ a {
 }
 .pay i {
   font-size: 20px;
-  color: #F43A52;
+  color: #f43a52;
 }
 .pay button {
   float: right;
   display: inline;
   padding: 10px;
-  background-color: #F43A52;
+  background-color: #f43a52;
   border: none;
   border-radius: 10px;
   font-size: 20px;

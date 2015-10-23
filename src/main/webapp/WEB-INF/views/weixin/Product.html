@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -8,9 +8,9 @@
 	<title>产品</title>
 </head>
 <body>
-<!--<p class="show-px-lzh"></p>-->
-<div class="header">
-	<span class="backspace"></span>
+	<!--<p class="show-px-lzh"></p>-->
+	<div class="header">
+		<span class="backspace"></span>
 		<h3>产品</h3>
 		<span class="share"></span>
 	</div>
@@ -39,17 +39,17 @@
 							<a href="#">
 								<img src="../img/vedetable.jpg">
 								<div class="_detail">
-									<p>小白菜小白菜小白菜小白菜</p>
+									<p>小白菜小白菜小白菜</p>
 									<span>￥20</span>
 									<i>500g/袋</i>
 								</div>
 							</a>
 						</div>
-						<a class="shopping-car"></a>
-						<div class="shopping-num">
-							<span></span>
-							<input type="text" class="count" value="0"/>
-							<span></span>
+						<!--<a class="shopping-car"></a>-->
+						<div class="shopping-num" ng-controller="count">
+							<span ng-click="subtract(1,counter)"></span>
+							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+							<span ng-click="add(1,counter)"></span>
 						</div>
 					</li>
 
@@ -64,11 +64,11 @@
 								</div>
 							</a>
 						</div>
-						<a class="shopping-car"></a>
-						<div class="shopping-num">
-							<span></span>
-							<input type="text" class="count" value="0"/>
-							<span></span>
+						<!--<a class="shopping-car"></a>-->
+						<div class="shopping-num" ng-controller="count">
+							<span ng-click="subtract(1,counter)"></span>
+							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+							<span ng-click="add(1,counter)"></span>
 						</div>
 					</li>
 					<li>
@@ -82,11 +82,11 @@
 								</div>
 							</a>
 						</div>
-						<a class="shopping-car"></a>
-						<div class="shopping-num">
-							<span></span>
-							<input type="text" class="count" value="0"/>
-							<span></span>
+						<!--<a class="shopping-car"></a>-->
+						<div class="shopping-num" ng-controller="count">
+							<span ng-click="subtract(1,counter)"></span>
+							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+							<span ng-click="add(1,counter)"></span>
 						</div>
 					</li>
 					<li>
@@ -100,11 +100,11 @@
 								</div>
 							</a>
 						</div>
-						<a class="shopping-car"></a>
-						<div class="shopping-num">
-							<span></span>
-							<input type="text" class="count" value="0"/>
-							<span></span>
+						<!--<a class="shopping-car"></a>-->
+						<div class="shopping-num" ng-controller="count">
+							<span ng-click="subtract(1,counter)"></span>
+							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+							<span ng-click="add(1,counter)"></span>
 						</div>
 					</li>
 					<li>
@@ -118,11 +118,11 @@
 								</div>
 							</a>
 						</div>
-						<a class="shopping-car"></a>
-						<div class="shopping-num">
-							<span></span>
-							<input type="text" class="count" value="0"/>
-							<span></span>
+						<!--<a class="shopping-car"></a>-->
+						<div class="shopping-num" ng-controller="count">
+							<span ng-click="subtract(1,counter)"></span>
+							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+							<span ng-click="add(1,counter)"></span>
 						</div>
 					</li>
 					<li>
@@ -136,11 +136,11 @@
 								</div>
 							</a>
 						</div>
-						<a class="shopping-car"></a>
-						<div class="shopping-num">
-							<span></span>
-							<input type="text" class="count" value="0"/>
-							<span></span>
+						<!--<a class="shopping-car"></a>-->
+						<div class="shopping-num" ng-controller="count">
+							<span ng-click="subtract(1,counter)"></span>
+							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+							<span ng-click="add(1,counter)"></span>
 						</div>
 					</li>
 					<li>
@@ -154,11 +154,11 @@
 								</div>
 							</a>
 						</div>
-						<a class="shopping-car"></a>
-						<div class="shopping-num">
-							<span></span>
-							<input type="text" class="count" value="0"/>
-							<span></span>
+						<!--<a class="shopping-car"></a>-->
+						<div class="shopping-num" ng-controller="count">
+							<span ng-click="subtract(1,counter)"></span>
+							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+							<span ng-click="add(1,counter)"></span>
 						</div>
 					</li>
 					<li>
@@ -172,11 +172,11 @@
 								</div>
 							</a>
 						</div>
-						<a class="shopping-car"></a>
-						<div class="shopping-num">
-							<span></span>
-							<input type="text" class="count" value="0"/>
-							<span></span>
+						<!--<a class="shopping-car"></a>-->
+						<div class="shopping-num" ng-controller="count">
+							<span ng-click="subtract(1,counter)"></span>
+							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+							<span ng-click="add(1,counter)"></span>
 						</div>
 					</li>
 				</ul>
@@ -223,6 +223,8 @@
 	</div>
 	<!--<p class="test"></p>-->
 	<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="../js/angular.min.js"></script>
+	<script type="text/javascript" src="../js/controllers.js"></script>
 	<script type="text/javascript" src="../js/Product.js"></script>
 </body>
 </html>

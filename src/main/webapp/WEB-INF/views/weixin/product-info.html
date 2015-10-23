@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="app">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; chaRset=utf-8" />
 	<title>产品详情</title>
@@ -38,10 +38,10 @@
 		<h4>进口小白菜</h4>
 		<div class="cost">
 			<span>￥20.00</span>
-			<div class="shopping-num">
-				<span></span>
-				<input type="text" class="count" value="0"/>
-				<span></span>
+			<div class="shopping-num" ng-controller="count">
+				<span ng-click="subtract(1,counter)"></span>
+				<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+				<span ng-click="add(1,counter)"></span>
 			</div>
 		</div>
 		<div class="divider"></div>
@@ -52,16 +52,44 @@
 		<div class="divider"></div>
 		<div class="dispatching">
 			<span class="norms-span">配送服务</span>
-			<i>16:00前下单，预计明早到达</i>
+			<i class="time-tip">可选时间点送达，请至少提前一小时下单</i>
+		</div>
+		<div class="divider"></div>
+		<!--<div class="dispatching">-->
+			<!--<span class="norms-span">商品评价</span>-->
+			<!--<div class="p-right"><span><i>98%</i>好评</span><i class="toRight"></i></div>-->
+		<!--</div>-->
+		<!--<div class="divider"></div>-->
+		<div class="dispatching">
+			<span class="norms-span">菜谱推荐</span>
+		</div>
+		<div class="divider"></div>
+		<div class="dispatching one-rec">
+			<a class="one-recommend" href="#"><span class="norms-span">蒜蓉小白菜</span><span class="next-page"></span><img src="../img/vedetable.jpg"></a>
+		</div>
+		<div class="divider"></div>
+		<div class="dispatching one-rec">
+			<a class="one-recommend" href="#"><span class="norms-span">白菜炒瘦肉</span><span class="next-page"></span><img src="../img/vedetable.jpg"></a>
+		</div>
+		<div class="divider"></div>
+		<div class="dispatching">
+			<a class="more" href="#"><span class="norms-span">点此查看更多</span></a>
 		</div>
 		<div class="divider"></div>
 		<div class="dispatching">
 			<span class="norms-span">商品评价</span>
-			<div class="p-right"><span><i>98%</i>好评</span><i></i></div>
 		</div>
 		<div class="divider"></div>
 		<div class="dispatching">
-			<span class="norms-span">食谱推荐</span>
+			<span class="norms-span comment">太白金星：很新鲜很美味</span>
+		</div>
+		<div class="divider"></div>
+		<div class="dispatching">
+			<span class="norms-span comment">三三两：吃起来味道不错，菜谱很贴心</span>
+		</div>
+		<div class="divider"></div>
+		<div class="dispatching">
+			<a class="more" href="#"><span class="norms-span">点此查看更多</span></a>
 		</div>
 		<div class="divider"></div>
 	</div>
@@ -103,6 +131,10 @@
 			</li>
 		</ul>
 	</div>
+	<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="../js/angular.min.js"></script>
 	<script type="text/javascript" src="../js/yxMobileSlider.js"></script>
+	<script type="text/javascript" src="../js/controllers.js"></script>
+	<script type="text/javascript" src="../js/product-info.js"></script>
 </body>
 </html>

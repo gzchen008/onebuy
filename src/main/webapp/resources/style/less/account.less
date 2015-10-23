@@ -11,7 +11,7 @@
 }
 .container{
 	padding-top:@height;
-	padding-bottom:@height;
+	padding-bottom:@height+73px;
 	ul{
 		li{
 			width:100%;
@@ -88,9 +88,11 @@
 	box-sizing: border-box;
 	position:fixed;
 	width:100%;
+	height:64px;
 	bottom:@height+10;
 	padding:10px;
 	border-top:solid 1px #cccccc;
+	background-color:@white;
 	span{
 		font-size:20px;
 		color:@black;	
@@ -108,4 +110,10 @@
 		font-size:20px;
 		color:@white;
 	}
+}
+// footer图标
+.footer{
+  #icon3 {
+    background-image: url("../../img/hoverShop.png") !important;
+  }
 }
