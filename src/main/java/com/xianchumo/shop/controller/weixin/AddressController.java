@@ -14,6 +14,7 @@ import com.xianchumo.shop.entity.Address;
 import com.xianchumo.shop.entity.AddressBase;
 import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.entity.User;
+import com.xianchumo.shop.exception.ShopParameterExceptioin;
 import com.xianchumo.shop.service.AddressBaseService;
 import com.xianchumo.shop.service.AddressService;
 import com.xianchumo.shop.util.JsonUtil;
@@ -42,12 +43,15 @@ public class AddressController {
 
 	/**
 	 * 保存地址
-	 * 
+	 * liveAreaId 生活区ID
 	 * @return
 	 */
 	@RequestMapping(value = "/save")
-	public String save(Address address, HttpServletRequest request, HttpSession session) {
+	public String save(Long liveAreaId ,Address address, HttpServletRequest request, HttpSession session) {
+		if(liveAreaId == null)
+			throw new ShopParameterExceptioin("参数错误");
 		request.setAttribute("address", address);
+		request.setAttribute("liveAreaId", liveAreaId);
 		User user = (User) session.getAttribute("user");
 		address.setUser(user);
 		addressService.add(address);

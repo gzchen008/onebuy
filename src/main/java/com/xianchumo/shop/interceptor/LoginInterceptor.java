@@ -43,7 +43,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 			logger.info("使用了测试用户");
 			
 			//response.sendRedirect(shopConfig.getWeixinCallbackUrl());
-			return false;
+			//TODO
+			return true;
 		}
 		return true;
 	}

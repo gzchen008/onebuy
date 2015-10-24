@@ -46,7 +46,9 @@ function simulateSelect() {
         .change(
         function () {
             var cid = $(this).children('option:selected').attr("cid");
-            alert(cid);
+            //修改隐藏域的值
+            $("#liveAreaId").val(cid);
+            //alert(cid);
             // ajax
             $
                 .ajax({

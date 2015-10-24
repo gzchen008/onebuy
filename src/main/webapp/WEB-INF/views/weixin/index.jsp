@@ -23,7 +23,8 @@
 			<span></span>
 
 			<form action="${rootPath }/good/search" method="post">
-				<input class="search-you-want" type="text" placeholder="告诉小鲜鲜你想吃什么" />
+				<input name="keywords" class="search-you-want" type="text" placeholder="告诉小鲜鲜你想吃什么" />
+				<input type="submit" value="go" />
 			</form>
 		</div>
 	</div>

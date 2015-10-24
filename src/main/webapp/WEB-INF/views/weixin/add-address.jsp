@@ -50,7 +50,7 @@
         <option value="tip">请选择社区</option>
     </select>
     <i></i>
-
+    <input id="liveAreaId" type="hidden" name="liveAreaId" value="">
     <div class="divider"></div>
 
     <label for="cabinet">柜号</label>

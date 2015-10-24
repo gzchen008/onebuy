@@ -35,14 +35,19 @@ public class GoodController {
 	private KindService kindService;
 	@Autowired
 	private ShoppingCartService shoppingCartService;
+
 	/**
 	 * 关键字搜索
 	 */
 	@RequestMapping(value = "/search")
-	public String search(String keywords,HttpServletRequest request ) {
+	public String search(String keywords, HttpServletRequest request) {
 		List<Good> ls = goodService.searchByName(keywords);
-		request.setAttribute("goods", ls);
-		return "weixin/search";
+		if (ls != null && ls.size() != 0) {
+			request.setAttribute("goods", ls);
+			return "weixin/search";
+		} else {
+			return "weixin/search-not-found";
+		}
 	}
 
 	/**
@@ -93,10 +98,10 @@ public class GoodController {
 			throw new ShopParameterExceptioin("商品参数错误！");
 		}
 		Good good = goodService.get(gid);
-		//在产品页面显示数量
+		// 在产品页面显示数量
 		ShoppingCart shoppingCart = ShopUtil.getShoppingCart(request, shoppingCartService);
 		CartItem ci = shoppingCart.getCartItem(gid);
-		if(ci == null){
+		if (ci == null) {
 			ci = new CartItem();
 			ci.setQuantity(0);
 		}

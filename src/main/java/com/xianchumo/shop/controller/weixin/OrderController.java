@@ -41,7 +41,16 @@ public class OrderController {
 		orderService.add(order);
 		return "weixin/payment";
 	}
-
+	/**
+	 * 付款
+	 * @return
+	 */
+	@RequestMapping(value="pay")
+	public String pay(){
+		//TODO 使用微信支付
+		
+		return null;
+	}
 	/**
 	 * 付款页面
 	 */

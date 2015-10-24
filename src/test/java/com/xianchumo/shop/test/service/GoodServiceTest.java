@@ -72,8 +72,8 @@ public class GoodServiceTest {
 	}
 	@Test
 	public void testSearch(){
-		List<Good> ls = goodService.searchByName("");
-		System.out.println(ls);
+		List<Good> ls = goodService.searchByName("苹果");
+		System.out.println(ls.size());
 	}
 
 }

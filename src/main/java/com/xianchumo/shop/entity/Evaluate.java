@@ -26,10 +26,6 @@ public class Evaluate implements Serializable{
 	@JoinColumn(name="good_id", referencedColumnName="gid",
 			nullable=false)
 	private Good good;
-	@ManyToOne(targetEntity=Merchant.class)
-	@JoinColumn(name="merchant_id", referencedColumnName="mid",
-			nullable=false)
-	private Merchant merchant;
 	@ManyToOne(targetEntity=User.class)
 	@JoinColumn(name="user_id",  referencedColumnName="uid",
 			nullable=false)
@@ -49,12 +45,6 @@ public class Evaluate implements Serializable{
 	}
 	public void setGood(Good good) {
 		this.good = good;
-	}
-	public Merchant getMerchant() {
-		return merchant;
-	}
-	public void setMerchant(Merchant merchant) {
-		this.merchant = merchant;
 	}
 	public User getUser() {
 		return user;
