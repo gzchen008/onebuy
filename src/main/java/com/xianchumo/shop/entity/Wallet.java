@@ -26,8 +26,9 @@ public class Wallet implements Serializable{
 	@JoinColumn(name="user_id", referencedColumnName="uid",
 			unique=true)
 	private User user;
-	private double overage;//余额
-	private double credits;//积分
+	private double overage = 0;//余额
+	private double credits = 0;//积分
+	//TODO 红包private 
 	
 	public Long getWid() {
 		return wid;

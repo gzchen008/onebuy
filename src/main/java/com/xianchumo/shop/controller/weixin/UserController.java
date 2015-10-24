@@ -120,4 +120,15 @@ public class UserController {
 		return "selfInfo";
 	}
 
+	/**
+	 * 显示个人信息
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value="/me")
+	public String me() {
+		
+		return "weixin/me";
+	}
+
 }
