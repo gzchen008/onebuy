@@ -37,4 +37,9 @@ public class GoodServiceImpl extends BaseServiceImpl<Good>implements GoodService
 	public List<Good> searchByName(String keywords) {
 		return dao.find("from Good good where good.name like ?", "%" + keywords + "%");
 	}
+
+	@Override
+	public List<Good> findByRemark(String remark) {
+		return dao.find("from Good good where good.remark = ?",remark);
+	}
 }

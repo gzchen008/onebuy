@@ -4,7 +4,7 @@
 
 <div class="footer">
     <ul>
-        <li><a href="${rootPath }/good/product"> <span> <span class="footer-icon"
+        <li><a href="${rootPath }/index"> <span> <span class="footer-icon"
                                       id="icon1"></span> <i>首页</i>
 				</span>
         </a></li>

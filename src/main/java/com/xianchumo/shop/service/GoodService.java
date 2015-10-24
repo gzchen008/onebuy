@@ -22,4 +22,10 @@ public interface GoodService extends BaseService<Good>{
 
 	List<Good> searchByName(String keywords);
 
+	/**
+	 * 通过备注查找商品
+	 * @return
+	 */
+	List<Good> findByRemark(String remark);
+
 }
