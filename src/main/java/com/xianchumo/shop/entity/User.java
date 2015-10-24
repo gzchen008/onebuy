@@ -10,7 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -30,9 +30,9 @@ public class User implements Serializable {
 	@Column(length = 11, unique = true)
 	private String phone;
 	/**
-	 * 用户地址列表 
+	 * 用户地址列表
 	 */
-	@ManyToOne(targetEntity = Address.class,fetch=FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.REMOVE})
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private Set<Address> addresses;
 	@OneToOne(targetEntity = Grade.class, mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Grade grade;
@@ -140,7 +140,5 @@ public class User implements Serializable {
 				+ phone + ", addresses=" + addresses + ", grade=" + grade + ", wallet=" + wallet + ", shoppingCart="
 				+ shoppingCart + "]";
 	}
-
-
 
 }

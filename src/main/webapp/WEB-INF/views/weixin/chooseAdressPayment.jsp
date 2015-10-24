@@ -7,9 +7,9 @@
 	<title>结算中心</title>
 	<meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" type="text/css" href="../style/css/comment.css">
-	<link rel="stylesheet" type="text/css" href="../style/css/payment.css">
-	<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+	<link rel="stylesheet" type="text/css" href="${rootPath }/resources/style/css/comment.css">
+	<link rel="stylesheet" type="text/css" href="${rootPath }/resources/style/css/payment.css">
+	<script type="text/javascript" src="${rootPath }/resources/js/jquery-1.11.2.js"></script>
 </head>
 <body class="product-info">
 	<form action="#" method="#">
@@ -24,8 +24,8 @@
 				<a href="#" class="after-choose-address">
 					<span class="address-after"></span>
 					<div class="receiver-detail">
-						<p>收货人：张三<i>18819465119</i></p>
-						<p>收货地址：广州市天河区柜号A</p>
+						<p>收货人：${address.userName }<i>${address.phoneNum }</i></p>
+						<p>收货地址：${address.city }${address.area }${address.liveArea }${address.cabinet }</p>
 					</div>
 					<span></span>
 				</a>
@@ -36,32 +36,21 @@
 			</div>
 			<div class="goods-list">
 				<ul>
-					<li>
-						<a href="#">
-							<img src="../img/vedetable.jpg">
-							<span class="right">
-								<span class="name">
-									<span>山西大白菜</span><i>￥18</i>
-								</span>
-								<span class="norms">
-									<span>500g/袋</span><i>x1</i>
-								</span>
+					<c:forEach items="${shoppingCart.cartItems }" var="shoppingCartItem">
+						<li id="${shoppingCartItem.cartItemId}">
+							<a href="#">
+								<img src="${rootPath }/${shoppingCartItem.good.photoUrl}">
+						<span class="right">
+							<span class="name">
+								<span>${shoppingCartItem.good.name}</span><i>￥${shoppingCartItem.good.nowPrice}</i>
 							</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<img src="../img/vedetable.jpg">
-							<span class="right">
-								<span class="name">
-									<span>山西大白菜</span><i>￥18</i>
-								</span>
-								<span class="norms">
-									<span>500g/袋</span><i>x1</i>
-								</span>
+							<span class="norms">
+								<span>${shoppingCartItem.good.quantity}/${shoppingCartItem.good.unit}</span><i>x${shoppingCartItem.quantity }</i>
 							</span>
-						</a>
-					</li>
+						</span>
+							</a>
+						</li>
+					</c:forEach>
 				</ul>
 			</div>
 			<div class="regulations">
@@ -74,14 +63,14 @@
 					</li>
 					<li>
 						<a href="#">
-							<span>运费<i class="tip">(满25元免费配送)</i></span>
-							<span>运费:￥5<i></i></span>
+							<span>运费<i class="tip">(全场免费配送)</i></span>
+							<span>运费:￥0<i></i></span>
 						</a>
 					</li>
 					<li>
 						<a href="#">
 							<span>商品总额</span>
-							<span><em>￥41</em>共2件商品</span>
+							<span><em>￥${shoppingCart.total }</em>共${shoppingCart.amount }件商品</span>
 						</a>
 					</li>
 				</ul>
@@ -97,7 +86,7 @@
 					</li>
 					<li>
 						<a>
-							<label for="balance-input">余额<i class="tip">(剩余￥25)</i></label>
+							<label for="balance-input">余额<i class="tip">(剩余￥${user.wallet.overage })</i></label>
 							<input type="checkbox" name="balance-input" id="balance-input"/>
 							<span class="checkbox-simulate off"><span></span></span>
 						</a>
@@ -141,11 +130,11 @@
 		</div>
 		<div class="pay">
 			<span>合计:</span>
-			<i>￥41.00</i>
+			<i>￥${shoppingCart.total }</i>
 			<button type="submit">买单</button>
 		</div>
 	</form>
-	<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
-	<script type="text/javascript" src="../js/payway.js"></script>
+	<script type="text/javascript" src="${rootPath }/resources/js/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="${rootPath }/resources/js/payway.js"></script>
 </body>
 </html>

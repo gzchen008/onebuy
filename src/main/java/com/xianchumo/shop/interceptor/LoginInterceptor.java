@@ -38,7 +38,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (session.getAttribute("user") == null) {
 			//TODO 真实情境，这里会跳转到微信认证
 			//TODO 测试期间，直接取出用户
-			User user = userService.get(2);
+			User user = userService.get(1);
 			session.setAttribute("user", user);
 			logger.info("使用了测试用户");
 			

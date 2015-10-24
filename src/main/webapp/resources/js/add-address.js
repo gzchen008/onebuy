@@ -17,7 +17,7 @@ function simulateSelect() {
     $("#county")
         .change(
         function () {
-            var cid = $(this).children('option:selected').val();
+            var cid = $(this).children('option:selected').attr("cid");
             $
                 .ajax({
                     url: 'findChildById',
@@ -28,12 +28,13 @@ function simulateSelect() {
                     dataType: 'json',
                     success: function (res) {
                         var htmlstr = "\<option value=\"tip\"\>请选择\<\/option\>";
-                        ;
                         $.each(res, function (n, value) {
-                            htmlstr += '\<option value=\"'
-                            + value.name + '\"\>'
-                            + value.name
-                            + '\</option\>';
+                        	   htmlstr += '\<option ' +
+                               'cid=\"' + value.abid + '\"' +
+                               'value=\"'
+                               + value.name + '\"\>'
+                               + value.name
+                               + '\</option\>';
                         });
                         $("#community").html(htmlstr);
 
@@ -44,7 +45,8 @@ function simulateSelect() {
     $("#community")
         .change(
         function () {
-            var cid = $(this).children('option:selected').val();
+            var cid = $(this).children('option:selected').attr("cid");
+            alert(cid);
             // ajax
             $
                 .ajax({
@@ -57,7 +59,9 @@ function simulateSelect() {
                     success: function (res) {
                         var htmlstr = "\<option value=\"tip\"\>请选择\<\/option\>";
                         $.each(res, function (n, value) {
-                            htmlstr += '\<option value=\"'
+                            htmlstr += '\<option ' +
+                            'cid=\"' + value.abid + '\"' +
+                            'value=\"'
                             + value.name + '\"\>'
                             + value.name
                             + '\</option\>';

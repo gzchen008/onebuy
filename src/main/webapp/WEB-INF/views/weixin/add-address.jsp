@@ -38,7 +38,7 @@
     <select id="county" name="area">
         <option value="tip">请选择区</option>
         <c:forEach items="${lsAb }" var="area">
-        <option value="${area.abid }">${area.name }</option>
+        <option cid="${area.abid }" value="${area.name }">${area.name }</option>
         </c:forEach>
     </select>
     <i></i>
