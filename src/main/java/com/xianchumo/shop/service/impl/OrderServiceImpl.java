@@ -27,7 +27,7 @@ import com.xianchumo.shop.util.ShopUtil;
 @Transactional
 public class OrderServiceImpl extends BaseServiceImpl<Order>
 	implements OrderService{
-	public static int PAGE = 20;
+	public static int PAGE_SIZE = 20;
 	@Resource(name="orderDao")
 	public void setDao(BaseDao<Order> dao){
 		super.setDao(dao);
@@ -38,7 +38,7 @@ public class OrderServiceImpl extends BaseServiceImpl<Order>
 	public List<Order> findByMerchant(Long merchantId, int page) {
 		String queryString = "FROM Order AS order WHERE order.merchant.mid="
 							.concat(String.valueOf(merchantId));
-		return this.dao.find(queryString, PAGE*page, PAGE);
+		return this.dao.find(queryString, (page-1)*PAGE_SIZE, PAGE_SIZE);
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class OrderServiceImpl extends BaseServiceImpl<Order>
 				   .append(merchantId)
 				   .append(" AND orderState=")
 				   .append(state);
-		return this.dao.find(queryString.toString(), page*PAGE, PAGE);
+		return this.dao.find(queryString.toString(), (page-1)*PAGE_SIZE, PAGE_SIZE);
 	}
 	@Override
 	public Order createOrder(ShoppingCart shoppingCart) {
@@ -71,4 +71,55 @@ public class OrderServiceImpl extends BaseServiceImpl<Order>
 		dao.save(order);
 		return order;
 	}
+
+
+	@Override
+	public List<Order> findOrder(int page) {
+		return this.dao.find("FROM Order", (page-1)*PAGE_SIZE, PAGE_SIZE);
+	}
+
+
+	@Override
+	public List<Order> findByOrderTime(Date startTime, Date endTime, int page) {
+		StringBuilder queryString = new StringBuilder();
+		if(startTime == null){
+			queryString.append("FROM Order WHERE orderTime<=")
+			           .append(endTime);
+		}else{
+			queryString.append("FROM Order WHERE orderTime>=")
+	           .append(startTime)
+	           .append(" AND orderTime<=")
+	           .append(endTime);
+		}
+		return this.dao.find(queryString.toString(), (page-1)*PAGE_SIZE, PAGE_SIZE);
+	}
+
+
+	@Override
+	public List<Order> findByUser(String phone, int page) {
+		String queryString = "FROM Order AS order WHERE order.user.phone="+phone;
+		return this.dao.find(queryString, (page-1)*PAGE_SIZE, PAGE_SIZE);
+	}
+
+
+	@Override
+	public List<Order> findByUserAndTime(String phone, Date startTime,
+			Date endTime, int page) {
+		StringBuilder queryString = new StringBuilder();
+		if(startTime == null){
+			queryString.append("FROM Order AS order WHERE order.user.phone=")
+					   .append(phone)
+					   .append(" AND orderTime<=")
+			           .append(endTime);
+		}else{
+			queryString.append("FROM Order AS order WHERE order.user.phone=")
+			   .append(phone)
+			   .append(" AND orderTime>=")
+	           .append(startTime)
+	           .append(" AND orderTime<=")
+	           .append(endTime);
+		}
+		return this.dao.find(queryString.toString(), (page-1)*PAGE_SIZE, PAGE_SIZE);
+	}
+	
 }
