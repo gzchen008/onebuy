@@ -33,7 +33,7 @@ public class Merchant implements Serializable {
 	private String telephone;// 座机
 	@Column(length = 11)
 	private String phone;// 手机
-	@ManyToOne(targetEntity = Address.class)
+	@ManyToOne(targetEntity = AddressBase.class)
 	@JoinColumn(name = "address_id", referencedColumnName = "abid", nullable = true)
 	private AddressBase addressBase;
 	/**

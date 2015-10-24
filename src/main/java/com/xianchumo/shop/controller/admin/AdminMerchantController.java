@@ -37,13 +37,23 @@ public class AdminMerchantController {
 		req.setAttribute("merchants", merchants);
 		return "/views/merchant/showMerchant";
 	}
+	/**
+	 * 跟据地址查看商家列表
+	 */
+	@RequestMapping(value = "/searchMerchant")
+	public String searchMerchant(HttpServletRequest req,Long addressId, int page) {
+		List<Merchant> merchants = merchantService.findByAddress(addressId, page);
+		req.setAttribute("merchants", merchants);
+		return "/views/merchant/showMerchant";
+	}
 
 	/**
 	 * 商户详细信息
 	 */
 	@RequestMapping(value = "/merchantDetail")
-	public String merchantDetail() {
-		return "index";
+	public String merchantDetail(Long merchantId, HttpServletRequest req) {
+		req.setAttribute("merchant", merchantService.get(merchantId));
+		return "/views/merchant/merchantDetail";
 	}
 
 	/**
