@@ -8,15 +8,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.xianchumo.shop.entity.Address;
+import com.xianchumo.shop.entity.AddressBase;
 import com.xianchumo.shop.entity.Merchant;
 import com.xianchumo.shop.exception.ShopException;
+import com.xianchumo.shop.service.AddressBaseService;
 import com.xianchumo.shop.service.AddressService;
 import com.xianchumo.shop.service.MerchantService;
 import com.xianchumo.shop.util.InfoUtil;
@@ -41,6 +41,8 @@ public class MerchantController {
 	private MerchantService merchantService;
 	@Autowired
 	private AddressService addressService;
+	@Autowired
+	private AddressBaseService addressBaseService;
 	/**
 	 * 注册个人信息
 	 */
@@ -107,8 +109,8 @@ public class MerchantController {
 		if(merchant == null){
 			throw new ShopException("登陆超时，请重新登陆！");
 		}
-		Address address = addressService.get(addressId);
-		merchant.setAddress(address);
+		AddressBase address = addressBaseService.get(addressId);
+		merchant.setAddressBase(address);
 		merchantService.update(merchant);
 		session.getAttribute("merchant");
 		return "/merchant/account";
