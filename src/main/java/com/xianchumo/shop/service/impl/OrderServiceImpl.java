@@ -1,6 +1,7 @@
 package com.xianchumo.shop.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -26,11 +27,30 @@ import com.xianchumo.shop.util.ShopUtil;
 @Transactional
 public class OrderServiceImpl extends BaseServiceImpl<Order>
 	implements OrderService{
+	public static int PAGE = 20;
 	@Resource(name="orderDao")
 	public void setDao(BaseDao<Order> dao){
 		super.setDao(dao);
 	}
+	
 
+	@Override
+	public List<Order> findByMerchant(Long merchantId, int page) {
+		String queryString = "FROM Order AS order WHERE order.merchant.mid="
+							.concat(String.valueOf(merchantId));
+		return this.dao.find(queryString, PAGE*page, PAGE);
+	}
+
+	@Override
+	public List<Order> findByMerchantAndState(Long merchantId, int state,
+			int page) {
+		StringBuilder queryString = new StringBuilder();
+		queryString.append("FROM Order AS order WHERE order.merchant.mid=")
+				   .append(merchantId)
+				   .append(" AND orderState=")
+				   .append(state);
+		return this.dao.find(queryString.toString(), page*PAGE, PAGE);
+	}
 	@Override
 	public Order createOrder(ShoppingCart shoppingCart) {
 		//生成订单号

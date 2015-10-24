@@ -15,7 +15,7 @@ import com.xianchumo.shop.entity.Address;
 public class AddressDaoTest {
 	@Autowired
 	private AddressDao addressDao;
-
+/*
 
 	@Test
 	public void testAdd() {
@@ -27,7 +27,7 @@ public class AddressDaoTest {
 		Address ad = new Address("广东", "广州", "天河");
 		ad.setAid(new Long(3));
 		addressDao.delete(ad);
-	}
+	}*/
 	
 	@Test
 	public void testGet(){

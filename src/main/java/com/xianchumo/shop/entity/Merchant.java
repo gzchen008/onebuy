@@ -97,7 +97,9 @@ public class Merchant implements Serializable {
 	public void setOverage(double overage) {
 		this.overage = overage;
 	}
-
+	public void subMoney(double money){
+		this.overage -= money;
+	}
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {

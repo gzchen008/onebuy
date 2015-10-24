@@ -1,6 +1,7 @@
 package com.xianchumo.shop.entity;
 
 public class OrderState {
+	public final static int DEFAULT = 0;//默认值
 	public final static int GENERATE = 1;// 订单生成
 	public final static int PAID = 2;// 买家已付款
 	public final static int SNED = 3;// 商家已发货
