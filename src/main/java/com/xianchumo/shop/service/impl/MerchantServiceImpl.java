@@ -23,6 +23,7 @@ import com.xianchumo.shop.service.MerchantService;
 @Transactional
 public class MerchantServiceImpl extends BaseServiceImpl<Merchant>
 	implements MerchantService{
+	public static int PAGE_SIZE = 20;
 	@Resource(name="merchantDao")
 	public void setDao(BaseDao<Merchant> dao){
 		super.setDao(dao);
@@ -35,6 +36,21 @@ public class MerchantServiceImpl extends BaseServiceImpl<Merchant>
 		if(list != null && list.size() != 0){
 			return list.get(0);
 		}
+		return null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Merchant> findMerchant(int page) {
+		String queryString = "FROM Merchant";
+		return this.findPageList(queryString,
+				page*PAGE_SIZE, PAGE_SIZE);
+		
+	}
+	
+	@Override
+	public List<Merchant> findByAddress(Address address) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
