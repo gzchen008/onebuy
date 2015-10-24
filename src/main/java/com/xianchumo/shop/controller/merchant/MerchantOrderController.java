@@ -1,5 +1,6 @@
 package com.xianchumo.shop.controller.merchant;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,13 +8,14 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.xianchumo.shop.entity.Merchant;
 import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.entity.OrderState;
+import com.xianchumo.shop.exception.ShopException;
 import com.xianchumo.shop.service.OrderService;
+import com.xianchumo.shop.util.OrderUtil;
 /**
  * @Team xianchumo
  * @data:2015年9月25日 
@@ -35,20 +37,12 @@ public class MerchantOrderController {
 	 * 确认订单
 	 */
 	@RequestMapping(value = "/comfirmOrder")
-	public String comfirmOrder(@RequestParam("order_id") String orderId, Model model) {
-		if(orderId == null){
-			return "/merchant/error";
-		}
-		Order order = orderService.get(Long.parseLong(orderId));
-		if(order == null){
-			return "/merchant/error";
-		}
-		if(order.getOrderState() != OrderState.PAID){
-			return "/merchant/error";
-		}
-		order.setOrderState(OrderState.SNED);
+	public String comfirmOrder(Long orderId, HttpServletRequest req) {
+		Order order = OrderUtil.getAndChangeOrder(
+				orderService, orderId, OrderState.SEND);
+		order.setOrderState(OrderState.SEND);
 		orderService.update(order);
-		model.addAttribute("order", order);
+		req.setAttribute("order", order);
 		return "/merchant/singleOrder";
 	}
 
@@ -56,20 +50,11 @@ public class MerchantOrderController {
 	 * 取消订单
 	 */
 	@RequestMapping(value = "/cancleOrder")
-	public String cancleOrder(@RequestParam("order_id") String orderId) {
-		if(orderId == null){
-			return "/merchant/error";
-		}
-		Order order = orderService.get(Long.parseLong(orderId));
-		if(order == null){
-			return "/merchant/error";
-		}
-		if(order.getOrderState() != OrderState.GENERATE){
-			return "/merchant/error";
-		}
+	public String cancleOrder(Long orderId) {
+		Order order = OrderUtil.getAndChangeOrder(
+				orderService, orderId, OrderState.FAIL);
 		order.setOrderState(OrderState.FAIL);
 		orderService.update(order);
-		
 		return "/merchant/cancelOrder";
 	}
 
@@ -77,29 +62,30 @@ public class MerchantOrderController {
 	 * 订单详情
 	 */
 	@RequestMapping(value = "/orderDetail")
-	public String orderDetail(@RequestParam("order_id") String orderId, Model model) {
+	public String orderDetail(Long orderId, HttpServletRequest req) {
 		if(orderId == null){
-			return "/merchant/error";
+			throw new ShopException("订单ID不存在！");
 		}
-		Order order = orderService.get(Long.parseLong(orderId));
-		if(order == null){
-			return "/merchant/error";
-		}
-		if(order.getOrderState() != OrderState.PAID){
-			return "/merchant/error";
-		}
-		order.setOrderState(OrderState.SNED);
-		orderService.update(order);
-		model.addAttribute("order", order);
+		Order order = orderService.get(orderId);
+		req.setAttribute("order", order);
 		return "/merchant/singleOrder";
 	}
 	/**
 	 * 列出订单
 	 */
 	@RequestMapping(value = "/listOrder")
-	public String listOrder(Model model,HttpSession session) {
-		Merchant merchant = (Merchant)session.getAttribute("merchant");
-		model.addAttribute("orders", orderService.findByMerchant(merchant.getMid(), 0));
+	public String listOrder(HttpServletRequest req) {
+		Merchant merchant = (Merchant)req.getSession().getAttribute("merchant");
+		req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), 0));
+		return "/merchant/order";
+	}
+	/**
+	 * 列出订单
+	 */
+	@RequestMapping(value = "/someOrder")
+	public String someOrder(HttpServletRequest req, int state){
+		Merchant merchant = (Merchant)req.getSession().getAttribute("merchant");
+		req.setAttribute("orders", orderService.findByMerchantAndState(merchant.getMid(), state, 0));
 		return "/merchant/order";
 	}
 

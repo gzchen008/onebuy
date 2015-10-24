@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.xianchumo.shop.entity.Address;
 import com.xianchumo.shop.entity.Merchant;
+import com.xianchumo.shop.exception.ShopException;
 import com.xianchumo.shop.service.AddressService;
 import com.xianchumo.shop.service.MerchantService;
+import com.xianchumo.shop.util.InfoUtil;
 import com.xianchumo.shop.util.Md5Utils;
 
 /**
@@ -52,12 +54,11 @@ public class MerchantController {
 	 * 登录
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@RequestParam("account") String account, 
-			@RequestParam("password") String password, Model model) {
+	public String login(String account, String password, HttpSession session) {
 		Merchant merchant = merchantService.findByAccount(account);
 		if(merchant != null){
 			if(merchant.getPassword().equals(Md5Utils.md5(password))){
-				model.addAttribute("merchant", merchant);
+				session.setAttribute("merchant", merchant);
 				return "/merchant/index";
 			}
 		}
@@ -81,10 +82,37 @@ public class MerchantController {
 	 * 修改个人信息
 	 */
 	@RequestMapping(value = "/modifyUserInfo")
-	public String modifyUserInfo() {
+	public String modifyUserInfo(HttpSession session, String oldPassword, 
+			String newPassword, String confirmPW){
+		Merchant merchant = (Merchant)session.getAttribute("merchant");
+		if(InfoUtil.isNull(oldPassword, newPassword, confirmPW)){
+			throw new ShopException("信息不完整！");
+		}
+		if(!Md5Utils.md5(oldPassword).equals(merchant.getPassword())){
+			throw new ShopException("账号密码错误");
+		}
+		if(!newPassword.equals(confirmPW)){
+			throw new ShopException("两次密码输入");
+		}
+		merchant.setPassword(Md5Utils.md5(newPassword));
+		merchantService.update(merchant);
 		return "/merchant/info";
 	}
-
+	/**
+	 * 修改地址
+	 */
+	@RequestMapping(value = "/modifyAddress")
+	public String accountAddress(Long addressId, HttpSession session) {
+		Merchant merchant = (Merchant)session.getAttribute("merchant");
+		if(merchant == null){
+			throw new ShopException("登陆超时，请重新登陆！");
+		}
+		Address address = addressService.get(addressId);
+		merchant.setAddress(address);
+		merchantService.update(merchant);
+		session.getAttribute("merchant");
+		return "/merchant/account";
+	}
 	/**
 	 * 帐户信息
 	 */
@@ -98,9 +126,12 @@ public class MerchantController {
 	 * 申请提现
 	 */
 	@RequestMapping(value = "/applyWithdraw")
-	public String applyWithdraw(@RequestParam double money, HttpSession session) {
+	public String applyWithdraw(double money, HttpSession session) {
 		logger.debug("提现成功，已提款"+money+"元");
 		Merchant merchant = (Merchant)session.getAttribute("merchant");
+		if(money>merchant.getOverage()){
+			throw new ShopException("余额不足");
+		}
 		merchant.subMoney(money);
 		merchantService.update(merchant);
 		return "/merchant/account";

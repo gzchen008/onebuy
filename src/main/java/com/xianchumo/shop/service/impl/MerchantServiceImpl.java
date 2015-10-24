@@ -40,7 +40,7 @@ public class MerchantServiceImpl extends BaseServiceImpl<Merchant>
 
 	@Override
 	public void createMerchant(String account, String password, Address address) {
-		
+
 		
 	}
 	

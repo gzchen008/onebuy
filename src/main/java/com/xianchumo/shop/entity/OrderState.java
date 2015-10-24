@@ -4,7 +4,7 @@ public class OrderState {
 	public final static int DEFAULT = 0;//默认值
 	public final static int GENERATE = 1;// 订单生成
 	public final static int PAID = 2;// 买家已付款
-	public final static int SNED = 3;// 商家已发货
+	public final static int SEND = 3;// 商家已发货
 	public final static int SUCCESS = 4;// 买家已提货,交易成功
 	
 	
