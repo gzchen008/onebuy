@@ -17,9 +17,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
  * 商品类
  * 
@@ -50,7 +47,15 @@ public class Good implements Serializable {
 	protected GoodInfo info;// 商品信息
 	@OneToMany(targetEntity = Evaluate.class, mappedBy = "good", fetch = FetchType.LAZY)
 	private Set<Evaluate> evaluates;
+	/**
+	 * 商品备注 
+	 * recommend 为推荐商品
+	 * timelimit 限时抢购
+	 */
+	@Column(length = 50, nullable = true)
+	private String remark;
 
+	
 	public Long getGid() {
 		return gid;
 	}
@@ -181,6 +186,14 @@ public class Good implements Serializable {
 	public Good(Long gid) {
 		super();
 		this.gid = gid;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 }
