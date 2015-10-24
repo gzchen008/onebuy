@@ -55,6 +55,7 @@ public class Good implements Serializable {
 	@Column(length = 50, nullable = true)
 	private String remark;
 
+	
 	public Long getGid() {
 		return gid;
 	}
