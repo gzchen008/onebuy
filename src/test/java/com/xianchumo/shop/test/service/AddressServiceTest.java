@@ -17,9 +17,9 @@ public class AddressServiceTest {
 	private AddressService addressService;
 	@Test
 	public void testAdd() {
-		Address ad = new Address("广东", "广州", "天河");
+		/*Address ad = new Address("广东", "广州", "天河");
 		ad.setLiveArea("华农");
-		addressService.add(ad);
+		addressService.add(ad);*/
 	}
 
 }

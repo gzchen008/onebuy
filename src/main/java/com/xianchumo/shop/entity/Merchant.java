@@ -34,8 +34,8 @@ public class Merchant implements Serializable {
 	@Column(length = 11)
 	private String phone;// 手机
 	@ManyToOne(targetEntity = Address.class)
-	@JoinColumn(name = "address_id", referencedColumnName = "aid", nullable = true)
-	private Address address;
+	@JoinColumn(name = "address_id", referencedColumnName = "abid", nullable = true)
+	private AddressBase addressBase;
 	/**
 	 * 余额
 	 */
@@ -65,12 +65,12 @@ public class Merchant implements Serializable {
 		this.password = password;
 	}
 
-	public Address getAddress() {
-		return address;
+	public AddressBase getAddressBase() {
+		return addressBase;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setAddressBase(AddressBase addressBase) {
+		this.addressBase = addressBase;
 	}
 
 	public String getTelephone() {
@@ -97,7 +97,9 @@ public class Merchant implements Serializable {
 	public void setOverage(double overage) {
 		this.overage = overage;
 	}
-
+	public void subMoney(double money){
+		this.overage -= money;
+	}
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
