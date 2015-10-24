@@ -49,9 +49,9 @@ public class MerchantServiceImpl extends BaseServiceImpl<Merchant>
 	}
 	
 	@Override
-	public List<Merchant> findByAddress(Address address) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Merchant> findByAddress(Long addressId, int page) {
+		String queryString = "From Merchant AS merchant WHERE address_id=?";
+		return this.dao.find(queryString, (page-1)*PAGE_SIZE, PAGE_SIZE);
 	}
 
 	@Override

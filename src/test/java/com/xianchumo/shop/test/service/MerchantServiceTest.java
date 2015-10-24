@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.xianchumo.shop.entity.Address;
+import com.xianchumo.shop.entity.AddressBase;
 import com.xianchumo.shop.entity.Merchant;
 import com.xianchumo.shop.service.MerchantService;
 import com.xianchumo.shop.util.Md5Utils;
@@ -24,9 +24,9 @@ public class MerchantServiceTest {
 		entity.setAccount("cgzgduf");
 		entity.setPhone("13589687402");
 		entity.setPassword(Md5Utils.md5("123456"));
-		Address address = new Address();
-		address.setAid(2l);
-		entity.setAddress(address );
+		AddressBase address = new AddressBase();
+		address.setAbid(2l);
+		entity.setAddressBase(address );
 		merchantService.add(entity );
 	}
 
