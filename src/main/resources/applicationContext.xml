@@ -36,11 +36,11 @@
 <!-- 		<property name="weixinCallbackUrl" value="http://xianchumo.tunnel.mobi/shop/user/weixinCallback" /> -->
 	</bean>
 	<!-- 获得token的线程 -->
-	<bean id="tokenThread" class="com.vanroid.weixin.thread.TokenThread">
-	</bean>
+	<!-- <bean id="tokenThread" class="com.vanroid.weixin.thread.TokenThread">
+	</bean> -->
 	<!-- 初始化程序操作 -->
-	<bean id="initShop" class="com.xianchumo.shop.conf.InitShop">
-	</bean>
+	<!-- <bean id="initShop" class="com.xianchumo.shop.conf.InitShop">
+	</bean> -->
 
 	<!-- 配置数据源 -->
 	<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
