@@ -2,13 +2,12 @@ package com.xianchumo.shop.service.impl;
 
 
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.xianchumo.shop.dao.AdminDao;
 import com.xianchumo.shop.dao.BaseDao;
 import com.xianchumo.shop.entity.Admin;
 import com.xianchumo.shop.service.AdminService;
@@ -16,19 +15,16 @@ import com.xianchumo.shop.service.AdminService;
 @Transactional
 public class AdminServiceImpl extends BaseServiceImpl<Admin>
 	implements AdminService{
+	private AdminDao adminDao;
 	@Resource(name = "adminDao")
 	public void setDao(BaseDao<Admin> dao){
 		super.setDao(dao);
+		adminDao = (AdminDao)dao;
 	}
 
 	@Override
 	public Admin findByAccount(String account) {
-		String queryString = "FROM Admin WHERE account=?";
-		List<Admin> list = this.dao.find(queryString, account);
-		if(list != null && list.size() != 0){
-			return list.get(0);
-		}
-		return null;
+		return adminDao.findByAccount(account);
 	}
 
 	@Override

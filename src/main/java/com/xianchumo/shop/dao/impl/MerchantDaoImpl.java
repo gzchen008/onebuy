@@ -45,7 +45,7 @@ public class MerchantDaoImpl extends BaseDaoImpl<Merchant>
 
 	@Override
 	public List<Merchant> findByAddress(Long addressId, int page) {
-		return find("From Merchant AS merchant WHERE address_id=?",
+		return find("From Merchant AS merchant WHERE address_id="+addressId,
 				(page-1)*PAGE_SIZE, PAGE_SIZE);
 	}
 
