@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.xianchumo.shop.dao.BaseDao;
+import com.xianchumo.shop.dao.MerchantDao;
 import com.xianchumo.shop.entity.Address;
 import com.xianchumo.shop.entity.Merchant;
 import com.xianchumo.shop.service.MerchantService;
@@ -23,10 +24,12 @@ import com.xianchumo.shop.service.MerchantService;
 @Transactional
 public class MerchantServiceImpl extends BaseServiceImpl<Merchant>
 	implements MerchantService{
+	private MerchantDao merchantDao;
 	public static int PAGE_SIZE = 20;
 	@Resource(name="merchantDao")
 	public void setDao(BaseDao<Merchant> dao){
 		super.setDao(dao);
+		merchantDao = (MerchantDao)dao;
 	}
 
 	@Override
@@ -59,5 +62,12 @@ public class MerchantServiceImpl extends BaseServiceImpl<Merchant>
 
 		
 	}
+
+	@Override
+	public Merchant findByAddress(Long addressId) {
+		return merchantDao.findByaddress(addressId);
+	}
+	
+	
 	
 }

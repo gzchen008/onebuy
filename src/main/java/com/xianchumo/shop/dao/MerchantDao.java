@@ -10,5 +10,5 @@ import com.xianchumo.shop.entity.Merchant;
  * @description
  */
 public interface MerchantDao extends BaseDao<Merchant>{
-
+	public Merchant findByaddress(Long addressId);
 }
