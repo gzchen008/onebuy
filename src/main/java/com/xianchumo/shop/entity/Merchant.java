@@ -34,7 +34,7 @@ public class Merchant implements Serializable {
 	@Column(length = 11)
 	private String phone;// 手机
 	@ManyToOne(targetEntity = AddressBase.class)
-	@JoinColumn(name = "address_id", referencedColumnName = "abid", nullable = true)
+	@JoinColumn(name="address_id", referencedColumnName = "abid", nullable = true)
 	private AddressBase addressBase;
 	/**
 	 * 余额

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.xianchumo.shop.entity.AddressBase;
+import com.xianchumo.shop.entity.Merchant;
 import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.entity.ShoppingCart;
 import com.xianchumo.shop.service.OrderService;
@@ -43,12 +45,24 @@ public class OrderController {
 	}
 	/**
 	 * 付款
+	 * liveAreaId 最小区id，用于查找商家
 	 * @return
 	 */
 	@RequestMapping(value="pay")
-	public String pay(){
-		//TODO 使用微信支付
+	public String pay(Long liveAreaId,HttpSession session,HttpServletRequest request){
 		
+		AddressBase addressBase = new AddressBase();
+		addressBase.setAbid(liveAreaId);
+		
+		ShoppingCart shoppingCart = ShopUtil.getShoppingCart(request,shoppingCartService);
+		//生成订单
+		Order order = orderService.createOrder(shoppingCart);
+		Merchant merchant;
+		order.setMerchant(merchant);
+		session.setAttribute("order", order);
+		
+		
+		//TODO 使用微信支付
 		return null;
 	}
 	/**

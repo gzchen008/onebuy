@@ -50,11 +50,12 @@ public class AddressController {
 	public String save(Long liveAreaId ,Address address, HttpServletRequest request, HttpSession session) {
 		if(liveAreaId == null)
 			throw new ShopParameterExceptioin("参数错误");
-		request.setAttribute("address", address);
-		request.setAttribute("liveAreaId", liveAreaId);
 		User user = (User) session.getAttribute("user");
 		address.setUser(user);
 		addressService.add(address);
+		request.setAttribute("address", address);
+		request.setAttribute("liveAreaId", liveAreaId);
+		
 		return "weixin/chooseAdressPayment";
 	}
 

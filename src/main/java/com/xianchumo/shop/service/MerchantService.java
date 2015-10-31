@@ -21,4 +21,6 @@ public interface MerchantService extends BaseService<Merchant>{
 	public List<Merchant> findMerchant(int page);
 	
 	public List<Merchant> findByAddress(Long addressId, int page);
+	
+	public Merchant findByAddress(Long addressId);
 }
