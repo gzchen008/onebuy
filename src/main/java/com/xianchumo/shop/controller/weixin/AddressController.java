@@ -39,32 +39,47 @@ public class AddressController {
 		httpRequest.setAttribute("lsAb", lsAb);
 		return "weixin/add-address";
 	}
+
 	/**
 	 * 地址选择页面
+	 * 
 	 * @return
 	 */
-	public String addressView(HttpSession session){
+	@RequestMapping(value = "/addressView")
+	public String addressView(HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		//找出用户的历史地址
+		// 找出用户的历史地址
 		List<Address> lsAddr = addressBaseService.findByUser(user);
+		session.setAttribute("lsAddr", lsAddr);
 		return "weixin/address-history";
 	}
 
 	/**
-	 * 保存地址
-	 * liveAreaId 生活区ID
+	 * 保存地址 liveAreaId 生活区ID
+	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/save")
-	public String save(Long liveAreaId ,Address address, HttpServletRequest request, HttpSession session) {
-		if(liveAreaId == null)
+	public String save(Long liveAreaId, Address address, HttpServletRequest request, HttpSession session) {
+		if (liveAreaId == null)
 			throw new ShopParameterExceptioin("参数错误");
 		User user = (User) session.getAttribute("user");
 		address.setUser(user);
 		addressService.add(address);
 		request.setAttribute("address", address);
 		request.setAttribute("liveAreaId", liveAreaId);
-		
+
+		return "weixin/chooseAdressPayment";
+	}
+
+	/**
+	 * 选择地址 参数：地址ID 生活区ID
+	 */
+	@RequestMapping(value = "/chooseAddr")
+	public String chooseAddr(Long aid, Long liveAreaId, HttpServletRequest request) {
+		Address address = addressService.get(aid);
+		request.setAttribute("liveAreaId", liveAreaId);
+		request.setAttribute("address", address);
 		return "weixin/chooseAdressPayment";
 	}
 
@@ -77,18 +92,6 @@ public class AddressController {
 	public String list() {
 		List<Address> ls = addressService.findAll();
 		return "chooseAddress";
-	}
-
-	/**
-	 * 选择地址
-	 */
-	@RequestMapping(value = "/chosAddr")
-	public String chooseAddr(Address address, HttpSession session) {
-		User user = (User) session.getAttribute("user");
-		Order order = (Order) session.getAttribute("order");
-		order.setAddress(address);
-
-		return "";
 	}
 
 	/**

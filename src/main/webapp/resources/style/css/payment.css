@@ -333,6 +333,7 @@ body {
 }
 .container .address a {
   display: block;
+  height: 100%;
   line-height: 84px;
   font-size: 24px;
   font-weight: 500;
@@ -357,7 +358,7 @@ body {
   background-image: url("../../img/address.png") !important;
 }
 .container .address a .receiver-detail {
-  width: 74%;
+  width: 70%;
   float: left;
   display: inline;
   padding-top: 20px;
@@ -444,7 +445,7 @@ body {
   display: block;
   color: #212121;
   font-weight: 500;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
 }
 .container .goods-list ul li a .right .name span {
   font-size: 20px;

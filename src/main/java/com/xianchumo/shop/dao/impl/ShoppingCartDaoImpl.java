@@ -1,7 +1,5 @@
 package com.xianchumo.shop.dao.impl;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import com.xianchumo.shop.dao.ShoppingCartDao;
@@ -13,11 +11,10 @@ public class ShoppingCartDaoImpl extends BaseDaoImpl<ShoppingCart>
 
 	@Override
 	public void deleteCartItem(CartItem ci) {
-		//Session session = getHibernateTemplate().getSessionFactory().openSession();
-		//session.createQuery("delete from ");
 		getHibernateTemplate().delete(ci);
 	}
 
+	
 
 	
 }

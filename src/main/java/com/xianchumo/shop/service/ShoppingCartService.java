@@ -24,5 +24,10 @@ public interface ShoppingCartService extends BaseService<ShoppingCart>{
 	Set<CartItem> updateCart(ShoppingCart shoppingCart, Long goodId, Integer count);
 
 	Set<CartItem> removeItem(ShoppingCart shoppingCart, Long goodId);
+	/**
+	 * 清空购物车
+	 * @param shoppingCart 
+	 */
+	void removeAllItem(ShoppingCart shoppingCart);
 
 }

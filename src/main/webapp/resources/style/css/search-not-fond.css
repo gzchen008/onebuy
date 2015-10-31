@@ -42,7 +42,11 @@ body .section {
   width: 295px;
   margin: 0 auto;
   padding-top: 44px;
+  padding-bottom: 1px;
   font-weight: 400;
+}
+body .section ul {
+  margin-bottom: 10px;
 }
 body .section ul li {
   width: 90px;

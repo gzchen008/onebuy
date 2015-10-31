@@ -40,7 +40,7 @@
 		<div class="content">
 			<ul>
 				<li>
-					<a href="">
+					<a href="${rootPath }/">
 						<img src="${rootPath }/resources/img/order.png">
 						<span>我的订单</span>
 					</a>
