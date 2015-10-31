@@ -34,27 +34,17 @@ public class MerchantServiceImpl extends BaseServiceImpl<Merchant>
 
 	@Override
 	public Merchant findByAccount(String account) {
-		String queryString = "FROM Merchant AS merchant WHERE merchant.account=?";
-		List<Merchant> list = this.dao.find(queryString, account);
-		if(list != null && list.size() != 0){
-			return list.get(0);
-		}
-		return null;
+		return merchantDao.findByAccount(account);
 	}
-	
-	@SuppressWarnings("unchecked")
+
 	@Override
 	public List<Merchant> findMerchant(int page) {
-		String queryString = "FROM Merchant";
-		return this.findPageList(queryString,
-				page*PAGE_SIZE, PAGE_SIZE);
-		
+		return merchantDao.findMerchant(page);
 	}
 	
 	@Override
 	public List<Merchant> findByAddress(Long addressId, int page) {
-		String queryString = "From Merchant AS merchant WHERE address_id=?";
-		return this.dao.find(queryString, (page-1)*PAGE_SIZE, PAGE_SIZE);
+		return merchantDao.findByAddress(addressId, page);
 	}
 
 	@Override
