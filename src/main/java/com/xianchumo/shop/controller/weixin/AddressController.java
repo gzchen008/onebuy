@@ -18,7 +18,6 @@ import com.xianchumo.shop.exception.ShopParameterExceptioin;
 import com.xianchumo.shop.service.AddressBaseService;
 import com.xianchumo.shop.service.AddressService;
 import com.xianchumo.shop.util.JsonUtil;
-import com.xianchumo.shop.util.ShopUtil;
 
 @Controller
 @RequestMapping(value = "/address")
@@ -39,6 +38,16 @@ public class AddressController {
 		List<AddressBase> lsAb = addressBaseService.findChildByName("广州市");
 		httpRequest.setAttribute("lsAb", lsAb);
 		return "weixin/add-address";
+	}
+	/**
+	 * 地址选择页面
+	 * @return
+	 */
+	public String addressView(HttpSession session){
+		User user = (User) session.getAttribute("user");
+		//找出用户的历史地址
+		List<Address> lsAddr = addressBaseService.findByUser(user);
+		return "weixin/address-history";
 	}
 
 	/**
