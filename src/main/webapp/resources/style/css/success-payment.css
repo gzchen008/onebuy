@@ -29,7 +29,7 @@
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
-  background: url("../../img/successchecked.png") #5DC890 no-repeat;
+  background: url("../../img/successchecked.png") #5dc890 no-repeat;
   background-position: center center;
   background-size: 100% 100%;
 }
@@ -82,6 +82,9 @@
   width: 100%;
   top: 12px;
   border: solid 1px rgba(189, 189, 189, 0.5);
+}
+.container .section ul {
+  margin-bottom: 10px;
 }
 .container .section ul li {
   width: 90px;

@@ -321,3 +321,50 @@ a {
 .love-search li a span:nth-of-type(2) {
   color: #212121;
 }
+body .container {
+  padding-top: 44px;
+}
+body .container .bg {
+  position: absolute;
+  top: 44px;
+  left: 0px;
+  background-image: url("../../img/redbeij.png");
+  min-width: 320px;
+  min-height: 524px;
+  background-size: 100% 100%;
+  z-index: 0;
+}
+body .container .red-list {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 10px;
+}
+body .container .red-list li {
+  margin-top: 12px;
+}
+body .container .red-list li a {
+  display: block;
+  width: 95%;
+  height: 150px;
+  margin: 0 auto;
+  background-image: url("../../img/red-packet.png");
+  background-size: 100% 100%;
+}
+body .container .red-list li a .relative {
+  width: 200px;
+  position: relative;
+  top: 60px;
+  left: 100px;
+  color: #F4E498;
+}
+body .container .red-list li a .relative span {
+  font-size: 24px;
+}
+body .container .red-list li a .relative i {
+  font-size: 14px;
+}
+body .container .red-list li a .relative p {
+  margin-top: 5px;
+  font-size: 16px;
+  color: #ffffff;
+}

@@ -1,0 +1,199 @@
+@charset "UTF-8";
+@import "z";
+
+body{
+  font-family: "幼圆", serif;
+  background-color: #414C3A !important;
+  .clearfix();
+  .header{
+    height: 75px;
+    background: #A7C731;
+    h1{
+      margin: 0 0 0 20px;
+      height: 75px;
+      line-height: 75px;
+      color: white;
+      font-size: 35px;
+      padding-left: 120px;
+      background: url("../../img/007.png") no-repeat 0 center;
+    }
+  }
+  //左边的主菜单
+  .main-menu{
+    width: 23%;
+    float: left;
+    background: #414C3A;
+    min-height: 610px;
+    .portrait{
+      padding: 1px;
+      margin: 20px;
+      .clearfix();
+      img{
+        width: 120px;
+        height: 120px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        float: left;
+      }
+      h2{
+        width: 50%;
+        text-align: left;
+        float: right;
+        color: white;
+        font-size: 25px;
+        margin: 40px 0 0 0;
+      }
+      p{
+        width: 50%;
+        text-align: left;
+        float: right;
+        color: #A2A5A1;
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+    .list-group{
+      -webkit-border-radius: 0 !important;
+      -moz-border-radius: 0 !important;
+      border-radius: 0 !important;
+      li{
+        background-color: inherit;
+        -webkit-border-radius: 0 !important;
+        -moz-border-radius: 0 !important;
+        border-radius: 0 !important;
+        padding: 0 0 0 40px;
+        border: none;
+        border-bottom: solid 1px #414445 !important;
+        a{
+          display: block;
+          height: 50px;
+          line-height: 50px;
+          color: #FFFFFF;
+          font-size: 22px;
+          padding-left: 40px;
+        }
+        a:focus,
+        a:hover,
+        a:active{
+          text-decoration: none;
+        }
+      }
+      li:hover{
+        background: #1A1C1A;
+      }
+      .active{
+        background: #A7C731;
+      }
+      .active:hover{
+        background: #A7C731;
+      }
+      li:first-child a{
+        background: url("../../img/001.png") no-repeat 0 center;
+      }
+      li:nth-child(2) a{
+        background: url("../../img/002.png") no-repeat 0 center;
+      }
+      li:nth-child(3) a{
+        background: url("../../img/003.png") no-repeat 0 center;
+      }
+      li:nth-child(4) a{
+        background: url("../../img/004.png") no-repeat 0 center;
+      }
+      li:nth-child(5) a{
+        background: url("../../img/005.png") no-repeat 0 center;
+      }
+    }
+  }
+  //右边的内容
+  .content{
+    width: 77%;
+    float: right;
+    background: #F1F1F1;
+    min-height: 610px;
+    //内容的header
+    .content-header{
+      height: 40px;
+      background: white;
+      //内容header里的span
+      span{
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+      }
+      //当前位置
+      .position{
+        float: left;
+        margin-left: 20px;
+        padding-left: 28px;
+        background: url("../../img/000.png") no-repeat 0 5px;
+      }
+      //时间
+      .time{
+        float: right;
+        margin-right: 20px;
+      }
+    }
+    //主内容
+    .main-content{
+      position: relative;
+      width: 97%;
+      min-height: 500px;
+      margin: 20px auto;
+      border-top: solid 2px #A7C731;
+      background: white;
+      .clearfix();
+      //主内容的header
+      .main-content-header{
+        margin: 0;
+        padding: 0 20px;
+        height: 35px;
+        line-height: 35px;
+        font-weight: normal;
+        font-size: 13px;
+        border-bottom: solid 1px #E6E6E6;
+      }
+      >.btn{
+        margin: 20px 0;
+        width: 130px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0;
+      }
+      >.btn:first-of-type{
+        margin-left: 24px;
+      }
+      .btn-border-none{
+        border: none;
+      }
+      .btn-primary{
+        background-color: #A7C731;
+      }
+      .btn-primary:hover{
+        background-color: #8BA231;
+      }
+      .active{
+        background-color: #414C3A;
+        color: white;
+      }
+      .active:hover{
+        background-color: #414C3A;
+      }
+      table{
+        width: 95%;
+        margin: 0 auto;
+        .untreated{
+          color: #E74848;
+        }
+        th,td{
+          vertical-align: middle;
+        }
+      }
+      .page-divider{
+        float: right;
+        margin: 20px;
+      }
+    }
+  }
+
+}

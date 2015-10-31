@@ -1,52 +1,82 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-    <title>交易中的订单</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
-  </head>
-  
-  <body>
-      <table class="table table-striped">
-              <thead>
-                 <tr>
-                    <th>订单编号</th>
-                    <th>下单时间</th>
-                    <th>付款金额</th>
-                    <th>商品</th>
-                    <th>联系电话</th>
-                    <th>送货地址</th>
-                    <th>确认订单</th>
-                 </tr>
-              </thead>
-              <tbody>
-              	 <c:forEach var="parkingPlace" items="${requestScope.orders}" varStatus="status">
-                 <tr>
-                    <td>${order.orderNumber}</td>
-                    <td>${order.orderTime}</td>
-                    <td>${order.money}</td>
-                    <td>
-                    <c:forEach var="good" items="${order.goods}">
-                    	${good}
-                    </c:forEach>
-                    </td>
-                 	<td>${order.user.phone}</td>
-                 	<td>${order.user.address}</td>
-                 	<td><a href='/views/merchant/confirmOrder.jsp?order_id=${order.oid}'>确认</a></td>
-                 </tr>
-              	 </c:forEach>
-              </tbody>
-           </table>
-  </body>
+<!doctype html>
+<html lang="zh-cn">
+	<jsp:include page="head.jsp">
+		<jsp:param value="订单管理" name="title"/>
+	</jsp:include>
+	<body>
+		<jsp:include page="menu.jsp">
+			<jsp:param value="${sessionScope.account}" name="username"/>
+		</jsp:include>
+		<div class="content">
+	    	<div class="content-header"><span class="position">您当前的位置：订单管理</span><!-- <span class="time">2015.10.30 星期五</span> --></div>
+		   	 	<div class="main-content">
+		            <thead>
+		            <tr>
+		                <th>订单号</th>
+		                <th>下单时间</th>
+		                <th>收货人</th>
+		                <th>收获地址</th>
+		                <th>产品信息</th>
+		                <th>合计</th>
+		                <th>订单状态</th>
+		                <th>开始操作</th>
+		                <!--其下对应开始处理-->
+		            </tr>
+		            </thead>
+		            <tbody>
+		            <c:forEach var="order" items="${RequestScope.orders}">
+		            	<tr>
+		                <td>${order.orderNumber}</td>
+		                <td>${order.orderTime}</td>
+		                <td>${order.address.username}</td>
+		                <td>${order.address}</td>
+		                <td>
+		                	<c:forEach var="item" items="${order.goods}">
+		                		${item.good.name}X${item.amount}</br>
+		                	</c:forEach>
+		                </td>
+		                <td>${order.money}</td>
+		                <c:choose>
+		                	<c:when test="${order.orderState==2}">
+		                	</c:when>
+		                	<c:when test="${order.orderState==3}">
+		                	</c:when>
+		                	<c:when test="${order.orderState==4||order.orderState==9}">
+		                	</c:when>
+		                </c:choose>
+		                <td class="untreated">未处理</td>
+		                <td><a href="#" class="btn btn-primary btn-border-none">开始处理</a></td>
+		            </tr>
+		            </c:forEach>
+		            
+		            <tr>
+		                <td>02</td>
+		                <td>2015.10.30 18:40</td>
+		                <td>张三两</td>
+		                <td>广州市天河区汇景新城001柜</td>
+		                <td>小白菜 X1</td>
+		                <td>￥18</td>
+		                <td>￥18</td>
+		                <td>已处理</td>
+		                <td><a href="#" class="btn btn-primary btn-border-none">查看详情</a></td>
+		            </tr>
+		            </tbody>
+		        </table>
+		
+		        <div class="page-divider btn-group" role="group" aria-label="page-divide">
+		            <a href="#" class="btn btn-default">上一页</a>
+		            <a href="#" class="btn btn-default active">1</a>
+		            <a href="#" class="btn btn-default">2</a>
+		            <a href="#" class="btn btn-default">3</a>
+		            <a href="#" class="btn btn-default disabled">...</a>
+		            <a href="#" class="btn btn-default">10</a>
+		            <a href="#" class="btn btn-default">11</a>
+		            <a href="#" class="btn btn-default">12</a>
+		            <a href="#" class="btn btn-default">下一页</a>
+		        </div>
+		    </div>
+		</div>
+	</body>
 </html>
