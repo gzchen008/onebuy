@@ -11,6 +11,7 @@ import com.xianchumo.shop.entity.AddressBase;
 import com.xianchumo.shop.entity.Merchant;
 import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.entity.ShoppingCart;
+import com.xianchumo.shop.service.MerchantService;
 import com.xianchumo.shop.service.OrderService;
 import com.xianchumo.shop.service.ShoppingCartService;
 import com.xianchumo.shop.util.ShopUtil;
@@ -24,53 +25,56 @@ import com.xianchumo.shop.util.ShopUtil;
  * @description
  */
 @Controller
-@RequestMapping(value="order")
+@RequestMapping(value = "order")
 public class OrderController {
 	@Autowired
 	private ShoppingCartService shoppingCartService;
 	@Autowired
 	private OrderService orderService;
+	@Autowired
+	private MerchantService merchantService;
 
 	/**
 	 * 下单 对应：去结算
 	 */
 	@RequestMapping(value = "/createOrder")
-	public String createOrder(HttpServletRequest request,HttpSession session) {
-		ShoppingCart shoppingCart = ShopUtil.getShoppingCart(request,shoppingCartService);
-		//生成订单
+	public String createOrder(HttpServletRequest request, HttpSession session) {
+		ShoppingCart shoppingCart = ShopUtil.getShoppingCart(request, shoppingCartService);
+		// 生成订单
 		Order order = orderService.createOrder(shoppingCart);
 		session.setAttribute("order", order);
 		orderService.add(order);
 		return "weixin/payment";
 	}
+
 	/**
-	 * 付款
-	 * liveAreaId 最小区id，用于查找商家
+	 * 付款 liveAreaId 最小区id，用于查找商家
+	 * 
 	 * @return
 	 */
-	@RequestMapping(value="pay")
-	public String pay(Long liveAreaId,HttpSession session,HttpServletRequest request){
-		
+	@RequestMapping(value = "pay")
+	public String pay(Long liveAreaId, HttpSession session, HttpServletRequest request) {
+
 		AddressBase addressBase = new AddressBase();
 		addressBase.setAbid(liveAreaId);
-		
-		ShoppingCart shoppingCart = ShopUtil.getShoppingCart(request,shoppingCartService);
-		//生成订单
+
+		ShoppingCart shoppingCart = ShopUtil.getShoppingCart(request, shoppingCartService);
+		// 生成订单
 		Order order = orderService.createOrder(shoppingCart);
-		Merchant merchant;
+		Merchant merchant = merchantService.findByAddress(liveAreaId);
 		order.setMerchant(merchant);
 		session.setAttribute("order", order);
-		
-		
-		//TODO 使用微信支付
-		return null;
+
+		// TODO 使用微信支付
+		return "weixin/success-payment.jsp";
 	}
+
 	/**
 	 * 付款页面
 	 */
 	@RequestMapping(value = "/payment")
 	public String payment() {
-		
+
 		return "weixin/payment";
 	}
 

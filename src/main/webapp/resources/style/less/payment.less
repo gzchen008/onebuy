@@ -1,6 +1,9 @@
 @charset "utf-8";
 @import "comment";
 
+body{
+  position: relative;
+}
 .container {
   padding-top: @height;
   padding-bottom: 64px;
@@ -315,4 +318,54 @@
     font-size: 20px;
     color: @white;
   }
+}
+//弹出层
+#mask{ 
+  width: 100%;height:100%;background: #000;
+  position: fixed;top: 0px;height: 0px;z-index: 8000;
+  opacity:0.4; filter: Alpha(opacity=40);
+}
+//时间选择
+#dialog{
+  position:fixed;
+  width:75%;
+  min-width: 200px;
+  background-color: @white;
+  border-radius: 20px;
+  text-align: center;
+  display: none;
+  z-index: 100000;
+  .time-list{
+    padding:5px 15px;
+    li{
+      padding: 10px 0px;
+      font-size: 18px;
+      color:@black;
+      .bor-bottom();
+      span{
+        display: inline-block;
+        width:24px;
+        height:24px;
+        background-size: 100% 100%;
+        vertical-align: bottom;
+        margin-left: 10px;
+      }
+      &:first-child{
+       color:@green;
+     }
+   }
+ }
+ .now-icon{
+  background-image: url("../../img/payment-check.png");
+ }
+ button{
+  background-color: @white;
+  color:@green;
+  font-size: 18px;
+  padding:5px 10px;
+  border:solid 1px @green;
+  border-radius: 12px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
 }

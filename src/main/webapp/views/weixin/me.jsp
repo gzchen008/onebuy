@@ -81,43 +81,6 @@
 			客服电话：000-000-000
 		</div>
 	</div>
-	<div class="footer">
-		<ul>
-			<li>
-				<a href="#">
-					<span>
-						<span class="footer-icon" id="icon1"></span>
-						<i>首页</i>
-					</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<span>
-						<span class="footer-icon" id="icon2"></span>
-						<i>产品</i>
-					</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<span>
-						<span class="footer-icon" id="icon3">
-							<span class="tooltip">￥20</span>
-						</span>
-						<i>购物车</i>
-					</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<span>
-						<span class="footer-icon" id="icon4"></span>
-						<i>我</i>
-					</span>
-				</a>
-			</li>
-		</ul>
-	</div>
+<%@include file="nav-footer.jsp" %>
 </body>
 </html>

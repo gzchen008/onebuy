@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="${rootPath }/resources/js/jquery-1.11.2.js"></script>
 </head>
 <body class="product-info">
-	<form action="#" method="#">
+	<form action="${rootPath}/order/pay" method="post">
 		<div class="header">
 			<span class="backspace"></span>
 
@@ -128,6 +128,8 @@
 				</ul>
 			</div>
 		</div>
+		<!--TODO-->
+		<input type="hidden" name="liveAreaId" value="${liveAreaId}">
 		<div class="pay">
 			<span>合计:</span>
 			<i>￥${shoppingCart.total }</i>
