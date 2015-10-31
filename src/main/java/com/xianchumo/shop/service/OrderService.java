@@ -1,5 +1,6 @@
 package com.xianchumo.shop.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.xianchumo.shop.entity.Order;
@@ -32,6 +33,30 @@ public interface OrderService extends BaseService<Order>{
 	 * 创新订单
 	 * @param cartItems
 	 */
-	Order createOrder(ShoppingCart shoppingCart);
-
+	public Order createOrder(ShoppingCart shoppingCart);
+	
+	public List<Order> findOrder(int page);
+	/**
+	 * 查找某个时间段内的订单
+	 * @param orderTime
+	 * @param page
+	 * @return
+	 */
+	public List<Order> findByOrderTime(Date startTime, Date endTime, int page);
+	/**
+	 * 查询某个用户的订单
+	 * @param phone
+	 * @param page
+	 * @return
+	 */
+	public List<Order> findByUser(String phone, int page);
+	/**
+	 * 查询某个用户某个时间段内的订单
+	 * @param phone
+	 * @param startTime
+	 * @param endTime
+	 * @param page
+	 * @return
+	 */
+	public List<Order> findByUserAndTime(String phone, Date startTime, Date endTime, int page);
 }

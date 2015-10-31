@@ -31,7 +31,7 @@ public class EvaluateServiceTest {
 		entity.setGood(good);
 		Merchant merchant = new Merchant();
 		merchant.setMid(1l);
-		entity.setMerchant(merchant ); 	
+		//entity.setMerchant(merchant ); 	
 		entity.setFraction(100);
 		entity.setComment("很好");
 		
