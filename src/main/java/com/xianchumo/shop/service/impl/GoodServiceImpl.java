@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.xianchumo.shop.dao.BaseDao;
 import com.xianchumo.shop.entity.Good;
 import com.xianchumo.shop.entity.Kind;
+import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.service.GoodService;
 
 /**
@@ -42,4 +43,7 @@ public class GoodServiceImpl extends BaseServiceImpl<Good>implements GoodService
 	public List<Good> findByRemark(String remark) {
 		return dao.find("from Good good where good.remark = ?",remark);
 	}
+
+	
+
 }

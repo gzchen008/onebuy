@@ -61,7 +61,7 @@ public class MerchantController {
 		if(merchant != null){
 			if(merchant.getPassword().equals(Md5Utils.md5(password))){
 				session.setAttribute("merchant", merchant);
-				return "/merchant/index";
+				return "redirect:/merchant/order/orderManage?page=1";
 			}
 		}
 		/*System.out.println("account");
@@ -70,6 +70,21 @@ public class MerchantController {
 		}*/
 		return "/merchant/error";
 	}
+	/**
+	 * 注销登录
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value="/logout")
+	public String logout(HttpSession session){
+		Merchant merchant = (Merchant)session.getAttribute("merchant");
+		if(merchant == null){
+			return "/views/merchant/error";
+		}
+		session.removeAttribute("merchant");
+		return "/views/merchant/login";
+	}
+	
 
 	/**
 	 * 显示个人信息
@@ -123,7 +138,7 @@ public class MerchantController {
 		
 		return "/merchant/account";
 	}
-
+	
 	/**
 	 * 申请提现
 	 */
@@ -138,5 +153,5 @@ public class MerchantController {
 		merchantService.update(merchant);
 		return "/merchant/account";
 	}
-
+	
 }

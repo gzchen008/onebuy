@@ -1,5 +1,7 @@
 package com.xianchumo.shop.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,12 +18,12 @@ import javax.persistence.Table;
  * Copyright 2015 xianchumo.com
  * 
  * @Team xianchumo
- * @data：2015年10月21日 @author CGZ
+ * @data：2015年10月21日 @author yangtk
  * @description 基础地址类，存后台录入的地址
  */
 @Entity
 @Table(name = "address_base")
-public class AddressBase {
+public class AddressBase implements Serializable{
 	@Id
 	@Column(name = "abid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

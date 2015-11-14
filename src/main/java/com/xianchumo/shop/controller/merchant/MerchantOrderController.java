@@ -1,12 +1,13 @@
 package com.xianchumo.shop.controller.merchant;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -70,23 +71,34 @@ public class MerchantOrderController {
 		req.setAttribute("order", order);
 		return "/merchant/singleOrder";
 	}
+	
+	
+	
 	/**
 	 * 列出订单
 	 */
 	@RequestMapping(value = "/listOrder")
-	public String listOrder(HttpServletRequest req) {
+	public String listOrder(HttpServletRequest req, int page) {
 		Merchant merchant = (Merchant)req.getSession().getAttribute("merchant");
-		req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), 0));
+		req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), page));
+		return "/merchant/orderRecord";
+	}
+	
+	@RequestMapping(value = "/orderManage")
+	public String orderManage(HttpServletRequest req, int page){
+		Merchant merchant = (Merchant)req.getSession().getAttribute("merchant");
+		req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), page));
 		return "/merchant/order";
 	}
+		
 	/**
 	 * 列出订单
 	 */
 	@RequestMapping(value = "/someOrder")
-	public String someOrder(HttpServletRequest req, int state){
+	public String someOrder(HttpServletRequest req, int page, int state){
 		Merchant merchant = (Merchant)req.getSession().getAttribute("merchant");
-		req.setAttribute("orders", orderService.findByMerchantAndState(merchant.getMid(), state, 0));
+		req.setAttribute("orders", orderService.findByMerchantAndState(merchant.getMid(), state, page));
 		return "/merchant/order";
 	}
-
+	
 }

@@ -1,7 +1,38 @@
 @charset "UTF-8";
+.top-margin-1x {
+  margin-top: 10px !important;
+}
+.bottom-margin-1x {
+  margin-bottom: 10px;
+}
+.left-margin-1x {
+  margin-left: 10px;
+}
+.right-margin-1x {
+  margin-right: 10px;
+}
+.top-bottom-margin-1x {
+  margin: 10px 0px;
+}
+.left-right-margin-1x {
+  margin: 0px 10px;
+}
+.top-margin-2x {
+  margin-top: 20px !important;
+}
+.bottom-margin-2x {
+  margin-bottom: 20px !important;
+}
+.right-margin-2x {
+  margin-right: 20px !important;
+}
+* {
+  list-style-type: none;
+}
 body {
-  font-family: "幼圆", serif;
+  font-family: "微软雅黑", serif;
   background-color: #414C3A !important;
+  min-width: 1255px;
   *zoom: 1;
 }
 body:before,
@@ -170,8 +201,104 @@ body .content .main-content .main-content-header {
   height: 35px;
   line-height: 35px;
   font-weight: normal;
-  font-size: 13px;
+  font-size: 15px;
   border-bottom: solid 1px #E6E6E6;
+}
+body .content .main-content .main-content-header .evaluate {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  background-size: 100% 100%;
+  background-image: url("../../img/order-evaluate.png");
+}
+body .content .main-content .evaluate-list > ul {
+  margin: 0;
+  padding: 0;
+}
+body .content .main-content .evaluate-list > ul > li {
+  border-bottom: solid 1px #BDBDBD;
+  font-size: 15px;
+  *zoom: 1;
+}
+body .content .main-content .evaluate-list > ul > li:before,
+body .content .main-content .evaluate-list > ul > li:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+body .content .main-content .evaluate-list > ul > li:after {
+  clear: both;
+}
+body .content .main-content .evaluate-list > ul > li .evaluate-content {
+  float: left;
+  width: 555px;
+  margin-left: 20px;
+}
+body .content .main-content .evaluate-list > ul > li .evaluate-content .check-id {
+  display: inline-block;
+  float: left;
+  line-height: 35px;
+}
+body .content .main-content .evaluate-list > ul > li .evaluate-content .time {
+  display: inline-block;
+  float: right;
+  line-height: 35px;
+  color: #8D8D8D;
+}
+body .content .main-content .evaluate-list > ul > li .evaluate-content .comment {
+  height: 60px;
+  margin: 0;
+  clear: both;
+}
+body .content .main-content .evaluate-list > ul > li .evaluate-product {
+  float: left;
+  margin-left: 50px;
+}
+body .content .main-content .evaluate-list > ul > li .evaluate-product .product {
+  display: block;
+  float: left;
+  width: 40px;
+  margin-top: 6px;
+}
+body .content .main-content .evaluate-list > ul > li .evaluate-product > ul {
+  float: left;
+  margin: 6px 0 0 0;
+  padding: 0;
+}
+body .content .main-content .evaluate-list > ul > li .evaluate-product > ul li i {
+  display: inline-block;
+  margin-left: 15px;
+  font-style: normal;
+}
+body .content .main-content .evaluate-list > ul > li .evaluate-user {
+  float: left;
+  margin-left: 40px;
+}
+body .content .main-content .evaluate-list > ul > li .evaluate-user .user-name {
+  display: block;
+  float: left;
+  margin: 6px 0 0 0;
+}
+body .content .main-content .evaluate-list > ul > li .evaluate-user .star-comment {
+  display: block;
+  float: left;
+  clear: both;
+  margin: 6px 0 0 0;
+}
+body .content .main-content .evaluate-list > ul > li .evaluate-user .star-comment i {
+  display: block;
+  float: left;
+  font-style: normal;
+}
+body .content .main-content .evaluate-list > ul > li .evaluate-user .star-comment .star {
+  display: block;
+  float: left;
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+  background: url("../../img/heart.png");
+  background-size: 100% 100%;
 }
 body .content .main-content > .btn {
   margin: 20px 0;
@@ -209,8 +336,39 @@ body .content .main-content table .untreated {
 body .content .main-content table th,
 body .content .main-content table td {
   vertical-align: middle;
+  text-align: center;
 }
 body .content .main-content .page-divider {
   float: right;
   margin: 20px;
+}
+body .trade-time {
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  padding: 15px;
+  border: solid 1px #EAEAEA;
+  background-color: #F8F8F8;
+  *zoom: 1;
+}
+body .trade-time:before,
+body .trade-time:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+body .trade-time:after {
+  clear: both;
+}
+body .trade-time span {
+  display: inline-block;
+  margin: 0px 20px;
+  font-size: 20px;
+}
+body .trade-time span:nth-of-type(1) {
+  margin-right: 5px;
+}
+body .trade-time .time {
+  width: 230px;
+  display: inline-block;
 }

@@ -158,6 +158,10 @@ public class Address implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	public String getAddress(){
+		return province+city+area+liveArea+cabinet;
+	}
 
 	@Override
 	public String toString() {

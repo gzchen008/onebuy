@@ -25,13 +25,13 @@ public class Merchant implements Serializable {
 	/**
 	 * 帐号
 	 */
-	@Column(length = 18)
+	@Column(length = 18, unique=true)
 	private String account;
 	@Column(length = 50)
 	private String password;
 	@Column(length = 11)
 	private String telephone;// 座机
-	@Column(length = 11)
+	@Column(length = 11, unique=true)
 	private String phone;// 手机
 	@ManyToOne(targetEntity = AddressBase.class)
 	@JoinColumn(name="address_id", referencedColumnName = "abid", nullable = true)

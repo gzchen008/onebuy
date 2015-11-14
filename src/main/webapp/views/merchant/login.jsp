@@ -14,11 +14,11 @@
 			</div>
 			<form method="POST" action="${rootPath}/merchant/login">
 				<div class="wrap">
-					<div class="filed" id="num">
+					<div class="filed" id="account">
 						<span id="loginMe">
 							<i></i>
 						</span>
-						<input type="text" class="input" id="name" name="name"/>
+						<input type="text" class="input" id="account" name="account"/>
 					</div>
 					<div class="filed" id="password">
 						<span id="pw">

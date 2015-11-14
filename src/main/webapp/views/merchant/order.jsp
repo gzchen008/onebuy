@@ -6,13 +6,19 @@
 		<jsp:param value="订单管理" name="title"/>
 	</jsp:include>
 	<body>
+		
 		<jsp:include page="menu.jsp">
-			<jsp:param value="${sessionScope.account}" name="username"/>
+			<jsp:param value="${sessionScope.merchant.account}" name="username"/>
 		</jsp:include>
 		<div class="content">
-	    	<div class="content-header"><span class="position">您当前的位置：订单管理</span><!-- <span class="time">2015.10.30 星期五</span> --></div>
-		   	 	<div class="main-content">
-		            <thead>
+        <div class="content-header"><span class="position">您当前的位置：订单管理</span><span class="time">2015.10.30 星期五</span></div>
+        <div class="main-content">
+            <h3 class="main-content-header">订单管理</h3>
+            <a class="btn btn-primary active btn-border-none" href="#">查看订单</a>
+            <a class="btn btn-primary btn-border-none" href="#">未处理订单</a>
+            <a class="btn btn-primary btn-border-none" href="#">已处理订单</a>
+            <table class="table table-striped table-bordered table-hover">
+		         <thead>
 		            <tr>
 		                <th>订单号</th>
 		                <th>下单时间</th>
@@ -26,42 +32,39 @@
 		            </tr>
 		            </thead>
 		            <tbody>
-		            <c:forEach var="order" items="${RequestScope.orders}">
+		            <c:forEach var="order" items="${requestScope.orders}">
 		            	<tr>
-		                <td>${order.orderNumber}</td>
-		                <td>${order.orderTime}</td>
-		                <td>${order.address.username}</td>
-		                <td>${order.address}</td>
-		                <td>
-		                	<c:forEach var="item" items="${order.goods}">
-		                		${item.good.name}X${item.amount}</br>
-		                	</c:forEach>
-		                </td>
-		                <td>${order.money}</td>
-		                <c:choose>
-		                	<c:when test="${order.orderState==2}">
-		                	</c:when>
-		                	<c:when test="${order.orderState==3}">
-		                	</c:when>
-		                	<c:when test="${order.orderState==4||order.orderState==9}">
-		                	</c:when>
-		                </c:choose>
-		                <td class="untreated">未处理</td>
-		                <td><a href="#" class="btn btn-primary btn-border-none">开始处理</a></td>
-		            </tr>
+			                <td>${order.orderNumber}</td>
+			                <td>${order.orderTime}</td>
+			                <td>${order.address.userName}</td>
+			                <td>${order.address.address}</td>
+			                <td>
+			                	<c:forEach var="item" items="${order.goods}">
+			                		${item.good.name}X${item.amount}</br>
+			                	</c:forEach>
+			                </td>
+			                <td>${order.money}</td>
+			                <!--1订单生成 2卖家已付款 3商家已发货 4买家已提货 9交易失败 -->
+			                <c:choose>
+			                	<c:when test="${order.orderState == 1}">
+			                		<td class="untreated">未处理</td>
+			                		<td><a href="#" class="btn btn-primary btn-border-none">新订单</a></td>
+			                	</c:when>
+			                	<c:when test="${order.orderState == 2}">
+			                		<td class="untreated">未处理</td>
+			                		<td><a href="#" class="btn btn-primary btn-border-none">确认发货</a></td>
+			                	</c:when>
+			                	<c:when test="${order.orderState == 3}">
+			                		<td class="untreated">处理中</td>
+			                		<td><a href="#" class="btn btn-primary btn-border-none">查看详情</a></td>
+			                	</c:when>
+			                	<c:when test="${order.orderState == 4||order.orderState == 9}">
+			                		<td class="untreated">已处理</td>
+			                		<td><a href="#" class="btn btn-primary btn-border-none">查看详情</a></td>
+			                	</c:when>
+			                </c:choose>
+		            	</tr>
 		            </c:forEach>
-		            
-		            <tr>
-		                <td>02</td>
-		                <td>2015.10.30 18:40</td>
-		                <td>张三两</td>
-		                <td>广州市天河区汇景新城001柜</td>
-		                <td>小白菜 X1</td>
-		                <td>￥18</td>
-		                <td>￥18</td>
-		                <td>已处理</td>
-		                <td><a href="#" class="btn btn-primary btn-border-none">查看详情</a></td>
-		            </tr>
 		            </tbody>
 		        </table>
 		
