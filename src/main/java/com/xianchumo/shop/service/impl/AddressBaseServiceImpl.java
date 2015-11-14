@@ -11,6 +11,7 @@ import com.xianchumo.shop.dao.AddressBaseDao;
 import com.xianchumo.shop.dao.BaseDao;
 import com.xianchumo.shop.entity.Address;
 import com.xianchumo.shop.entity.AddressBase;
+import com.xianchumo.shop.entity.User;
 import com.xianchumo.shop.service.AddressBaseService;
 
 /**
@@ -40,5 +41,10 @@ public class AddressBaseServiceImpl extends BaseServiceImpl<AddressBase>implemen
 	@Override
 	public List<AddressBase> findChild(long pid) {
 		return addressBaseDao.findChild(pid);
+	}
+
+	@Override
+	public List<Address> findByUser(User user) {
+		return addressBaseDao.findByUser(user);
 	}
 }

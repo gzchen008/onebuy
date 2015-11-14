@@ -58,14 +58,7 @@ public class OrderServiceImpl extends BaseServiceImpl<Order>
 		order.setGoods(ShopUtil.cartItem2OrderItem(order,shoppingCart.getCartItems()));
 		order.setOrderState(OrderState.GENERATE);
 		order.setUser(shoppingCart.getUser());
-		//网点
-		//TODO
-		Merchant merchant = new Merchant();
-		merchant.setMid(1l);
-		order.setMerchant(merchant);
-		
 		order.setOrderTime(new Date());
-		dao.save(order);
 		return order;
 	}
 

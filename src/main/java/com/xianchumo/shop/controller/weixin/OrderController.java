@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.xianchumo.shop.entity.Address;
 import com.xianchumo.shop.entity.AddressBase;
 import com.xianchumo.shop.entity.Merchant;
 import com.xianchumo.shop.entity.Order;
@@ -53,20 +54,26 @@ public class OrderController {
 	 * @return
 	 */
 	@RequestMapping(value = "pay")
-	public String pay(Long liveAreaId, HttpSession session, HttpServletRequest request) {
-
-		AddressBase addressBase = new AddressBase();
-		addressBase.setAbid(liveAreaId);
+	public String pay(Long liveAreaId, Long addressId,HttpSession session, HttpServletRequest request) {
 
 		ShoppingCart shoppingCart = ShopUtil.getShoppingCart(request, shoppingCartService);
 		// 生成订单
 		Order order = orderService.createOrder(shoppingCart);
+		//商家 
 		Merchant merchant = merchantService.findByAddress(liveAreaId);
 		order.setMerchant(merchant);
-		session.setAttribute("order", order);
-
+		
+		//地址
+		Address address = new Address();
+		address.setAid(addressId);
+		order.setAddress(address);
+		
 		// TODO 使用微信支付
-		return "weixin/success-payment.jsp";
+		orderService.add(order);
+		session.setAttribute("order", order);
+		//清空购物车
+		shoppingCartService.removeAllItem(shoppingCart);
+		return "weixin/success-payment";
 	}
 
 	/**

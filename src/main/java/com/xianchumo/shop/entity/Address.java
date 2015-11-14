@@ -48,9 +48,13 @@ public class Address implements Serializable {
 	 */
 	@Column(name = "live_area", length = 24)
 	/**
-	 * 生活区
+	 * 生活区名
 	 */
 	private String liveArea;
+	/**
+	 * 生活区主键
+	 */
+	private Long liveAreaId;
 	/**
 	 * 柜子号
 	 */
@@ -161,6 +165,14 @@ public class Address implements Serializable {
 	
 	public String getAddress(){
 		return province+city+area+liveArea+cabinet;
+	}
+
+	public Long getLiveAreaId() {
+		return liveAreaId;
+	}
+
+	public void setLiveAreaId(Long liveAreaId) {
+		this.liveAreaId = liveAreaId;
 	}
 
 	@Override

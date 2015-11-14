@@ -21,7 +21,7 @@
 
 <div class="container">
     <div class="address">
-        <a href="${rootPath }/address/add">
+        <a href="${rootPath }/address/addressView">
             <span></span>
             请选择收货地址
             <span></span>

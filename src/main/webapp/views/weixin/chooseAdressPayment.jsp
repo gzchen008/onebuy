@@ -21,7 +21,7 @@
 
 		<div class="container">
 			<div class="address">
-				<a href="#" class="after-choose-address">
+				<a href="${rootPath }/address/addressView" class="after-choose-address">
 					<span class="address-after"></span>
 					<div class="receiver-detail">
 						<p>收货人：${address.userName }<i>${address.phoneNum }</i></p>
@@ -130,6 +130,7 @@
 		</div>
 		<!--TODO-->
 		<input type="hidden" name="liveAreaId" value="${liveAreaId}">
+		<input type="hidden" name="addressId" value="${address.aid}">
 		<div class="pay">
 			<span>合计:</span>
 			<i>￥${shoppingCart.total }</i>

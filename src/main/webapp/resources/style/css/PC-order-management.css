@@ -6,7 +6,7 @@
   margin-bottom: 10px;
 }
 .left-margin-1x {
-  margin-left: 10px;
+  margin-left: 10px !important;
 }
 .right-margin-1x {
   margin-right: 10px;
@@ -22,6 +22,9 @@
 }
 .bottom-margin-2x {
   margin-bottom: 20px !important;
+}
+.right-margin-3x {
+  margin-right: 2.5%!important;
 }
 .right-margin-2x {
   margin-right: 20px !important;
@@ -302,10 +305,7 @@ body .content .main-content .evaluate-list > ul > li .evaluate-user .star-commen
 }
 body .content .main-content > .btn {
   margin: 20px 0;
-  width: 130px;
-  height: 40px;
-  line-height: 40px;
-  padding: 0;
+  padding: 5px 15px;
 }
 body .content .main-content > .btn:first-of-type {
   margin-left: 24px;
@@ -338,9 +338,15 @@ body .content .main-content table td {
   vertical-align: middle;
   text-align: center;
 }
+body .content .main-content table th input,
+body .content .main-content table td input {
+  display: inline-block;
+  margin-right: 2px;
+}
 body .content .main-content .page-divider {
   float: right;
   margin: 20px;
+  margin-right: 2.5%;
 }
 body .trade-time {
   width: 95%;
@@ -371,4 +377,62 @@ body .trade-time span:nth-of-type(1) {
 body .trade-time .time {
   width: 230px;
   display: inline-block;
+}
+#productManage > .header {
+  height: 75px;
+  background: #53D2D8;
+}
+#productManage > .header h1 {
+  padding-left: 150px;
+  background: url("../../img/pm-transparent-logo.png") no-repeat 0 center;
+}
+#productManage .list-group li:hover {
+  background: rgba(83, 210, 216, 0.5);
+}
+#productManage .list-group .active {
+  background: #53D2D8;
+}
+#productManage .list-group .active:hover {
+  background: #53D2D8;
+}
+#productManage .list-group li:first-child a {
+  background: url("../../img/pm-product.png") no-repeat 0 center;
+}
+#productManage .list-group li:nth-child(2) a {
+  background: url("../../img/pm-house.png") no-repeat 0 center;
+}
+#productManage .list-group li:nth-child(3) a {
+  background: url("../../img/pm-person.png") no-repeat 0 center;
+}
+#productManage .list-group li:nth-child(4) a {
+  background: url("../../img/pm-orders.png") no-repeat 0 center;
+}
+#productManage .main-menu {
+  background: #409EA0;
+}
+#productManage .main-menu img {
+  float: none;
+  margin-left: 40px;
+}
+#productManage .main-menu h3 {
+  font-weight: 100;
+  color: #FFFFFF;
+  margin: 0px;
+  padding: 0px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+#productManage .main-content {
+  border-top: none;
+}
+#productManage .main-content .main-content-header {
+  font-size: 28px;
+  font-weight: 100;
+  color: #53D2D8;
+}
+#productManage .main-content .btn-primary {
+  background-color: #53D2D8;
+}
+#productManage .main-content .btn-primary:hover {
+  background-color: rgba(83, 210, 216, 0.7);
 }

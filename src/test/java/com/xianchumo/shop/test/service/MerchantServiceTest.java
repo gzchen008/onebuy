@@ -13,7 +13,7 @@ import com.xianchumo.shop.service.MerchantService;
 import com.xianchumo.shop.util.Md5Utils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="file:src/main/resources/spring-hibernate.xml")
+@ContextConfiguration(locations = "file:src/main/resources/applicationContext.xml")
 public class MerchantServiceTest {
 	@Autowired
 	private MerchantService merchantService;
@@ -28,6 +28,11 @@ public class MerchantServiceTest {
 		address.setAbid(2l);
 		entity.setAddressBase(address );
 		merchantService.add(entity );
+	}
+	@Test
+	public void testFind(){
+		Merchant me = merchantService.findByAddress(6l);
+		System.out.println(me);
 	}
 
 }

@@ -1,14 +1,64 @@
 @charset "UTF-8";
 @import "z";
 
-body{
-  font-family: "幼圆", serif;
+//微调类
+.top-margin-1x {
+  margin-top: 10px !important;
+}
+
+.bottom-margin-1x {
+  margin-bottom: 10px;
+}
+
+.left-margin-1x {
+  margin-left: 10px !important;
+}
+
+.right-margin-1x {
+  margin-right: 10px;
+}
+
+.top-bottom-margin-1x {
+  margin: 10px 0px;
+}
+
+.left-right-margin-1x {
+  margin: 0px 10px;
+}
+
+.top-margin-2x {
+  margin-top: 20px !important;
+}
+
+.bottom-margin-2x {
+  margin-bottom: 20px !important;
+}
+.right-margin-3x{
+  margin-right: 2.5%!important;
+}
+.right-margin-2x {
+  margin-right: 20px !important;
+}
+
+*{
+  list-style-type: none;
+}
+//颜色类
+@PC-green:#A7C731;//管理员的主色调
+@PC-black:#1A1C1A;//管理员左边li的hover的颜色
+@Center-blue:#53D2D8;//管理中心的主色调
+@Center-menu:#409EA0;//管理中心左边菜单栏颜色
+@Center-lessBlue:rgba(83,210,216,0.5);//管理中心左边li的hover的颜色
+@Center-btn-hover:rgba(83,210,216,0.7);//管理中心中按钮hover的颜色
+body {
+  font-family: "微软雅黑", serif;
   background-color: #414C3A !important;
+  min-width: 1255px;
   .clearfix();
-  .header{
+  .header {
     height: 75px;
-    background: #A7C731;
-    h1{
+    background: @PC-green;
+    h1 {
       margin: 0 0 0 20px;
       height: 75px;
       line-height: 75px;
@@ -19,16 +69,16 @@ body{
     }
   }
   //左边的主菜单
-  .main-menu{
+  .main-menu {
     width: 23%;
     float: left;
     background: #414C3A;
     min-height: 610px;
-    .portrait{
+    .portrait {
       padding: 1px;
       margin: 20px;
       .clearfix();
-      img{
+      img {
         width: 120px;
         height: 120px;
         -webkit-border-radius: 50%;
@@ -36,7 +86,7 @@ body{
         border-radius: 50%;
         float: left;
       }
-      h2{
+      h2 {
         width: 50%;
         text-align: left;
         float: right;
@@ -44,7 +94,7 @@ body{
         font-size: 25px;
         margin: 40px 0 0 0;
       }
-      p{
+      p {
         width: 50%;
         text-align: left;
         float: right;
@@ -53,11 +103,11 @@ body{
         margin: 0;
       }
     }
-    .list-group{
+    .list-group {
       -webkit-border-radius: 0 !important;
       -moz-border-radius: 0 !important;
       border-radius: 0 !important;
-      li{
+      li {
         background-color: inherit;
         -webkit-border-radius: 0 !important;
         -moz-border-radius: 0 !important;
@@ -65,7 +115,7 @@ body{
         padding: 0 0 0 40px;
         border: none;
         border-bottom: solid 1px #414445 !important;
-        a{
+        a {
           display: block;
           height: 50px;
           line-height: 50px;
@@ -75,125 +125,311 @@ body{
         }
         a:focus,
         a:hover,
-        a:active{
+        a:active {
           text-decoration: none;
         }
       }
-      li:hover{
-        background: #1A1C1A;
+      li:hover {
+        background: @PC-black;
       }
-      .active{
-        background: #A7C731;
+      .active {
+        background: @PC-green;
       }
-      .active:hover{
-        background: #A7C731;
+      .active:hover {
+        background: @PC-green;
       }
-      li:first-child a{
+      li:first-child a {
         background: url("../../img/001.png") no-repeat 0 center;
       }
-      li:nth-child(2) a{
+      li:nth-child(2) a {
         background: url("../../img/002.png") no-repeat 0 center;
       }
-      li:nth-child(3) a{
+      li:nth-child(3) a {
         background: url("../../img/003.png") no-repeat 0 center;
       }
-      li:nth-child(4) a{
+      li:nth-child(4) a {
         background: url("../../img/004.png") no-repeat 0 center;
       }
-      li:nth-child(5) a{
+      li:nth-child(5) a {
         background: url("../../img/005.png") no-repeat 0 center;
       }
     }
   }
   //右边的内容
-  .content{
+  .content {
     width: 77%;
     float: right;
     background: #F1F1F1;
     min-height: 610px;
     //内容的header
-    .content-header{
+    .content-header {
       height: 40px;
       background: white;
       //内容header里的span
-      span{
+      span {
         display: inline-block;
         height: 40px;
         line-height: 40px;
       }
       //当前位置
-      .position{
+      .position {
         float: left;
         margin-left: 20px;
         padding-left: 28px;
         background: url("../../img/000.png") no-repeat 0 5px;
       }
       //时间
-      .time{
+      .time {
         float: right;
         margin-right: 20px;
       }
     }
     //主内容
-    .main-content{
+    .main-content {
       position: relative;
       width: 97%;
       min-height: 500px;
       margin: 20px auto;
-      border-top: solid 2px #A7C731;
+      border-top: solid 2px @PC-green;
       background: white;
       .clearfix();
       //主内容的header
-      .main-content-header{
+      .main-content-header {
         margin: 0;
         padding: 0 20px;
         height: 35px;
         line-height: 35px;
         font-weight: normal;
-        font-size: 13px;
+        font-size: 15px;
         border-bottom: solid 1px #E6E6E6;
+        .evaluate {
+          display: inline-block;
+          width: 30px;
+          height: 30px;
+          vertical-align: middle;
+          background-size: 100% 100%;
+          background-image: url("../../img/order-evaluate.png");
+        }
       }
-      >.btn{
+      //用户评价
+      .evaluate-list {
+        > ul {
+          margin: 0;
+          padding: 0;
+          > li {
+            border-bottom: solid 1px #BDBDBD;
+            font-size: 15px;
+            .clearfix();
+            .evaluate-content {
+              float: left;
+              width: 555px;
+              margin-left: 20px;
+              .check-id {
+                display: inline-block;
+                float: left;
+                line-height: 35px;
+              }
+              .time {
+                display: inline-block;
+                float: right;
+                line-height: 35px;
+                color: #8D8D8D;
+              }
+              .comment {
+                height: 60px;
+                margin: 0;
+                clear: both;
+              }
+            }
+            .evaluate-product{
+              float: left;
+              margin-left: 50px;
+              .product{
+                display: block;
+                float: left;
+                width: 40px;
+                margin-top: 6px;
+              }
+              >ul{
+                float: left;
+                margin: 6px 0 0 0;
+                padding: 0;
+                li{
+                  i{
+                    display: inline-block;
+                    margin-left: 15px;
+                    font-style: normal;
+                  }
+                }
+              }
+            }
+            .evaluate-user{
+              float: left;
+              margin-left: 40px;
+              .user-name{
+                display: block;
+                float: left;
+                margin: 6px 0 0 0;
+              }
+              .star-comment{
+                display: block;
+                float: left;
+                clear: both;
+                margin: 6px 0 0 0;
+                i{
+                  display: block;
+                  float: left;
+                  font-style: normal;
+                }
+                .star{
+                  display: block;
+                  float: left;
+                  margin-left: 5px;
+                  width: 20px;
+                  height: 20px;
+                  background: url("../../img/heart.png");
+                  background-size: 100% 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+      > .btn {
         margin: 20px 0;
-        width: 130px;
-        height: 40px;
-        line-height: 40px;
-        padding: 0;
+        padding:5px 15px;
       }
-      >.btn:first-of-type{
+      > .btn:first-of-type {
         margin-left: 24px;
       }
-      .btn-border-none{
+      .btn-border-none {
         border: none;
       }
-      .btn-primary{
-        background-color: #A7C731;
+      .btn-primary {
+        background-color: @PC-green;
       }
-      .btn-primary:hover{
+      .btn-primary:hover {
         background-color: #8BA231;
       }
-      .active{
+      .active {
         background-color: #414C3A;
         color: white;
       }
-      .active:hover{
+      .active:hover {
         background-color: #414C3A;
       }
-      table{
+      table {
         width: 95%;
         margin: 0 auto;
-        .untreated{
+        .untreated {
           color: #E74848;
         }
-        th,td{
+        th, td {
           vertical-align: middle;
+          text-align: center;
+          input{
+            display: inline-block;
+            margin-right: 2px;
+          }
         }
       }
-      .page-divider{
+      .page-divider {
         float: right;
         margin: 20px;
+        margin-right: 2.5%
       }
     }
   }
-
+  .trade-time {
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding: 15px;
+    border: solid 1px #EAEAEA;
+    background-color: #F8F8F8;
+    .clearfix();
+    span {
+      display: inline-block;
+      margin: 0px 20px;
+      font-size: 20px;
+    }
+    span:nth-of-type(1) {
+      margin-right: 5px;
+    }
+    .time {
+      width: 230px;
+      display: inline-block;
+    }
+  }
 }
+  //中心管理蓝色调样式
+  #productManage{
+    >.header{
+      height:75px;
+      background: @Center-blue;
+      h1 {
+        padding-left: 150px;
+        background: url("../../img/pm-transparent-logo.png") no-repeat 0 center;
+      }
+    }
+    .list-group{
+      li:hover {
+        background: @Center-lessBlue;
+      }
+      .active {
+        background: @Center-blue;
+      }
+      .active:hover {
+        background: @Center-blue;
+      }
+      li:first-child a {
+        background: url("../../img/pm-product.png") no-repeat 0 center;
+      }
+      li:nth-child(2) a {
+        background: url("../../img/pm-house.png") no-repeat 0 center;
+      }
+      li:nth-child(3) a {
+        background: url("../../img/pm-person.png") no-repeat 0 center;
+      }
+      li:nth-child(4) a {
+        background: url("../../img/pm-orders.png") no-repeat 0 center;
+      }
+    }
+    //左边
+    .main-menu{
+      background: @Center-menu;
+      img{
+        float: none;
+        margin-left: 40px;
+      }
+      h3{
+        font-weight: 100;
+        color:#FFFFFF;
+        margin:0px;
+        padding: 0px; 
+        margin-top: 10px;
+        margin-left: 20px;
+      }
+    }
+    .main-content{
+      .main-content-header{
+        font-size: 28px;
+        font-weight: 100;
+        color:@Center-blue;
+        // span{
+        //   display: inline-block;
+        //   width:30px;
+        //   height:30px;
+        //   background-image: url("../../img/pm-product.png");
+        //   background-size: 100% 100%;
+        // }
+      }
+      border-top:none;
+      .btn-primary {
+        background-color: @Center-blue;
+        &:hover {
+          background-color: @Center-btn-hover;
+        }
+      }
+    }
+  }

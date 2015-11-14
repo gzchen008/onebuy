@@ -1,0 +1,221 @@
+@charset "UTF-8";
+@import "z";
+
+// .reset();
+// .remove_dotted();
+
+//三角
+
+.triangle(@_,@w:10px,@c:@green) {
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+}
+
+//匹配模式
+.triangle(top,@w:10px,@c:@green) {
+  border-width: @w;
+  border-color: transparent transparent @c transparent;
+  border-style: dashed dashed solid dashed;
+}
+
+.triangle(bottom,@w:10px,@c:@green) {
+  border-width: @w;
+  border-color: @c transparent transparent transparent;
+  border-style: solid dashed dashed dashed;
+}
+
+.triangle(left,@w:10px,@c:@green) {
+  border-width: @w;
+  border-color: transparent @c transparent transparent;
+  border-style: dashed solid dashed dashed;
+}
+
+.triangle(right,@w:10px,@c:@green) {
+  border-width: @w;
+  border-color: transparent transparent transparent @c;
+  border-style: dashed dashed dashed solid;
+}
+
+.triangle(Op-right,@w:10px,@c:@green) {
+  border-width: @w;
+  border-color: @c @c @c transparent;
+  border-style: solid solid solid dashed;
+}
+
+@active-color: #53D2D8;
+//当前填写订单active主色调
+@filter-color: #A7E8EC;
+//填写订单主色调
+
+//微调类
+.bottom-margin-1x {
+  margin-bottom: 5px;
+}
+
+.bottom-margin-2x {
+  margin-bottom: 10px;
+}
+
+//
+.active {
+  background-color: @active-color !important;
+}
+
+.header {
+  height: 75px;
+  width: 90%;
+  margin: 20px auto;
+  h1 {
+    height: 75px;
+    line-height: 75px;
+    font-size: 38px;
+    color: @filter-color;
+    padding-left: 150px;
+    background: url("../../img/pm-logo.png") no-repeat 0 center;
+  }
+}
+
+.step-progress {
+  @height: 30px;
+  height: @height;
+  width: 1215px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  .progress-list {
+    padding: 0;
+    .clearfix();
+  }
+  .right-angle {
+    display: block;
+    .fl();
+    .triangle(right, 15px, @filter-color);
+  }
+  .right-angle-active {
+    display: block;
+    .fl();
+    .triangle(right, 15px, @active-color);
+  }
+  .hollow-angle {
+    display: block;
+    .fl();
+    .triangle(Op-right, 15px, @filter-color);
+    margin-left: -28px;
+  }
+  .hollow-angle-active {
+    display: block;
+    .fl();
+    .triangle(Op-right, 15px, @active-color);
+    margin-left: -28px;
+  }
+  li {
+    .fl();
+    width: 383px;
+    height: @height;
+    text-align: center;
+    background-color: @filter-color;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: @height;
+    margin-right: 0px;
+  }
+
+}
+
+.container {
+  .content {
+    width: 50%;
+    margin: 0 auto;
+    .form-group {
+      position: relative;
+      .clearfix();
+      label {
+        margin-top: 7px;
+      }
+      input {
+        border: solid 1px @active-color;
+      }
+      .add-img {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        color: @active-color;
+        font-size: 36px;
+        font-weight: 100;
+        padding: 0px 15px;
+        color: @active-color;
+        border: solid 1px @active-color;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    }
+    //以下是填写食谱信息页面的样式
+    .first-recipe {
+      text-align: center;
+      font-size: 20px;
+    }
+    .file-chooser, .file-input {
+      position: absolute;
+      left: 65%;
+      top: 20px;
+      margin-left: -143px;
+      display: block;
+      width: 287px;
+      height: 187px;
+      -webkit-border-radius: 15px;
+      -moz-border-radius: 15px;
+      border-radius: 15px;
+      background: #FFFFFF;
+      border: solid 1px #A3E6E8;
+      font-size: 80px;
+      color: #9BE4E7;
+      z-index: 10;
+    }
+    .fill-form {
+      position: relative;
+      .clearfix();
+    }
+    .file-input {
+      z-index: 11;
+      opacity: 0;
+    }
+    .fill-recipe-form-group {
+      float: left;
+      margin-top: 20px;
+      width: 200px;
+      .input-group-addon {
+        background: @filter-color;
+      }
+    }
+    .no-selected {
+      position: absolute;
+      top: 215px;
+      left: 247px;
+    }
+    .add-step {
+      min-width: 124px;
+      float: right;
+      margin: 260px 20px 0 0;
+    }
+    .add-step-submit {
+      min-width: 124px;
+      float: right;
+      margin: 260px 62px 0 0;
+    }
+    //以上是填写食谱信息页面的样式
+  }
+}
+
+//隐藏文件选择按钮
+.img-load {
+  position: absolute;
+  top: 0px;
+  left: 15px;
+  width: 52px;
+  height: 45px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 0px;
+  opacity: 0;
+}

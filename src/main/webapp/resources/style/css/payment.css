@@ -35,7 +35,7 @@ label {
   z-index: 30;
   width: 100%;
   height: 44px;
-  background-color: #5DC890;
+  background-color: #5dc890;
 }
 .header .backspace {
   float: left;
@@ -316,7 +316,7 @@ a {
   font-size: 14px;
 }
 .love-search li a span:nth-of-type(1) {
-  color: #F43A52;
+  color: #f43a52;
 }
 .love-search li a span:nth-of-type(2) {
   color: #212121;
@@ -520,7 +520,7 @@ body {
 }
 .container .regulations ul li a span:nth-of-type(2) em {
   font-style: normal;
-  color: #F43A52;
+  color: #f43a52;
   font-size: 18px;
   margin-right: 10px;
 }
@@ -656,13 +656,13 @@ body {
 }
 .pay i {
   font-size: 20px;
-  color: #F43A52;
+  color: #f43a52;
 }
 .pay button {
   float: right;
   display: inline;
   padding: 10px;
-  background-color: #F43A52;
+  background-color: #f43a52;
   border: none;
   border-radius: 10px;
   font-size: 20px;
@@ -707,17 +707,17 @@ body {
   margin-left: 10px;
 }
 #dialog .time-list li:first-child {
-  color: #5DC890;
+  color: #5dc890;
 }
 #dialog .now-icon {
   background-image: url("../../img/payment-check.png");
 }
 #dialog button {
   background-color: #ffffff;
-  color: #5DC890;
+  color: #5dc890;
   font-size: 18px;
   padding: 5px 10px;
-  border: solid 1px #5DC890;
+  border: solid 1px #5dc890;
   border-radius: 12px;
   margin-top: 5px;
   margin-bottom: 10px;

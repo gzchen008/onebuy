@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.xianchumo.shop.dao.AddressBaseDao;
+import com.xianchumo.shop.entity.Address;
 import com.xianchumo.shop.entity.AddressBase;
+import com.xianchumo.shop.entity.User;
 @Repository(value="addressBaseDao")
 public class AddressBaseDaoImpl extends BaseDaoImpl<AddressBase> 
 	implements AddressBaseDao{
@@ -19,6 +21,11 @@ public class AddressBaseDaoImpl extends BaseDaoImpl<AddressBase>
 	@Override
 	public List<AddressBase> findChild(Long pid) {
 		return find("from AddressBase ab where ab.parent.abid = ?",pid);
+	}
+
+	@Override
+	public List<Address> findByUser(User user) {
+		return find("from Address addr where addr.user = ?",user);
 	}
 
 

@@ -86,4 +86,11 @@ public class ShoppingCartServiceImpl extends BaseServiceImpl<ShoppingCart>implem
 		return shoppingCart.getCartItems();
 	}
 
+	@Override
+	public void removeAllItem(ShoppingCart shoppingCart) {
+		dao.bulkUpdate("delete CartItem ci where ci.shoppingCart = ?" ,shoppingCart);
+		shoppingCart.getCartItems().clear();
+	}
+
+
 }

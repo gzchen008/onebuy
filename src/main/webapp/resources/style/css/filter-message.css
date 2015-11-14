@@ -1,0 +1,221 @@
+@charset "UTF-8";
+.bottom-margin-1x {
+  margin-bottom: 5px;
+}
+.bottom-margin-2x {
+  margin-bottom: 10px;
+}
+.active {
+  background-color: #53D2D8 !important;
+}
+.header {
+  height: 75px;
+  width: 90%;
+  margin: 20px auto;
+}
+.header h1 {
+  height: 75px;
+  line-height: 75px;
+  font-size: 38px;
+  color: #A7E8EC;
+  padding-left: 150px;
+  background: url("../../img/pm-logo.png") no-repeat 0 center;
+}
+.step-progress {
+  height: 30px;
+  width: 1215px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+.step-progress .progress-list {
+  padding: 0;
+  *zoom: 1;
+}
+.step-progress .progress-list:before,
+.step-progress .progress-list:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.step-progress .progress-list:after {
+  clear: both;
+}
+.step-progress .right-angle {
+  display: block;
+  float: left;
+  display: inline;
+  border-style: dashed solid dashed dashed;
+  border-color: transparent #A7E8EC transparent transparent;
+  width: 0;
+  height: 0;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+  border-width: 15px;
+  border-color: transparent transparent transparent #A7E8EC;
+  border-style: dashed dashed dashed solid;
+}
+.step-progress .right-angle-active {
+  display: block;
+  float: left;
+  display: inline;
+  border-style: dashed solid dashed dashed;
+  border-color: transparent #53D2D8 transparent transparent;
+  width: 0;
+  height: 0;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+  border-width: 15px;
+  border-color: transparent transparent transparent #53D2D8;
+  border-style: dashed dashed dashed solid;
+}
+.step-progress .hollow-angle {
+  display: block;
+  float: left;
+  display: inline;
+  width: 0;
+  height: 0;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+  border-width: 15px;
+  border-color: #A7E8EC #A7E8EC #A7E8EC transparent;
+  border-style: solid solid solid dashed;
+  margin-left: -28px;
+}
+.step-progress .hollow-angle-active {
+  display: block;
+  float: left;
+  display: inline;
+  width: 0;
+  height: 0;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+  border-width: 15px;
+  border-color: #53D2D8 #53D2D8 #53D2D8 transparent;
+  border-style: solid solid solid dashed;
+  margin-left: -28px;
+}
+.step-progress li {
+  float: left;
+  display: inline;
+  width: 383px;
+  height: 30px;
+  text-align: center;
+  background-color: #A7E8EC;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 30px;
+  margin-right: 0px;
+}
+.container .content {
+  width: 50%;
+  margin: 0 auto;
+}
+.container .content .form-group {
+  position: relative;
+  *zoom: 1;
+}
+.container .content .form-group:before,
+.container .content .form-group:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.container .content .form-group:after {
+  clear: both;
+}
+.container .content .form-group label {
+  margin-top: 7px;
+}
+.container .content .form-group input {
+  border: solid 1px #53D2D8;
+}
+.container .content .form-group .add-img {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  font-size: 36px;
+  font-weight: 100;
+  padding: 0px 15px;
+  color: #53D2D8;
+  border: solid 1px #53D2D8;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.container .content .first-recipe {
+  text-align: center;
+  font-size: 20px;
+}
+.container .content .file-chooser,
+.container .content .file-input {
+  position: absolute;
+  left: 65%;
+  top: 20px;
+  margin-left: -143px;
+  display: block;
+  width: 287px;
+  height: 187px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  background: #FFFFFF;
+  border: solid 1px #A3E6E8;
+  font-size: 80px;
+  color: #9BE4E7;
+  z-index: 10;
+}
+.container .content .fill-form {
+  position: relative;
+  *zoom: 1;
+}
+.container .content .fill-form:before,
+.container .content .fill-form:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.container .content .fill-form:after {
+  clear: both;
+}
+.container .content .file-input {
+  z-index: 11;
+  opacity: 0;
+}
+.container .content .fill-recipe-form-group {
+  float: left;
+  margin-top: 20px;
+  width: 200px;
+}
+.container .content .fill-recipe-form-group .input-group-addon {
+  background: #A7E8EC;
+}
+.container .content .no-selected {
+  position: absolute;
+  top: 215px;
+  left: 247px;
+}
+.container .content .add-step {
+  min-width: 124px;
+  float: right;
+  margin: 260px 20px 0 0;
+}
+.container .content .add-step-submit {
+  min-width: 124px;
+  float: right;
+  margin: 260px 62px 0 0;
+}
+.img-load {
+  position: absolute;
+  top: 0px;
+  left: 15px;
+  width: 52px;
+  height: 45px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 0px;
+  opacity: 0;
+}

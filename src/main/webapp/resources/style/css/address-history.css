@@ -102,6 +102,7 @@ label {
   background-image: url("../../img/x.png");
 }
 .header ._search form {
+  width: 70%;
   display: inline-block;
 }
 .header ._search .search-you-want {
