@@ -15,9 +15,10 @@ public class OrderDaoImpl extends BaseDaoImpl<Order>
 	public static int PAGE_SIZE = 20;
 	@Override
 	public List<Order> findByMerchant(Long merchantId, int page) {
-		String queryString = "FROM Order AS order WHERE order.merchant.mid="
-				.concat(String.valueOf(merchantId));
-return find(queryString, (page-1)*PAGE_SIZE, PAGE_SIZE);
+		StringBuilder queryString = new StringBuilder(64);
+		queryString.append("FROM Order AS order WHERE order.merchant.mid=")
+				   .append(merchantId.toString());
+		return find(queryString.toString(), (page-1)*PAGE_SIZE, PAGE_SIZE);
 	}
 
 	@Override
@@ -25,9 +26,13 @@ return find(queryString, (page-1)*PAGE_SIZE, PAGE_SIZE);
 			int page) {
 		StringBuilder queryString = new StringBuilder();
 		queryString.append("FROM Order AS order WHERE order.merchant.mid=")
-				   .append(merchantId)
-				   .append(" AND orderState=")
-				   .append(state);
+				   .append(merchantId.toString());
+	   //state:1代表未处理的订单，2代表已处理的订单
+	   if(state==1){
+		   queryString.append(" AND orderState<=2");
+	   }else{
+		   queryString.append(" AND orderState>2");
+	   }
 		return find(queryString.toString(), 
 				(page-1)*PAGE_SIZE, PAGE_SIZE);
 	}

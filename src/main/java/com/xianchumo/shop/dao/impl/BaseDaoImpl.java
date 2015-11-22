@@ -132,7 +132,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 		return getHibernateTemplate().find(queryString);
 	}
 
-	public List find(String queryString,int firstResult,int maxResult){
+	public List<T> find(String queryString,int firstResult,int maxResult){
 		return this.getHibernateTemplate()//
 				.getSessionFactory()//
 				.openSession()//

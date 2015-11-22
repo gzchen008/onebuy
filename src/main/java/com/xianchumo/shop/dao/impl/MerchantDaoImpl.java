@@ -40,7 +40,7 @@ public class MerchantDaoImpl extends BaseDaoImpl<Merchant>
 	@Override
 	public List<Merchant> findMerchant(int page) {
 		return find("FROM Merchant",
-				page*PAGE_SIZE, PAGE_SIZE);
+				(page-1)*PAGE_SIZE, PAGE_SIZE);
 	}
 
 	@Override
