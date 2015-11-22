@@ -2,6 +2,8 @@ package com.xianchumo.shop.controller.merchant;
 
 
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +17,7 @@ import com.xianchumo.shop.entity.Merchant;
 import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.entity.OrderState;
 import com.xianchumo.shop.exception.ShopException;
+import com.xianchumo.shop.service.OrderItemService;
 import com.xianchumo.shop.service.OrderService;
 import com.xianchumo.shop.util.OrderUtil;
 /**
@@ -28,12 +31,10 @@ import com.xianchumo.shop.util.OrderUtil;
 @RequestMapping(value = "/merchant/order")
 @SessionAttributes("merchant")
 public class MerchantOrderController {
-	
+	@Autowired
 	private OrderService orderService;
 	@Autowired
-	public void setOrderService(OrderService orderService){
-		this.orderService = orderService;
-	}
+	private OrderItemService orderItemService;
 	/**
 	 * 确认订单
 	 * @param orderId
@@ -132,8 +133,13 @@ public class MerchantOrderController {
 	 * @return
 	 */
 	@RequestMapping("/turnover")
-	public String turnOver(HttpServletRequest req,HttpSession session, String startDay, String endDay){
-		
+	public String turnOver(HttpServletRequest req,HttpSession session,
+			String startDay, String endDay, int page){
+		Merchant merchant = (Merchant)session.getAttribute("merchant");
+		if(merchant != null){
+			Map<Long, Integer> count = orderItemService.
+					orderTurnOver(merchant.getMid(), null, page);
+		}
 		return "/merchant/turnover";
 		//return null;
 	}
