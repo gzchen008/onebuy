@@ -1,7 +1,9 @@
 package com.xianchumo.shop.service.impl;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -10,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.xianchumo.shop.dao.BaseDao;
 import com.xianchumo.shop.dao.OrderDao;
-import com.xianchumo.shop.entity.Merchant;
 import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.entity.OrderState;
 import com.xianchumo.shop.entity.ShoppingCart;
@@ -37,10 +38,14 @@ public class OrderServiceImpl extends BaseServiceImpl<Order>
 	
 
 	@Override
-	public List<Order> findByMerchant(Long merchantId, int page) {
-		return orderDao.findByMerchant(merchantId, page);
+	public List<Order> findByMerchant(Long merchantId, int page, boolean isRecord) {
+		if(isRecord){
+			return orderDao.findRecordByMerchant(merchantId, page);
+		}else{
+			return orderDao.findByMerchant(merchantId, page);
+		}
 	}
-
+	
 	@Override
 	public List<Order> findByMerchantAndState(
 			Long merchantId, int state, int page) {
@@ -88,5 +93,9 @@ public class OrderServiceImpl extends BaseServiceImpl<Order>
 		return orderDao.findByUserAndTime(
 				phone, startTime, endTime, page);
 	}
+
+
+	
+	
 	
 }

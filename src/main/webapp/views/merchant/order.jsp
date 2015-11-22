@@ -13,9 +13,9 @@
         <div class="content-header"><span class="position">您当前的位置：订单管理</span><!-- <span class="time">2015.10.30 星期五</span> --></div>
         <div class="main-content">
             <h3 class="main-content-header">订单管理</h3>
-            <a class="btn btn-primary active btn-border-none" href="/merchant/order/listOrder?page=1">查看订单</a>
-            <a class="btn btn-primary btn-border-none" href="/merchant/order/someOrder?state=1&page=1">未处理订单</a>
-            <a class="btn btn-primary btn-border-none" href="/merchant/order/someOrder?state=2&page=1">已处理订单</a>
+            <a class="btn btn-primary active btn-border-none" href="${rootPath}/merchant/order/orderManage?page=1">查看订单</a>
+            <a class="btn btn-primary btn-border-none" href="${rootPath}/merchant/order/someOrder?state=1&page=1">未处理订单</a>
+            <a class="btn btn-primary btn-border-none" href="${rootPath}/merchant/order/someOrder?state=2&page=1">已处理订单</a>
             <table class="table table-striped table-bordered table-hover">
 		         <thead>
 		            <tr>

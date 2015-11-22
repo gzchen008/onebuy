@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import com.xianchumo.shop.entity.Order;
-import com.xianchumo.shop.entity.ShoppingCart;
 
 public interface OrderDao extends BaseDao<Order>{
 	/**
@@ -14,6 +13,21 @@ public interface OrderDao extends BaseDao<Order>{
 	 * @return
 	 */
 	public List<Order> findByMerchant(Long merchantId, int page);
+	/**
+	 * 根据时间和订单状态查询订单
+	 * @param merchantId
+	 * @param page
+	 * @param state
+	 * @return
+	 */
+	public List<Order> findByDateAndState(Long merchantId, Date orderTime, int page, Integer state);
+	/**
+	 * 根据商家id查找对应的交易记录（已经完成），每次查询20条
+	 * @param merchantId
+	 * @param page
+	 * @return
+	 */
+	public List<Order> findRecordByMerchant(Long merchantId, int page);
 	/**
 	 * 根据商家的id和订单的状态进行查询
 	 * @param merchantId

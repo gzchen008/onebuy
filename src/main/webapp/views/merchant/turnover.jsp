@@ -21,8 +21,8 @@
 					<input class="form-control time" type="date"/>
 					<span>到</span>
 					<input class="form-control time" type="date"/>
-					<button class="btn btn-primary btn-border-none pull-right">点此查询</button>
-					<button class="btn btn-primary btn-border-none pull-right  right-margin-2x">统计分析</button>
+					<button class="btn btn-primary btn-border-none pull-right">统计分析</button>
+					<button class="btn btn-primary btn-border-none pull-right  right-margin-2x">点此查询</button>
 				</thead>
 			</div>
 			<table class="table table-striped table-bordered table-hover">
@@ -31,7 +31,6 @@
 						<th>类别</th>
 						<th>销售数量</th>
 						<th>销售额</th>
-						<th>损耗</th>
 						<!--其下对应开始处理-->
 					</tr>
 				</thead>
@@ -41,7 +40,6 @@
 						<td>${item.name}</td>
 						<td>${item.amout}</td>
 						<td>${item.money}</td>
-						<td>什么是耗损</td>
 					</tr>
 					</c:forEach>
 				</tbody>

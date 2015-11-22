@@ -18,9 +18,10 @@ public interface OrderService extends BaseService<Order>{
 	 * 根据商家id查找对应的定单，每次查询20条
 	 * @param merchantId
 	 * @param page
+	 * @param isRecord 是否查看完成后的订单
 	 * @return
 	 */
-	public List<Order> findByMerchant(Long merchantId, int page);
+	public List<Order> findByMerchant(Long merchantId, int page, boolean isRecord);
 	/**
 	 * 根据商家的id和订单的状态进行查询
 	 * @param merchantId
@@ -35,7 +36,13 @@ public interface OrderService extends BaseService<Order>{
 	 */
 	public Order createOrder(ShoppingCart shoppingCart);
 	
+	/**
+	 * 查询订单
+	 * @param page
+	 * @return
+	 */
 	public List<Order> findOrder(int page);
+	
 	/**
 	 * 查找某个时间段内的订单
 	 * @param orderTime
@@ -43,6 +50,7 @@ public interface OrderService extends BaseService<Order>{
 	 * @return
 	 */
 	public List<Order> findByOrderTime(Date startTime, Date endTime, int page);
+	
 	/**
 	 * 查询某个用户的订单
 	 * @param phone
@@ -50,6 +58,7 @@ public interface OrderService extends BaseService<Order>{
 	 * @return
 	 */
 	public List<Order> findByUser(String phone, int page);
+	
 	/**
 	 * 查询某个用户某个时间段内的订单
 	 * @param phone
@@ -59,4 +68,5 @@ public interface OrderService extends BaseService<Order>{
 	 * @return
 	 */
 	public List<Order> findByUserAndTime(String phone, Date startTime, Date endTime, int page);
+	
 }

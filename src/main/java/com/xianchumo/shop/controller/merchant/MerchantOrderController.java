@@ -81,9 +81,8 @@ public class MerchantOrderController {
 	}
 	
 	
-	
 	/**
-	 *  确认订单
+	 *  查看订单记录
 	 * @param req 
 	 * @param page
 	 * @return
@@ -94,7 +93,7 @@ public class MerchantOrderController {
 		if(merchant==null){
 			return null;
 		}
-		req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), page));
+		req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), page, true));
 		return "/merchant/orderRecord";
 	}
 	/**
@@ -107,7 +106,7 @@ public class MerchantOrderController {
 	@RequestMapping(value = "/orderManage")
 	public String orderManage(HttpServletRequest req, int page){
 		Merchant merchant = (Merchant)req.getSession().getAttribute("merchant");
-		req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), page));
+		req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), page, false));
 		return "/merchant/order";
 	}
 		

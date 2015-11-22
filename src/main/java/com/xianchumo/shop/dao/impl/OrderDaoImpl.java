@@ -22,6 +22,27 @@ public class OrderDaoImpl extends BaseDaoImpl<Order>
 	}
 
 	@Override
+	public List<Order> findRecordByMerchant(Long merchantId, int page) {
+		StringBuilder queryString = new StringBuilder(64);
+		queryString.append("FROM Order AS order WHERE order.merchant.mid=")
+				   .append(merchantId.toString())
+				   .append(" AND orderState>=4");
+		return find(queryString.toString(), (page-1)*PAGE_SIZE, PAGE_SIZE);
+	}
+	
+	@Override
+	public List<Order> findByDateAndState(Long merchantId, Date orderTime, int page, Integer state) {
+		StringBuilder queryString = new StringBuilder(64);
+		queryString.append("FROM Order AS order WHERE order.merchant.mid=")
+				   .append(merchantId.toString())
+				   .append(" AND orderTime<=\'")
+				   .append(orderTime)
+				   .append("\' AND orderState=")
+				   .append(state.toString());
+		return find(queryString.toString(), (page-1)*PAGE_SIZE, PAGE_SIZE);
+	}
+
+	@Override
 	public List<Order> findByMerchantAndState(Long merchantId, int state,
 			int page) {
 		StringBuilder queryString = new StringBuilder();
