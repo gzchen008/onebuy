@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="${rootPath }/resources/style/css/comment.css">
     <link rel="stylesheet" type="text/css" href="${rootPath }/resources/style/css/payment.css">
     <script type="text/javascript" src="${rootPath }/resources/js/jquery-1.11.2.js"></script>
+    <script type="text/javascript" src="${rootPath }/resources/js/common.js"></script>
+    
 </head>
 <body class="product-info">
 <form action="#" method="#">

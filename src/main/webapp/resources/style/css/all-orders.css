@@ -35,7 +35,7 @@ label {
   z-index: 30;
   width: 100%;
   height: 44px;
-  background-color: #5dc890;
+  background-color: #5DC890;
 }
 .header .backspace {
   float: left;
@@ -316,7 +316,7 @@ a {
   font-size: 14px;
 }
 .love-search li a span:nth-of-type(1) {
-  color: #f43a52;
+  color: #F43A52;
 }
 .love-search li a span:nth-of-type(2) {
   color: #212121;
@@ -438,7 +438,7 @@ a {
   margin-right: 10px;
   margin-top: -15px;
   font-size: 16px;
-  color: #f43a52;
+  color: #F43A52;
 }
 .container .order-list li .pic {
   padding-left: 10px;
@@ -578,7 +578,7 @@ a {
 }
 .container .menu-list .bargin-li span,
 .container .bargin-list .bargin-li span {
-  color: #f43a52;
+  color: #F43A52;
 }
 .container .menu-list .bargin-li span[class="all-count"],
 .container .bargin-list .bargin-li span[class="all-count"] {
@@ -587,7 +587,7 @@ a {
 }
 .container .menu-list .bargin-li span[class="all-count"] i,
 .container .bargin-list .bargin-li span[class="all-count"] i {
-  color: #f43a52;
+  color: #F43A52;
 }
 .container .order-all-list {
   padding: 0px 10px;
@@ -718,4 +718,10 @@ span[class="triangle"]:nth-of-type(2) {
 }
 .all-menu .order-list li:last-child {
   border: none;
+}
+.loading-bar {
+  display: none;
+  text-align: center;
+  height: 35px;
+  line-height: 35px;
 }

@@ -31,44 +31,41 @@
 					<li><a href="${rootPath }/good/product?kid=1"><c:if
 								test="${currentKid eq 1 }">
 								<span class="current">
-							</c:if><span><span class="vegetable"></span><em>蔬菜&蛋</em>
-						<c:if test="${currentKid eq 1 }">
-								</span>
-							</c:if></a></li>
+							</c:if><span><span class="vegetable"></span><em>蔬菜&蛋</em> <c:if
+									test="${currentKid eq 1 }"></span> </c:if></a></li>
 					<li><a href="${rootPath }/good/product?kid=2"><c:if
 								test="${currentKid eq 2 }">
 								<span class="current">
-							</c:if><span><span class="meat"></span><em>小鲜肉</em></span><c:if test="${currentKid eq 2 }">
+							</c:if><span><span class="meat"></span><em>小鲜肉</em></span> <c:if
+								test="${currentKid eq 2 }">
 								</span>
 							</c:if></a></li>
 					<li><a href="${rootPath }/good/product?kid=3"><c:if
 								test="${currentKid eq 3 }">
 								<span class="current">
-							</c:if><span><span
-								class="see"></span><em>海的味道</em></span><c:if test="${currentKid eq 3 }">
+							</c:if><span><span class="see"></span><em>海的味道</em></span> <c:if
+								test="${currentKid eq 3 }">
 								</span>
 							</c:if></a></li>
 					<li><a href="${rootPath }/good/product?kid=4"><c:if
 								test="${currentKid eq 4 }">
 								<span class="current">
-							</c:if><span><span
-								class="mother"></span><em>妈妈菜</em></span><c:if test="${currentKid eq 4 }">
+							</c:if><span><span class="mother"></span><em>妈妈菜</em></span> <c:if
+								test="${currentKid eq 4 }">
 								</span>
 							</c:if></a></li>
-					<li><a href="${rootPath }/good/product?kid=5">
-					<c:if
+					<li><a href="${rootPath }/good/product?kid=5"> <c:if
 								test="${currentKid eq 5 }">
 								<span class="current">
-							</c:if><span><span
-								class="prior"></span><em>珍品优先</em></span><c:if test="${currentKid eq 5 }">
+							</c:if><span><span class="prior"></span><em>珍品优先</em></span> <c:if
+								test="${currentKid eq 5 }">
 								</span>
 							</c:if></a></li>
-					<li><a href="${rootPath }/good/product?kid=6">
-					<c:if
+					<li><a href="${rootPath }/good/product?kid=6"> <c:if
 								test="${currentKid eq 6 }">
 								<span class="current">
-							</c:if><span><span
-								class="bargain-price"></span><em>每日特价</em></span><c:if test="${currentKid eq 6 }">
+							</c:if><span><span class="bargain-price"></span><em>每日特价</em></span> <c:if
+								test="${currentKid eq 6 }">
 								</span>
 							</c:if></a></li>
 					<%-- <c:forEach items="${kinds }" var="kind">
@@ -94,16 +91,19 @@
 							</div>
 						</li>
 					</c:forEach>
-					
+
 				</ul>
 			</div>
 		</div>
 	</div>
-	<%@include file="nav-footer.jsp" %>
+	<%@include file="nav-footer.jsp"%>
 	<!--<p class="test"></p>-->
 	<script type="text/javascript"
 		src="${rootPath }/resources/js/jquery-1.11.2.js"></script>
 	<script type="text/javascript"
 		src="${rootPath }/resources/js/Product.js"></script>
+	<script type="text/javascript"
+		src="${rootPath }/resources/js/common.js"></script>
+
 </body>
 </html>

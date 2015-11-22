@@ -43,6 +43,10 @@
 *{
   list-style-type: none;
 }
+//鼠标禁用
+a.btn.disabled{
+  pointer-events:auto;
+}
 //颜色类
 @PC-green:#A7C731;//管理员的主色调
 @PC-black:#1A1C1A;//管理员左边li的hover的颜色
@@ -50,6 +54,8 @@
 @Center-menu:#409EA0;//管理中心左边菜单栏颜色
 @Center-lessBlue:rgba(83,210,216,0.5);//管理中心左边li的hover的颜色
 @Center-btn-hover:rgba(83,210,216,0.7);//管理中心中按钮hover的颜色
+
+
 body {
   font-family: "微软雅黑", serif;
   background-color: #414C3A !important;
@@ -363,7 +369,7 @@ body {
   }
 }
   //中心管理蓝色调样式
-  #productManage{
+  .comment{
     >.header{
       height:75px;
       background: @Center-blue;
@@ -372,34 +378,11 @@ body {
         background: url("../../img/pm-transparent-logo.png") no-repeat 0 center;
       }
     }
-    .list-group{
-      li:hover {
-        background: @Center-lessBlue;
-      }
-      .active {
-        background: @Center-blue;
-      }
-      .active:hover {
-        background: @Center-blue;
-      }
-      li:first-child a {
-        background: url("../../img/pm-product.png") no-repeat 0 center;
-      }
-      li:nth-child(2) a {
-        background: url("../../img/pm-house.png") no-repeat 0 center;
-      }
-      li:nth-child(3) a {
-        background: url("../../img/pm-person.png") no-repeat 0 center;
-      }
-      li:nth-child(4) a {
-        background: url("../../img/pm-orders.png") no-repeat 0 center;
-      }
-    }
     //左边
     .main-menu{
       background: @Center-menu;
       img{
-        float: none;
+        float: none !important;
         margin-left: 40px;
       }
       h3{
@@ -410,7 +393,32 @@ body {
         margin-top: 10px;
         margin-left: 20px;
       }
+      .list-group{
+        li:hover {
+          background: @Center-lessBlue;
+        }
+        .active {
+          background: @Center-blue;
+        }
+        .active:hover {
+          background: @Center-blue;
+        }
+        li:first-child a {
+          background: url("../../img/pm-product.png") no-repeat 0 center;
+        }
+        li:nth-child(2) a {
+          background: url("../../img/pm-house.png") no-repeat 0 center;
+        }
+        li:nth-child(3) a {
+          background: url("../../img/pm-person.png") no-repeat 0 center;
+        }
+        li:nth-child(4) a {
+          background: url("../../img/pm-orders.png") no-repeat 0 center;
+        }
+      }
     }
+  }
+  #productManage{
     .main-content{
       .main-content-header{
         font-size: 28px;
@@ -433,3 +441,90 @@ body {
       }
     }
   }
+  //一下是订单管理和门店管理的样式
+  #orderManage{
+    .main-content{
+      .inline-div{
+        .clearfix();
+        padding: 15px 0px;
+        span{
+          display: block;
+          float: left;
+          width:30px;
+          height:30px;
+          margin-left: 2.5%;
+          background-image: url("../../img/03.3.png");
+          background-size: 100% 100%;
+        }
+        .shop-icon{
+          background-image: url("../../img/normal-orders.png");
+        }
+        h3{
+          float: left;
+          width:200px;
+          color:@Center-blue;
+          margin:0px;
+        }
+      }
+      border-top:none;
+      .btn-primary {
+        background-color: @Center-blue;
+        &:hover {
+          background-color: @Center-btn-hover;
+        }
+      }
+    }
+    .wrap{
+      position: relative;
+      #search{
+        position: absolute;
+        left:0px;
+        top:2px;
+        display: block;
+        width:30px;
+        height:30px;
+        margin-left: 2.5%;
+        background-image: url("../../img/03.2.png");
+        background-size: 100% 100%;
+      }
+      input{
+        width:95%;
+        margin:0 auto;
+        padding-left: 30px;
+      }
+    }
+    tbody{
+      tr{
+        #danger-orders{
+          position: relative;
+          #danger-icon{
+            display: inline-block;
+            width:25px;
+            height:25px;
+            vertical-align: middle;
+            background-image: url("../../img/03.1.png");
+            background-size: 100% 100%;
+          }
+          .badge{
+            position: absolute;
+            top:2px;
+            right:23%;
+            background-color: #D74B4C;
+          }
+        }
+        .align-left{
+          text-align: left;
+        }
+        #normal-orders{
+         #normal-icon{
+          display: inline-block;
+          width:25px;
+          height:25px;
+          vertical-align: middle;
+          background-image: url("../../img/normal-orders.png");
+          background-size: 100% 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,9 @@
 package com.xianchumo.shop.controller.weixin;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,13 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.xianchumo.shop.entity.Address;
-import com.xianchumo.shop.entity.AddressBase;
 import com.xianchumo.shop.entity.Merchant;
 import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.entity.ShoppingCart;
 import com.xianchumo.shop.service.MerchantService;
 import com.xianchumo.shop.service.OrderService;
 import com.xianchumo.shop.service.ShoppingCartService;
+import com.xianchumo.shop.util.JsonUtil;
 import com.xianchumo.shop.util.ShopUtil;
 
 /**
@@ -28,6 +31,7 @@ import com.xianchumo.shop.util.ShopUtil;
 @Controller
 @RequestMapping(value = "order")
 public class OrderController {
+	private static final int PAGE_SIZE = 5;
 	@Autowired
 	private ShoppingCartService shoppingCartService;
 	@Autowired
@@ -98,10 +102,22 @@ public class OrderController {
 	 * 查看历史订单
 	 */
 	@RequestMapping(value = "/listOrder")
-	public String listOrder() {
-		return "index";
+	public String listOrder(HttpServletRequest request) {
+		//TODO paginate
+		List<Order> orders = orderService.findAll();
+		request.setAttribute("orders", orders);
+		return "weixin/all-orders";
 	}
-
+	/**
+	 * 动态加载更多订单
+	 * @param page
+	 * @param response
+	 */
+	@RequestMapping(value = "/listOrderJson")
+	public void listOrderJson(Integer page,HttpServletResponse response){
+		List<Order> orders = orderService.findPageList("from Order", page, PAGE_SIZE);
+		JsonUtil.outPut(response, orders);
+	}
 	/**
 	 * 订单详情
 	 */

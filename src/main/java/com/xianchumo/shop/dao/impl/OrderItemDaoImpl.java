@@ -1,0 +1,28 @@
+package com.xianchumo.shop.dao.impl;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.xianchumo.shop.dao.OrderItemDao;
+import com.xianchumo.shop.entity.OrderItem;
+@Repository(value="orderItemDao")
+public class OrderItemDaoImpl 
+	extends BaseDaoImpl<OrderItem>
+	implements OrderItemDao{
+	private final int PAGE_SIZE = 20;
+	@Override
+	public List<OrderItem> findByMerchant(Long merchantId, Date orderTime,
+			int page, Integer state) {
+		StringBuilder queryString = new StringBuilder(64);
+		queryString.append("FROM OrderItem AS item WHERE item.order.merchant.mid=")
+				   .append(merchantId.toString())
+				   .append(" AND item.order.orderTime<=\'")
+				   .append(orderTime)
+				   .append("\' AND item.order.orderState=")
+				   .append(state.toString());
+		return find(queryString.toString(), (page-1)*PAGE_SIZE, PAGE_SIZE);
+	}
+	
+}
