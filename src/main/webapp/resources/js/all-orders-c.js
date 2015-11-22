@@ -1,6 +1,7 @@
 (function () {
     bindEvents();
-
+    //current page index 
+    var page = 1;
     function bindEvents() {
         $(".header h3").click(menuShow);
         $("body").click(menuHide);
@@ -29,13 +30,18 @@
                 console.log("displaying");
                 loading = true;
                 $('.loading-bar').css("display", "block");
-                $.get("http://115.29.98.130:8080/helloWorld.json", function (data) {
-                    //以上链接异步请求不成功
-                    //处理data
-                    $('body').append(data.text);
-                    $('.loading-bar').css("display", "none");
-                    loading = false;
+                $.ajax({
+                	url:'/shop/order/listOrderJson',
+                	data:{'page':page+1},
+                	type:"get",
+                	success:function(data){
+                		$('.order-list').append(data.text);
+                        $('.loading-bar').css("display", "none");
+                        loading = false;
+                        page++;
+                	}
                 });
+               
             }
         }
     });

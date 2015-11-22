@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "orders")
@@ -30,7 +33,7 @@ public class Order implements Serializable {
 	@ManyToOne(targetEntity = Merchant.class)
 	@JoinColumn(name = "merchant_id", referencedColumnName = "mid", nullable = false)
 	private Merchant merchant;
-	@OneToMany(targetEntity = OrderItem.class, mappedBy = "order")
+	@OneToMany(targetEntity = OrderItem.class, mappedBy = "order",cascade=CascadeType.ALL)
 	private Set<OrderItem> goods;
 	/**
 	 * 下单时间

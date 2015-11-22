@@ -13,6 +13,8 @@
 	href="${rootPath }/resources/style/css/search.css">
 <script type="text/javascript"
 	src="${rootPath }/resources/js/jquery-1.11.2.js"></script>
+	<script type="text/javascript" src="${rootPath }/resources/js/common.js"></script>
+	
 </head>
 <body class="product-info">
 	<div class="header">

@@ -6,6 +6,9 @@ import java.util.List;
 import com.xianchumo.shop.dao.OrderItemDao;
 import com.xianchumo.shop.entity.OrderItem;
 
+import org.springframework.stereotype.Repository;
+
+@Repository(value="orderItemDao")
 public class OrderItemDaoImpl 
 	extends BaseDaoImpl<OrderItem>
 	implements OrderItemDao{

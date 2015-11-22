@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import java.util.Set;
+
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -12,7 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.xianchumo.shop.dao.BaseDao;
 import com.xianchumo.shop.dao.OrderDao;
+
+import com.xianchumo.shop.dao.OrderItemDao;
 import com.xianchumo.shop.entity.Order;
+import com.xianchumo.shop.entity.OrderItem;
 import com.xianchumo.shop.entity.OrderState;
 import com.xianchumo.shop.entity.ShoppingCart;
 import com.xianchumo.shop.service.OrderService;
@@ -30,6 +36,8 @@ import com.xianchumo.shop.util.ShopUtil;
 public class OrderServiceImpl extends BaseServiceImpl<Order>
 	implements OrderService{
 	private OrderDao orderDao;
+	@Resource(name="orderItemDao")
+	private OrderItemDao orderItemDao;
 	@Resource(name="orderDao")
 	public void setDao(BaseDao<Order> dao){
 		super.setDao(dao);
@@ -60,7 +68,9 @@ public class OrderServiceImpl extends BaseServiceImpl<Order>
 		Order order = new Order();
 		order.setOrderNumber(orderNumber);
 		order.setMoney(shoppingCart.getTotal());
-		order.setGoods(ShopUtil.cartItem2OrderItem(order,shoppingCart.getCartItems()));
+		Set<OrderItem> goods = ShopUtil.cartItem2OrderItem(order,shoppingCart.getCartItems());
+		orderItemDao.saveOrUpdateAll(goods);
+		order.setGoods(goods);
 		order.setOrderState(OrderState.GENERATE);
 		order.setUser(shoppingCart.getUser());
 		order.setOrderTime(new Date());
@@ -94,8 +104,13 @@ public class OrderServiceImpl extends BaseServiceImpl<Order>
 				phone, startTime, endTime, page);
 	}
 
+	public OrderItemDao getOrderItemDao() {
+		return orderItemDao;
+	}
 
-	
-	
+
+	public void setOrderItemDao(OrderItemDao orderItemDao) {
+		this.orderItemDao = orderItemDao;
+	}
 	
 }
