@@ -69,10 +69,6 @@ public class MerchantController {
 				return "redirect:/merchant/order/orderManage?page=1";
 			}
 		}
-		/*System.out.println("account");
-		if(account.equals("111") && password.equals("222")){
-			return "index";
-		}*/
 		return "/merchant/error";
 	}
 	/**

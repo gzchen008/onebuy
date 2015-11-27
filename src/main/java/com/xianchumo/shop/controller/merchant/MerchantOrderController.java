@@ -2,6 +2,7 @@ package com.xianchumo.shop.controller.merchant;
 
 
 
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -92,7 +93,7 @@ public class MerchantOrderController {
 	public String listOrder(HttpServletRequest req, int page) {
 		Merchant merchant = (Merchant)req.getSession().getAttribute("merchant");
 		if(merchant==null){
-			return null;
+			return "/merchant/error";
 		}
 		req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), page, true));
 		return "/merchant/orderRecord";
@@ -107,7 +108,9 @@ public class MerchantOrderController {
 	@RequestMapping(value = "/orderManage")
 	public String orderManage(HttpServletRequest req, int page){
 		Merchant merchant = (Merchant)req.getSession().getAttribute("merchant");
-		req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), page, false));
+		if(merchant != null){
+			req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), page, false));
+		}
 		return "/merchant/order";
 	}
 		
@@ -134,11 +137,11 @@ public class MerchantOrderController {
 	 */
 	@RequestMapping("/turnover")
 	public String turnOver(HttpServletRequest req,HttpSession session,
-			String startDay, String endDay, int page){
+			Date startDay, Date endDay, int page){
 		Merchant merchant = (Merchant)session.getAttribute("merchant");
 		if(merchant != null){
 			Map<Long, Integer> count = orderItemService.
-					orderTurnOver(merchant.getMid(), null, page);
+					orderTurnOver(merchant.getMid(), startDay, page);
 		}
 		return "/merchant/turnover";
 		//return null;

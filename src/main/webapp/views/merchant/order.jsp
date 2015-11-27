@@ -39,7 +39,7 @@
 			                <td>${order.address.address}</td>
 			                <td>
 			                	<c:forEach var="item" items="${order.goods}">
-			                		${item.good.name}X${item.amount}</br>
+			                		${item.good.name}X${item.amount}<span class="hidden">${item.good.name}X${item.amount}</span></br>
 			                	</c:forEach>
 			                </td>
 			                <td>${order.money}</td>
@@ -51,15 +51,18 @@
 			                	</c:when>
 			                	<c:when test="${order.orderState == 2}">
 			                		<td class="untreated">未处理</td>
-			                		<td><a href="#" class="btn btn-primary btn-border-none">确认发货</a></td>
+			                		<td><a id="begin-deal" href="#" data="/order/comfirmOrder?orderId=${order.oid}" class="begin-handle-btn btn btn-primary btn-border-none" 
+			                				data-target=".begin-handle" data-toggle="modal">开始处理</a></td>
 			                	</c:when>
 			                	<c:when test="${order.orderState == 3}">
 			                		<td class="untreated">处理中</td>
-			                		<td><a href="#" class="btn btn-primary btn-border-none">查看详情</a></td>
+			                		<td><a href="#" class="check-detail-btn btn btn-primary btn-border-none"
+			                				 data-target=".check-detail" data-toggle="modal">查看详情</a></td>
 			                	</c:when>
 			                	<c:when test="${order.orderState == 4||order.orderState == 9}">
 			                		<td class="untreated">已处理</td>
-			                		<td><a href="#" class="btn btn-primary btn-border-none">查看详情</a></td>
+			                		<td><a href="#" class="check-detail-btn btn btn-primary btn-border-none"
+			                				 data-target=".check-detail" data-toggle="modal">查看详情</a></td>
 			                	</c:when>
 			                </c:choose>
 		            	</tr>
@@ -79,6 +82,92 @@
 		            <a href="#" class="btn btn-default">下一页</a>
 		        </div>
 		    </div>
+			<div class="modal fade begin-handle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+	         aria-hidden="true">
+		        <div class="modal-dialog modal-lg">
+		            <div class="modal-content">
+		                <div class="modal-header">
+		                    <button type="button" class="close" data-dismiss="modal" ><span
+		                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		                    <h4 class="modal-title">开始处理</h4>
+		                </div>
+		                <div class="modal-body">
+		                    <table class="table table-striped table-bordered table-hover">
+		                        <thead>
+		                        <tr>
+		                            <th>序号</th>
+		                            <th>下单时间</th>
+		                            <th>收货人</th>
+		                            <th>收获地址</th>
+		                            <th>合计</th>
+		                            <!--其下对应开始处理-->
+		                        </tr>
+		                        </thead>
+		                        <tbody>
+		                        <tr>
+		                            <td></td>
+		                            <td></td>
+		                            <td></td>
+		                            <td></td>
+		                            <td></td>
+		                        </tr>
+		                        </tbody>
+		                    </table>
+		                    <ul class="list-group">
+		                        <li class="list-group-item active-green">产品信息</li>
+		                    </ul>
+		                </div>
+		                <div class="modal-footer">
+		                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		                    <button id="deal" type="button" class="btn btn-primary btn-border-none" onClick="deal()">开始处理</button>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
 		</div>
+		<div class="modal fade check-detail" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">开始处理</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>下单时间</th>
+                            <th>收货人</th>
+                            <th>收获地址</th>
+                            <th>合计</th>
+                            <!--其下对应开始处理-->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>2015.10.30 18:40</td>
+                            <td>张三两</td>
+                            <td>广州市天河区汇景新城001柜</td>
+                            <td>￥18</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <ul class="list-group">
+
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="${rootPath}/resources/js/jquery-1.11.2.js"></script>
+<script src="${rootPath}/resources/js/bootstrap.min.js"></script>
+<script src="${rootPath}/resources/js/PC-order-management.js"></script>
 	</body>
 </html>
