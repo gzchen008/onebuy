@@ -3,10 +3,13 @@ package com.xianchumo.shop.dao.impl;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-
 import com.xianchumo.shop.dao.OrderItemDao;
 import com.xianchumo.shop.entity.OrderItem;
+import com.xianchumo.shop.util.DateUtil;
+
+import org.springframework.stereotype.Repository;
+
+@SuppressWarnings("unchecked")
 @Repository(value="orderItemDao")
 public class OrderItemDaoImpl 
 	extends BaseDaoImpl<OrderItem>
@@ -19,7 +22,7 @@ public class OrderItemDaoImpl
 		queryString.append("FROM OrderItem AS item WHERE item.order.merchant.mid=")
 				   .append(merchantId.toString())
 				   .append(" AND item.order.orderTime<=\'")
-				   .append(orderTime)
+				   .append(DateUtil.getInstance().dataBaseFormat(orderTime))
 				   .append("\' AND item.order.orderState=")
 				   .append(state.toString());
 		return find(queryString.toString(), (page-1)*PAGE_SIZE, PAGE_SIZE);

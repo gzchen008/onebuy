@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-cn">
@@ -12,7 +12,7 @@
 		<jsp:param value="${SessionScope.merchant.account}" name="username"/>
    </jsp:include>
    <div class="content">
-		<div class="content-header"><span class="position">您当前的位置：营业额统计</span><span class="time">2015.10.30 星期五</span></div>
+		<div class="content-header"><span class="position">您当前的位置：营业额统计</span><!-- <span class="time">2015.10.30 星期五</span> --></div>
 		<div class="main-content">
 			<h3 class="main-content-header">营业额统计</h3>
 			<div class="trade-time top-margin-2x bottom-margin-2x">
@@ -21,8 +21,8 @@
 					<input class="form-control time" type="date"/>
 					<span>到</span>
 					<input class="form-control time" type="date"/>
-					<button class="btn btn-primary btn-border-none pull-right">点此查询</button>
-					<button class="btn btn-primary btn-border-none pull-right  right-margin-2x">统计分析</button>
+					<button class="btn btn-primary btn-border-none pull-right">统计分析</button>
+					<button class="btn btn-primary btn-border-none pull-right  right-margin-2x">点此查询</button>
 				</thead>
 			</div>
 			<table class="table table-striped table-bordered table-hover">
@@ -31,42 +31,17 @@
 						<th>类别</th>
 						<th>销售数量</th>
 						<th>销售额</th>
-						<th>损耗</th>
 						<!--其下对应开始处理-->
 					</tr>
 				</thead>
 				<tbody>
+					<c:forEach var="item" items="${requestScop.items}">
 					<tr>
-						<td>青菜</td>
-						<td>2015.10.30 18:40</td>
-						<td>20150101</td>
-						<td>￥100</td>
+						<td>${item.name}</td>
+						<td>${item.amout}</td>
+						<td>${item.money}</td>
 					</tr>
-					<tr>
-						<td>青菜</td>
-						<td>2015.10.30 18:40</td>
-						<td>20150101</td>
-						<td>￥100</td>
-					</tr>
-					<tr>
-						<td>青菜</td>
-						<td>2015.10.30 18:40</td>
-						<td>20150101</td>
-						<td>￥100</td>
-					</tr>
-					<tr>
-						<td>青菜</td>
-						<td>2015.10.30 18:40</td>
-						<td>20150101</td>
-						<td>￥100</td>
-					</tr>
-					<tr>
-						<td>青菜</td>
-						<td>2015.10.30 18:40</td>
-						<td>20150101</td>
-						<td>￥100</td>
-					</tr>
-
+					</c:forEach>
 				</tbody>
 			</table>
 

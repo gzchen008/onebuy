@@ -55,6 +55,21 @@ public class AddressController {
 	}
 
 	/**
+	 * 我的地址
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/myaddress")
+	public String myaddress(HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		// 找出用户的历史地址
+		List<Address> lsAddr = addressBaseService.findByUser(user);
+		session.setAttribute("lsAddr", lsAddr);
+		return "weixin/myaddress";
+	}
+
+	
+	/**
 	 * 保存地址 liveAreaId 生活区ID
 	 * 
 	 * @return

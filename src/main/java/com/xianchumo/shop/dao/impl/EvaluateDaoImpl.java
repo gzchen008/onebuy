@@ -11,9 +11,11 @@ public class EvaluateDaoImpl extends BaseDaoImpl<Evaluate>
 	implements EvaluateDao{
 	public static int SIZE = 20;
 	@Override
-	public List<Evaluate> findBuMerchant(Long merchantId, int page) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Evaluate> findByMerchant(Long merchantId, int page) {
+		StringBuilder query = new StringBuilder(64);
+		query.append("FROM Evaluate WHERE merchant_id=")
+		     .append(merchantId.toString());
+		return find(query.toString(), (page-1)*SIZE, SIZE);
 	}
 
 	

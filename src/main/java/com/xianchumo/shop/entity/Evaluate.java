@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,6 +31,8 @@ public class Evaluate implements Serializable{
 	@JoinColumn(name="user_id",  referencedColumnName="uid",
 			nullable=false)
 	private User user;
+	@ManyToOne(targetEntity=Merchant.class, fetch=FetchType.LAZY)
+	@JoinColumn(name="merchant_id", referencedColumnName="mid", nullable=false)
 	private double fraction;//评分
 	@Column(length=150)
 	private String comment;//评语

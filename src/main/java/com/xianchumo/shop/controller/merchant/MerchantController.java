@@ -1,6 +1,9 @@
 package com.xianchumo.shop.controller.merchant;
 
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,14 +13,15 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.xianchumo.shop.entity.Address;
 import com.xianchumo.shop.entity.AddressBase;
+import com.xianchumo.shop.entity.Evaluate;
 import com.xianchumo.shop.entity.Merchant;
 import com.xianchumo.shop.exception.ShopException;
 import com.xianchumo.shop.service.AddressBaseService;
 import com.xianchumo.shop.service.AddressService;
+import com.xianchumo.shop.service.EvaluateService;
 import com.xianchumo.shop.service.MerchantService;
 import com.xianchumo.shop.util.InfoUtil;
 import com.xianchumo.shop.util.Md5Utils;
@@ -34,7 +38,6 @@ import com.xianchumo.shop.util.Md5Utils;
 @Controller
 @Scope("request")
 @RequestMapping(value="/merchant")
-@SessionAttributes("merchant")
 public class MerchantController {
 	private static final Logger logger = LoggerFactory.getLogger(MerchantController.class);
 	@Autowired
@@ -43,6 +46,8 @@ public class MerchantController {
 	private AddressService addressService;
 	@Autowired
 	private AddressBaseService addressBaseService;
+	@Autowired
+	private EvaluateService evaluateService;
 	/**
 	 * 注册个人信息
 	 */
@@ -64,10 +69,6 @@ public class MerchantController {
 				return "redirect:/merchant/order/orderManage?page=1";
 			}
 		}
-		/*System.out.println("account");
-		if(account.equals("111") && password.equals("222")){
-			return "index";
-		}*/
 		return "/merchant/error";
 	}
 	/**
@@ -79,10 +80,10 @@ public class MerchantController {
 	public String logout(HttpSession session){
 		Merchant merchant = (Merchant)session.getAttribute("merchant");
 		if(merchant == null){
-			return "/views/merchant/error";
+			return "/merchant/error";
 		}
 		session.removeAttribute("merchant");
-		return "/views/merchant/login";
+		return "/merchant/login";
 	}
 	
 
@@ -153,5 +154,23 @@ public class MerchantController {
 		merchantService.update(merchant);
 		return "/merchant/account";
 	}
+	/**
+	 * 查看用户评价
+	 * @param session
+	 * @param req
+	 * @param page
+	 * @return
+	 */
 	
+	@RequestMapping("/evaluate")
+	public String searchEvaluate(HttpSession session, HttpServletRequest req, int page){
+		Merchant merchant = (Merchant)session.getAttribute("merchant");
+		if(merchant != null){
+			List<Evaluate> evaluates = evaluateService.findByMerchant(merchant.getMid(), page);
+			req.setAttribute("evaluates", evaluates);
+			evaluates = null;//删除引用
+			return "/merchant/evaluate";
+		}
+		return null;
+	}
 }

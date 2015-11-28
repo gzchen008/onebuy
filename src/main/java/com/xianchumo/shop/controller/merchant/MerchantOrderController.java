@@ -1,6 +1,9 @@
 package com.xianchumo.shop.controller.merchant;
 
-import java.util.List;
+
+
+import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,6 +18,7 @@ import com.xianchumo.shop.entity.Merchant;
 import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.entity.OrderState;
 import com.xianchumo.shop.exception.ShopException;
+import com.xianchumo.shop.service.OrderItemService;
 import com.xianchumo.shop.service.OrderService;
 import com.xianchumo.shop.util.OrderUtil;
 /**
@@ -28,14 +32,15 @@ import com.xianchumo.shop.util.OrderUtil;
 @RequestMapping(value = "/merchant/order")
 @SessionAttributes("merchant")
 public class MerchantOrderController {
-	
+	@Autowired
 	private OrderService orderService;
 	@Autowired
-	public void setOrderService(OrderService orderService){
-		this.orderService = orderService;
-	}
+	private OrderItemService orderItemService;
 	/**
 	 * 确认订单
+	 * @param orderId
+	 * @param req
+	 * @return
 	 */
 	@RequestMapping(value = "/comfirmOrder")
 	public String comfirmOrder(Long orderId, HttpServletRequest req) {
@@ -48,7 +53,9 @@ public class MerchantOrderController {
 	}
 
 	/**
-	 * 取消订单
+	 * 订单详情
+	 * @param orderId
+	 * @return
 	 */
 	@RequestMapping(value = "/cancleOrder")
 	public String cancleOrder(Long orderId) {
@@ -60,7 +67,10 @@ public class MerchantOrderController {
 	}
 
 	/**
-	 * 订单详情
+	 *  订单详情
+	 * @param orderId
+	 * @param req
+	 * @return
 	 */
 	@RequestMapping(value = "/orderDetail")
 	public String orderDetail(Long orderId, HttpServletRequest req) {
@@ -73,32 +83,68 @@ public class MerchantOrderController {
 	}
 	
 	
-	
 	/**
-	 * 列出订单
+	 *  查看订单记录
+	 * @param req 
+	 * @param page
+	 * @return
 	 */
 	@RequestMapping(value = "/listOrder")
 	public String listOrder(HttpServletRequest req, int page) {
 		Merchant merchant = (Merchant)req.getSession().getAttribute("merchant");
-		req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), page));
+		if(merchant==null){
+			return "/merchant/error";
+		}
+		req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), page, true));
 		return "/merchant/orderRecord";
 	}
+	/**
+	 * 订单管理
+	 * @param req
+	 * @param page
+	 * @return
+	 */
 	
 	@RequestMapping(value = "/orderManage")
 	public String orderManage(HttpServletRequest req, int page){
 		Merchant merchant = (Merchant)req.getSession().getAttribute("merchant");
-		req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), page));
+		if(merchant != null){
+			req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), page, false));
+		}
 		return "/merchant/order";
 	}
 		
 	/**
-	 * 列出订单
+	 *  列出订单
+	 * @param req
+	 * @param page
+	 * @param state
+	 * @return
 	 */
 	@RequestMapping(value = "/someOrder")
 	public String someOrder(HttpServletRequest req, int page, int state){
 		Merchant merchant = (Merchant)req.getSession().getAttribute("merchant");
 		req.setAttribute("orders", orderService.findByMerchantAndState(merchant.getMid(), state, page));
 		return "/merchant/order";
+	}
+	/**
+	 * 统计营业额
+	 * @param req
+	 * @param session
+	 * @param startDay
+	 * @param endDay
+	 * @return
+	 */
+	@RequestMapping("/turnover")
+	public String turnOver(HttpServletRequest req,HttpSession session,
+			Date startDay, Date endDay, int page){
+		Merchant merchant = (Merchant)session.getAttribute("merchant");
+		if(merchant != null){
+			Map<Long, Integer> count = orderItemService.
+					orderTurnOver(merchant.getMid(), startDay, page);
+		}
+		return "/merchant/turnover";
+		//return null;
 	}
 	
 }

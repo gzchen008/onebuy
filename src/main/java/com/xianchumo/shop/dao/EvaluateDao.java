@@ -18,5 +18,5 @@ public interface EvaluateDao extends BaseDao<Evaluate>{
 	 * @param page
 	 * @return
 	 */
-	public List<Evaluate> findBuMerchant(Long merchantId, int page);
+	public List<Evaluate> findByMerchant(Long merchantId, int page);
 }

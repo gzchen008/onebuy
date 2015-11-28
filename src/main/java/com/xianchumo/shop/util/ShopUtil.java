@@ -38,7 +38,7 @@ public class ShopUtil {
 			shoppingCart = new ShoppingCart();
 			user.setShoppingCart(shoppingCart);
 		}else{
-			shoppingCart = shoppingCartService.load(shoppingCart.getSid());
+			shoppingCart = shoppingCartService.get(shoppingCart.getSid());
 			user.setShoppingCart(shoppingCart);
 		}
 		shoppingCart.setUser(user);
@@ -65,7 +65,9 @@ public class ShopUtil {
 			oi.setGood(ci.getGood());
 			oi.setAmount(ci.getQuantity());
 			oi.setOrder(order);
+			orderItems.add(oi);
 		}
+		order.setGoods(orderItems);
 		return orderItems;
 	}
 

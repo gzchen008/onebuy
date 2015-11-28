@@ -13,14 +13,17 @@
 	href="${rootPath }/resources/style/css/search.css">
 <script type="text/javascript"
 	src="${rootPath }/resources/js/jquery-1.11.2.js"></script>
-	<script type="text/javascript" src="${rootPath }/resources/js/common.js"></script>
-	
+<script type="text/javascript" src="${rootPath }/resources/js/common.js"></script>
+
 </head>
 <body class="product-info">
 	<div class="header">
 		<span class="backspace"></span>
 		<div class="_search">
-			<span></span> <input type="text" name="keywords" placeholder="搜索你想吃的">
+			<span id="searchBtn"></span>
+			<form id="searchForm" action="${rootPath }/good/search" method="post">
+				<input type="text" name="keywords" placeholder="搜索你想吃的">
+			</form>
 			<span></span>
 		</div>
 	</div>
@@ -37,26 +40,35 @@
 		<div class="section">
 			<h3>历史搜索</h3>
 			<ul class="history-search">
-				<li><a href="#"><span></span><i>西红柿</i><span></span></a></li>
-				<li><a href="#"><span></span><i>茄子</i><span></span></a></li>
+				<c:forEach items="${history }" var="keyword">
+					<li><a href="#"><span></span><i>${keyword }</i><span></span></a></li>
+				</c:forEach>
 				<li><a href="#">点此查看更多</a></li>
 			</ul>
 		</div>
 		<div class="section">
 			<h3>猜你喜欢</h3>
 			<ul class="love-search">
-				<li><a href="#"> <img src="../img/vedetable.jpg"> <i>进口小白菜</i>
+				<li><a href="#"> <img
+						src="${rootPath }/resources/img/vedetable.jpg"> <i>进口小白菜</i>
 						<span>￥20</span> <span>500/g</span>
 				</a></li>
-				<li><a href="#"> <img src="../img/vedetable.jpg"> <i>进口小白菜</i>
+				<li><a href="#"> <img
+						src="${rootPath }/resources/img/vedetable.jpg"> <i>进口小白菜</i>
 						<span>￥20</span> <span>500/g</span>
 				</a></li>
-				<li><a href="#"> <img src="../img/vedetable.jpg"> <i>进口小白菜</i>
+				<li><a href="#"> <img
+						src="${rootPath }/resources/img/vedetable.jpg"> <i>进口小白菜</i>
 						<span>￥20</span> <span>500/g</span>
 				</a></li>
 			</ul>
 		</div>
 	</div>
-	<%@include file="nav-footer.jsp" %>
+	<script>
+		$("#searchBtn").click(function() {
+			$("#searchForm").submit();
+		});
+	</script>
+	<%@include file="nav-footer.jsp"%>
 </body>
 </html>

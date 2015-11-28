@@ -1,8 +1,12 @@
 package com.xianchumo.shop.service.impl;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import java.util.Set;
+
 
 import javax.annotation.Resource;
 
@@ -11,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.xianchumo.shop.dao.BaseDao;
 import com.xianchumo.shop.dao.OrderDao;
+
 import com.xianchumo.shop.dao.OrderItemDao;
 import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.entity.OrderItem;
@@ -41,10 +46,14 @@ public class OrderServiceImpl extends BaseServiceImpl<Order>
 	
 
 	@Override
-	public List<Order> findByMerchant(Long merchantId, int page) {
-		return orderDao.findByMerchant(merchantId, page);
+	public List<Order> findByMerchant(Long merchantId, int page, boolean isRecord) {
+		if(isRecord){
+			return orderDao.findRecordByMerchant(merchantId, page);
+		}else{
+			return orderDao.findByMerchant(merchantId, page);
+		}
 	}
-
+	
 	@Override
 	public List<Order> findByMerchantAndState(
 			Long merchantId, int state, int page) {
@@ -60,7 +69,6 @@ public class OrderServiceImpl extends BaseServiceImpl<Order>
 		order.setOrderNumber(orderNumber);
 		order.setMoney(shoppingCart.getTotal());
 		Set<OrderItem> goods = ShopUtil.cartItem2OrderItem(order,shoppingCart.getCartItems());
-		orderItemDao.saveOrUpdateAll(goods);
 		order.setGoods(goods);
 		order.setOrderState(OrderState.GENERATE);
 		order.setUser(shoppingCart.getUser());
@@ -95,7 +103,6 @@ public class OrderServiceImpl extends BaseServiceImpl<Order>
 				phone, startTime, endTime, page);
 	}
 
-
 	public OrderItemDao getOrderItemDao() {
 		return orderItemDao;
 	}
@@ -104,6 +111,5 @@ public class OrderServiceImpl extends BaseServiceImpl<Order>
 	public void setOrderItemDao(OrderItemDao orderItemDao) {
 		this.orderItemDao = orderItemDao;
 	}
-	
 	
 }

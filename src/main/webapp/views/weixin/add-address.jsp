@@ -13,6 +13,7 @@
 </head>
 <body>
 <form action="${rootPath}/address/save" method="post">
+<input type="hidden" value="${redirect}" name="redirect">
     <div class="header">
         <span class="backspace"></span>
 

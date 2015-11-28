@@ -9,6 +9,11 @@
 	<link rel="stylesheet" type="text/css" href="${rootPath }/resources/style/css/comment.css">
 	<link rel="stylesheet" type="text/css" href="${rootPath }/resources/style/css/me.css">
 	<script type="text/javascript" src="${rootPath }/resources/js/jquery-1.11.2.js"></script>
+	<style>
+		a {
+			text-decoration: none;
+		}
+	</style>
 </head>
 <body class="product-info">
 	<div class="header">
@@ -31,9 +36,10 @@
 					<h3>${user.wallet.credits }积分</h3>
 					<span>积分</span>
 				</li>
-				<li>
-					<h3>￥10.00</h3>
+				<li><a href="${rootPath }/redpacket">
+					<h3>3个</h3>
 					<span>红包</span>
+					</a>
 				</li>
 			</ul>
 		</div>
@@ -52,9 +58,9 @@
 					</a>
 				</li>
 				<li>
-					<a href="">
+					<a href="${rootPath }/address/myaddress">
 						<img src="${rootPath }/resources/img/myStep.png">
-						<span>我的足迹</span>
+						<span>收货地址</span>
 					</a>
 				</li>
 				<li>

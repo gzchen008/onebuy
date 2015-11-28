@@ -119,4 +119,9 @@ public class CartItem implements Serializable{
 		return hash.intValue();
 	}
 
+	@Override
+	public String toString() {
+		return "CartItem [cartItemId=" + cartItemId + ", quantity=" + quantity + ", good=" + good + "]";
+	}
+
 }
