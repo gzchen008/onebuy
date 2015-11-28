@@ -126,6 +126,9 @@
             });
 
 </script>
-<script src="${rootPath }/resources/js/add-address.js"></script>
+<%-- <script src="${rootPath }/resources/js/add-address.js"></script> --%>
+<script type="text/javascript"
+		src="${rootPath }/resources/js/common.js"></script>
+
 </body>
 </html>

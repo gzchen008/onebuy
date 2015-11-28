@@ -20,7 +20,7 @@
 		<span class="backspace"></span>
 
 		<h3>我的地址</h3>
-		<a href="${rootPath}/address/add">
+		<a href="${rootPath}/address/myaddressAdd">
 			<button>新增</button>
 		</a>
 	</div>
