@@ -15,12 +15,14 @@ import com.xianchumo.shop.dao.OrderItemDao;
 import com.xianchumo.shop.entity.OrderItem;
 import com.xianchumo.shop.entity.OrderState;
 import com.xianchumo.shop.service.OrderItemService;
+
 @Service("orderItemService")
 public class OrderItemServiceImpl extends BaseServiceImpl<OrderItem> implements OrderItemService {
 	private OrderItemDao orderItemDao;
 
 	@Resource(name = "orderItemDao")
 	public void setDao(BaseDao<OrderItem> dao) {
+
 		super.setDao(dao);
 		orderItemDao = (OrderItemDao) dao;
 	}
@@ -32,7 +34,6 @@ public class OrderItemServiceImpl extends BaseServiceImpl<OrderItem> implements 
 				.iterator();
 
 		Map<Long, Integer> count = new HashMap<Long, Integer>(30);
-
 		OrderItem item = null;
 		while (items.hasNext()) {
 			item = items.next();
