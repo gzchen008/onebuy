@@ -1,6 +1,7 @@
 $(function(){
     sizeInit();
     move_fun();
+    clickListener();
 });
 
 function sizeInit(){
@@ -43,10 +44,12 @@ function move_fun() {
             }
             window.scrollTo(0,scrollDis);
             if(touch.pageX - start_left > 100){
+                //右滑
                 $(".left-assortment").animate({"left":"0"},100);
                 $(".right-detail").animate({"left":"37%"},100);
             }
             if(touch.pageX - start_left < -100){
+                //左滑
                 $(".right-detail").animate({"left":"0"},100);
                 $(".left-assortment").animate({"left":"-37%"},100);
             }
@@ -64,6 +67,22 @@ function setTextareaPointerEvents(value) {
     for(var i = 0; i < nodes.length; i++) {
         nodes[i].style.pointerEvents = value;
     }
+}
+
+function clickListener(){
+    var $vgtbGd = $(".vegetable-garden");
+    var isLeft = false;
+    $vgtbGd.click(function () {
+        if(!isLeft){
+            $(".right-detail").animate({"left":"0"},100);
+            $(".left-assortment").animate({"left":"-37%"},100);
+            isLeft = true;
+        }else{
+            $(".left-assortment").animate({"left":"0"},100);
+            $(".right-detail").animate({"left":"37%"},100);
+            isLeft = false;
+        }
+    });
 }
 //function fixKeyboardBug(){
 //    var isIOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);

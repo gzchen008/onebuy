@@ -2,7 +2,7 @@
 <html ng-app="app">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; chaRset=utf-8" />
-	<title>产品详情</title>
+	<title>菜园子</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="../style/css/comment.css">
 	<link rel="stylesheet" type="text/css" href="../style/css/product-info.css">
@@ -12,7 +12,7 @@
 <body class="product-info">
 	<div class="header">
 		<span class="backspace"></span>
-		<h3>产品详情</h3>
+		<h3>菜园子</h3>
 		<span class="share"></span>
 	</div>
 	<div class="slider">
@@ -36,8 +36,14 @@
 	</div>
 	<div class="information">
 		<h4>进口小白菜</h4>
+		<p class="slogan">无污染更健康</p>
+		<p class="recommend-veg">推荐菜式，蒜蓉青菜等等</p>
 		<div class="cost">
-			<span>￥20.00</span>
+			<span class="price">￥20.00</span>
+			<div class="old-price">
+				<div class="old">￥100</div>
+				<div class="first-line"></div><div class="second-line"></div>
+			</div>
 			<div class="shopping-num" ng-controller="count">
 				<span ng-click="subtract(1,counter)"></span>
 				<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
@@ -61,7 +67,7 @@
 		<!--</div>-->
 		<!--<div class="divider"></div>-->
 		<div class="dispatching">
-			<span class="norms-span">菜谱推荐</span>
+			<span class="vgtb-teach norms-span">菜谱教程</span>
 		</div>
 		<div class="divider"></div>
 		<div class="dispatching one-rec">
@@ -77,7 +83,7 @@
 		</div>
 		<div class="divider"></div>
 		<div class="dispatching">
-			<span class="norms-span">商品评价</span>
+			<span class="pro-comment norms-span">商品评价</span>
 		</div>
 		<div class="divider"></div>
 		<div class="dispatching">
@@ -97,27 +103,27 @@
 		<ul>
 			<li>
 				<a href="#">
-					<span>
-						<span class="footer-icon" id="icon1"></span>
-						<i>首页</i>
+					<span id="garden">
+						<span class="footer-icon footer-active" id="icon1"></span>
+						<i>菜园子</i>
 					</span>
 				</a>
 			</li>
 			<li>
 				<a href="#">
-					<span>
+					<span id="basket">
 						<span class="footer-icon" id="icon2"></span>
-						<i>产品</i>
+						<i>菜篮子</i>
 					</span>
 				</a>
 			</li>
 			<li>
 				<a href="#">
-					<span>
+					<span id="footer-me">
 						<span class="footer-icon" id="icon3">
-							<span class="tooltip">￥20</span>
+							<!-- <span class="tooltip">￥20</span> -->
 						</span>
-						<i>购物车</i>
+						<i>我</i>
 					</span>
 				</a>
 			</li>
@@ -125,7 +131,7 @@
 				<a href="#">
 					<span>
 						<span class="footer-icon" id="icon4"></span>
-						<i>我</i>
+						<i>鲜友汇</i>
 					</span>
 				</a>
 			</li>

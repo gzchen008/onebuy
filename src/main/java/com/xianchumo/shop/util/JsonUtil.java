@@ -13,13 +13,14 @@ import com.google.gson.GsonBuilder;
  *
  */
 public class JsonUtil {
+	private static Gson  gson = new Gson();
 	/**
 	 * 向网页输出Json
 	 * @param response
 	 * @param obj
 	 */
 	public static void outPut(HttpServletResponse response,Object obj){
-		Gson gson = new Gson();
+		
 		String json = gson.toJson(obj);
 		response.setContentType("application/json");
 		try {
@@ -28,6 +29,9 @@ public class JsonUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	public static String toString(Object obj){
+		return gson.toJson(obj);
 	}
 
 }

@@ -54,7 +54,7 @@
 					</div>
 					<div class="divider"></div>
 					<div class="go-evaluate">
-						<a href="#">去评价</a>
+						<a href="${rootPath }/eval/evaluate?id=${order.oid}">去评价</a>
 					</div>
 				</li>
 				<div class="big-divider"></div>

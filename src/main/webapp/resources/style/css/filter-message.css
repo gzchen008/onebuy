@@ -5,6 +5,9 @@
 .bottom-margin-2x {
   margin-bottom: 10px;
 }
+.btn-middle {
+  margin-left: 50%;
+}
 .active {
   background-color: #53D2D8 !important;
 }

@@ -32,6 +32,7 @@
                 $.get("http://115.29.98.130:8080/helloWorld.json", function (data) {
                     //以上链接异步请求不成功
                     //处理data
+                    
                     $('body').append(data.text);
                     $('.loading-bar').css("display", "none");
                     loading = false;

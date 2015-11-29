@@ -16,4 +16,6 @@ public interface RedPacketService extends BaseService<RedPacket>{
 
 	List<RedPacket> findByUser(User user);
 
+	int countByUser(User user);
+
 }

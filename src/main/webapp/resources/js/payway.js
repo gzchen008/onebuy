@@ -10,6 +10,11 @@
         $(".time-list li").click(addIcon);
         $("#mask").click(timeChooseHide);
         $("#dialog").click(stopPropagation);
+        //评价页面
+        $("#sub-evaluation").click(showDialog);
+        $("#mask").click(timeChooseHide);
+        $("#bg-evaluation").click(stopPropagation);
+        $(document).on("click",".star",changeStatus);
     }
 
     function changeIcon() {
@@ -43,5 +48,15 @@
         $(this).find(">span").addClass("now-icon");
         $(this).siblings().find(">span").removeClass("now-icon");
     }
-
+    //评价页面的星星变化
+    function changeStatus(){
+        var status=$(this).attr("status");
+        if(status==1){
+          $(this).css({"background-image":"url('../../web/img/161.png')"});
+          $(this).get(0).setAttribute("status", "0");
+      }else{
+        $(this).css({"background-image":"url('../../web/img/16.png')"});
+        $(this).get(0).setAttribute("status", "1");
+    }
+}
 })();

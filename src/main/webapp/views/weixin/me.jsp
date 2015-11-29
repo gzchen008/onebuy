@@ -1,5 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" pageEncoding="utf-8" %>
+<%
+request.setAttribute("footer_active", 3);
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +40,7 @@
 					<span>积分</span>
 				</li>
 				<li><a href="${rootPath }/redpacket">
-					<h3>3个</h3>
+					<h3>${redCount }个</h3>
 					<span>红包</span>
 					</a>
 				</li>
@@ -59,8 +62,8 @@
 				</li>
 				<li>
 					<a href="${rootPath }/address/myaddress">
-						<img src="${rootPath }/resources/img/myStep.png">
-						<span>收货地址</span>
+						<img src="${rootPath }/resources/img/meAdress.png">
+						<span>我的地址</span>
 					</a>
 				</li>
 				<li>
@@ -84,7 +87,7 @@
 			</ul>
 		</div>
 		<div class="sevice">
-			客服电话：000-000-000
+			客服电话：400-000-000
 		</div>
 	</div>
 <%@include file="nav-footer.jsp" %>

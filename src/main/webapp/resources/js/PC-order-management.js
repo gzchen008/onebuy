@@ -20,7 +20,3 @@ function addListToListGroup($btn, $listGrp) {
         }
     });
 }
-
-function deal() {
-	alert($("#begin-deal").attr('data'));
-}

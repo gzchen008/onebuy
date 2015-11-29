@@ -40,6 +40,8 @@ public class Good implements Serializable {
 	protected String unit;// 单位,打包方式，如包，盒
 	protected double nowPrice;// 单价，现价
 	protected double freePrice;// 特价
+	protected double oldPrice;	//原价
+	protected String dishes;	//推荐菜式
 	protected int allowance;// 余量
 	protected String photoUrl;// 商品图片
 	@Column(length = 25, nullable = false)
@@ -198,6 +200,22 @@ public class Good implements Serializable {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public double getOldPrice() {
+		return oldPrice;
+	}
+
+	public void setOldPrice(double oldPrice) {
+		this.oldPrice = oldPrice;
+	}
+
+	public String getDishes() {
+		return dishes;
+	}
+
+	public void setDishes(String dishes) {
+		this.dishes = dishes;
 	}
 
 	

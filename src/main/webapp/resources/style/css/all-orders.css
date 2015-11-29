@@ -164,16 +164,16 @@ label {
   color: #212121;
 }
 .footer ul li a #icon1 {
-  background-image: url("../../img/home.png");
+  background-image: url("../../img/3.png");
   background-size: 100% 100%;
 }
 .footer ul li a #icon2 {
-  background-image: url("../../img/product.png");
+  background-image: url("../../img/lanzi.png");
   background-size: 100% 100%;
 }
 .footer ul li a #icon3 {
   position: relative;
-  background-image: url("../../img/footercard.png");
+  background-image: url("../../img/me.png");
   background-size: 100% 100%;
 }
 .footer ul li a #icon3 .tooltip {
@@ -193,8 +193,26 @@ label {
   transform: scale(0.7);
 }
 .footer ul li a #icon4 {
-  background-image: url("../../img/me.png");
+  background-image: url("../../img/xianyouhui.png");
   background-size: 100% 100%;
+}
+#garden .footer-active {
+  background-image: url("../../img/Hcaiyuanzi.png") !important;
+}
+#garden .footer-active + i {
+  color: #5DC890 !important;
+}
+#basket .footer-active {
+  background-image: url("../../img/Hcaiyuanzi.png") !important;
+}
+#basket .footer-active + i {
+  color: #5DC890 !important;
+}
+#footer-me .footer-active {
+  background-image: url("../../img/hoverMe.png") !important;
+}
+#footer-me .footer-active + i {
+  color: #5DC890 !important;
 }
 .border-raduis {
   border-radius: 10px;

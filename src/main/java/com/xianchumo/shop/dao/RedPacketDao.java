@@ -1,6 +1,7 @@
 package com.xianchumo.shop.dao;
 
 import com.xianchumo.shop.entity.RedPacket;
+import com.xianchumo.shop.entity.User;
 /**
  * 
  * Copyright 2015 xianchumo.com
@@ -10,5 +11,7 @@ import com.xianchumo.shop.entity.RedPacket;
  * @description
  */
 public interface RedPacketDao extends BaseDao<RedPacket>{
+
+	int countByUser(User user);
 
 }

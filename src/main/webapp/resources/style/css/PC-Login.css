@@ -1,6 +1,7 @@
 @charset "utf-8";
 body {
   background-image: url("../../img/loginbg.png");
+  background-size: cover;
 }
 body .logo {
   width: 180px;

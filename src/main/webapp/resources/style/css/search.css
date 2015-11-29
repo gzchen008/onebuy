@@ -35,7 +35,7 @@ label {
   z-index: 30;
   width: 100%;
   height: 44px;
-  background-color: #5dc890;
+  background-color: #5DC890;
 }
 .header .backspace {
   float: left;
@@ -164,16 +164,16 @@ label {
   color: #212121;
 }
 .footer ul li a #icon1 {
-  background-image: url("../../img/home.png");
+  background-image: url("../../img/3.png");
   background-size: 100% 100%;
 }
 .footer ul li a #icon2 {
-  background-image: url("../../img/product.png");
+  background-image: url("../../img/lanzi.png");
   background-size: 100% 100%;
 }
 .footer ul li a #icon3 {
   position: relative;
-  background-image: url("../../img/footercard.png");
+  background-image: url("../../img/me.png");
   background-size: 100% 100%;
 }
 .footer ul li a #icon3 .tooltip {
@@ -193,8 +193,26 @@ label {
   transform: scale(0.7);
 }
 .footer ul li a #icon4 {
-  background-image: url("../../img/me.png");
+  background-image: url("../../img/xianyouhui.png");
   background-size: 100% 100%;
+}
+#garden .footer-active {
+  background-image: url("../../img/Hcaiyuanzi.png") !important;
+}
+#garden .footer-active + i {
+  color: #5DC890 !important;
+}
+#basket .footer-active {
+  background-image: url("../../img/Hcaiyuanzi.png") !important;
+}
+#basket .footer-active + i {
+  color: #5DC890 !important;
+}
+#footer-me .footer-active {
+  background-image: url("../../img/hoverMe.png") !important;
+}
+#footer-me .footer-active + i {
+  color: #5DC890 !important;
 }
 .border-raduis {
   border-radius: 10px;
@@ -316,7 +334,7 @@ a {
   font-size: 14px;
 }
 .love-search li a span:nth-of-type(1) {
-  color: #f43a52;
+  color: #F43A52;
 }
 .love-search li a span:nth-of-type(2) {
   color: #212121;
@@ -343,7 +361,7 @@ a {
   margin-bottom: 10px;
   font-size: 24px;
   font-weight: 100;
-  color: #5dc890;
+  color: #5DC890;
 }
 .container .section ul {
   width: 100%;
@@ -373,7 +391,7 @@ a {
   display: inline;
   width: 100%;
   height: 36px;
-  background-color: #5dc890;
+  background-color: #5DC890;
   border-radius: 10px;
   line-height: 36px;
   color: #ffffff;

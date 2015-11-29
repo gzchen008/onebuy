@@ -1,11 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" pageEncoding="utf-8" %>
-
+<%
+request.setAttribute("footer_active", 2);
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; chaRset=utf-8"/>
-    <title>购物车</title>
+    <title>菜篮子</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css"
@@ -19,7 +21,7 @@
 <div class="header">
     <span class="backspace"></span>
 
-    <h3>购物车</h3>
+    <h3>菜篮子</h3>
     <span class="clear">清空</span>
 </div>
 
@@ -42,7 +44,7 @@
                         </div>
                         <div class="shopping-num">
                             <span onclick="deleteOne(${cartItem.good.gid},this);"></span> <input
-                                type="text" class="count" value="${cartItem.quantity}"/> <span
+                                type="text" class="count" value="${cartItem.quantity}" disabled="disabled"/> <span
                                 onclick="addOne(${cartItem.good.gid},this);"></span>
                         </div>
                     </div>

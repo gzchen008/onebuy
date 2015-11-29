@@ -1,10 +1,12 @@
 (function(){
+
 	var quantity=angular.module('app',[]);
 	quantity.controller('count',function($scope){
 		count($scope);
 	});
 	function count($scope){
 		$scope.counter=0;
+	
 		$scope.add=function(amount,value){
 			$scope.counter=parseInt(value);
 			$scope.counter+=amount;
@@ -17,6 +19,8 @@
 				$scope.counter-=amount;
 			}
 		};
+		
+	window.counter=$scope.counter;
 	}
 
 })()

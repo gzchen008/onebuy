@@ -18,6 +18,7 @@ import com.vanroid.weixin.pojo.WeixinUserInfo;
 import com.vanroid.weixin.util.AdvancedUtil;
 import com.xianchumo.shop.conf.ShopConfig;
 import com.xianchumo.shop.entity.User;
+import com.xianchumo.shop.service.RedPacketService;
 import com.xianchumo.shop.service.UserService;
 import com.xianchumo.shop.util.ShopUtil;
 
@@ -29,6 +30,8 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private ShopConfig shopConfig;
+	@Autowired
+	private RedPacketService redPacketService;
 
 	/**
 	 * 用户注册方法
@@ -126,8 +129,10 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value="/me")
-	public String me() {
-		
+	public String me(HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		int redCount = redPacketService.countByUser(user);
+		session.setAttribute("redCount", redCount);
 		return "weixin/me";
 	}
 
