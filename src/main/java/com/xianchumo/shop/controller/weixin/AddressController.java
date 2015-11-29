@@ -41,6 +41,21 @@ public class AddressController {
 	}
 
 	/**
+	 * 添加地址页面
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/myaddressAdd")
+	public String myaddressadd(HttpServletRequest httpRequest, HttpSession session) {
+		// 找出广州的直接下级
+		List<AddressBase> lsAb = addressBaseService.findChildByName("广州市");
+		httpRequest.setAttribute("lsAb", lsAb);
+		httpRequest.setAttribute("redirect", "myaddress");
+		
+		return "weixin/add-address";
+	}
+	
+	/**
 	 * 地址选择页面
 	 * 
 	 * @return
@@ -55,17 +70,38 @@ public class AddressController {
 	}
 
 	/**
+	 * 我的地址
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/myaddress")
+	public String myaddress(HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		// 找出用户的历史地址
+		List<Address> lsAddr = addressBaseService.findByUser(user);
+		session.setAttribute("lsAddr", lsAddr);
+		return "weixin/myaddress";
+	}
+
+	
+	/**
 	 * 保存地址 liveAreaId 生活区ID
 	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/save")
-	public String save(Long liveAreaId, Address address, HttpServletRequest request, HttpSession session) {
+	public String save(Long liveAreaId, String redirect ,Address address, HttpServletRequest request, HttpSession session) {
 		if (liveAreaId == null)
 			throw new ShopParameterExceptioin("参数错误");
+		
 		User user = (User) session.getAttribute("user");
 		address.setUser(user);
 		addressService.add(address);
+		
+		if(redirect !=null && redirect.equals("myaddress")){
+			return "redirect:myaddress";
+		}
+		
 		request.setAttribute("address", address);
 		request.setAttribute("liveAreaId", liveAreaId);
 

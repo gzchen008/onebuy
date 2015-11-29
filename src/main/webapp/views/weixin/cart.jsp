@@ -57,7 +57,7 @@
 
 <div class="pay">
     <span>商品总额:</span> <i id="total">￥${shoppingCart.total }</i>
-    <a href="${rootPath}/order/payment"><button  type="submit">去结算(1)</button></a>
+    <a href="${rootPath}/order/payment"><button  type="submit">去结算(${shoppingCart.cartItems.size() })</button></a>
 </div>
 <%@include file="nav-footer.jsp" %>
 <script>
@@ -121,6 +121,7 @@
     }
  
 </script>
-
+<script type="text/javascript"
+		src="${rootPath }/resources/js/common.js"></script>
 </body>
 </html>

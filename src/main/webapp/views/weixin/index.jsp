@@ -20,9 +20,9 @@
 		<span class="backspace"></span> <span>广州</span>
 
 		<div class="_search">
-			<span></span>
+			<span id="searchBtn"></span>
 
-			<form action="${rootPath }/good/search" method="post">
+			<form id = "searchForm" action="${rootPath }/good/search" method="post">
 				<input name="keywords" class="search-you-want" type="text"
 					placeholder="告诉小鲜鲜你想吃什么" /> <input type="submit" value="go" />
 			</form>
@@ -43,8 +43,8 @@
 			</div>
 			<ul class="bargin-goods">
 				<c:forEach items="${tlGoods }" var="tlGood">
-					<li><a href="#"><img
-							src="${rootPath }/resources/img/vedetable.jpg"></a>
+					<li><a href="${rootPath }/good/product-info?gid=${good.gid}		"><img
+							src="${rootPath }${tlGood.photoUrl}"></a>
 
 						<p>￥15.9</p></li>
 				</c:forEach>
@@ -61,25 +61,16 @@
 			</div>
 			<ul class="nice-list">
 				<c:forEach items="${recGoods }" var="good">
-					<li><a href="#">
+					<li><a href="${rootPath }/good/product-info?gid=${good.gid}">
 							<div class="goods-detaile">
 								<h4>${good.name }</h4>
 								<span>${good.quantity }/${good.unit }</span>
 
 								<p>限时包邮</p>
 								<span><i>RMB</i>${good.nowPrice }</span>
-							</div> <img src="${rootPath }/resources/img/vedetable.jpg">
+							</div> <img src="${rootPath }${good.photoUrl}">
 					</a></li>
 				</c:forEach>
-				<li><a href="#">
-						<div class="goods-detaile">
-							<h4>金元帅原始老苹果</h4>
-							<span>约2.5kg/箱</span>
-
-							<p>限时包邮</p>
-							<span><i>RMB</i>39<i>.9</i></span>
-						</div> <img src="${rootPath }/resources/img/vedetable.jpg">
-				</a></li>
 				<li><a href="#">
 						<div class="goods-detaile">
 							<h4>金元帅原始老苹果</h4>
@@ -96,5 +87,10 @@
 <script type="text/javascript" src="${rootPath }/resources/js/common.js"></script>
 
 	<%@include file="nav-footer.jsp"%>
+	<script>
+		$("#searchBtn").click(function(){
+			$("#searchForm").submit();
+		});
+	</script>
 </body>
 </html>

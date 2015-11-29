@@ -49,6 +49,15 @@
 				</property>
 			</bean>
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/cart/*" />
+			<mvc:mapping path="/user/*" />
+			<mvc:mapping path="/good/*" />
+			<mvc:mapping path="/order/*" />
+			<mvc:mapping path="/address/*" />
+			<bean class="com.xianchumo.shop.interceptor.CartInterceptor">
+			</bean>
+		</mvc:interceptor>
 	</mvc:interceptors>
 
 

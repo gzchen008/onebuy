@@ -26,6 +26,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "good")
 public class Good implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3432097375262795751L;
 	@Id
 	@Column(name = "gid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -195,5 +199,7 @@ public class Good implements Serializable {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+
+	
 
 }

@@ -1,5 +1,6 @@
 package com.xianchumo.shop.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -18,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="order_item")
-public class OrderItem{
+public class OrderItem implements Serializable{
 	@Id @Column(name="gid")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long gid;
@@ -63,7 +64,8 @@ public class OrderItem{
 		}
 		if(o != null && o.getClass().equals(OrderItem.class)){
 			OrderItem target = (OrderItem)o;
-			return target.getGid().equals(this.gid);
+			return target.getGood().getGid().equals(this.getGood().gid);
+			
 		}
 		return false;
 	}

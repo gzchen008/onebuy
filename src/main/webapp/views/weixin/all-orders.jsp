@@ -36,14 +36,21 @@
 						<h4>订单编号 ${order.orderNumber }</h4>
 
 						<p>${order.orderTime }&nbsp;&nbsp;</p>
-						<span>待付款</span>
+						<span><c:choose>
+							<c:when test="${order.orderState eq 1}">未付款</c:when>
+							<c:when test="${order.orderState eq 2}">已付款</c:when>
+							<c:when test="${order.orderState eq 3}">已配送</c:when>
+							<c:when test="${order.orderState eq 4}">已取货</c:when>
+							<c:when test="${order.orderState eq 5}">已取消</c:when>
+						</c:choose></span>
 					</div>
 					<div class="pic">
-						<img src="${rootPath }/resources/img/vedetable.jpg"> <img
-							src="${rootPath }/resources/img/vedetable.jpg"> <img
-							src="${rootPath }/resources/img/vedetable.jpg"> <span></span>
+						<c:forEach items="${order.goods }" var="orderItem">
+							<img src="${rootPath }${orderItem.good.photoUrl}">
+						</c:forEach>
+						<span></span>
 
-						<h3>共四件商品 ￥52</h3>
+						<h3>共${order.goods.size() }件商品 ￥${order.money }</h3>
 					</div>
 					<div class="divider"></div>
 					<div class="go-evaluate">
@@ -78,5 +85,7 @@
 		src="${rootPath }/resources/js/regular.js"></script>
 	<script type="text/javascript"
 		src="${rootPath }/resources/js/all-orders-c.js"></script>
+		<script type="text/javascript"
+		src="${rootPath }/resources/js/common.js"></script>
 </body>
 </html>

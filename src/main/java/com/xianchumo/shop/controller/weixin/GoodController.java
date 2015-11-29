@@ -1,11 +1,13 @@
 package com.xianchumo.shop.controller.weixin;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -40,7 +42,14 @@ public class GoodController {
 	 * 关键字搜索
 	 */
 	@RequestMapping(value = "/search")
-	public String search(String keywords, HttpServletRequest request) {
+	public String search(String keywords, HttpServletRequest request,HttpSession session) {
+		//保存搜索记录
+		Set<String> history = (Set<String>) session.getAttribute("history");
+		if(history == null){
+			history = new HashSet<String>();
+			session.setAttribute("history", history);
+		}
+		history.add(keywords);
 		List<Good> ls = goodService.searchByName(keywords);
 		if (ls != null && ls.size() != 0) {
 			request.setAttribute("goods", ls);

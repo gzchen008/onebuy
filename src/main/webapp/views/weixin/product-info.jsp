@@ -122,5 +122,7 @@
     }
 
 </script>
+<script type="text/javascript"
+		src="${rootPath }/resources/js/common.js"></script>
 </body>
 </html>

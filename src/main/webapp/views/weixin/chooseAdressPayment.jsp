@@ -139,5 +139,7 @@
 	</form>
 	<script type="text/javascript" src="${rootPath }/resources/js/jquery-1.11.2.js"></script>
 	<script type="text/javascript" src="${rootPath }/resources/js/payway.js"></script>
+<script type="text/javascript" src="${rootPath }/resources/js/common.js"></script>
+
 </body>
 </html>

@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.xianchumo.shop.entity.Address;
 import com.xianchumo.shop.entity.Merchant;
 import com.xianchumo.shop.entity.Order;
+import com.xianchumo.shop.entity.OrderState;
 import com.xianchumo.shop.entity.ShoppingCart;
 import com.xianchumo.shop.service.MerchantService;
+import com.xianchumo.shop.service.OrderItemService;
 import com.xianchumo.shop.service.OrderService;
 import com.xianchumo.shop.service.ShoppingCartService;
 import com.xianchumo.shop.util.JsonUtil;
@@ -38,6 +40,8 @@ public class OrderController {
 	private OrderService orderService;
 	@Autowired
 	private MerchantService merchantService;
+	@Autowired
+	private OrderItemService orderItemService;
 
 	/**
 	 * 下单 对应：去结算
@@ -73,6 +77,7 @@ public class OrderController {
 		order.setAddress(address);
 		
 		// TODO 使用微信支付
+		order.setOrderState(OrderState.PAID); 
 		orderService.add(order);
 		session.setAttribute("order", order);
 		//清空购物车

@@ -13,6 +13,7 @@
 </head>
 <body>
 <form action="${rootPath}/address/save" method="post">
+<input type="hidden" value="${redirect}" name="redirect">
     <div class="header">
         <span class="backspace"></span>
 
@@ -125,6 +126,9 @@
             });
 
 </script>
-<script src="${rootPath }/resources/js/add-address.js"></script>
+<%-- <script src="${rootPath }/resources/js/add-address.js"></script> --%>
+<script type="text/javascript"
+		src="${rootPath }/resources/js/common.js"></script>
+
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.xianchumo.shop.service;
 
 import java.util.Date;
 import java.util.Map;
+import java.util.Set;
 
 import com.xianchumo.shop.entity.OrderItem;
 
@@ -14,4 +15,6 @@ public interface OrderItemService extends BaseService<OrderItem>{
 	 * @return
 	 */
 	public Map<Long, Integer> orderTurnOver(Long merchantId, Date orderTime, int page);
+
+	public void addAll(Set<OrderItem> goods);
 }

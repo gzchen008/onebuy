@@ -3,20 +3,19 @@ package com.xianchumo.shop.controller.weixin;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.xianchumo.shop.entity.CartItem;
 import com.xianchumo.shop.entity.Good;
-import com.xianchumo.shop.entity.ShoppingCart;
-import com.xianchumo.shop.exception.ShopParameterExceptioin;
+import com.xianchumo.shop.entity.RedPacket;
+import com.xianchumo.shop.entity.User;
 import com.xianchumo.shop.service.GoodService;
 import com.xianchumo.shop.service.KindService;
+import com.xianchumo.shop.service.RedPacketService;
 import com.xianchumo.shop.service.ShoppingCartService;
-import com.xianchumo.shop.util.ShopUtil;
 
 /**
  * 
@@ -34,6 +33,8 @@ public class IndexController {
 	private KindService kindService;
 	@Autowired
 	private ShoppingCartService shoppingCartService;
+	@Autowired
+	private RedPacketService redPacketService;
 
 	/**
 	 * 首页
@@ -48,4 +49,14 @@ public class IndexController {
 		return "weixin/index";
 	}
 
+	/**
+	 *   查看我的红包
+	 */
+	@RequestMapping(value="redpacket") 
+	public String redpacket(HttpServletRequest request,HttpSession session){
+		User user = (User) session.getAttribute("user");
+		List<RedPacket> packets = redPacketService.findByUser(user);
+		session.setAttribute("packets", packets);
+		return "weixin/red-packet";
+	}
 }
