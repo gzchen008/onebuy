@@ -49,7 +49,7 @@ public class MerchantOrderController {
 		order.setOrderState(OrderState.SEND);
 		orderService.update(order);
 		req.setAttribute("order", order);
-		return "/merchant/singleOrder";
+		return "redirect:/shop/merchant/order/orderManage?page=1";
 	}
 
 	/**
@@ -142,6 +142,7 @@ public class MerchantOrderController {
 		if(merchant != null){
 			Map<Long, Integer> count = orderItemService.
 					orderTurnOver(merchant.getMid(), startDay, page);
+			
 		}
 		return "/merchant/turnover";
 		//return null;

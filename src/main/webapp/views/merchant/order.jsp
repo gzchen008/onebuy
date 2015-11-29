@@ -51,7 +51,7 @@
 			                	</c:when>
 			                	<c:when test="${order.orderState == 2}">
 			                		<td class="untreated">未处理</td>
-			                		<td><a id="begin-deal" href="#" data="/order/comfirmOrder?orderId=${order.oid}" class="begin-handle-btn btn btn-primary btn-border-none" 
+			                		<td><a id="begin-deal" href="#" data="/shop/merchant/order/comfirmOrder?orderId=${order.oid}" class="begin-handle-btn btn btn-primary btn-border-none" 
 			                				data-target=".begin-handle" data-toggle="modal">开始处理</a></td>
 			                	</c:when>
 			                	<c:when test="${order.orderState == 3}">

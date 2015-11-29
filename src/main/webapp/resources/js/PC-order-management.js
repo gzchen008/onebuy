@@ -22,5 +22,5 @@ function addListToListGroup($btn, $listGrp) {
 }
 
 function deal() {
-	alert($("#begin-deal").attr('data'));
+    window.location.href = $("#begin-deal").attr('data');
 }
