@@ -1,7 +1,9 @@
 package com.xianchumo.shop.controller.weixin;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,7 @@ import com.xianchumo.shop.exception.ShopParameterExceptioin;
 import com.xianchumo.shop.service.GoodService;
 import com.xianchumo.shop.service.KindService;
 import com.xianchumo.shop.service.ShoppingCartService;
+import com.xianchumo.shop.util.JsonUtil;
 import com.xianchumo.shop.util.ShopUtil;
 
 /**
@@ -63,13 +66,23 @@ public class GoodController {
 	 * 按类别查询
 	 */
 	@RequestMapping(value = "/product")
-	public String findByCategory(Long kid, HttpServletRequest request) {
+	public String findByCategory(Long kid, HttpServletRequest request,HttpSession session) {
 		if (kid == null) { // 没有输入分类
 			kid = 1l;
 		}
 		List<Good> goods = goodService.findByCategory(kid);
 		request.setAttribute("goods", goods);
 		request.setAttribute("currentKid", kid);
+		//从购物车中获取数量
+		ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingCart");
+		Set cartdata = new HashSet();
+		for(CartItem ci : cart.getCartItems()){
+			Map<String,Object> temp = new HashMap<String,Object>();
+			temp.put("gid", ci.getGood().getGid());
+			temp.put("count", ci.getQuantity());
+			cartdata.add(temp);
+		}
+		request.setAttribute("cartdata", JsonUtil.toString(cartdata));
 		return "weixin/product";
 	}
 

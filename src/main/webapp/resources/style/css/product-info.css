@@ -454,6 +454,26 @@ a {
   padding: 12px 10px;
   padding-top: 7px;
 }
+.product-info .information .dispatching .vgtb-teach {
+  display: block;
+  padding-left: 36px;
+  background-image: url("../../img/9.png");
+  background-repeat: no-repeat;
+  background-position: 0 center;
+  background-size: 30px 30px;
+  height: 32px;
+  line-height: 32px;
+}
+.product-info .information .dispatching .pro-comment {
+  display: block;
+  padding-left: 36px;
+  background-image: url("../../img/10.png");
+  background-repeat: no-repeat;
+  background-position: 0 center;
+  background-size: 30px 30px;
+  height: 32px;
+  line-height: 32px;
+}
 .product-info .information .dispatching i {
   color: #212121;
   font-size: 12px;
@@ -519,11 +539,17 @@ a {
 }
 .product-info .information .dispatching .more {
   display: block;
-  width: 100%;
+  padding: 5px;
+  width: 130px;
+  margin: 0 auto;
+  -webkit-border-radius: 23px;
+  -moz-border-radius: 23px;
+  border-radius: 23px;
+  background-color: #7DD3A6;
   height: 100%;
   line-height: 100%;
   text-align: center;
-  color: #5dc890;
+  color: white;
   clear: left;
 }
 .product-info .information .one-rec {

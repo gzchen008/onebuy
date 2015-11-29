@@ -1,230 +1,269 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<link rel="stylesheet" type="text/css" href="../style/css/comment.css">
-	<link rel="stylesheet" type="text/css" href="../style/css/Product.css">
-	<title>产品</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../style/css/comment.css">
+    <link rel="stylesheet" type="text/css" href="../style/css/Product.css">
+    <title>菜园子</title>
 </head>
 <body>
-	<!--<p class="show-px-lzh"></p>-->
-	<div class="header">
-		<span class="backspace"></span>
-		<h3>产品</h3>
-		<span class="share"></span>
-	</div>
-	<div class="search">
-		<a href="#" class="_search">
-			<span class="search-icon"></span>
-			<span class="search-want">搜索你想吃的</span>
-		</a>
-	</div>
-	<div class="container">
-		<div class="content">
-			<div class="left-assortment">
-				<ul>
-					<li><a href="#"><span class="current"><span class="vegetable"></span><em>蔬菜&蛋</em></span></a></li>
-					<li><a href="#"><span><span class="meat"></span><em>小鲜肉</em></span></a></li>
-					<li><a href="#"><span><span class="see"></span><em>海的味道</em></span></a></li>
-					<li><a href="#"><span><span class="mother"></span><em>妈妈菜</em></span></a></li>
-					<li><a href="#"><span><span class="prior"></span><em>珍品优先</em></span></a></li>
-					<li><a href="#"><span><span class="bargain-price"></span><em>每日特价</em></span></a></li>
-				</ul>
-			</div>
-			<div id="for-touch" class="right-detail">
-				<ul>
-					<li>
-						<div class="shop-detail">
-							<a href="#">
-								<img src="../img/vedetable.jpg">
-								<div class="_detail">
-									<p>小白菜小白菜小白菜</p>
-									<span>￥20</span>
-									<i>500g/袋</i>
-								</div>
-							</a>
-						</div>
-						<!--<a class="shopping-car"></a>-->
-						<div class="shopping-num" ng-controller="count">
-							<span ng-click="subtract(1,counter)"></span>
-							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
-							<span ng-click="add(1,counter)"></span>
-						</div>
-					</li>
+<!--<p class="show-px-lzh"></p>-->
+<div class="header">
+    <a class="home" href="#"><span class="logo"></span><em class="adjust-home-icon"><span class="home-icon"></span><span
+            class="home-text">首页</span></em></a>
+    <span class="vegetable-garden">菜园子</span>
+</div>
+<div class="search">
+    <div class="_search">
+        <span class="search-icon"></span>
+        <form action="#" method="post">
+            <input class="search-you-want" type="search" placeholder="告诉小鲜鲜你想吃什么"/>
+        </form>
+        <span></span>
+    </div>
+</div>
+<div class="container">
+    <div class="content">
+        <div class="left-assortment">
+            <ul>
+                <li><a href="#"><span class="current"><span class="vegetable"></span><em>蔬菜&蛋</em></span></a></li>
+                <li><a href="#"><span><span class="meat"></span><em>小鲜肉</em></span></a></li>
+                <li><a href="#"><span><span class="see"></span><em>海的味道</em></span></a></li>
+                <li><a href="#"><span><span class="mother"></span><em>妈妈菜</em></span></a></li>
+                <li><a href="#"><span><span class="prior"></span><em>珍品优先</em></span></a></li>
+                <li><a href="#"><span><span class="bargain-price"></span><em>每日特价</em></span></a></li>
+            </ul>
+        </div>
+        <div id="for-touch" class="right-detail">
+            <ul>
+                <li>
+                    <div class="shop-detail">
+                        <a href="#">
+                            <img src="../img/vedetable.jpg">
 
-					<li>
-						<div class="shop-detail">
-							<a href="#">
-								<img src="../img/vedetable.jpg">
-								<div class="_detail">
-									<p>2小白菜</p>
-									<span>￥20</span>
-									<i>500g/袋</i>
-								</div>
-							</a>
-						</div>
-						<!--<a class="shopping-car"></a>-->
-						<div class="shopping-num" ng-controller="count">
-							<span ng-click="subtract(1,counter)"></span>
-							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
-							<span ng-click="add(1,counter)"></span>
-						</div>
-					</li>
-					<li>
-						<div class="shop-detail">
-							<a href="#">
-								<img src="../img/vedetable.jpg">
-								<div class="_detail">
-									<p>3小白菜</p>
-									<span>￥20</span>
-									<i>500g/袋</i>
-								</div>
-							</a>
-						</div>
-						<!--<a class="shopping-car"></a>-->
-						<div class="shopping-num" ng-controller="count">
-							<span ng-click="subtract(1,counter)"></span>
-							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
-							<span ng-click="add(1,counter)"></span>
-						</div>
-					</li>
-					<li>
-						<div class="shop-detail">
-							<a href="#">
-								<img src="../img/vedetable.jpg">
-								<div class="_detail">
-									<p>4小白菜</p>
-									<span>￥20</span>
-									<i>500g/袋</i>
-								</div>
-							</a>
-						</div>
-						<!--<a class="shopping-car"></a>-->
-						<div class="shopping-num" ng-controller="count">
-							<span ng-click="subtract(1,counter)"></span>
-							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
-							<span ng-click="add(1,counter)"></span>
-						</div>
-					</li>
-					<li>
-						<div class="shop-detail">
-							<a href="#">
-								<img src="../img/vedetable.jpg">
-								<div class="_detail">
-									<p>5小白菜</p>
-									<span>￥20</span>
-									<i>500g/袋</i>
-								</div>
-							</a>
-						</div>
-						<!--<a class="shopping-car"></a>-->
-						<div class="shopping-num" ng-controller="count">
-							<span ng-click="subtract(1,counter)"></span>
-							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
-							<span ng-click="add(1,counter)"></span>
-						</div>
-					</li>
-					<li>
-						<div class="shop-detail">
-							<a href="#">
-								<img src="../img/vedetable.jpg">
-								<div class="_detail">
-									<p>6小白菜</p>
-									<span>￥20</span>
-									<i>500g/袋</i>
-								</div>
-							</a>
-						</div>
-						<!--<a class="shopping-car"></a>-->
-						<div class="shopping-num" ng-controller="count">
-							<span ng-click="subtract(1,counter)"></span>
-							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
-							<span ng-click="add(1,counter)"></span>
-						</div>
-					</li>
-					<li>
-						<div class="shop-detail">
-							<a href="#">
-								<img src="../img/vedetable.jpg">
-								<div class="_detail">
-									<p>7小白菜</p>
-									<span>￥20</span>
-									<i>500g/袋</i>
-								</div>
-							</a>
-						</div>
-						<!--<a class="shopping-car"></a>-->
-						<div class="shopping-num" ng-controller="count">
-							<span ng-click="subtract(1,counter)"></span>
-							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
-							<span ng-click="add(1,counter)"></span>
-						</div>
-					</li>
-					<li>
-						<div class="shop-detail">
-							<a href="#">
-								<img src="../img/vedetable.jpg">
-								<div class="_detail">
-									<p>8小白菜</p>
-									<span>￥20</span>
-									<i>500g/袋</i>
-								</div>
-							</a>
-						</div>
-						<!--<a class="shopping-car"></a>-->
-						<div class="shopping-num" ng-controller="count">
-							<span ng-click="subtract(1,counter)"></span>
-							<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
-							<span ng-click="add(1,counter)"></span>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="footer">
-		<ul>
-			<li>
-				<a href="#">
-					<span>
-						<span class="footer-icon" id="icon1"></span>
-						<i>首页</i>
+                            <div class="_detail">
+                                <p>小白菜</p>
+                                <strong>推荐菜式：蒜蓉青菜等等</strong>
+                                <i>500g/袋</i>
+                                <span>￥20</span>
+                                <div class="old-price">
+                                    <div class="old">￥100</div>
+                                    <div class="first-line"></div><div class="second-line"></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!--<a class="shopping-car"></a>-->
+                    <p class="slogan">无污染更健康</p>
+
+                    <div class="shopping-num" ng-controller="count">
+                        <span ng-click="subtract(1,counter)"></span>
+                        <input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+                        <span ng-click="add(1,counter)"></span>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="shop-detail">
+                        <a href="#">
+                            <img src="../img/vedetable.jpg">
+
+                            <div class="_detail">
+                                <p>2小白菜</p>
+                                <strong>推荐菜式：蒜蓉青菜等等</strong>
+                                <i>500g/袋</i>
+                                <span>￥20</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!--<a class="shopping-car"></a>-->
+                    <p class="slogan">无污染更健康</p>
+
+                    <div class="shopping-num" ng-controller="count">
+                        <span ng-click="subtract(1,counter)"></span>
+                        <input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+                        <span ng-click="add(1,counter)"></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="shop-detail">
+                        <a href="#">
+                            <img src="../img/vedetable.jpg">
+
+                            <div class="_detail">
+                                <p>3小白菜</p>
+                                <strong>推荐菜式：蒜蓉青菜等等</strong>
+                                <i>500g/袋</i>
+                                <span>￥20</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!--<a class="shopping-car"></a>-->
+                    <p class="slogan">无污染更健康</p>
+
+                    <div class="shopping-num" ng-controller="count">
+                        <span ng-click="subtract(1,counter)"></span>
+                        <input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+                        <span ng-click="add(1,counter)"></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="shop-detail">
+                        <a href="#">
+                            <img src="../img/vedetable.jpg">
+
+                            <div class="_detail">
+                                <p>4小白菜</p>
+                                <strong>推荐菜式：蒜蓉青菜等等</strong>
+                                <i>500g/袋</i>
+                                <span>￥20</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!--<a class="shopping-car"></a>-->
+                    <p class="slogan">无污染更健康</p>
+
+                    <div class="shopping-num" ng-controller="count">
+                        <span ng-click="subtract(1,counter)"></span>
+                        <input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+                        <span ng-click="add(1,counter)"></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="shop-detail">
+                        <a href="#">
+                            <img src="../img/vedetable.jpg">
+
+                            <div class="_detail">
+                                <p>5小白菜</p>
+                                <strong>推荐菜式：蒜蓉青菜等等</strong>
+                                <i>500g/袋</i>
+                                <span>￥20</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!--<a class="shopping-car"></a>-->
+                    <p class="slogan">无污染更健康</p>
+
+                    <div class="shopping-num" ng-controller="count">
+                        <span ng-click="subtract(1,counter)"></span>
+                        <input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+                        <span ng-click="add(1,counter)"></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="shop-detail">
+                        <a href="#">
+                            <img src="../img/vedetable.jpg">
+
+                            <div class="_detail">
+                                <p>6小白菜</p>
+                                <strong>推荐菜式：蒜蓉青菜等等</strong>
+                                <i>500g/袋</i>
+                                <span>￥20</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!--<a class="shopping-car"></a>-->
+                    <p class="slogan">无污染更健康</p>
+
+                    <div class="shopping-num" ng-controller="count">
+                        <span ng-click="subtract(1,counter)"></span>
+                        <input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+                        <span ng-click="add(1,counter)"></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="shop-detail">
+                        <a href="#">
+                            <img src="../img/vedetable.jpg">
+
+                            <div class="_detail">
+                                <p>7小白菜</p>
+                                <strong>推荐菜式：蒜蓉青菜等等</strong>
+                                <i>500g/袋</i>
+                                <span>￥20</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!--<a class="shopping-car"></a>-->
+                    <p class="slogan">无污染更健康</p>
+
+                    <div class="shopping-num" ng-controller="count">
+                        <span ng-click="subtract(1,counter)"></span>
+                        <input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+                        <span ng-click="add(1,counter)"></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="shop-detail">
+                        <a href="#">
+                            <img src="../img/vedetable.jpg">
+
+                            <div class="_detail">
+                                <p>8小白菜</p>
+                                <strong>推荐菜式：蒜蓉青菜等等</strong>
+                                <i>500g/袋</i>
+                                <span>￥20</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!--<a class="shopping-car"></a>-->
+                    <p class="slogan">无污染更健康</p>
+
+                    <div class="shopping-num" ng-controller="count">
+                        <span ng-click="subtract(1,counter)"></span>
+                        <input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
+                        <span ng-click="add(1,counter)"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <ul>
+        <li>
+            <a href="#">
+					<span id="garden">
+						<span class="footer-icon footer-active" id="icon1"></span>
+						<i>菜园子</i>
 					</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+					<span id="basket">
 						<span class="footer-icon" id="icon2"></span>
-						<i>产品</i>
+						<i>菜篮子</i>
 					</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+					<span id="footer-me">
 						<span class="footer-icon" id="icon3">
-							<span class="tooltip">￥20</span>
+							<!-- <span class="tooltip">￥20</span> -->
 						</span>
-						<i>购物车</i>
-					</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<span>
-						<span class="footer-icon" id="icon4"></span>
 						<i>我</i>
 					</span>
-				</a>
-			</li>
-		</ul>
-	</div>
-	<!--<p class="test"></p>-->
-	<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
-	<script type="text/javascript" src="../js/angular.min.js"></script>
-	<script type="text/javascript" src="../js/controllers.js"></script>
-	<script type="text/javascript" src="../js/Product.js"></script>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+					<span>
+						<span class="footer-icon" id="icon4"></span>
+						<i>鲜友汇</i>
+					</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!--<p class="test"></p>-->
+<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="../js/angular.min.js"></script>
+<script type="text/javascript" src="../js/controllers.js"></script>
+<script type="text/javascript" src="../js/Product.js"></script>
 </body>
 </html>

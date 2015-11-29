@@ -200,19 +200,31 @@ label {
   background-image: url("../../img/Hcaiyuanzi.png") !important;
 }
 #garden .footer-active + i {
+<<<<<<< HEAD
   color: #5dc890 !important;
+=======
+  color: #5DC890 !important;
+>>>>>>> origin/master
 }
 #basket .footer-active {
   background-image: url("../../img/Hcaiyuanzi.png") !important;
 }
 #basket .footer-active + i {
+<<<<<<< HEAD
   color: #5dc890 !important;
+=======
+  color: #5DC890 !important;
+>>>>>>> origin/master
 }
 #footer-me .footer-active {
   background-image: url("../../img/hoverMe.png") !important;
 }
 #footer-me .footer-active + i {
+<<<<<<< HEAD
   color: #5dc890 !important;
+=======
+  color: #5DC890 !important;
+>>>>>>> origin/master
 }
 .border-raduis {
   border-radius: 10px;

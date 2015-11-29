@@ -33,6 +33,7 @@ public class Evaluate implements Serializable{
 	private User user;
 	@ManyToOne(targetEntity=Merchant.class, fetch=FetchType.LAZY)
 	@JoinColumn(name="merchant_id", referencedColumnName="mid", nullable=false)
+	private Merchant merchant;
 	private double fraction;//评分
 	@Column(length=150)
 	private String comment;//评语
@@ -66,6 +67,12 @@ public class Evaluate implements Serializable{
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+	public Merchant getMerchant() {
+		return merchant;
+	}
+	public void setMerchant(Merchant merchant) {
+		this.merchant = merchant;
 	}
 	
 }
