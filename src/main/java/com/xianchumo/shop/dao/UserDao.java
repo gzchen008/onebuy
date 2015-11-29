@@ -1,5 +1,7 @@
 package com.xianchumo.shop.dao;
 
+import java.util.List;
+
 import com.xianchumo.shop.entity.User;
 /**
  * 
@@ -11,4 +13,5 @@ import com.xianchumo.shop.entity.User;
  */
 public interface UserDao extends BaseDao<User>{
 	User loadByOpenId(String openId);
+	List<User> listUser(int page, int pageSize);
 }

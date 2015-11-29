@@ -1,5 +1,7 @@
 package com.xianchumo.shop.service;
 
+import java.util.List;
+
 import com.xianchumo.shop.dto.RegisterDto;
 import com.xianchumo.shop.entity.User;
 /**
@@ -24,4 +26,10 @@ public interface UserService extends BaseService<User>{
 	 * @return
 	 */
 	User getByOpenId(String openId);
+	/**
+	 * 查询用户
+	 * @param page
+	 * @return
+	 */
+	List<User> findUser(int page);
 }

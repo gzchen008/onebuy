@@ -1,5 +1,74 @@
 @charset "utf-8";
 @import "comment";
+@import "z.less";
+
+//header左边的鲜出没logo
+.home{
+  display: inline-block;
+  height: 44px;
+  line-height: 44px;
+  .clearfix();
+  .logo{
+    display: block;
+    float: left;
+    width: 75px;
+    height: 40px;
+    margin-top: 2px;
+    margin-left: 5px;
+    background-image: url("../../img/logo.png");
+    -webkit-background-size: cover;
+    background-size: cover;
+  }
+  .adjust-home-icon{
+    display: block;
+    width: 44px;
+    height: 44px;
+    float: left;
+    margin-top: 3px;
+    .home-icon{
+      display: block;
+      width: 24px;
+      height: 24px;
+      margin-left: 3px;
+      background-image: url("../../img/222.png");
+      background-size: cover;
+    }
+    .home-text{
+      display: block;
+      width: 30px;
+      height: 17px;
+      //margin-left: 3px;
+      line-height: 17px;
+      text-align: center;
+      font-size: 12px;
+      font-style: normal;
+      color: white;
+    }
+  }
+}
+
+//菜园子
+.vegetable-garden{
+  display: block;
+  width: 58px;
+  padding-left: 40px;
+  margin-top: 7px;
+  margin-right: 10px;
+  background-image: url("../../img/3.png");
+  background-position: 5px 0;
+  background-repeat: no-repeat;
+  float: right;
+  height: 30px;
+  line-height: 30px;
+  -webkit-background-size: 30px;
+  background-size: 30px;
+  font-size: 18px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
 
 .search {
   position: fixed;
@@ -165,27 +234,77 @@
                 margin: 10px;
               }
               ._detail {
+                position: relative;
                 .fl();
                 width: 50%;
                 padding-top: 10px;
                 p {
-                  height: 55px;
                   width: 85%;
+                  padding-bottom: 5px;
                   font-size: 16px;
                   font-weight: 100;
                   color: @black;
                   overflow: hidden;
                 }
+                strong{
+                  position: absolute;
+                  top: 35px;
+                  width: 300px;
+                  font-size: 12px;
+                  color: #858585;
+                }
                 span {
+                  display: block;
+                  float: left;
                   font-size: 16px;
                   color: @rose;
+                  clear: both;
                 }
                 i {
+                  display: block;
+                  float: left;
+                  padding: 2px 5px;
+                  height: 20px;
+                  line-height: 20px;
+                  margin-top: 20px;
+                  color: white;
+                  background-color: @green;
+                  -webkit-border-radius: 5px;
+                  -moz-border-radius: 5px;
+                  border-radius: 5px;
                   font-size: 14px;
-                  color: @grey;
+                  margin-bottom: 5px;
+                }
+                .old-price{
+                  .clearfix();
+                  position: relative;
+                  .old{
+                    display: block;
+                    position: relative;
+                    font-style: normal;
+                    font-size: 13px;
+                    float: left;
+                    margin-top: 2px;
+                    margin-left: 4px;
+                  }
+                  .first-line{
+                    display: block;
+                    position: absolute;
+                    left: 36px;
+                    top: 60px;
+                    width: 38px;
+                    height: 0;
+                    border: solid 1px #656565;
+                  }
                 }
               }
             }
+          }
+          .slogan{
+            font-size: 12px;
+            color: #FFA59E;
+            margin-top: 13px;
+            width: 310px;
           }
           .shopping-car {
             position: absolute;
@@ -218,11 +337,5 @@
         }
       }
     }
-  }
-}
-// footer图标
-.footer{
-  #icon2 {
-    background-image: url("../../img/hoverProduct.png") !important;
   }
 }

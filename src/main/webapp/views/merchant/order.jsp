@@ -167,7 +167,7 @@
         </div>
     </div>
     <script src="${rootPath}/resources/js/jquery-1.11.2.js"></script>
-<script src="${rootPath}/resources/js/bootstrap.min.js"></script>
-<script src="${rootPath}/resources/js/PC-order-management.js"></script>
+	<script src="${rootPath}/resources/js/bootstrap.min.js"></script>
+	<script src="${rootPath}/resources/js/PC-order-management.js"></script>
 	</body>
 </html>

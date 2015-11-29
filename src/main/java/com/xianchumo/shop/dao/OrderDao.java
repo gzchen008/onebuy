@@ -3,6 +3,7 @@ package com.xianchumo.shop.dao;
 import java.util.Date;
 import java.util.List;
 
+import com.vanroid.weixin.pojo.PageObj;
 import com.xianchumo.shop.entity.Order;
 
 public interface OrderDao extends BaseDao<Order>{
@@ -37,21 +38,22 @@ public interface OrderDao extends BaseDao<Order>{
 	 */
 	public List<Order> findByMerchantAndState(Long merchantId, int state, int page);
 	
-	public List<Order> findOrder(int page);
+	public PageObj<Order> findOrder(int page);
 	/**
 	 * 查找某个时间段内的订单
 	 * @param orderTime
 	 * @param page
 	 * @return
 	 */
-	public List<Order> findByOrderTime(Date startTime, Date endTime, int page);
+	public PageObj<Order> findByOrderTime(Date startTime, Date endTime, int page);
+	
 	/**
 	 * 查询某个用户的订单
 	 * @param phone
 	 * @param page
 	 * @return
 	 */
-	public List<Order> findByUser(String phone, int page);
+	public PageObj<Order> findByUser(String phone, int page);
 	/**
 	 * 查询某个用户某个时间段内的订单
 	 * @param phone
@@ -60,5 +62,6 @@ public interface OrderDao extends BaseDao<Order>{
 	 * @param page
 	 * @return
 	 */
-	public List<Order> findByUserAndTime(String phone, Date startTime, Date endTime, int page);
+	public PageObj<Order> findByUserAndTime(String phone, Date startTime, Date endTime, int page);
+
 }

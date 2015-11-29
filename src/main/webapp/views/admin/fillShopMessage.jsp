@@ -7,9 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="zh-cn">
-    <jsp:include page="head.jsp">
-        <jsp:param value="鲜出没中心管理系统" name="title"/>
-    </jsp:include>
+    <head>
+    <meta charset="UTF-8">
+    <title>鲜出没中心管理系统</title>
+    <link rel="stylesheet" href="../../resources/style/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../resources/style/css/filter-message.css"/>
+</head>
     <body>
     <div class="header">
         <h1>中心管理系统</h1>

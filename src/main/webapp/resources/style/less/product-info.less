@@ -11,6 +11,7 @@
       text-align: left;
     }
     h4 {
+      float: left;
       font-size: 26px;
       text-align: left;
       padding: 10px 10px;
@@ -18,15 +19,63 @@
       font-weight: 500;
       color: @black;
     }
+    .slogan{
+      float: left;
+      font-size: 17px;
+      color: #FFA59E;
+      margin-top: 16px;
+    }
+    .recommend-veg{
+      clear: both;
+      font-size: 17px;
+      color: @black;
+      font-weight: bold;
+      margin-left: 10px;
+      padding-top: 5px;
+    }
     .cost {
+      position: relative;
       .clearfix();
-      padding: 5px 10px;
+      clear: both;
+      padding: 0  10px 0 10px;
       span {
         .fl();
         color: @rose;
         font-size: 24px;
         font-weight: 500;
       }
+      .price{
+        margin-top: 10px;
+      }
+      .old-price{
+        .clearfix();
+        left: 100px;
+        width: 50px !important;
+        margin-top: 2px;
+        position: absolute;
+        .old{
+          display: block;
+          position: relative;
+          font-style: normal;
+          font-size: 17px;
+          float: left;
+          margin-top: 12px;
+          margin-left: 4px;
+          font-weight: bold;
+        }
+        .first-line{
+          display: block;
+          position: absolute;
+          left: 5px;
+          top: 22px;
+          width: 45px;
+          height: 0;
+          border: solid 1px #656565;
+        }
+      }
+    }
+    .shopping-num{
+      margin-bottom: 5px;
     }
     .norms-span {
       font-size: 18px;

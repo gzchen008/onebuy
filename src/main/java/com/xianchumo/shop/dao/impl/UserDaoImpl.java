@@ -9,7 +9,6 @@ import com.xianchumo.shop.entity.User;
 
 @Repository(value = "userDao")
 public class UserDaoImpl extends BaseDaoImpl<User>implements UserDao {
-
 	@Override
 	public User loadByOpenId(String openId) {
 		String hql = "from User where openId = ?";
@@ -20,4 +19,9 @@ public class UserDaoImpl extends BaseDaoImpl<User>implements UserDao {
 
 	}
 
+	@Override
+	public List<User> listUser(int page, int pageSize) {
+		return find("from list", (page-1)*pageSize, pageSize);
+	}
+	
 }

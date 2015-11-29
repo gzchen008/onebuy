@@ -15,4 +15,15 @@ public class InfoUtil {
 		}
 		return false;
 	}
+	/**
+	 * 根据总数量和分页大小得到分页数量
+	 * @param totalCount
+	 * @param pageSize
+	 * @return
+	 */
+	public static Long getPageCount(Long totalCount, int pageSize){
+		Long count = totalCount/pageSize;
+		if(totalCount%pageSize>0)count++;
+		return count;
+	}
 }

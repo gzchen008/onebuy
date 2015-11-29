@@ -1,5 +1,7 @@
 package com.xianchumo.shop.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -22,6 +24,7 @@ import com.xianchumo.shop.service.UserService;
 @Service("userService")
 @Transactional
 public class UserServiceImpl extends BaseServiceImpl<User>implements UserService {
+	private final int PAGE_SIZE=20;
 	private UserDao userDao;
 
 	public UserDao getUserDao() {
@@ -48,4 +51,10 @@ public class UserServiceImpl extends BaseServiceImpl<User>implements UserService
 	public User getByOpenId(String openId) {
 		return userDao.loadByOpenId(openId);
 	}
+
+	@Override
+	public List<User> findUser(int page) {
+		return userDao.listUser(page, PAGE_SIZE);
+	}
+	
 }

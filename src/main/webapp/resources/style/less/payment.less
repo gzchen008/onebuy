@@ -358,8 +358,8 @@ body{
  }
  .now-icon{
   background-image: url("../../img/payment-check.png");
- }
- button{
+}
+button{
   background-color: @white;
   color:@green;
   font-size: 18px;
@@ -368,5 +368,115 @@ body{
   border-radius: 12px;
   margin-top: 5px;
   margin-bottom: 10px;
+  font-family: "幼圆";
 }
+.bg-evaluation{
+  position: absolute;
+  width:320px;
+  height:300px;
+  top:-100px;
+  left:-45px;
+  z-index: 0;
+}
+.thank{
+  font-size: 14px;
+  color:@black;
+  z-index: 1;
+}
+.thank:nth-of-type(1){
+  position: absolute;
+  top:-20px;
+  left:55px;
+}
+.thank:nth-of-type(2){
+  position: absolute;
+  top:-5px;
+  left:55px;
+}
+.thank:nth-of-type(3){
+  position: absolute;
+  top:10px;
+  left:55px;
+}
+#evaluate-continue{
+  position: absolute;
+  top:30px;
+  left:70px;
+  background-color:@rose;
+  color:@white;
+  font-size: 12px;
+  border:none;
+  z-index: 1;
+}
+}
+.no-bg{
+  background-color: transparent !important;
+}
+//评价页面的样式
+.evaluate-content{
+  ul{
+    margin:0px;
+    li{
+      padding: 10px;
+      margin:0px;
+      .text-evaluate{
+        .clearfix();
+        .pic{
+          width:25%;
+          margin-right: 3%;
+          .fl();
+          img{
+            display: block;
+            width:100%;
+            min-width: 49px;
+            margin-right: 12px;
+            margin-bottom: 4px;
+            border-radius: 18px;
+          }
+          p{
+            font-size: 14px;
+            color:@grey;
+            margin-bottom:10px;
+          }
+        }
+        textarea{
+          width:70%;
+          .fl();
+          height:100px;
+        }
+      }
+      .wrap{
+        .clearfix();
+        h3{
+          display:block;
+          width:70px;
+          .fl();
+          margin:0px;
+          padding:0px;
+          font-size: 20px;
+          color:@black;
+        }
+        .range{
+          .fl();
+          ul{
+            .clearfix();
+            li{
+              .fl();
+              margin: 0px;
+              padding: 0px;
+              margin-left: 10px;
+              span{
+                display: block;
+                width:22px;
+                height:22px;
+                background-image: url("../../img/16.png");
+                background-size: 100% 100%;
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
 }

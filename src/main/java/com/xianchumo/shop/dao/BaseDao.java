@@ -86,5 +86,7 @@ public interface BaseDao<T> {
 
 	// 强制立即更新缓冲数据到数据库（否则仅在事务提交时才更新）
 	public void flush();
-
+	//查询总个数
+	public Long totalCount(String queryString);
+	public Long totalCount();
 }

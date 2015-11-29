@@ -1,10 +1,7 @@
 package com.xianchumo.shop.service.impl;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -12,9 +9,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.vanroid.weixin.pojo.PageObj;
 import com.xianchumo.shop.dao.BaseDao;
 import com.xianchumo.shop.dao.OrderDao;
-
 import com.xianchumo.shop.dao.OrderItemDao;
 import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.entity.OrderItem;
@@ -76,22 +73,22 @@ public class OrderServiceImpl extends BaseServiceImpl<Order> implements OrderSer
 	}
 
 	@Override
-	public List<Order> findOrder(int page) {
+	public PageObj<Order> findOrder(int page) {
 		return orderDao.findOrder(page);
 	}
 
 	@Override
-	public List<Order> findByOrderTime(Date startTime, Date endTime, int page) {
+	public PageObj<Order> findByOrderTime(Date startTime, Date endTime, int page) {
 		return orderDao.findByOrderTime(startTime, endTime, page);
 	}
 
 	@Override
-	public List<Order> findByUser(String phone, int page) {
+	public PageObj<Order> findByUser(String phone, int page) {
 		return orderDao.findByUser(phone, page);
 	}
 
 	@Override
-	public List<Order> findByUserAndTime(String phone, Date startTime, Date endTime, int page) {
+	public PageObj<Order> findByUserAndTime(String phone, Date startTime, Date endTime, int page) {
 		return orderDao.findByUserAndTime(phone, startTime, endTime, page);
 	}
 

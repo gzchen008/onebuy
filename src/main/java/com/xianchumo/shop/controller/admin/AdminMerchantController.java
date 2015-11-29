@@ -35,7 +35,7 @@ public class AdminMerchantController {
 	public String listMerchant(HttpServletRequest req,int page) {
 		List<Merchant> merchants = merchantService.findMerchant(page);
 		req.setAttribute("merchants", merchants);
-		return "/views/merchant/showMerchant";
+		return "/admin/shopManage";
 	}
 	/**
 	 * 跟据地址查看商家列表
@@ -44,7 +44,7 @@ public class AdminMerchantController {
 	public String searchMerchant(HttpServletRequest req,Long addressId, int page) {
 		List<Merchant> merchants = merchantService.findByAddress(addressId, page);
 		req.setAttribute("merchants", merchants);
-		return "/views/merchant/showMerchant";
+		return "/admin/shopManage";
 	}
 
 	/**
@@ -53,7 +53,7 @@ public class AdminMerchantController {
 	@RequestMapping(value = "/merchantDetail")
 	public String merchantDetail(Long merchantId, HttpServletRequest req) {
 		req.setAttribute("merchant", merchantService.get(merchantId));
-		return "/views/merchant/merchantDetail";
+		return "/admin/merchantDetail";
 	}
 
 	/**

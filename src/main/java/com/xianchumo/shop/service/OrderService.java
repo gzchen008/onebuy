@@ -3,6 +3,7 @@ package com.xianchumo.shop.service;
 import java.util.Date;
 import java.util.List;
 
+import com.vanroid.weixin.pojo.PageObj;
 import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.entity.ShoppingCart;
 /**
@@ -41,7 +42,7 @@ public interface OrderService extends BaseService<Order>{
 	 * @param page
 	 * @return
 	 */
-	public List<Order> findOrder(int page);
+	public PageObj<Order> findOrder(int page);
 	
 	/**
 	 * 查找某个时间段内的订单
@@ -49,7 +50,7 @@ public interface OrderService extends BaseService<Order>{
 	 * @param page
 	 * @return
 	 */
-	public List<Order> findByOrderTime(Date startTime, Date endTime, int page);
+	public PageObj<Order> findByOrderTime(Date startTime, Date endTime, int page);
 	
 	/**
 	 * 查询某个用户的订单
@@ -57,7 +58,7 @@ public interface OrderService extends BaseService<Order>{
 	 * @param page
 	 * @return
 	 */
-	public List<Order> findByUser(String phone, int page);
+	public PageObj<Order> findByUser(String phone, int page);
 	
 	/**
 	 * 查询某个用户某个时间段内的订单
@@ -67,6 +68,6 @@ public interface OrderService extends BaseService<Order>{
 	 * @param page
 	 * @return
 	 */
-	public List<Order> findByUserAndTime(String phone, Date startTime, Date endTime, int page);
+	public PageObj<Order> findByUserAndTime(String phone, Date startTime, Date endTime, int page);
 	
 }

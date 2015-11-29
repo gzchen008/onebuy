@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.xianchumo.shop.dao.BaseDao;
+import com.xianchumo.shop.dao.GoodDao;
 import com.xianchumo.shop.entity.Good;
 import com.xianchumo.shop.entity.Kind;
-import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.service.GoodService;
 
 /**
@@ -24,9 +24,12 @@ import com.xianchumo.shop.service.GoodService;
 @Service("goodService")
 @Transactional
 public class GoodServiceImpl extends BaseServiceImpl<Good>implements GoodService {
+	private final int PAGE_SIZE = 20;
+	private GoodDao goodDao;
 	@Resource(name = "goodDao")
 	public void setDao(BaseDao<Good> dao) {
 		super.setDao(dao);
+		goodDao = (GoodDao)dao;
 	}
 
 	@Override
@@ -42,6 +45,11 @@ public class GoodServiceImpl extends BaseServiceImpl<Good>implements GoodService
 	@Override
 	public List<Good> findByRemark(String remark) {
 		return dao.find("from Good good where good.remark = ?",remark);
+	}
+
+	@Override
+	public List<Good> findGood(int page) {
+		return goodDao.findGood(page, PAGE_SIZE);
 	}
 
 	

@@ -28,5 +28,6 @@ public interface GoodService extends BaseService<Good>{
 	 * @return
 	 */
 	List<Good> findByRemark(String remark);
-
+	
+	List<Good> findGood(int page);
 }

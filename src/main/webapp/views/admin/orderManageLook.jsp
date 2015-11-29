@@ -12,7 +12,6 @@
         <jsp:param value="鲜出没订单管理中心" name="title"/>
     </jsp:include>
     <body id="orderManage" class="comment">
-    <div class="header"><h1>鲜出没中心管理系统</h1></div>
     <jsp:include page="menu.jsp">
         <jsp:param value="${session.admin.account}" name="username"/>
     </jsp:include>
@@ -104,8 +103,6 @@
             </div>
         </div>
     </div>
-
-    <script type="text/javascript" src="../../resources/js/jquery-1.11.2.js"></script>
-    <script type="text/javascript" src="../../resources/js/bootstrap.min.js"></script>
+    <%@include file="script.jsp" %>
 </body>
 </html>
