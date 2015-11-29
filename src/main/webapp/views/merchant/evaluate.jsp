@@ -3,7 +3,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <jsp:include page="head.jsp">
-  	<jsp:param value="用户评价查看" name="	title"/>
+  	<jsp:param value="用户评价查看" name="title"/>
   </jsp:include>
   
   <body>

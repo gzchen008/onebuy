@@ -1,4 +1,4 @@
-package com.vanroid.weixin.pojo;
+package com.xianchumo.shop.entity;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class PageObj<T> {
 		this.nowPage = nowPage;
 		this.prePage = nowPage-1;
 		this.nextPage = nowPage+1;
-		this.pageCount = InfoUtil.getPageCount(totalCount, pageSize);
+		this.pageCount = this.getPageCount(totalCount, pageSize);
 	}
 	public List<T> getList() {
 		return list;
@@ -77,5 +77,16 @@ public class PageObj<T> {
 	}
 	public void setPageCount(Long pageCount) {
 		this.pageCount = pageCount;
+	}
+	/**
+	 * 根据总数量和分页大小得到分页数量
+	 * @param totalCount
+	 * @param pageSize
+	 * @return
+	 */
+	public Long getPageCount(Long totalCount, int pageSize){
+		Long count = totalCount/pageSize;
+		if(totalCount%pageSize>0)count++;
+		return count;
 	}
 }

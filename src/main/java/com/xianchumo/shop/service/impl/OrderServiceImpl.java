@@ -1,7 +1,6 @@
 package com.xianchumo.shop.service.impl;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -9,13 +8,13 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.vanroid.weixin.pojo.PageObj;
 import com.xianchumo.shop.dao.BaseDao;
 import com.xianchumo.shop.dao.OrderDao;
 import com.xianchumo.shop.dao.OrderItemDao;
 import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.entity.OrderItem;
 import com.xianchumo.shop.entity.OrderState;
+import com.xianchumo.shop.entity.PageObj;
 import com.xianchumo.shop.entity.ShoppingCart;
 import com.xianchumo.shop.service.OrderService;
 import com.xianchumo.shop.util.ShopUtil;
@@ -42,7 +41,7 @@ public class OrderServiceImpl extends BaseServiceImpl<Order> implements OrderSer
 	}
 
 	@Override
-	public List<Order> findByMerchant(Long merchantId, int page, boolean isRecord) {
+	public PageObj<Order> findByMerchant(Long merchantId, int page, boolean isRecord) {
 		if (isRecord) {
 			return orderDao.findRecordByMerchant(merchantId, page);
 		} else {
@@ -51,8 +50,7 @@ public class OrderServiceImpl extends BaseServiceImpl<Order> implements OrderSer
 	}
 
 	@Override
-	public List<Order> findByMerchantAndState(Long merchantId, int state, int page) {
-
+	public PageObj<Order> findByMerchantAndState(Long merchantId, int state, int page) {
 		return orderDao.findByMerchantAndState(merchantId, state, page);
 	}
 
@@ -78,7 +76,12 @@ public class OrderServiceImpl extends BaseServiceImpl<Order> implements OrderSer
 	}
 
 	@Override
-	public PageObj<Order> findByOrderTime(Date startTime, Date endTime, int page) {
+	public PageObj<Order> findByOrderTime(Long merchantId, String startTime, String endTime, int page) {
+		return orderDao.findByOrderTime(merchantId, startTime, endTime, page);
+	}
+	
+	@Override
+	public PageObj<Order> findByOrderTime( Date startTime, Date endTime, int page) {
 		return orderDao.findByOrderTime(startTime, endTime, page);
 	}
 

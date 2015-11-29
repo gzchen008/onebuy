@@ -3,7 +3,7 @@
 <div class="header"><h1>鲜出没卖家管理系统</h1></div>
 <div class="main-menu">
     <div class="portrait">
-        <img src="../../resources/img/portrait.jpg" alt="头像"/>
+        <img src="${rootPath}/resources/img/portrait.jpg" alt="头像"/>
         <h2>${param.username}</h2>
         <p>欢迎!</p>
     </div>

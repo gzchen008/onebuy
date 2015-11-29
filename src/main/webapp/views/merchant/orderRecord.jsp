@@ -19,11 +19,11 @@
             <div class="trade-time">
                 <thead>
                     <span>交易时间:</span>
-                    <input class="form-control time" type="date" name="startDate"/>
+                    <input id="start" class="form-control time" type="date" name="startDate"/>
                     <span>到</span>
-                    <input class="form-control time" type="date" name="endDate"/>
-                    <input type="submit" class="btn btn-primary btn-border-none pull-right" value="点此查询">
-                    <!-- <button class="btn btn-primary btn-border-none pull-right">点此查询</button> -->
+                    <input id="end" class="form-control time" type="date" name="endDate"/>
+                    <!-- <button class="btn btn-primary btn-border-none pull-right" onClick="tradeTimeQuery()" value="点此查询"> -->
+                    <button class="btn btn-primary btn-border-none pull-right" onClick="tradeTimeQuery()">点此查询</button>
                 </thead>
             </div>
             <table class="table table-striped table-bordered table-hover">
@@ -36,7 +36,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                	<c:forEach var="record" items="${requestScope.orders}">
+                	<c:forEach var="record" items="${requestScope.pages.list}">
                 		<tr>
 	                        <td>${record.orderTime}</td>
 	                        <td>${record.orderNumber}</td>
@@ -46,19 +46,49 @@
                 </tbody>
             </table>
 			
-            <div class="page-divider btn-group" role="group" aria-label="page-divide">
-            	
-                <a href="#" class="btn btn-default disabled">上一页</a>
-                <a href="#" class="btn btn-default active">1</a>
-                <a href="#" class="btn btn-default">2</a>
-                <a href="#" class="btn btn-default">3</a>
-                <a href="#" class="btn btn-default disabled">...</a>
-                <a href="#" class="btn btn-default">10</a>
-                <a href="#" class="btn btn-default">11</a>
-                <a href="#" class="btn btn-default">12</a>
-                <a href="#" class="btn btn-default">下一页</a>
-            </div>
+             <div class="page-divider btn-group" role="group" aria-label="page-divide">
+	        	<c:if test="${requestScope.pages.nowPage != 1}">
+	        		<a href="/shop/merchant/order/listOrder?page=${requestScope.pages.prePage}" class="btn btn-default">上一页</a>
+	        	</c:if>
+	        	<c:choose>
+	        		<c:when test="${requestScope.pages.pageCount>11 && requestScope.pages.nowPage>7}">
+						<a href="/shop/merchant/order/listOrder?page=1" class="btn btn-default active">1</a>
+						<a href="/shop/merchant/order/listOrder?page=2" class="btn btn-default active">2</a>
+						<c:forEach var="page" begin="${requestScope.pages.nowPage-4}" end="${requestScope.pages.nowPage+3}">
+							<c:choose>
+								<c:when test="${page!=requestScope.pages.nowPage&&page<requestScope.pages.pageCount}">
+									<a href="/shop/merchant/order/listOrder?page=${page}" class="btn">${page}</a>
+								</c:when>
+								<c:when test="${page==requestScope.pages.nowPage}">
+									<a href="#" class="btn btn-default active">${requestScope.pages.nowPage}</a>
+								</c:when>
+							</c:choose>
+							<c:if test="${requestScope.pages.pageCount>requestScope.pages.nowPage+3}">
+								<a href="#" class="btn btn-default disabled">...</a>
+							</c:if>
+						</c:forEach>
+		        	</c:when>
+		        	<c:otherwise>
+		        		<c:forEach var="page" begin="1" end="${requestScope.pages.pageCount}">
+			        		<c:choose>
+			        			<c:when test="${page == requestScope.pages.nowPage}">
+			        				<a href="#" class="btn btn-default active">${page}</a>
+			        			</c:when>
+			        			<c:otherwise>
+			        				<a href="/shop/merchant/order/listOrder?page=${page}" class="btn">${page}</a>
+			        			</c:otherwise>
+			        		</c:choose>
+			        	</c:forEach>
+		        	</c:otherwise>
+	        	</c:choose>
+	            <c:if test="${requestScope.pages.nowPage != requestScope.pages.pageCount}">
+	        		<a href="/shop/merchant/order/listOrder?page=${requestScope.pages.nextPage}"
+	        			 class="btn btn-default">下一页</a>
+	        	</c:if>
+	        </div>
         </div>
     </div>
+    <script src="${rootPath}/resources/js/jquery-1.11.2.js"></script>
+    <script src="${rootPath}/resources/js/PC-order-management.js"></script>
   </body>
 </html>

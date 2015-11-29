@@ -3,8 +3,8 @@ package com.xianchumo.shop.service;
 import java.util.Date;
 import java.util.List;
 
-import com.vanroid.weixin.pojo.PageObj;
 import com.xianchumo.shop.entity.Order;
+import com.xianchumo.shop.entity.PageObj;
 import com.xianchumo.shop.entity.ShoppingCart;
 /**
  * 
@@ -22,7 +22,7 @@ public interface OrderService extends BaseService<Order>{
 	 * @param isRecord 是否查看完成后的订单
 	 * @return
 	 */
-	public List<Order> findByMerchant(Long merchantId, int page, boolean isRecord);
+	public PageObj<Order> findByMerchant(Long merchantId, int page, boolean isRecord);
 	/**
 	 * 根据商家的id和订单的状态进行查询
 	 * @param merchantId
@@ -30,7 +30,7 @@ public interface OrderService extends BaseService<Order>{
 	 * @param page
 	 * @return
 	 */
-	public List<Order> findByMerchantAndState(Long merchantId, int state, int page);
+	public PageObj<Order> findByMerchantAndState(Long merchantId, int state, int page);
 	/**
 	 * 创新订单
 	 * @param cartItems
@@ -45,12 +45,22 @@ public interface OrderService extends BaseService<Order>{
 	public PageObj<Order> findOrder(int page);
 	
 	/**
-	 * 查找某个时间段内的订单
-	 * @param orderTime
+	 * 查找某个时间段内的订单(商家)
+	 * @param merchantId
+	 * @param startTime
+	 * @param endTime
 	 * @param page
 	 * @return
 	 */
-	public PageObj<Order> findByOrderTime(Date startTime, Date endTime, int page);
+	public PageObj<Order> findByOrderTime(Long merchantId, String startTime, String endTime, int page);
+	/**
+	 * 查找某个时间段内的订单
+	 * @param startTime
+	 * @param endTime
+	 * @param page
+	 * @return
+	 */
+	public PageObj<Order> findByOrderTime( Date startTime, Date endTime, int page);
 	
 	/**
 	 * 查询某个用户的订单

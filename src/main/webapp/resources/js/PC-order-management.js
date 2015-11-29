@@ -24,3 +24,8 @@ function addListToListGroup($btn, $listGrp) {
 function deal() {
     window.location.href = $("#begin-deal").attr('data');
 }
+
+function tradeTimeQuery() {
+    window.location.href = "/shop/merchant/order/listOrder?startTime="
+    	+$('#start').val()+"&endTime="+$('#end').val()+"&page=1";
+}

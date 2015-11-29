@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 public class OrderItemDaoImpl 
 	extends BaseDaoImpl<OrderItem>
 	implements OrderItemDao{
-	private final int PAGE_SIZE = 20;
+	private final int PAGE_SIZE = 15;
 	@Override
 	public List<OrderItem> findByMerchant(Long merchantId, Date orderTime,
 			int page, Integer state) {
