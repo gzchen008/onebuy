@@ -1,5 +1,7 @@
 package com.xianchumo.shop.dao;
 
+import java.util.List;
+
 import com.xianchumo.shop.entity.Good;
 /**
  * 
@@ -11,4 +13,5 @@ import com.xianchumo.shop.entity.Good;
  */
 public interface GoodDao extends BaseDao<Good>{
 
+	List<Good> findGood(int page, int pageSize);
 }

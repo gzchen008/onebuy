@@ -31,7 +31,7 @@
 		            </tr>
 		            </thead>
 		            <tbody>
-		            <c:forEach var="order" items="${requestScope.orders}">
+		            <c:forEach var="order" items="${requestScope.pages.list}">
 		            	<tr>
 			                <td>${order.orderNumber}</td>
 			                <td>${order.orderTime}</td>
@@ -51,7 +51,7 @@
 			                	</c:when>
 			                	<c:when test="${order.orderState == 2}">
 			                		<td class="untreated">未处理</td>
-			                		<td><a id="begin-deal" href="#" data="/order/comfirmOrder?orderId=${order.oid}" class="begin-handle-btn btn btn-primary btn-border-none" 
+			                		<td><a id="begin-deal" href="#" data="/shop/merchant/order/comfirmOrder?orderId=${order.oid}" class="begin-handle-btn btn btn-primary btn-border-none" 
 			                				data-target=".begin-handle" data-toggle="modal">开始处理</a></td>
 			                	</c:when>
 			                	<c:when test="${order.orderState == 3}">
@@ -71,15 +71,46 @@
 		        </table>
 		
 		        <div class="page-divider btn-group" role="group" aria-label="page-divide">
-		            <a href="#" class="btn btn-default">上一页</a>
-		            <a href="#" class="btn btn-default active">1</a>
-		            <a href="#" class="btn btn-default">2</a>
-		            <a href="#" class="btn btn-default">3</a>
-		            <a href="#" class="btn btn-default disabled">...</a>
-		            <a href="#" class="btn btn-default">10</a>
-		            <a href="#" class="btn btn-default">11</a>
-		            <a href="#" class="btn btn-default">12</a>
-		            <a href="#" class="btn btn-default">下一页</a>
+		        	<c:if test="${requestScope.pages.nowPage != 1}">
+	        			<a href="/shop/merchant/order/orderManage?page=${requestScope.pages.prePage}" class="btn btn-default">上一页</a>
+		        	</c:if>
+		        	<c:choose>
+		        		<c:when test="${requestScope.pages.pageCount>11 && requestScope.pages.nowPage>7}">
+							<a href="/shop/merchant/order/orderManage?page=1" class="btn">1</a>
+							<a href="/shop/merchant/order/orderManage?page=2" class="btn">2</a>
+							<a href="#" class="btn btn-default disabled">...</a>
+							<c:forEach var="page" begin="${requestScope.pages.nowPage-4}" end="${requestScope.pages.nowPage+3}">
+								<c:choose>
+									<c:when test="${page!=requestScope.pages.nowPage&&page<requestScope.pages.pageCount}">
+										<a href="/shop/merchant/order/orderManage?page=${page}" class="btn">${page}</a>
+									</c:when>
+									<c:when test="${page==requestScope.pages.nowPage}">
+										<a href="#" class="btn btn-default active">${requestScope.pages.nowPage}</a>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${requestScope.pages.pageCount>requestScope.pages.nowPage+3}">
+								<a href="#" class="btn btn-default disabled">...</a>
+							</c:if>
+			        	</c:when>
+			        	<c:otherwise>
+			        		<c:forEach var="page" begin="1" end="10">
+				        		<c:choose>
+				        			<c:when test="${page == requestScope.pages.nowPage}">
+				        				<a href="#" class="btn btn-default active">${page}</a>
+				        			</c:when>
+				        			<c:otherwise>
+				        				<a href="/shop/merchant/order/orderManage?page=${page}" class="btn">${page}</a>
+				        			</c:otherwise>
+				        		</c:choose>
+				        	</c:forEach>
+				        	<a href="#" class="btn btn-default disabled">...</a>
+			        	</c:otherwise>
+		        	</c:choose>
+		            <c:if test="${requestScope.pages.nowPage != requestScope.pages.pageCount}">
+		        		<a href="/shop/merchant/order/orderManage?page=${requestScope.pages.nextPage}"
+		        			 class="btn btn-default">下一页</a>
+		        	</c:if>
 		        </div>
 		    </div>
 			<div class="modal fade begin-handle" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
@@ -167,7 +198,7 @@
         </div>
     </div>
     <script src="${rootPath}/resources/js/jquery-1.11.2.js"></script>
-<script src="${rootPath}/resources/js/bootstrap.min.js"></script>
-<script src="${rootPath}/resources/js/PC-order-management.js"></script>
+	<script src="${rootPath}/resources/js/bootstrap.min.js"></script>
+	<script src="${rootPath}/resources/js/PC-order-management.js"></script>
 	</body>
 </html>

@@ -3,10 +3,9 @@
 <!doctype html>
 <html lang="zh-cn">
 	<jsp:include page="head.jsp">
-		<jsp:param value="鲜出没中心管理系统" name="title"/>
-	</jsp:include>
+        <jsp:param value="鲜出没产品管理中心" name="title"/>
+    </jsp:include>
 	<body id="productManage">
-		<div class="header"><h1>鲜出没中心管理系统</h1></div>
 		<jsp:include page="menu.jsp">
 			<jsp:param value="${session.admin.account}" name="username"/>
 		</jsp:include>

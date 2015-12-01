@@ -18,6 +18,7 @@ import com.xianchumo.shop.entity.Merchant;
 import com.xianchumo.shop.entity.Order;
 import com.xianchumo.shop.entity.OrderState;
 import com.xianchumo.shop.exception.ShopException;
+import com.xianchumo.shop.service.EvaluateService;
 import com.xianchumo.shop.service.OrderItemService;
 import com.xianchumo.shop.service.OrderService;
 import com.xianchumo.shop.util.OrderUtil;
@@ -36,6 +37,8 @@ public class MerchantOrderController {
 	private OrderService orderService;
 	@Autowired
 	private OrderItemService orderItemService;
+	@Autowired
+	private EvaluateService evaluateService;
 	/**
 	 * 确认订单
 	 * @param orderId
@@ -49,7 +52,7 @@ public class MerchantOrderController {
 		order.setOrderState(OrderState.SEND);
 		orderService.update(order);
 		req.setAttribute("order", order);
-		return "/merchant/singleOrder";
+		return "redirect:/shop/merchant/order/orderManage?page=1";
 	}
 
 	/**
@@ -90,12 +93,17 @@ public class MerchantOrderController {
 	 * @return
 	 */
 	@RequestMapping(value = "/listOrder")
-	public String listOrder(HttpServletRequest req, int page) {
+	public String listOrder(HttpServletRequest req, String startTime, String endTime, int page) {
 		Merchant merchant = (Merchant)req.getSession().getAttribute("merchant");
-		if(merchant==null){
-			return "/merchant/error";
+		if(merchant != null){
+			if(startTime != null && endTime != null){
+				req.setAttribute("pages", orderService.findByOrderTime(
+						merchant.getMid(), startTime, endTime, page));
+			}else{
+				req.setAttribute("pages", orderService.findByMerchant(merchant.getMid(), page, true));
+			}
 		}
-		req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), page, true));
+		
 		return "/merchant/orderRecord";
 	}
 	/**
@@ -109,7 +117,7 @@ public class MerchantOrderController {
 	public String orderManage(HttpServletRequest req, int page){
 		Merchant merchant = (Merchant)req.getSession().getAttribute("merchant");
 		if(merchant != null){
-			req.setAttribute("orders", orderService.findByMerchant(merchant.getMid(), page, false));
+			req.setAttribute("pages", orderService.findByMerchant(merchant.getMid(), page, false));
 		}
 		return "/merchant/order";
 	}
@@ -124,7 +132,9 @@ public class MerchantOrderController {
 	@RequestMapping(value = "/someOrder")
 	public String someOrder(HttpServletRequest req, int page, int state){
 		Merchant merchant = (Merchant)req.getSession().getAttribute("merchant");
-		req.setAttribute("orders", orderService.findByMerchantAndState(merchant.getMid(), state, page));
+		if(merchant != null){
+			req.setAttribute("pages", orderService.findByMerchantAndState(merchant.getMid(), state, page));
+		}
 		return "/merchant/order";
 	}
 	/**
@@ -136,15 +146,15 @@ public class MerchantOrderController {
 	 * @return
 	 */
 	@RequestMapping("/turnover")
-	public String turnOver(HttpServletRequest req,HttpSession session,
+	public String turnOver(HttpServletRequest req, HttpSession session,
 			Date startDay, Date endDay, int page){
 		Merchant merchant = (Merchant)session.getAttribute("merchant");
 		if(merchant != null){
 			Map<Long, Integer> count = orderItemService.
 					orderTurnOver(merchant.getMid(), startDay, page);
+			
 		}
 		return "/merchant/turnover";
 		//return null;
 	}
-	
 }

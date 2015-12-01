@@ -123,7 +123,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	}
 
 	// 使用带参数的HSQL语句增加、更新、删除实体
-	public int bulkUpdate(String queryString, Object[] values) {
+	public int bulkUpdate(String  queryString, Object[] values) {
 		return getHibernateTemplate().bulkUpdate(queryString, values);
 	}
 
@@ -179,4 +179,24 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	public void flush() {
 		getHibernateTemplate().flush();
 	}
+
+	@Override
+	public Long totalCount() {
+		StringBuilder queryString = new StringBuilder("select count(*) from ");
+		queryString.append(clazz);
+		return (Long)this.getHibernateTemplate()//
+						 .getSessionFactory()//
+						 .openSession()//
+						 .createQuery(queryString.toString())
+						 .uniqueResult();//
+	}
+	@Override
+	public Long totalCount(String queryString) {
+		return (Long)this.getHibernateTemplate()//
+						 .getSessionFactory()//
+						 .openSession()//
+						 .createQuery(queryString)
+						 .uniqueResult();//
+	}
+	
 }

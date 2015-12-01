@@ -6,16 +6,27 @@ import org.springframework.stereotype.Repository;
 
 import com.xianchumo.shop.dao.EvaluateDao;
 import com.xianchumo.shop.entity.Evaluate;
+import com.xianchumo.shop.entity.PageObj;
 @Repository(value="evaluateDao")
 public class EvaluateDaoImpl extends BaseDaoImpl<Evaluate> 
 	implements EvaluateDao{
-	public static int SIZE = 20;
+	public static int pageSize = 15;
 	@Override
-	public List<Evaluate> findByMerchant(Long merchantId, int page) {
-		StringBuilder query = new StringBuilder(64);
-		query.append("FROM Evaluate WHERE merchant_id=")
+	public PageObj<Evaluate> findByMerchant(Long merchantId, int page) {
+		StringBuilder total = new StringBuilder(64);
+		total.append("select count(eid) from Evaluate where merchant_id=")
 		     .append(merchantId.toString());
-		return find(query.toString(), (page-1)*SIZE, SIZE);
+		Long totalCount = totalCount(total.toString());
+		if(totalCount != 0){
+			StringBuilder query = new StringBuilder(64);
+			query.append("from Evaluate where merchant_id=")
+			     .append(merchantId.toString());
+			List<Evaluate> list = find(query.toString(), (page-1)*pageSize, pageSize);
+			if(list != null && list.size() != 0){
+				return new PageObj<Evaluate>(list, totalCount, pageSize, page);
+			}
+		}
+		return null;
 	}
 
 	

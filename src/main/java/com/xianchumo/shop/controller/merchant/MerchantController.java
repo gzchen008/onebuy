@@ -166,9 +166,7 @@ public class MerchantController {
 	public String searchEvaluate(HttpSession session, HttpServletRequest req, int page){
 		Merchant merchant = (Merchant)session.getAttribute("merchant");
 		if(merchant != null){
-			List<Evaluate> evaluates = evaluateService.findByMerchant(merchant.getMid(), page);
-			req.setAttribute("evaluates", evaluates);
-			evaluates = null;//删除引用
+			req.setAttribute("pages", evaluateService.findByMerchant(merchant.getMid(), page));
 			return "/merchant/evaluate";
 		}
 		return null;

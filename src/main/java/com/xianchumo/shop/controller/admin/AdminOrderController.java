@@ -30,7 +30,7 @@ public class AdminOrderController {
 	@RequestMapping(value = "/orderDetail")
 	public String orderDetail(Long orderId, HttpServletRequest req) {
 		req.setAttribute("order", orderService.get(orderId));
-		return "/views/admin/order/showOrder";
+		return "/admin/order/showOrder";
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class AdminOrderController {
 	@RequestMapping(value = "/listOrder")
 	public String listOrder(int page, HttpServletRequest req) {
 		req.setAttribute("orders", orderService.findOrder(page));
-		return "/views/admin/order/listOrder";
+		return "/admin/listOrder";
 	}
 	/**
 	 * 列出某时间段的订单
@@ -49,7 +49,7 @@ public class AdminOrderController {
 			int page, HttpServletRequest req) {
 		req.setAttribute("orders", orderService
 				.findByOrderTime(startTime, endTime, page));
-		return "/views/admin/order/listOrder";
+		return "/admin/listOrder";
 	}
 	/**
 	 * 列出某用户的订单
@@ -57,7 +57,7 @@ public class AdminOrderController {
 	@RequestMapping(value = "/userOrder")
 	public String userOrder(String phone, int page, HttpServletRequest req) {
 		req.setAttribute("orders", orderService.findByUser(phone, page));
-		return "/views/admin/order/listOrder";
+		return "/admin/listOrder";
 	}
 	/**
 	 * 列出某用户的某个时间段内订单
@@ -67,7 +67,7 @@ public class AdminOrderController {
 			String phone, int page, HttpServletRequest req) {
 		req.setAttribute("orders", orderService
 				.findByUserAndTime(phone, startTime, endTime, page));
-		return "/views/admin/order/listOrder";
+		return "/admin/listOrder";
 	}
 	/**
 	 * 查看订单操作记录

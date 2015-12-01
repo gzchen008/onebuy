@@ -1,8 +1,7 @@
 package com.xianchumo.shop.dao;
 
-import java.util.List;
-
 import com.xianchumo.shop.entity.Evaluate;
+import com.xianchumo.shop.entity.PageObj;
 /**
  * 
  * Copyright 2015 xianchumo.com
@@ -18,5 +17,5 @@ public interface EvaluateDao extends BaseDao<Evaluate>{
 	 * @param page
 	 * @return
 	 */
-	public List<Evaluate> findByMerchant(Long merchantId, int page);
+	public PageObj<Evaluate> findByMerchant(Long merchantId, int page);
 }

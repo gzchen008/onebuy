@@ -7,105 +7,261 @@ import org.springframework.stereotype.Repository;
 
 import com.xianchumo.shop.dao.OrderDao;
 import com.xianchumo.shop.entity.Order;
-import com.xianchumo.shop.entity.ShoppingCart;
+import com.xianchumo.shop.entity.PageObj;
+import com.xianchumo.shop.util.InfoUtil;
 @SuppressWarnings("unchecked")
 @Repository(value="orderDao")
 public class OrderDaoImpl extends BaseDaoImpl<Order> 
 	implements OrderDao{
-	public static int PAGE_SIZE = 20;
+	public final int pageSize = 10;
 	@Override
-	public List<Order> findByMerchant(Long merchantId, int page) {
-		StringBuilder queryString = new StringBuilder(64);
-		queryString.append("FROM Order AS order WHERE order.merchant.mid=")
-				   .append(merchantId.toString());
-		return find(queryString.toString(), (page-1)*PAGE_SIZE, PAGE_SIZE);
+	public PageObj<Order> findByMerchant(Long merchantId, int page) {
+		StringBuilder totalQuery=new StringBuilder(64);
+		totalQuery.append("select count(oid) from Order as order where merchant_id=")
+		   		  .append(merchantId.toString());
+		Long totalCount = totalCount(totalQuery.toString());
+		if(totalCount != 0){
+			StringBuilder queryString = new StringBuilder(64);
+			queryString.append("from Order as order where merchant_id=")
+					   .append(merchantId.toString());
+			List<Order> list = find(queryString.toString(), (page-1)*pageSize, pageSize);
+			if(list != null && list.size() != 0){
+				return new PageObj<Order>(list, totalCount, pageSize, page);
+			}
+		}
+		return null;
 	}
 
 	@Override
-	public List<Order> findRecordByMerchant(Long merchantId, int page) {
-		StringBuilder queryString = new StringBuilder(64);
-		queryString.append("FROM Order AS order WHERE order.merchant.mid=")
-				   .append(merchantId.toString())
-				   .append(" AND orderState>=4");
-		return find(queryString.toString(), (page-1)*PAGE_SIZE, PAGE_SIZE);
+	public PageObj<Order> findRecordByMerchant(Long merchantId, int page) {
+		StringBuilder totalQuery=new StringBuilder(64);
+		totalQuery.append("select count(oid) from Order as order where merchant_id=")
+		   .append(merchantId.toString())
+		   .append(" and orderState>=4");
+		Long totalCount = totalCount(totalQuery.toString());
+		if(totalCount != 0){
+			StringBuilder queryString = new StringBuilder(64);
+			queryString.append("from Order as order where merchant_id=")
+					   .append(merchantId.toString())
+					   .append(" and orderState>=4");
+			List<Order> list = find(queryString.toString(), (page-1)*pageSize, pageSize);
+			if(list != null && list.size() != 0){
+				return new PageObj<Order>(list, totalCount, pageSize, page);
+			}
+		}
+		return null;
 	}
 	
 	@Override
-	public List<Order> findByDateAndState(Long merchantId, Date orderTime, int page, Integer state) {
-		StringBuilder queryString = new StringBuilder(64);
-		queryString.append("FROM Order AS order WHERE order.merchant.mid=")
+	public PageObj<Order> findByDateAndState(Long merchantId, Date orderTime, int page, Integer state) {
+		StringBuilder totalQuery=new StringBuilder(64);
+		totalQuery .append("select count(oid) from Order as order where merchant_id=")
 				   .append(merchantId.toString())
-				   .append(" AND orderTime<=\'")
+				   .append(" and orderTime<=\'")
 				   .append(orderTime)
-				   .append("\' AND orderState=")
+				   .append("\' and orderState=")
 				   .append(state.toString());
-		return find(queryString.toString(), (page-1)*PAGE_SIZE, PAGE_SIZE);
+		Long totalCount = totalCount(totalQuery.toString());
+		if(totalCount != 0){
+			StringBuilder queryString = new StringBuilder(64);
+			queryString.append("from Order as order where merchant_id=")
+			   .append(merchantId.toString())
+			   .append(" and orderTime<=\'")
+			   .append(orderTime)
+			   .append("\' and orderState=")
+			   .append(state.toString());
+			List<Order> list = find(queryString.toString(), (page-1)*pageSize, pageSize);
+			if(list != null && list.size() != 0){
+				return new PageObj<Order>(list, totalCount, pageSize, page);
+			}
+		}
+		return null;
 	}
 
 	@Override
-	public List<Order> findByMerchantAndState(Long merchantId, int state,
+	public PageObj<Order> findByMerchantAndState(Long merchantId, int state,
 			int page) {
-		StringBuilder queryString = new StringBuilder();
-		queryString.append("FROM Order AS order WHERE order.merchant.mid=")
-				   .append(merchantId.toString());
-	   //state:1代表未处理的订单，2代表已处理的订单
-	   if(state==1){
-		   queryString.append(" AND orderState<=2");
-	   }else{
-		   queryString.append(" AND orderState>2");
-	   }
-		return find(queryString.toString(), 
-				(page-1)*PAGE_SIZE, PAGE_SIZE);
-	}
-
-
-	@Override
-	public List<Order> findOrder(int page) {
-		return find("FROM Order", 
-				(page-1)*PAGE_SIZE, PAGE_SIZE);
-	}
-
-	@Override
-	public List<Order> findByOrderTime(Date startTime, Date endTime, int page) {
-		StringBuilder queryString = new StringBuilder();
-		if(startTime == null){
-			queryString.append("FROM Order WHERE orderTime<=")
-			           .append(endTime);
+		StringBuilder totalQuery=new StringBuilder(64);
+		totalQuery.append("select count(oid) from Order as order where order.merchant.mid=")
+		   	      .append(merchantId.toString());
+		//state:1代表未处理的订单，2代表已处理的订单
+		if(state==1){
+			totalQuery.append(" and orderState<=2");
 		}else{
-			queryString.append("FROM Order WHERE orderTime>=")
-	           .append(startTime)
-	           .append(" AND orderTime<=")
-	           .append(endTime);
+			totalQuery.append(" and orderState>2");
 		}
-		return find(queryString.toString(), 
-				(page-1)*PAGE_SIZE, PAGE_SIZE);
+		Long totalCount = totalCount(totalQuery.toString());
+		if(totalCount != 0){
+			StringBuilder queryString = new StringBuilder(64);
+			queryString.append("from Order as order where order.merchant.mid=")
+					   .append(merchantId.toString());
+		   //state:1代表未处理的订单，2代表已处理的订单
+		   if(state==1){
+			   queryString.append(" and orderState<=2");
+		   }else{
+			   queryString.append(" and orderState>2");
+		   }
+		   List<Order> list = find(queryString.toString(), 
+					(page-1)*pageSize, pageSize);
+		   if(list != null && list.size() != 0){
+				return new PageObj<Order>(list, totalCount, pageSize, page);
+			}
+		}
+	   return null;
+	}
+
+
+	@Override
+	public PageObj<Order> findOrder(int page) {
+		Long totalCount = totalCount();
+		if(totalCount == 0){
+			return null;
+		}
+		List<Order> orders = find("from Order", (page-1)*pageSize, pageSize);
+		if(orders != null && orders.size() != 0){
+			return new PageObj<Order>(orders, totalCount, pageSize, page);
+		}
+		return null;
 	}
 
 	@Override
-	public List<Order> findByUser(String phone, int page) {
-		return find("FROM Order AS order WHERE order.user.phone="+phone, 
-				(page-1)*PAGE_SIZE, PAGE_SIZE);
+	public PageObj<Order> findByOrderTime(Long merchantId, String startTime, String endTime, int page) {
+		StringBuilder totalQuery = new StringBuilder(64);
+		if(startTime == null){
+			totalQuery.append("select count(oid) from Order as order where merchant_id=")
+					  .append(merchantId.toString())
+					  .append(" and orderTime.subString(1,10)<=\'")
+			          .append(endTime)
+			          .append("\'");
+		}else{
+			totalQuery.append("select count(oid) from Order where merchant_id=")
+					  .append(merchantId.toString())
+					  .append(" and orderTime>=\'")
+			          .append(startTime)
+			          .append("\' and orderTime<=\'")
+			          .append(endTime)
+			          .append("\'");
+		}
+		Long totalCount = totalCount(totalQuery.toString());
+		if(totalCount != 0){
+			StringBuilder queryString = new StringBuilder(64);
+			if(startTime == null){
+				queryString.append("from Order where merchant_id=")
+					  	   .append(merchantId.toString())
+					  	   .append(" and orderTime.subString(1,10)<=\'")
+					  	   .append(endTime)
+					  	   .append("\'");
+			}else{
+				queryString.append("from Order where merchant_id=")
+						   .append(merchantId.toString())
+						   .append(" and orderTime>=\'")
+				           .append(startTime)
+				           .append("\' and orderTime<=\'")
+				           .append(endTime)
+				           .append("\'");
+			}
+			List<Order> orders = find(queryString.toString(), 
+										(page-1)*pageSize, pageSize);
+			if(orders != null && orders.size() != 0){
+				return new PageObj<Order>(orders, totalCount, pageSize, page);
+			}	
+		}
+		return null;
+	}
+	
+	@Override
+	public PageObj<Order> findByOrderTime(Date startTime, Date endTime, int page) {
+		StringBuilder totalQuery = new StringBuilder(64);
+		if(startTime == null){
+			totalQuery.append("select count(oid) from Order as order where orderTime<=")
+			          .append(endTime);
+		}else{
+			totalQuery.append("select count(oid) from Order where orderTime>=")
+			          .append(startTime)
+			          .append(" and orderTime<=")
+			          .append(endTime);
+		}
+		Long totalCount = totalCount(totalQuery.toString());
+		if(totalCount != 0){
+			StringBuilder queryString = new StringBuilder(64);
+			if(startTime == null){
+				queryString.append("from Order where orderTime<=")
+			          .append(endTime);
+			}else{
+				queryString.append("from Order where orderTime>=")
+			          .append(startTime)
+			          .append(" and orderTime<=")
+			          .append(endTime);
+			}
+			List<Order> orders = find(queryString.toString(), 
+										(page-1)*pageSize, pageSize);
+			if(orders != null && orders.size() != 0){
+				return new PageObj<Order>(orders, totalCount, pageSize, page);
+			}	
+		}
+		return null;
 	}
 
 	@Override
-	public List<Order> findByUserAndTime(String phone, Date startTime,
+	public PageObj<Order> findByUser(String phone, int page) {
+		StringBuilder totalQuery = new StringBuilder(
+				"select count(oid) from Order as order where order.user.phone=");
+		totalQuery.append(phone);
+		Long totalCount = totalCount(totalQuery.toString());
+		if(totalCount != 0){
+			StringBuilder queryString = new StringBuilder(
+					"from Order as order where order.user.phone=");
+			queryString.append(phone);
+			List<Order> list = find(queryString.toString(),
+					(page-1)*pageSize, pageSize);
+			if(list != null && list.size() != 0){
+				return new PageObj<Order>(list, totalCount, pageSize, page);
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public PageObj<Order> findByUserAndTime(String phone, Date startTime,
 			Date endTime, int page) {
-		StringBuilder queryString = new StringBuilder();
+		StringBuilder totalQuery = new StringBuilder(64);
 		if(startTime == null){
-			queryString.append("FROM Order AS order WHERE order.user.phone=")
+			totalQuery.append("select count(oid) from Order as order where order.user.phone=")
 					   .append(phone)
-					   .append(" AND orderTime<=")
+					   .append(" and orderTime<=")
 			           .append(endTime);
 		}else{
-			queryString.append("FROM Order AS order WHERE order.user.phone=")
+			totalQuery.append("from Order as order where  order.user.phone=")
 			   .append(phone)
-			   .append(" AND orderTime>=")
+			   .append(" and orderTime>=")
 	           .append(startTime)
-	           .append(" AND orderTime<=")
+	           .append(" and orderTime<=")
 	           .append(endTime);
 		}
-		return find(queryString.toString(),
-				(page-1)*PAGE_SIZE, PAGE_SIZE);
+		//获取查询结果总数量
+		Long totalCount = totalCount(totalQuery.toString());
+		if(totalCount != 0){
+			StringBuilder queryString = new StringBuilder(64);
+			if(startTime == null){
+				queryString.append("from Order as order where order.user.phone=")
+						   .append(phone)
+						   .append(" and orderTime<=")
+				           .append(endTime);
+			}else{
+				queryString.append("from Order as order where order.user.phone=")
+				   .append(phone)
+				   .append(" and orderTime>=")
+		           .append(startTime)
+		           .append(" and orderTime<=")
+		           .append(endTime);
+			}
+			List<Order> orders = find(queryString.toString(),
+										(page-1)*pageSize, pageSize);
+			if(orders != null && orders.size() != 0){
+				return new PageObj<Order>(orders, totalCount, pageSize, page);
+			}
+		}
+		return null;
 	}
 
 	

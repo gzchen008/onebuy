@@ -1,7 +1,5 @@
 package com.xianchumo.shop.service.impl;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -10,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.xianchumo.shop.dao.BaseDao;
 import com.xianchumo.shop.dao.EvaluateDao;
 import com.xianchumo.shop.entity.Evaluate;
+import com.xianchumo.shop.entity.PageObj;
 import com.xianchumo.shop.service.EvaluateService;
 /**
  * 
@@ -31,7 +30,7 @@ public class EvaluateServiceImpl extends BaseServiceImpl<Evaluate>
 	}
 
 	@Override
-	public List<Evaluate> findByMerchant(Long merchantId, int page) {
+	public PageObj<Evaluate> findByMerchant(Long merchantId, int page) {
 		return evaluateDao.findByMerchant(merchantId, page);
 	}
 	
