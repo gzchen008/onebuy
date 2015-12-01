@@ -18,8 +18,6 @@
 		var elW = el.offsetWidth;
 		var elH = el.offsetHeight;
 
-				console.log("-------------"+(bodyW-elW)/2 +"----------"+(bodyH-elH)/2);
-
 		el.style.left = (bodyW-elW)/2 + 'px';
 		el.style.top = (bodyH-elH)/2 + 'px';
 		

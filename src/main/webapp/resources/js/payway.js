@@ -52,11 +52,13 @@
     function changeStatus(){
         var status=$(this).attr("status");
         if(status==1){
-          $(this).css({"background-image":"url('../../web/img/161.png')"});
-          $(this).get(0).setAttribute("status", "0");
+          $(this).parent().nextAll().find(".star").css({"background-image":"url('../../web/img/161.png')"});
+          $(this).parent().nextAll().find(".star").attr("status","0");
       }else{
         $(this).css({"background-image":"url('../../web/img/16.png')"});
+        $(this).parent().prevAll().find(".star").css({"background-image":"url('../../web/img/16.png')"});
         $(this).get(0).setAttribute("status", "1");
+        $(this).parent().prevAll().find(".star").attr("status","1");
     }
 }
 })();

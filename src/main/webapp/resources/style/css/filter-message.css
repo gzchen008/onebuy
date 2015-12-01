@@ -138,7 +138,7 @@
   border: solid 1px #53D2D8;
 }
 .container .content .form-group .add-img {
-  position: relative;
+  float: left;
   top: 0px;
   left: 0px;
   font-size: 36px;
@@ -156,8 +156,8 @@
 .container .content .file-chooser,
 .container .content .file-input {
   position: absolute;
-  left: 65%;
-  top: 20px;
+  left: 50%;
+  top: 85px;
   margin-left: -143px;
   display: block;
   width: 287px;
@@ -189,27 +189,35 @@
   opacity: 0;
 }
 .container .content .fill-recipe-form-group {
-  float: left;
   margin-top: 20px;
-  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 280px;
 }
 .container .content .fill-recipe-form-group .input-group-addon {
   background: #A7E8EC;
 }
 .container .content .no-selected {
   position: absolute;
-  top: 215px;
-  left: 247px;
+  top: 275px;
+  left: 150px;
+}
+.container .content .no-select {
+  width: 180px;
+  float: left;
+  margin-left: 20px;
+  margin-top: 10px;
+  height: 50px;
 }
 .container .content .add-step {
-  min-width: 124px;
+  min-width: 110px;
   float: right;
-  margin: 260px 20px 0 0;
+  margin: 240px 20px 0 0;
 }
 .container .content .add-step-submit {
-  min-width: 124px;
+  min-width: 110px;
   float: right;
-  margin: 260px 62px 0 0;
+  margin: 240px 20px 0 0;
 }
 .img-load {
   position: absolute;

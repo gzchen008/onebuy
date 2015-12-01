@@ -95,22 +95,30 @@
 				padding-left:10px;
 				margin-top:6px;
 				.clearfix();
-				img{
+				.one-row{
 					.fl();
-					width:25%;
-					height:25%;
-					min-width:80px;
-					min-height:80px;
-					border-radius:25px;
-					margin-right:10px;
-				}
+					max-width: 85%;
+					.clearfix();
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					img{
+						.fl();
+						width:25%;
+						height:25%;
+						min-width:75px;
+						min-height:75px;
+						border-radius:25px;
+						margin-right:10px;
+					}	
+				}				
 				span{
 					.fr();
 					width:24px;
 					height:24px;
 					verticla-align:bottom;
 					margin-right:10px;
-					margin-top:30px;
+					margin-top:10%;
 					background-size:100% 100%;
 					background-image:url("../../img/order-down.png");
 				}
@@ -292,8 +300,8 @@ span[class="triangle"]:nth-of-type(2){
 	}
 }
 .loading-bar{
-  display: none;
-  text-align: center;
-  height: 35px;
-  line-height: 35px;
+	display: none;
+	text-align: center;
+	height: 35px;
+	line-height: 35px;
 }

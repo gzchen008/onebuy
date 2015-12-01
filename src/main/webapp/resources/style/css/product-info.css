@@ -35,7 +35,7 @@ label {
   z-index: 30;
   width: 100%;
   height: 44px;
-  background-color: #5dc890;
+  background-color: #5DC890;
 }
 .header .backspace {
   float: left;
@@ -200,19 +200,19 @@ label {
   background-image: url("../../img/Hcaiyuanzi.png") !important;
 }
 #garden .footer-active + i {
-  color: #5dc890 !important;
+  color: #5DC890 !important;
 }
 #basket .footer-active {
-  background-image: url("../../img/Hcaiyuanzi.png") !important;
+  background-image: url("../../img/Hcailanzi.png") !important;
 }
 #basket .footer-active + i {
-  color: #5dc890 !important;
+  color: #5DC890 !important;
 }
 #footer-me .footer-active {
   background-image: url("../../img/hoverMe.png") !important;
 }
 #footer-me .footer-active + i {
-  color: #5dc890 !important;
+  color: #5DC890 !important;
 }
 .border-raduis {
   border-radius: 10px;
@@ -334,7 +334,7 @@ a {
   font-size: 14px;
 }
 .love-search li a span:nth-of-type(1) {
-  color: #f43a52;
+  color: #F43A52;
 }
 .love-search li a span:nth-of-type(2) {
   color: #212121;
@@ -389,7 +389,7 @@ a {
 .product-info .information .cost span {
   float: left;
   display: inline;
-  color: #f43a52;
+  color: #F43A52;
   font-size: 24px;
   font-weight: 500;
 }
@@ -443,7 +443,7 @@ a {
 }
 .product-info .information .norms i {
   display: inline-block;
-  background-color: #5dc890;
+  background-color: #5DC890;
   color: #ffffff;
   font-size: 24px;
   font-weight: 100;

@@ -1,3 +1,4 @@
+var isLeft = false;
 $(function(){
     sizeInit();
     move_fun();
@@ -47,11 +48,13 @@ function move_fun() {
                 //右滑
                 $(".left-assortment").animate({"left":"0"},100);
                 $(".right-detail").animate({"left":"37%"},100);
+                isLeft = false;
             }
             if(touch.pageX - start_left < -100){
                 //左滑
                 $(".right-detail").animate({"left":"0"},100);
                 $(".left-assortment").animate({"left":"-37%"},100);
+                isLeft = true;
             }
         }
     });
@@ -71,7 +74,6 @@ function setTextareaPointerEvents(value) {
 
 function clickListener(){
     var $vgtbGd = $(".vegetable-garden");
-    var isLeft = false;
     $vgtbGd.click(function () {
         if(!isLeft){
             $(".right-detail").animate({"left":"0"},100);
