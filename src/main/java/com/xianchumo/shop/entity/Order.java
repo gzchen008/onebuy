@@ -33,7 +33,7 @@ public class Order implements Serializable {
 	@ManyToOne(targetEntity = Merchant.class)
 	@JoinColumn(name = "merchant_id", referencedColumnName = "mid", nullable = false)
 	private Merchant merchant;
-	@OneToMany(targetEntity = OrderItem.class, mappedBy = "order",cascade=CascadeType.ALL)
+	@OneToMany(targetEntity = OrderItem.class, mappedBy = "order", cascade = CascadeType.ALL)
 	private Set<OrderItem> goods;
 	/**
 	 * 下单时间
@@ -47,6 +47,10 @@ public class Order implements Serializable {
 	private User user;
 
 	private int orderState;// 订单状态
+	/**
+	 * 是否已评价
+	 */
+	private int evaStatus;
 
 	public Long getOid() {
 		return oid;
@@ -111,7 +115,6 @@ public class Order implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
 
 	public Date getOrderTime() {
 		return orderTime;
@@ -119,6 +122,14 @@ public class Order implements Serializable {
 
 	public void setOrderTime(Date orderTime) {
 		this.orderTime = orderTime;
+	}
+
+	public int getEvaStatus() {
+		return evaStatus;
+	}
+
+	public void setEvaStatus(int evaStatus) {
+		this.evaStatus = evaStatus;
 	}
 
 	/**
@@ -131,11 +142,11 @@ public class Order implements Serializable {
 		}
 		return sum;
 	}
-	
-	public int getAmount(){
-		int sum =0;
-		for(OrderItem oi : goods){
-			sum+=oi.getAmount();
+
+	public int getAmount() {
+		int sum = 0;
+		for (OrderItem oi : goods) {
+			sum += oi.getAmount();
 		}
 		return sum;
 	}

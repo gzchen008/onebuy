@@ -5,6 +5,10 @@
 .reset();
 .remove_dotted();
 
+.hidden{
+  display: none;
+}
+
 //头部
 @iconW: 24px;
 .header {
@@ -43,36 +47,36 @@
     text-align: center;
     .font(@size:22px,@cor:@white);
   }
-  ._search{
+  ._search {
     .fl();
-    width:83%;
-    height:30px;
-    background-color:@white;
-    border-radius:5px;
-    margin-left:10px;
-    margin-top:6px;
-    font-size:22px;
-    span{
-      width:24px;
-      height:24px;
-      margin-top:3px;
-      margin-right:10px;
-      background-size:100% 100%;
+    width: 83%;
+    height: 30px;
+    background-color: @white;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 6px;
+    font-size: 22px;
+    span {
+      width: 24px;
+      height: 24px;
+      margin-top: 3px;
+      margin-right: 10px;
+      background-size: 100% 100%;
     }
-    span:nth-of-type(1){
+    span:nth-of-type(1) {
       .fl();
-      margin-left:10px;
-      background-image:url("../../img/search.png");
+      margin-left: 10px;
+      background-image: url("../../img/search.png");
     }
-    span:nth-of-type(2){
+    span:nth-of-type(2) {
       .fr();
-      background-image:url("../../img/x.png");
+      background-image: url("../../img/x.png");
     }
-    form{
+    form {
       width: 70%;
       display: inline-block;
     }
-    .search-you-want{
+    .search-you-want {
       display: block;
       float: left;
       height: 30px;
@@ -134,8 +138,8 @@
           background-size: 100% 100%;
           .tooltip {
             display: inline-block;
-            width:24px;
-            height:24px;
+            width: 24px;
+            height: 24px;
             position: absolute;
             top: -40%;
             left: 50%;
@@ -157,24 +161,28 @@
     }
   }
 }
-#garden .footer-active{
+
+#garden .footer-active {
   background-image: url("../../img/Hcaiyuanzi.png") !important;
-  +i{
-    color:@green !important;
+  + i {
+    color: @green !important;
   }
 }
-#basket .footer-active{
+
+#basket .footer-active {
   background-image: url("../../img/Hcailanzi.png") !important;
-  +i{
-    color:@green !important;
+  + i {
+    color: @green !important;
   }
 }
-#footer-me .footer-active{
+
+#footer-me .footer-active {
   background-image: url("../../img/hoverMe.png") !important;
-  +i{
-    color:@green !important;
+  + i {
+    color: @green !important;
   }
 }
+
 //宽高
 @width: 100%;
 @height: 44px;
@@ -193,7 +201,7 @@
 //背景灰色
 @rose: #F43A52;
 //圆角弧度
-@family:"幼圆";
+@family: "幼圆";
 .border-raduis {
   border-radius: 10px;
 }
@@ -232,7 +240,10 @@ a {
   white-space: nowrap;
 }
 
-[placeholder] { font-family: '幼圆'; }
+[placeholder] {
+  font-family: '幼圆';
+}
+
 // ::-moz-placeholder {
 //     color: mediumvioletred;
 //     text-indent: 5px; /* 没有用 */
@@ -305,7 +316,10 @@ a {
 .p-right {
   .fr();
 }
+
 .shopping-num {
+  position: relative;
+  .clearfix();
   span {
     display: block;
     width: 36px;
@@ -313,7 +327,7 @@ a {
     border: solid 1px #cccccc;
     .fl();
   }
-  .adjust-background(){
+  .adjust-background() {
     background-size: 80% 80%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -331,7 +345,7 @@ a {
     .adjust-background();
   }
   .fr();
-  .count {
+  .count, .mask {
     display: block;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -350,40 +364,52 @@ a {
     -webkit-appearance: none;
     vertical-align: top;
   }
+  .mask {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -15px;
+    margin-top: -16px;
+    background: red;
+    opacity: 0;
+    width: 30px;
+    height: 32px;
+    padding: 0;
+  }
 }
 
 //猜你喜欢
-.love-search{
+.love-search {
   .clearfix();
-  li{
+  li {
     .fl();
-    width:30%;
-    padding-bottom:5px;
-    border:solid 1px #cccccc;
-    border-radius:15px;
-    margin-right:7px;
-    a{
-      display:block;
-      width:100%;
-      img{
-        display:block;
-        width:100%;
-        height:90px;
+    width: 30%;
+    padding-bottom: 5px;
+    border: solid 1px #cccccc;
+    border-radius: 15px;
+    margin-right: 7px;
+    a {
+      display: block;
+      width: 100%;
+      img {
+        display: block;
+        width: 100%;
+        height: 90px;
       }
-      i{
-        display:block;
-        width:100%;
-        font-size:16px;
-        color:@black;
+      i {
+        display: block;
+        width: 100%;
+        font-size: 16px;
+        color: @black;
       }
-      span{
-        font-size:14px;
+      span {
+        font-size: 14px;
       }
-      span:nth-of-type(1){
-        color:@rose;
+      span:nth-of-type(1) {
+        color: @rose;
       }
-      span:nth-of-type(2){
-        color:@black;
+      span:nth-of-type(2) {
+        color: @black;
       }
     }
   }

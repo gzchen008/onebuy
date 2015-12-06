@@ -41,13 +41,14 @@
 		<div class="cost">
 			<span class="price">￥20.00</span>
 			<div class="old-price">
-				<div class="old">￥100</div>
+				<div class="old">￥10000</div>
 				<div class="first-line"></div><div class="second-line"></div>
 			</div>
 			<div class="shopping-num" ng-controller="count">
 				<span ng-click="subtract(1,counter)"></span>
 				<input type="text" class="count" value="{{ counter }}" ng-model="counter" id="num"/>
 				<span ng-click="add(1,counter)"></span>
+				<em class="mask"></em>
 			</div>
 		</div>
 		<div class="divider"></div>

@@ -69,5 +69,10 @@ public class BaseServiceImpl<T> implements BaseService<T>{
 	public T load(long id) {
 		return dao.load(id);
 	}
+
+	@Override
+	public void saveOrUpdateAll(Collection<T> entities) {
+		dao.saveOrUpdateAll(entities);
+	}
 	
 }

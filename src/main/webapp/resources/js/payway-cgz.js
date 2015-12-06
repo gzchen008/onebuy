@@ -62,7 +62,7 @@
         if (status == 1) {
             //灭
             var $stars = $(this).parent().nextAll().find(".star");
-            $stars.css({"background-image": "url('../img/161.png')"});
+            $stars.css({"background-image": "url('../resources/img/161.png')"});
             $stars.attr("status", "0");
             //$stars.siblings().prop("checked", false);
             count = $(this).parent().index()+1;
@@ -70,8 +70,8 @@
         } else {
             //亮
             var $stars = $(this).parent().prevAll().find(".star");
-            $(this).css({"background-image": "url('../img/16.png')"});
-            $stars.css({"background-image": "url('../img/16.png')"});
+            $(this).css({"background-image": "url('../resources/img/16.png')"});
+            $stars.css({"background-image": "url('../resources/img/16.png')"});
             $(this).get(0).setAttribute("status", "1");
             $stars.attr("status", "1");
             //$(this).siblings().prop("checked", true);

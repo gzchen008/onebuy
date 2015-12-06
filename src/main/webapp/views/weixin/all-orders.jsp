@@ -46,7 +46,7 @@
 					</div>
 					<div class="pic">
 						<c:forEach items="${order.goods }" var="orderItem">
-							<img src="${rootPath }${orderItem.good.photoUrl}">
+							<img src="${rootPath }${orderItem.good.photoUrl}"  width="80">
 						</c:forEach>
 						<span></span>
 
@@ -54,7 +54,12 @@
 					</div>
 					<div class="divider"></div>
 					<div class="go-evaluate">
+					<c:if test="${order.evaStatus eq 0 }">
 						<a href="${rootPath }/eval/evaluate?id=${order.oid}">去评价</a>
+					</c:if>
+					<c:if test="${order.evaStatus eq 1 }">
+						<a href="#">已评价</a>
+					</c:if>
 					</div>
 				</li>
 				<div class="big-divider"></div>

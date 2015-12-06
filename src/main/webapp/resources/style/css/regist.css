@@ -30,6 +30,9 @@ a,
 label {
   outline: none;
 }
+.hidden {
+  display: none;
+}
 .header {
   position: fixed;
   z-index: 30;
@@ -247,8 +250,19 @@ a {
   display: inline;
 }
 .shopping-num {
+  position: relative;
+  *zoom: 1;
   float: right;
   display: inline;
+}
+.shopping-num:before,
+.shopping-num:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.shopping-num:after {
+  clear: both;
 }
 .shopping-num span {
   display: block;
@@ -274,7 +288,8 @@ a {
   background-repeat: no-repeat;
   background-position: center center;
 }
-.shopping-num .count {
+.shopping-num .count,
+.shopping-num .mask {
   display: block;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -293,6 +308,18 @@ a {
   text-align: center;
   -webkit-appearance: none;
   vertical-align: top;
+}
+.shopping-num .mask {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -15px;
+  margin-top: -16px;
+  background: red;
+  opacity: 0;
+  width: 30px;
+  height: 32px;
+  padding: 0;
 }
 .love-search {
   *zoom: 1;

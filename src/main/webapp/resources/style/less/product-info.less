@@ -60,34 +60,34 @@
         margin-top: 10px;
       }
       .old-price{
-        .clearfix();
-        left: 100px;
-        width: 50px !important;
+        position: relative;
+        float: left;
+        margin-left: 10px;
         margin-top: 2px;
-        position: absolute;
         .old{
-          display: block;
-          position: relative;
-          font-style: normal;
-          font-size: 17px;
-          float: left;
-          margin-top: 12px;
-          margin-left: 4px;
-          font-weight: bold;
+          font-size: 18px;
+          height: 43px;
+          line-height: 43px;
+          color: @black;
         }
         .first-line{
-          display: block;
           position: absolute;
-          left: 5px;
-          top: 22px;
-          width: 45px;
-          height: 0;
-          border: solid 1px #656565;
+          width: 100%;
+          left: 50%;
+          margin-left: -50%+5px;
+          top: 50%;
+          border-bottom: solid 1px @black;
         }
       }
     }
     .shopping-num{
       margin-bottom: 5px;
+      .mask{
+        width: 36px;
+        height: 38px;
+        margin-left: -18px;
+        margin-top: -19px;
+      }
     }
     .norms-span {
       font-size: 18px;

@@ -14,6 +14,8 @@ public interface BaseService<T> {
 	
 	void deleteAll(Collection<T> entities);
 	
+	void saveOrUpdateAll(Collection<T> entities);
+	
 	void deleteByKey(Long id);
 	
 	T get(long id);
