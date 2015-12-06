@@ -18,4 +18,6 @@ public interface EvaluateDao extends BaseDao<Evaluate>{
 	 * @return
 	 */
 	public PageObj<Evaluate> findByMerchant(Long merchantId, int page);
+
+	public PageObj<Evaluate> fidByGood(Long gid, int size, int page);
 }

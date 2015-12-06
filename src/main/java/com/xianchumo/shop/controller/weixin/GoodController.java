@@ -14,9 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.xianchumo.shop.entity.CartItem;
+import com.xianchumo.shop.entity.Evaluate;
 import com.xianchumo.shop.entity.Good;
 import com.xianchumo.shop.entity.ShoppingCart;
 import com.xianchumo.shop.exception.ShopParameterExceptioin;
+import com.xianchumo.shop.service.EvaluateService;
 import com.xianchumo.shop.service.GoodService;
 import com.xianchumo.shop.service.KindService;
 import com.xianchumo.shop.service.ShoppingCartService;
@@ -40,15 +42,17 @@ public class GoodController {
 	private KindService kindService;
 	@Autowired
 	private ShoppingCartService shoppingCartService;
+	@Autowired
+	private EvaluateService evaluateService;
 
 	/**
 	 * 关键字搜索
 	 */
 	@RequestMapping(value = "/search")
-	public String search(String keywords, HttpServletRequest request,HttpSession session) {
-		//保存搜索记录
+	public String search(String keywords, HttpServletRequest request, HttpSession session) {
+		// 保存搜索记录
 		Set<String> history = (Set<String>) session.getAttribute("history");
-		if(history == null){
+		if (history == null) {
 			history = new HashSet<String>();
 			session.setAttribute("history", history);
 		}
@@ -66,18 +70,18 @@ public class GoodController {
 	 * 按类别查询
 	 */
 	@RequestMapping(value = "/product")
-	public String findByCategory(Long kid, HttpServletRequest request,HttpSession session) {
+	public String findByCategory(Long kid, HttpServletRequest request, HttpSession session) {
 		if (kid == null) { // 没有输入分类
 			kid = 1l;
 		}
 		List<Good> goods = goodService.findByCategory(kid);
 		request.setAttribute("goods", goods);
 		request.setAttribute("currentKid", kid);
-		//从购物车中获取数量
+		// 从购物车中获取数量
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingCart");
 		Set cartdata = new HashSet();
-		for(CartItem ci : cart.getCartItems()){
-			Map<String,Object> temp = new HashMap<String,Object>();
+		for (CartItem ci : cart.getCartItems()) {
+			Map<String, Object> temp = new HashMap<String, Object>();
 			temp.put("gid", ci.getGood().getGid());
 			temp.put("count", ci.getQuantity());
 			cartdata.add(temp);
@@ -130,6 +134,10 @@ public class GoodController {
 		request.setAttribute("good", good);
 		request.setAttribute("cartItem", ci);
 		request.setAttribute("total", shoppingCart.getTotal());
+
+		// 评价
+		List<Evaluate> evals = evaluateService.fidByGood(good, 2, 1);
+		request.setAttribute("evals", evals);
 		return "weixin/product-info";
 	}
 

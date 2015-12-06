@@ -40,7 +40,7 @@
 			</div>
 			<div class="shopping-num">
 				<span onclick="deleteOne();"></span> <input id="quantity" type="text" class="count" value="${cartItem.quantity }" /> <span onclick="addOne();"></span>
-				<em class="mask"></em>
+			<em class="mask"></em>		
 			</div>
 		</div>
 		<div class="divider"></div>
@@ -52,52 +52,16 @@
 			<span class="norms-span">配送服务</span> <i class="time-tip">可选时间点送达，请至少提前一小时下单</i>
 		</div>
 		<div class="divider"></div>
-		<!--<div class="dispatching">
+		<div class="dispatching">
 			<span class="norms-span">商品评价</span>
 
 			<div class="p-right">
 				<span><i>${good.score }</i>分</span><i></i>
 			</div>
 		</div>
-		<div class="divider"></div>-->
-		<div class="dispatching">
-			<span class="vgtb-teach norms-span">菜谱教程</span>
-		</div>
-		<div class="divider"></div>
-		<div class="dispatching one-rec">
-			<a class="one-recommend" href="#">
-				<span class="norms-span">蒜蓉小白菜</span><span class="next-page"></span><img src="${rootPath }/resources/img/vedetable.jpg">
-			</a>
-		</div>
-		<div class="divider"></div>
-		<div class="dispatching one-rec">
-			<a class="one-recommend" href="#">
-				<span class="norms-span">白菜炒瘦肉</span><span class="next-page"></span><img src="${rootPath }/resources/img/vedetable.jpg">
-			</a>
-		</div>
 		<div class="divider"></div>
 		<div class="dispatching">
-			<a class="more" href="#">
-				<span class="norms-span">点此查看更多</span>
-			</a>
-		</div>
-		<div class="divider"></div>
-		<div class="dispatching">
-			<span class="pro-comment norms-span">商品评价</span>
-		</div>
-		<div class="divider"></div>
-		<div class="dispatching">
-			<span class="norms-span comment">太白金星：很新鲜很美味</span>
-		</div>
-		<div class="divider"></div>
-		<div class="dispatching">
-			<span class="norms-span comment">三三两：吃起来味道不错，菜谱很贴心</span>
-		</div>
-		<div class="divider"></div>
-		<div class="dispatching">
-			<a class="more" href="#">
-				<span class="norms-span">点此查看更多</span>
-			</a>
+			<span class="norms-span">食谱推荐</span>
 		</div>
 		<div class="divider"></div>
 	</div>

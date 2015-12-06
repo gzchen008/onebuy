@@ -28,6 +28,10 @@ public class EvaluateDaoImpl extends BaseDaoImpl<Evaluate>
 		}
 		return null;
 	}
+	@Override
+	public PageObj<Evaluate> fidByGood(Long gid, int size, int page) {
+		return null;
+	}
 
 	
 	
