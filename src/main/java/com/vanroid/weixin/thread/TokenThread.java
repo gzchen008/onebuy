@@ -6,11 +6,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.vanroid.onebuy.conf.ShopConfig;
 import com.vanroid.weixin.pojo.AccessToken;
 import com.vanroid.weixin.pojo.JsApiTicket;
 import com.vanroid.weixin.pojo.WeixinHolder;
 import com.vanroid.weixin.util.WeixinUtil;
-import com.xianchumo.shop.conf.ShopConfig;
 
 /**
  * 

@@ -29,11 +29,10 @@
 		</property>
 	</bean>
 	<!-- 微信配置 -->
-	<bean id="shopConfig" class="com.xianchumo.shop.conf.ShopConfig">
+	<bean id="shopConfig" class="com.vanroid.onebuy.conf.ShopConfig">
 		<property name="appid" value="wx360ead161feb89ca" />
 		<property name="secret" value="19339cf31bae1c6c161596fbaaa1150c" />
 		<property name="weixinCallbackUrl" value="http://xianchumo.eicp.net/shop/user/weixinCallback" />
-<!-- 		<property name="weixinCallbackUrl" value="http://xianchumo.tunnel.mobi/shop/user/weixinCallback" /> -->
 	</bean>
 	<!-- 获得token的线程 -->
 	<!-- <bean id="tokenThread" class="com.vanroid.weixin.thread.TokenThread">
@@ -86,7 +85,7 @@
 		<!-- 自动扫描注解方式配置的hibernate类文件 -->
 		<property name="packagesToScan">
 			<list>
-				<value>com.xianchumo.shop.entity</value>
+				<value>com.vanroid.onebuy.entity</value>
 			</list>
 		</property>
 	</bean>
