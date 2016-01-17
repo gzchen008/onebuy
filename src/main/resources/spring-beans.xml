@@ -10,20 +10,16 @@
 	http://www.springframework.org/schema/aop/spring-aop.xsd
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
-	<!-- 自动扫描包 -->
-	<context:component-scan base-package="com.vanroid.onebuy"></context:component-scan>
-	<!-- 启用自动装配 -->
-	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
 
-
-	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>classpath*:config.properties</value>
-			</list>
-		</property>
+	<!-- 微信配置 -->
+	<bean id="shopConfig" class="com.vanroid.onebuy.conf.ShopConfig">
+		<property name="appid" value="wx360ead161feb89ca" />
+		<property name="secret" value="19339cf31bae1c6c161596fbaaa1150c" />
+		<property name="weixinCallbackUrl" value="http://xianchumo.eicp.net/shop/user/weixinCallback" />
 	</bean>
-	<import resource="spring-hibernate.xml"/>
-	<import resource="spring-beans.xml"/>
+	<!-- 获得token的线程 -->
+	<!-- <bean id="tokenThread" class="com.vanroid.weixin.thread.TokenThread"> </bean> -->
+	<!-- 初始化程序操作 -->
+	<!-- <bean id="initShop" class="com.xianchumo.shop.conf.InitShop"> </bean> -->
 
 </beans>

@@ -30,7 +30,7 @@
   </filter-mapping>
   <filter>
     <filter-name>shopFilter</filter-name>
-    <filter-class>com.xianchumo.shop.filter.ShopFilter</filter-class>
+    <filter-class>com.vanroid.onebuy.filter.ShopFilter</filter-class>
     <init-param>
       <param-name>encoding</param-name>
       <param-value>UTF-8</param-value>
