@@ -8,6 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -25,7 +27,7 @@ import javax.persistence.TemporalType;
 @Table(name = "ob_stage")
 public class Stage {
 	
-	private long id;
+	private Long id;
 	private Good good;
 	private Integer num;
 	private Integer totalPrice;
@@ -44,6 +46,7 @@ public class Stage {
 	private Set<Code> codes = new HashSet<Code>();
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}

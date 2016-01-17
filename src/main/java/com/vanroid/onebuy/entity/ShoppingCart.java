@@ -3,6 +3,8 @@ package com.vanroid.onebuy.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -17,16 +19,17 @@ import javax.persistence.Table;
 @Table(name = "ob_shoppingcart")
 public class ShoppingCart {
 	
-	private Integer id;
+	private Long id;
 	private User ownedUser;
 	private Good good;
 	private Integer quality;
 	
 	@Id
-	public Integer getId() {
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -55,14 +58,19 @@ public class ShoppingCart {
 	public void setQuality(Integer quality) {
 		this.quality = quality;
 	}
-	
-	public ShoppingCart(Integer id, User ownedUser, Good good, Integer quality) {
+	public ShoppingCart(Long id, User ownedUser, Good good, Integer quality) {
 		super();
 		this.id = id;
 		this.ownedUser = ownedUser;
 		this.good = good;
 		this.quality = quality;
 	}
+	public ShoppingCart() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+
 	
 	
 }

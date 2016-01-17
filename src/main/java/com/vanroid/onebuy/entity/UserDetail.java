@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -18,7 +20,7 @@ import javax.persistence.Table;
 *@date 2016年1月17日 下午2:31:28
 */
 @Entity
-@Table(name = "ob_userdetail")
+@Table(name = "ob_user_detail")
 public class UserDetail {
 	
 	private long id;
@@ -28,6 +30,7 @@ public class UserDetail {
 	private String[] address;
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}

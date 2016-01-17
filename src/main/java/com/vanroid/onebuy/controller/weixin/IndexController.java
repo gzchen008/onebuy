@@ -1,6 +1,7 @@
 package com.vanroid.onebuy.controller.weixin;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,6 +25,11 @@ public class IndexController {
 		user.setPassword("23423423");
 		user.setUsername("asdfgtrbbgre");
 		return user;
+	}
+	@RequestMapping("freemarker")
+	public String freemarker(Model model){
+		model.addAttribute("name", "cgz");
+		return "weixin/test";
 	}
 
 }

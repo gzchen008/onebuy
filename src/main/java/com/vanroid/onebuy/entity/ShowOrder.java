@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -19,15 +21,16 @@ import javax.persistence.TemporalType;
 @Table(name = "ob_showorder")
 public class ShowOrder {
 	
-	private Integer id;
+	private Long id;
 	private Order order;
 	private Date time;
 	
 	@Id
-	public Integer getId() {
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -48,7 +51,7 @@ public class ShowOrder {
 		this.time = time;
 	}
 	
-	public ShowOrder(Integer id, Order order, Date time) {
+	public ShowOrder(Long id, Order order, Date time) {
 		super();
 		this.id = id;
 		this.order = order;
