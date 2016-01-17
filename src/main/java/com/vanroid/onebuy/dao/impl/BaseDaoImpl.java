@@ -23,13 +23,12 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	@Autowired
 	public void setSessionFactoryOverride(SessionFactory sessionFactory) {
 		super.setSessionFactory(sessionFactory);
-		
+
 	}
 
 	public BaseDaoImpl() {
 		// 获得Dao操作的类的类型
-		ParameterizedType pt = (ParameterizedType) this.getClass()
-				.getGenericSuperclass();
+		ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
 		this.clazz = (Class) pt.getActualTypeArguments()[0];
 	}
 
@@ -123,7 +122,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	}
 
 	// 使用带参数的HSQL语句增加、更新、删除实体
-	public int bulkUpdate(String  queryString, Object[] values) {
+	public int bulkUpdate(String queryString, Object[] values) {
 		return getHibernateTemplate().bulkUpdate(queryString, values);
 	}
 
@@ -132,14 +131,9 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 		return getHibernateTemplate().find(queryString);
 	}
 
-	public List<T> find(String queryString,int firstResult,int maxResult){
-		return this.getHibernateTemplate()//
-				.getSessionFactory()//
-				.openSession()//
-				.createQuery(queryString)//
-				.setFirstResult(firstResult)//
-				.setMaxResults(maxResult)//
-				.list();
+	public List<T> find(String queryString, int firstResult, int maxResult) {
+		return this.getHibernateTemplate().getSessionFactory().openSession().createQuery(queryString)
+				.setFirstResult(firstResult).setMaxResults(maxResult).list();
 	}
 
 	// 使用带参数的HSQL语句检索数据
@@ -149,8 +143,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 
 	// 使用带命名的参数的HSQL语句检索数据
 	public List find(String queryString, String[] paramNames, Object[] values) {
-		return getHibernateTemplate().findByNamedParam(queryString, paramNames,
-				values);
+		return getHibernateTemplate().findByNamedParam(queryString, paramNames, values);
 	}
 
 	// 使用HSQL语句检索数据，返回 Iterator
@@ -184,19 +177,18 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	public Long totalCount() {
 		StringBuilder queryString = new StringBuilder("select count(*) from ");
 		queryString.append(clazz);
-		return (Long)this.getHibernateTemplate()//
-						 .getSessionFactory()//
-						 .openSession()//
-						 .createQuery(queryString.toString())
-						 .uniqueResult();//
+		return (Long) this.getHibernateTemplate()//
+				.getSessionFactory()//
+				.openSession()//
+				.createQuery(queryString.toString()).uniqueResult();//
 	}
+
 	@Override
 	public Long totalCount(String queryString) {
-		return (Long)this.getHibernateTemplate()//
-						 .getSessionFactory()//
-						 .openSession()//
-						 .createQuery(queryString)
-						 .uniqueResult();//
+		return (Long) this.getHibernateTemplate()//
+				.getSessionFactory()//
+				.openSession()//
+				.createQuery(queryString).uniqueResult();//
 	}
-	
+
 }

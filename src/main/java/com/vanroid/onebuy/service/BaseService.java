@@ -22,7 +22,7 @@ public interface BaseService<T> {
 	
 	T load(long id);
 
-	List findAll();
+	List<T> findAll();
 
-	List findPageList(String queryString ,int pageIndex, int pageSizes);
+	List<T> findPageList(String queryString ,int pageIndex, int pageSizes);
 }
