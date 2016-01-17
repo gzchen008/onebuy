@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 /**
 *@author kaiscript
-*2016年1月17日 下午2:31:28
+*@date 2016年1月17日 下午2:31:28
 */
 @Entity
 @Table(name = "ob_userdetail")
@@ -25,7 +25,7 @@ public class UserDetail {
 	private User user;
 	private Set<Order> orders = new HashSet<Order>();
 	private Set<Good> goods = new HashSet<Good>();
-	private String address;
+	private String[] address;
 	
 	@Id
 	public long getId() {
@@ -59,14 +59,14 @@ public class UserDetail {
 		this.goods = goods;
 	}
 	
-	@Column(length = 65535)
-	public String getAddress() {
+	@Column
+	public String[] getAddress() {
 		return address;
 	}
-	public void setAddress(String address) {
+	public void setAddress(String[] address) {
 		this.address = address;
 	}
-	public UserDetail(long id, User user, Set<Order> orders, Set<Good> goods, String address) {
+	public UserDetail(long id, User user, Set<Order> orders, Set<Good> goods, String[] address) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -74,7 +74,6 @@ public class UserDetail {
 		this.goods = goods;
 		this.address = address;
 	}
-	
 	
 	
 }

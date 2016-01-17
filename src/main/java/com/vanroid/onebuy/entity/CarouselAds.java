@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 /**
 *@author kaiscript
-*2016年1月17日 下午3:49:39
+*@date 2016年1月17日 下午3:49:39
 */
 @Entity
 @Table(name = "ob_carousel_ads")

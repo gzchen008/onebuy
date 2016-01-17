@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
 
 /**
 *@author kaiscript
-*2016年1月17日 下午2:41:25
+*@date 2016年1月17日 下午2:41:25
 */
 @Entity
 @Table(name = "ob_order")
@@ -81,12 +81,17 @@ public class Order {
 	}
 	
 	@ManyToOne()
-	@JoinColumn(name = "userdetail_id")
+	@JoinColumn(name = "userdetail_id",nullable = false)
 	public UserDetail getUserDetail() {
 		return userDetail;
 	}
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
+	}
+	
+	
+	public Order() {
+		super();
 	}
 	public Order(Integer id, Stage stage, User user, Date time, ShowOrder showOrder, CarouselAds carouselAds,
 			UserDetail userDetail) {
@@ -99,8 +104,6 @@ public class Order {
 		this.carouselAds = carouselAds;
 		this.userDetail = userDetail;
 	}
-	
-	
 	
 	
 }

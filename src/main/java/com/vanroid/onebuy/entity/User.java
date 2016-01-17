@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 /**
  * @author kaiscript
- * 2016年1月17日 下午2:35:00 
+ * @date 2016年1月17日 下午2:35:00 
  */
 @Entity
 @Table(name = "ob_user")

@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 
 /**
 *@author kaiscript
-*2016年1月17日 下午3:46:34
+*@date 2016年1月17日 下午3:46:34
 */
 @Entity
 @Table(name = "ob_showorder")

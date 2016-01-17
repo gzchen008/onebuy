@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 /**
 *@author kaiscript
-*2016年1月17日 下午4:40:57
+*@date 2016年1月17日 下午4:40:57
 */
 @Entity
 @Table(name = "ob_code")

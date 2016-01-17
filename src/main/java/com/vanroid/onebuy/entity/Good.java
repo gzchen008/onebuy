@@ -1,7 +1,5 @@
 package com.vanroid.onebuy.entity;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +12,7 @@ import javax.persistence.Table;
 
 /**
 *@author kaiscript
-*2016年1月17日 下午2:42:44
+*@date 2016年1月17日 下午2:42:44
 */
 @Entity
 @Table(name = "ob_good")
@@ -78,13 +76,19 @@ public class Good {
 	}
 	
 	@ManyToOne()
-	@JoinColumn(name = "userdetail_id")
+	@JoinColumn(name = "userdetail_id",nullable= false)
 	public UserDetail getUserDetail() {
 		return userDetail;
 	}
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
 	}
+	
+	
+	public Good() {
+		super();
+	}
+	
 	public Good(long id, String name, String mainPhoto, String[] detailPhotos, Stage stage, ShoppingCart shoppingCart,
 			UserDetail userDetail) {
 		super();
@@ -96,6 +100,7 @@ public class Good {
 		this.shoppingCart = shoppingCart;
 		this.userDetail = userDetail;
 	}
+	
 	
 	
 }
