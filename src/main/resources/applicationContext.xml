@@ -91,7 +91,7 @@
 	</bean>
 
 	<!-- 配置事务管理器 -->
-	<bean name="transactionManager"
+	<bean name="transaczztionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
