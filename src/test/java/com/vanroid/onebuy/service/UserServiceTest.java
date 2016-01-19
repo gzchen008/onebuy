@@ -35,6 +35,11 @@ public class UserServiceTest {
 		}
 	}
 	@Test
+	public void testload(){
+		User user = userService.load(1);
+		System.out.println(user.getPassword());
+	}
+	@Test
 	public void testFind(){
 		List<User> list = userService.findAll();
 		for(User user : list){

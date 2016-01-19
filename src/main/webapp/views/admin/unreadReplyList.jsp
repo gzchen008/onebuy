@@ -15,7 +15,7 @@
 				<a>投诉管理</a>
 			</li>
 			<li>
-				<strong>查看投诉</strong>
+				<strong>查看新回复</strong>
 			</li>
 		</ol>
 	</div>
@@ -27,67 +27,51 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="ibox float-e-margins">
-				<div class="ibox-title">
-					<h5>
-						基本 <small>查找</small>
-					</h5>
-					<div class="ibox-tools">
-						<a class="collapse-link">
-							<i class="fa fa-chevron-up"></i>
-						</a>
-						<a class="dropdown-toggle" data-toggle="dropdown" href="table_data_tables.html#">
-							<i class="fa fa-wrench"></i>
-						</a>
 
-						<a class="close-link">
-							<i class="fa fa-times"></i>
-						</a>
-					</div>
-				</div>
 				<div class="ibox-content">
 
 					<table class="table table-striped table-bordered table-hover dataTables-example">
 						<thead>
 							<tr>
 								<th>案例号</th>
-								<th>日期</th>
-								<th>联系人</th>
-								<th>联系方式</th>
-								<th>邮箱</th>
-								<th>类型</th>
-								<th>主要内容</th>
+								<th>用户</th>
+								<th>时间</th>
+								<th>内容</th>
+								<th>回复</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${cases}" var="caseInfo">
+							<c:forEach items="${unReadList}" var="unreadInfo">
 								<tr class="gradeA">
 									<td>
-										<a href="${detailHref }?id=${caseInfo.id }">${caseInfo.caseId }</a>
+										<a  href="<c:url value="/admin/showProcessDetail"/>?id=${unreadInfo.cid }">${unreadInfo.caseId }</a>
+									</td>
+									<td><div><img width="40" src="${unreadInfo.headImg }"/>${unreadInfo.nickname }
+									</div>
+									</td>
+									<td>${unreadInfo.rTime }</td>
+									<td class="center">
+										<c:if test="${unreadInfo.contentType eq 1 }">
+											<c:if test="${fn:length(unreadInfo.content )>20}">
+											${fn:substring(unreadInfo.content,0 ,20 )}...
+											</c:if>
+											<c:if test="${fn:length(unreadInfo.content)<20}">${unreadInfo.content}</c:if>
+										</c:if>
+										<c:if test="${unreadInfo.contentType eq 2 }">
+											<img width="100" src="<c:url value="/upload/replyImg/"/>${unreadInfo.content}" />
+										</c:if>
 									</td>
 									<td>
-										<c:if test="${fn:length(caseInfo.submitTime.toString() )>10}">
-											${fn:substring(caseInfo.submitTime.toString(),0 ,10 )}
-											</c:if>
-										<c:if test="${fn:length(caseInfo.submitTime.toString())<10}">${caseInfo.submitTime}</c:if>
-									</td>
-									<td>${caseInfo.realName }</td>
-									<td>${caseInfo.contact }</td>
-									<td>${caseInfo.mail }</td>
-									<td class="center">${caseInfo.typeName }</td>
-									<td class="center">
-										<c:if test="${fn:length(caseInfo.content )>20}">
-											${fn:substring(caseInfo.content,0 ,20 )}...
-											</c:if>
-										<c:if test="${fn:length(caseInfo.content)<20}">${caseInfo.content}</c:if>
+										<a target="_blank" href="<c:url value="/admin/showProcessDetail"/>?id=${unreadInfo.cid }">答复</a>
 									</td>
 								</tr>
 							</c:forEach>
-
+						<c:if test="${empty unReadList }">暂无新消息</c:if>
 
 						</tbody>
 						<tfoot>
 							<tr>
-							
+
 							</tr>
 						</tfoot>
 					</table>
