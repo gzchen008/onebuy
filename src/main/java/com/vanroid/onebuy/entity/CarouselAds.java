@@ -42,6 +42,10 @@ public class CarouselAds {
 		this.id = id;
 		this.order = order;
 	}
+	public CarouselAds() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 }

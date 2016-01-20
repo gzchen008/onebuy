@@ -55,6 +55,7 @@ public class UserDetail {
 	}
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "userDetail")
+	@Column(nullable= true)
 	public Set<Good> getGoods() {
 		return goods;
 	}
@@ -76,6 +77,10 @@ public class UserDetail {
 		this.orders = orders;
 		this.goods = goods;
 		this.address = address;
+	}
+	public UserDetail() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	

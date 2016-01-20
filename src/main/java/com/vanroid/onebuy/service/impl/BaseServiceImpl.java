@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.vanroid.onebuy.common.Pager;
 import com.vanroid.onebuy.dao.BaseDao;
 import com.vanroid.onebuy.service.BaseService;
 
@@ -74,5 +75,11 @@ public class BaseServiceImpl<T> implements BaseService<T>{
 	public void saveOrUpdateAll(Collection<T> entities) {
 		dao.saveOrUpdateAll(entities);
 	}
+
+	@Override
+	public Pager findByPager(Pager pager) {
+		return dao.findByPager(pager);
+	}
+	
 	
 }

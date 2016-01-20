@@ -1,6 +1,8 @@
 package com.vanroid.onebuy.entity;
 
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -24,6 +28,7 @@ public class Good {
 	private String name;
 	private String mainPhoto;
 	private String[] detailPhotos;
+	private Date time;	
 	private Stage stage;
 	private ShoppingCart shoppingCart;
 	private UserDetail userDetail;
@@ -62,6 +67,14 @@ public class Good {
 		this.detailPhotos = detailPhotos;
 	}
 	
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getTime() {
+		return time;
+	}
+	public void setTime(Date time) {
+		this.time = time;
+	}
+	
 	@OneToOne(mappedBy = "good")
 	public Stage getStage() {
 		return stage;
@@ -79,7 +92,7 @@ public class Good {
 	}
 	
 	@ManyToOne()
-	@JoinColumn(name = "userdetail_id",nullable= false)
+	@JoinColumn(name = "userdetail_id",nullable= true)
 	public UserDetail getUserDetail() {
 		return userDetail;
 	}
@@ -91,19 +104,18 @@ public class Good {
 	public Good() {
 		super();
 	}
-	
-	public Good(long id, String name, String mainPhoto, String[] detailPhotos, Stage stage, ShoppingCart shoppingCart,
-			UserDetail userDetail) {
+	public Good(long id, String name, String mainPhoto, String[] detailPhotos, Date time, Stage stage,
+			ShoppingCart shoppingCart, UserDetail userDetail) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.mainPhoto = mainPhoto;
 		this.detailPhotos = detailPhotos;
+		this.time = time;
 		this.stage = stage;
 		this.shoppingCart = shoppingCart;
 		this.userDetail = userDetail;
 	}
-	
 	
 	
 }

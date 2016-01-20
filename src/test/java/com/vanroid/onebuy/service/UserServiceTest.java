@@ -47,4 +47,12 @@ public class UserServiceTest {
 		}
 		List<User> list2 = userService.findAll();
 	}
+	
+	@Test
+	public void testOneToOneLazy(){
+		User u = userService.get(41);
+		System.out.println(u.getUserDetail().getClass()); //proxy: UserDetail_$$xxxxx 
+		System.out.println(u.getUserDetail().getId());
+		
+	}
 }
