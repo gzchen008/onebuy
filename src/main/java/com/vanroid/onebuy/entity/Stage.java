@@ -104,7 +104,7 @@ public class Stage {
 	}
 	
 	@Temporal(value = TemporalType.TIMESTAMP)
-	@Column
+	@Column(nullable = true)
 	public Date getEndTime() {
 		return endTime;
 	}

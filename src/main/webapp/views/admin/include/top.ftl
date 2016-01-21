@@ -12,7 +12,7 @@
 <meta name="description" content="">
 
 <link href="${rootPath}/resources/css/admin/bootstrap.min.css" rel="stylesheet">
-<link href="${rootPath}/resources/css/admin/font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="${rootPath}/resources/css/admin/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet">
 
 <!-- Morris -->
 <link href="${rootPath}/resources/css/admin/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
@@ -81,10 +81,10 @@
 						</a>
 						<ul class="nav nav-second-level">
 							<li>
-								<a href="${rootPath}/resources/admin/setting/indexPhoto"/>?id=1">首页图片一</a>
+								<a href="${rootPath}/resources/admin/setting/indexPhoto"?id=1">首页图片一</a>
 							</li>
 							<li>
-								<a href="${rootPath}/resources/admin/setting/indexPhoto"/>?id=2">首页图片二</a>
+								<a href="${rootPath}/resources/admin/setting/indexPhoto"?id=2">首页图片二</a>
 							</li>
 						</ul>
 					</li>

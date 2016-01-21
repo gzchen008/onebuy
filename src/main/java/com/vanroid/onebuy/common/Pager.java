@@ -52,15 +52,15 @@ public class Pager {
 
 	public void init() {
 
-		previousPage();
-		nextPage();
-		totalPage();
+		initPreviousPage();
+		initNextPage();
+		initTotalPage();
 	}
 
 	/**
 	 * 初始化 总页数
 	 */
-	public void totalPage() {
+	public void initTotalPage() {
 		if (totalCount % pageSize == 0) {
 			totalPage = totalCount / pageSize;
 		} else {
@@ -72,7 +72,7 @@ public class Pager {
 	/**
 	 * 初始化 是否有上一页 参数 hasPreviousPage
 	 */
-	public void previousPage() {
+	public void initPreviousPage() {
 		if (pageIndex == 1) {
 			hasPreviousPage = false;
 		} else {
@@ -83,7 +83,7 @@ public class Pager {
 	/**
 	 * 初始化 是否有下一页 参数 hasNextPage
 	 */
-	public void nextPage() {
+	public void initNextPage() {
 		if (pageIndex == totalPage) {
 			hasNextPage = false;
 		} else {

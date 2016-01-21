@@ -5,4 +5,6 @@ eclipse.preferences.version=1
 encoding//src/main/webapp/views/admin/goods.ftl=UTF-8
 encoding//src/main/webapp/views/admin/include/top.ftl=UTF-8
 encoding//src/main/webapp/views/admin/index.ftl=UTF-8
+encoding//src/main/webapp/views/admin/macro/pager.ftl=UTF-8
+encoding//src/main/webapp/views/admin/test/pagerTest.ftl=UTF-8
 encoding/<project>=UTF-8
