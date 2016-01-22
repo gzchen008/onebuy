@@ -1,6 +1,5 @@
 package com.vanroid.onebuy.service.impl;
 
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;

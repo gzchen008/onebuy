@@ -56,7 +56,7 @@
 						<div class="logo-element">H+</div>
 					</li>
 					<li class="active">
-						<a href="goods">
+						<a href="${rootPath}/admin/goods">
 							<i class="fa fa-th-large"></i> <span class="nav-label">商品管理</span>
 						</a>
 						

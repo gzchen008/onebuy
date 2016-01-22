@@ -7,6 +7,7 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+  
   <servlet>
     <servlet-name>appServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -20,6 +21,7 @@
     <servlet-name>appServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+  
   <filter>
     <filter-name>hibernateFilter</filter-name>
     <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
@@ -28,6 +30,7 @@
     <filter-name>hibernateFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  
   <filter>
     <filter-name>shopFilter</filter-name>
     <filter-class>com.vanroid.onebuy.filter.ShopFilter</filter-class>

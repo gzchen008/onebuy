@@ -22,11 +22,11 @@ import javax.persistence.TemporalType;
 
 /**
 *@author kaiscript
-*@date 2016年1月17日 下午3:01:36
+*@date 2016年1月22日 下午9:01:36
 */
 @Entity
-@Table(name = "ob_stage")
-public class Stage {
+@Table(name = "ob_latest_stage")
+public class LatestStage {
 	
 	private Long id;
 	private Good good;
@@ -171,14 +171,15 @@ public class Stage {
 		this.ifDelivery = ifDelivery;
 	}
 	
-	@OneToMany(cascade= CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="stage")
+	@OneToMany(cascade= CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="latestStage")
 	public Set<Code> getCodes() {
 		return codes;
 	}
 	public void setCodes(Set<Code> codes) {
 		this.codes = codes;
 	}
+	public LatestStage() {
+		super();
+	}
 	
-	
-
 }

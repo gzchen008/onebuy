@@ -1,5 +1,5 @@
 <!-- COMMON HEAD -->
-<#include "include/top.ftl">
+<#include "../include/top.ftl">
 <!-- COMMON HEAD -->
 <!-- 内页导航开始 -->
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -49,24 +49,19 @@
 							<table class="table table-hover">
 
 								<tbody>
-									<#list pager.datas as good> 
-									<#assign stage = good.stage/>
-									<tr>
+								
+									<#macro repeat goods>
+										<#list goods as good>
+											<#nested >
+										</#list>
+									</#macro>
+									<@repeat goods=pager.datas ;>
+										<tr>
 										<td class="project-status">
-										<#switch stage.status>
-										
-										<#case 1>
-										<span class="label label-primary">未购满未揭晓 </span><#break> 
-										<#case 2>
-										<span class="label label-primary">已购满待揭晓</span><#break> 
-										<#case 3>
-										<span class="label label-primary">已揭晓 </span><#break>
-										<#default>
-										<span class="label label-primary">结束 </span>
-										</#switch>
-										
+										<#import "../macro/judge_stage.ftl" as s/>
+										<@s.judge stage.status/>
 										</td>
-										<td class="project-title"><a href="project_detail.html">${good.name}</a>
+										<td class="project-title"><a href="goods/detail/${good.id}">${good.name!}</a>
 											<br> <small>创建于${good.time}</small></td>
 										<td class="project-completion">
 										<small>当前进度：${(stage.purchasedQuantity/stage.quantity)?string.percent}
@@ -79,12 +74,41 @@
 											</div></td>
 										<td class="project-completion">
 										总价格:${stage.totalPrice}</td>
-										<td class="project-actions"><a href="projects.html#"
+										<td class="project-actions"><a href=""
+											class="btn btn-white btn-sm"><i class="fa fa-folder"></i>
+												查看 </a> <a href="projects.html#" class="btn btn-white btn-sm"><i
+												class="fa fa-pencil"></i> 编辑 </a></td>
+										</tr>
+									</@repeat>
+									
+									<tr>
+										<td class="project-status">
+										<#import "../macro/judge_stage.ftl" as s/>
+										<@s.judge stage.status/>
+										</td>
+										<td class="project-title"><a href="goods/detail/${good.id}">${good.name!}</a>
+											<br> <small>创建于${good.time}</small></td>
+										<td class="project-completion">
+										<small>当前进度：${(stage.purchasedQuantity/stage.quantity)?string.percent}
+												(${stage.purchasedQuantity}/${stage.quantity})
+										</small>
+											<div class="progress progress-mini">
+												<div
+													style="width: ${(stage.purchasedQuantity/stage.quantity)?string.percent};"
+													class="progress-bar"></div>
+											</div></td>
+										<td class="project-completion">
+										总价格:${stage.totalPrice}</td>
+										<td class="project-actions"><a href=""
 											class="btn btn-white btn-sm"><i class="fa fa-folder"></i>
 												查看 </a> <a href="projects.html#" class="btn btn-white btn-sm"><i
 												class="fa fa-pencil"></i> 编辑 </a></td>
 									</tr>
-									</#list>
+									
+									
+									
+									
+									
 								</tbody>
 
 							</table>
@@ -92,7 +116,7 @@
 					</div>
 					<br />
 					
-					<#import "macro/pager.ftl" as page>
+					<#import "../macro/pager.ftl" as page>
 					<@page.init pager.pageIndex pager.totalPage />
 					
 					

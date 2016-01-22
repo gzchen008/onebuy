@@ -2,14 +2,19 @@ package com.vanroid.onebuy.entity;
 
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -29,10 +34,11 @@ public class Good {
 	private String mainPhoto;
 	private String[] detailPhotos;
 	private Date time;	
-	private Stage stage;
+	private String description;
 	private ShoppingCart shoppingCart;
 	private UserDetail userDetail;
-	
+	private Set<Stage> stages = new HashSet<Stage>();
+	private LatestStage latestStage;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -75,15 +81,24 @@ public class Good {
 		this.time = time;
 	}
 	
-	@OneToOne(mappedBy = "good")
-	public Stage getStage() {
-		return stage;
+	@Column(length=65535,nullable=true)
+	public String getDescription() {
+		return description;
 	}
-	public void setStage(Stage stage) {
-		this.stage = stage;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
-	@OneToOne(mappedBy = "good")
+	
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy = "good")
+	public Set<Stage> getStages() {
+		return stages;
+	}
+	public void setStages(Set<Stage> stages) {
+		this.stages = stages;
+	}
+	
+	@OneToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY,mappedBy = "good")
 	public ShoppingCart getShoppingCart() {
 		return shoppingCart;
 	}
@@ -91,7 +106,7 @@ public class Good {
 		this.shoppingCart = shoppingCart;
 	}
 	
-	@ManyToOne()
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "userdetail_id",nullable= true)
 	public UserDetail getUserDetail() {
 		return userDetail;
@@ -101,20 +116,16 @@ public class Good {
 	}
 	
 	
+	@OneToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY,mappedBy = "good")
+	public LatestStage getLatestStage() {
+		return latestStage;
+	}
+	public void setLatestStage(LatestStage latestStage) {
+		this.latestStage = latestStage;
+	}
+	
 	public Good() {
 		super();
-	}
-	public Good(long id, String name, String mainPhoto, String[] detailPhotos, Date time, Stage stage,
-			ShoppingCart shoppingCart, UserDetail userDetail) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.mainPhoto = mainPhoto;
-		this.detailPhotos = detailPhotos;
-		this.time = time;
-		this.stage = stage;
-		this.shoppingCart = shoppingCart;
-		this.userDetail = userDetail;
 	}
 	
 	

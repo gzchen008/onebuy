@@ -1,8 +1,5 @@
 package com.vanroid.onebuy.service.impl;
 
-import java.util.Collection;
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -21,7 +18,6 @@ public class GoodServiceImpl extends BaseServiceImpl<Good> implements GoodServic
 	@Override
 	@Resource(name = "goodDao")
 	public void setDao(BaseDao<Good> dao) {
-		// TODO Auto-generated method stub
 		super.setDao(dao);
 	}
 
