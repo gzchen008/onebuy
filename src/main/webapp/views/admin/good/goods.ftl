@@ -2,6 +2,8 @@
 <#include "../include/top.ftl">
 <!-- COMMON HEAD -->
 <!-- 内页导航开始 -->
+
+
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-lg-10">
 		<h2>${title  !}</h2>
@@ -89,8 +91,6 @@
 			</div>
 		</div>
 	</div>
-	<!--COMMON FOOTER-->
-	<!--COMMON FOOTER-->
-	</body>
-
-	</html>
+<!--COMMON FOOTER-->
+<#include "../include/footer.ftl">
+<!--COMMON FOOTER-->

@@ -4,6 +4,8 @@
 eclipse.preferences.version=1
 encoding//src/main/webapp/views/admin/good/good_detail.ftl=UTF-8
 encoding//src/main/webapp/views/admin/good/goods.ftl=UTF-8
+encoding//src/main/webapp/views/admin/good/photo_upload.ftl=UTF-8
+encoding//src/main/webapp/views/admin/include/footer.ftl=UTF-8
 encoding//src/main/webapp/views/admin/include/top.ftl=UTF-8
 encoding//src/main/webapp/views/admin/index.ftl=UTF-8
 encoding//src/main/webapp/views/admin/macro/judge_stage.ftl=UTF-8
