@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.hibernate.LockMode;
 
+import com.vanroid.onebuy.common.Pager;
+
 @SuppressWarnings("rawtypes")
 public interface BaseDao<T> {
 
@@ -90,4 +92,6 @@ public interface BaseDao<T> {
 	//查询总个数
 	public Long totalCount(String queryString);
 	public Long totalCount();
+	
+	public Pager findByPager(Pager pager);
 }

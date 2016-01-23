@@ -3,6 +3,8 @@ package com.vanroid.onebuy.service;
 import java.util.Collection;
 import java.util.List;
 
+import com.vanroid.onebuy.common.Pager;
+
 @SuppressWarnings("rawtypes")
 public interface BaseService<T> {
 
@@ -25,4 +27,6 @@ public interface BaseService<T> {
 	List<T> findAll();
 
 	List<T> findPageList(String queryString ,int pageIndex, int pageSizes);
+	
+	Pager findByPager(Pager pager);
 }

@@ -12,7 +12,7 @@
 <meta name="description" content="">
 
 <link href="${rootPath}/resources/css/admin/bootstrap.min.css" rel="stylesheet">
-<link href="${rootPath}/resources/css/admin/font-awesome/css/font-awesome.css" rel="stylesheet">
+<link href="${rootPath}/resources/css/admin/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet">
 
 <!-- Morris -->
 <link href="${rootPath}/resources/css/admin/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
@@ -56,35 +56,15 @@
 						<div class="logo-element">H+</div>
 					</li>
 					<li class="active">
-						<a href="index.html">
-							<i class="fa fa-th-large"></i> <span class="nav-label">投诉管理</span> <span class="label label-warning pull-right">100</span>
+						<a href="${rootPath}/admin/goods">
+							<i class="fa fa-th-large"></i> <span class="nav-label">商品管理</span>
 						</a>
-						<ul class="nav nav-second-level">
-							<li>
-								<a href="${rootPath}/resources/admin/index">新投诉*</a>
-							</li>
-							<li>
-								<a href="${rootPath}/resources/admin/processing">处理中投诉</a>
-							</li>
-						</ul>
+						
 					</li>
-					<li class="active">
-						<a href="/">
-							<i class="fa fa fa-globe"></i> <span class="nav-label">邮件设置</span><span class="fa arrow"></span>
-						</a>
-						<ul class="nav nav-second-level">
-
-							<li>
-								<a href="${rootPath}/resources/admin/setting/mailAccount">邮件帐户</a>
-							</li>
-							<li>
-								<a href="${rootPath}/resources/admin/setting/mailContent">内容设置</a>
-							</li>
-						</ul>
-					</li>
+					
 					<li>
 						<a href="/">
-							<i class="fa fa fa-globe"></i> <span class="nav-label">功能设置</span><span class="fa arrow"></span>
+							<i class="fa fa fa-globe"></i> <span class="nav-label">晒单管理</span><span class="fa arrow"></span>
 						</a>
 						<ul class="nav nav-second-level">
 							<li>
@@ -101,10 +81,10 @@
 						</a>
 						<ul class="nav nav-second-level">
 							<li>
-								<a href="${rootPath}/resources/admin/setting/indexPhoto"/>?id=1">首页图片一</a>
+								<a href="${rootPath}/resources/admin/setting/indexPhoto"?id=1">首页图片一</a>
 							</li>
 							<li>
-								<a href="${rootPath}/resources/admin/setting/indexPhoto"/>?id=2">首页图片二</a>
+								<a href="${rootPath}/resources/admin/setting/indexPhoto"?id=2">首页图片二</a>
 							</li>
 						</ul>
 					</li>
@@ -128,6 +108,21 @@
 						<ul class="nav nav-second-level">
 							<li>
 								<a href="${rootPath}/resources/admin/setting/updateCache">更新网站缓存</a>
+							</li>
+						</ul>
+					</li>
+					
+					<li>
+						<a href="/">
+							<i class="fa fa fa-globe"></i> <span class="nav-label">邮件设置</span><span class="fa arrow"></span>
+						</a>
+						<ul class="nav nav-second-level">
+
+							<li>
+								<a href="${rootPath}/resources/admin/setting/mailAccount">邮件帐户</a>
+							</li>
+							<li>
+								<a href="${rootPath}/resources/admin/setting/mailContent">内容设置</a>
 							</li>
 						</ul>
 					</li>

@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -35,14 +36,14 @@ public class Stage {
 	private Integer purchasedQuantity;
 	private Integer price;
 	private Date endTime;
-	
+	private Date createTime;
 	private Order order;
 	
 	private Integer status;
 	private Date announceTime;
 	private String luckyCode;
 	private User luckyUser;
-	
+	private Integer ifDelivery;
 	private Set<Code> codes = new HashSet<Code>();
 	
 	@Id
@@ -54,8 +55,8 @@ public class Stage {
 		this.id = id;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "good_id")
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name = "good_id",nullable=false)
 	public Good getGood() {
 		return good;
 	}
@@ -104,7 +105,7 @@ public class Stage {
 	}
 	
 	@Temporal(value = TemporalType.TIMESTAMP)
-	@Column
+	@Column(nullable = true)
 	public Date getEndTime() {
 		return endTime;
 	}
@@ -128,6 +129,14 @@ public class Stage {
 		this.status = status;
 	}
 	
+	@Temporal(value= TemporalType.TIMESTAMP)
+	public Date getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+	
 	@Temporal(value = TemporalType.TIMESTAMP)
 	@Column(nullable = true)
 	public Date getAnnounceTime() {
@@ -145,13 +154,21 @@ public class Stage {
 		this.luckyCode = luckyCode;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	public User getLuckyUser() {
 		return luckyUser;
 	}
 	public void setLuckyUser(User luckyUser) {
 		this.luckyUser = luckyUser;
+	}
+	
+	@Column(columnDefinition = "Integer default 0")
+	public Integer getIfDelivery() {
+		return ifDelivery;
+	}
+	public void setIfDelivery(Integer ifDelivery) {
+		this.ifDelivery = ifDelivery;
 	}
 	
 	@OneToMany(cascade= CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="stage")

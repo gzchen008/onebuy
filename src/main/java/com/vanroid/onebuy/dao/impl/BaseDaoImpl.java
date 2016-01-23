@@ -5,11 +5,15 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
+import com.vanroid.onebuy.common.Pager;
 import com.vanroid.onebuy.dao.BaseDao;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
@@ -191,4 +195,42 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 				.createQuery(queryString).uniqueResult();//
 	}
 
+	@Override
+	public Pager findByPager(Pager pager) {
+		Criteria criteria = getHibernateTemplate()
+						.getSessionFactory()
+						.getCurrentSession()
+						.createCriteria(clazz);
+
+		// 获得此查询条件下的总纪录条数
+		criteria.setProjection(Projections.rowCount());
+		int totalCount = ((Long) criteria.uniqueResult()).intValue();
+		pager.setTotalCount(totalCount);
+
+		criteria.setProjection(null);
+
+		pager.init();
+		/**
+		 * 根据分页增加需求待完善
+		 */
+		
+		if(pager.getOrderMap()!=null){
+			for(String key:pager.getOrderMap().keySet()){
+				if(pager.getOrder()==Pager.Order.asc){
+					criteria.addOrder(Order.asc(key));
+				}
+				else if(pager.getOrder()==Pager.Order.desc){
+					criteria.addOrder(Order.desc(key));
+				}
+			}
+		}
+		
+		 criteria.setFirstResult((pager.getPageIndex()-1)*pager.getPageSize());
+		 //从第几条记录开始
+		 criteria.setMaxResults(pager.getPageSize()); //查询的条数
+		pager.setDatas((List<T>) criteria.list());
+		return pager;
+	}
+	
+	
 }

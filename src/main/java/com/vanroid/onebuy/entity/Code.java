@@ -21,7 +21,8 @@ public class Code {
 	private Long id;
 	private User ownedUser;
 	private Stage stage;
-
+	private LatestStage latestStage;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
@@ -51,5 +52,17 @@ public class Code {
 	public void setStage(Stage stage) {
 		this.stage = stage;
 	}
+	
+	
+	@ManyToOne()
+	@JoinColumn(name = "latest_stage_id", nullable = false)
+	public LatestStage getLatestStage() {
+		return latestStage;
+	}
 
+	public void setLatestStage(LatestStage latestStage) {
+		this.latestStage = latestStage;
+	}
+
+	
 }

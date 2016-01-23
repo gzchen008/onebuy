@@ -3,6 +3,7 @@ package com.vanroid.onebuy.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +34,7 @@ public class ShoppingCart {
 		this.id = id;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	public User getOwnedUser() {
 		return ownedUser;
@@ -42,7 +43,7 @@ public class ShoppingCart {
 		this.ownedUser = ownedUser;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name = "good_id")
 	public Good getGood() {
 		return good;
