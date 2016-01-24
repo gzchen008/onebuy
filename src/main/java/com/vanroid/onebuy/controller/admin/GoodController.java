@@ -93,21 +93,38 @@ public class GoodController {
 		return "admin/good/good_detail";
 	}
 	
+	@RequestMapping("/goods/create")
+	public String createGood(){
+		return "admin/good/create_good";
+	}
+	
+	
+	@RequestMapping("/goods/edit/{goodId}")
+	public String editGood(@PathVariable int goodId,Model model){
+		Good good = goodService.get(goodId);
+		model.addAttribute("good", good);
+		return "admin/good/edit_good";
+	}
+	
 	@RequestMapping(value = "/goods/upload")
 	@ResponseBody
-	public JSONObject goodPictureUpload(@RequestParam("file")CommonsMultipartFile file,HttpServletRequest request){
+	public JSONObject goodPictureUpload(@RequestParam("file")CommonsMultipartFile file,
+			HttpServletRequest request,@RequestParam("id")int id){
 		JSONObject json = new JSONObject();
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
+		Good good =goodService.get(id);
 		String realPath = request.getSession().getServletContext().getRealPath("/upload/goods");
+		String[] oldPicture = good.getDetailPhotos();//商品的图片数组
 		System.out.println("realPath:"+realPath);
 		if(multipartResolver.isMultipart(request)){
 			MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
 			Iterator<String> names = multiRequest.getFileNames();
+			String pictureNames ="";//新增的图片文件名
 			while(names.hasNext()){
 				MultipartFile fileDetail = multiRequest.getFile(names.next());
-				System.out.println(fileDetail.getName());
 				if(fileDetail!=null){
 					String fileName = fileDetail.getOriginalFilename();
+					pictureNames+=fileName+",";
 					File uploadfile = new File(realPath+"/"+fileName);
 					try {
 						fileDetail.transferTo(uploadfile);
@@ -118,10 +135,37 @@ public class GoodController {
 					}
 				}
 			}
+			/**
+			 * 将新老图片地址放到新String[]，并保存
+			 */
+			if(!pictureNames.equals("")){
+				int oldPictureLength;
+				oldPictureLength = (oldPicture==null)?0:oldPicture.length;
+				String[] addPicture=pictureNames.split(",");
+				String[] newPicture=new String[oldPictureLength+addPicture.length]; 
+				for(int i=0;i<oldPictureLength;i++){
+					newPicture[i] = oldPicture[i];
+				}
+				for(int i=0;i<addPicture.length;i++){
+					newPicture[oldPictureLength+i]=addPicture[i];
+				}
+				good.setDetailPhotos(newPicture);
+				goodService.update(good);
+			}
+			
+			
 		}
 		json.put("message", "success");
 		return json;
 		
+	}
+	
+	
+	@RequestMapping("/goods/uploadPage/{goodId}")
+	public String goodPhotoUploadPage(@PathVariable int goodId,Model model){
+		Good good = goodService.get(goodId);
+		model.addAttribute("good", good);
+		return "admin/good/photo_upload";
 	}
 	
 	
@@ -147,12 +191,6 @@ public class GoodController {
 	    System.out.println("cg");
 	    return "/success";  
 	}  
-	
-	@RequestMapping("/goods/uploadPage/{goodId}")
-	public String goodPhotoUploadPage(@PathVariable int goodId){
-		return "admin/good/photo_upload";
-	}
-	
 	
 	//test
 	@RequestMapping(value ="/pager",method=RequestMethod.GET)

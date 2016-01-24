@@ -21,7 +21,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="m-b-md">
-                                            <a href="project_detail.html#" class="btn btn-white btn-xs pull-right">编辑项目</a>
+                                            <a href="${rootPath}/admin/goods/edit/${(good.id)!}" class="btn btn-white btn-xs pull-right">编辑项目</a>
                                             <h2>${good.name}</h2>
                                         </div>
                                         <dl class="dl-horizontal">最新一期状态：

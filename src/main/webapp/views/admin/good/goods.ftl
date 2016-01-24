@@ -25,7 +25,7 @@
 					<div class="ibox-title">
 						<h5>所有商品</h5>
 						<div class="ibox-tools">
-							<a href="projects.html" class="btn btn-primary btn-xs">创建新商品</a>
+							<a href="${rootPath}/admin/goods/create" class="btn btn-primary btn-xs">创建新商品</a>
 						</div>
 					</div>
 					<div class="ibox-content">
