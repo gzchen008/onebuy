@@ -2,6 +2,8 @@
 <#include "../include/top.ftl">
 <!-- COMMON HEAD -->
 <!-- 内页导航开始 -->
+
+
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-lg-10">
 		<h2>${title  !}</h2>
@@ -23,7 +25,7 @@
 					<div class="ibox-title">
 						<h5>所有商品</h5>
 						<div class="ibox-tools">
-							<a href="projects.html" class="btn btn-primary btn-xs">创建新商品</a>
+							<a href="${rootPath}/admin/goods/create" class="btn btn-primary btn-xs">创建新商品</a>
 						</div>
 					</div>
 					<div class="ibox-content">
@@ -89,8 +91,6 @@
 			</div>
 		</div>
 	</div>
-	<!--COMMON FOOTER-->
-	<!--COMMON FOOTER-->
-	</body>
-
-	</html>
+<!--COMMON FOOTER-->
+<#include "../include/footer.ftl">
+<!--COMMON FOOTER-->

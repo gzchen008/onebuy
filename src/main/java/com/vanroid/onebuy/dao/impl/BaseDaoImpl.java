@@ -6,11 +6,14 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import com.vanroid.onebuy.common.Pager;
@@ -197,10 +200,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 
 	@Override
 	public Pager findByPager(Pager pager) {
-		Criteria criteria = getHibernateTemplate()
-						.getSessionFactory()
-						.getCurrentSession()
-						.createCriteria(clazz);
+		Criteria criteria = getHibernateTemplate().getSessionFactory().getCurrentSession().createCriteria(clazz);
 
 		// 获得此查询条件下的总纪录条数
 		criteria.setProjection(Projections.rowCount());
@@ -213,24 +213,41 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 		/**
 		 * 根据分页增加需求待完善
 		 */
-		
-		if(pager.getOrderMap()!=null){
-			for(String key:pager.getOrderMap().keySet()){
-				if(pager.getOrder()==Pager.Order.asc){
+
+		if (pager.getOrderMap() != null) {
+			for (String key : pager.getOrderMap().keySet()) {
+				if (pager.getOrder() == Pager.Order.asc) {
 					criteria.addOrder(Order.asc(key));
-				}
-				else if(pager.getOrder()==Pager.Order.desc){
+				} else if (pager.getOrder() == Pager.Order.desc) {
 					criteria.addOrder(Order.desc(key));
 				}
 			}
 		}
-		
-		 criteria.setFirstResult((pager.getPageIndex()-1)*pager.getPageSize());
-		 //从第几条记录开始
-		 criteria.setMaxResults(pager.getPageSize()); //查询的条数
+
+		criteria.setFirstResult((pager.getPageIndex() - 1) * pager.getPageSize());
+		// 从第几条记录开始
+		criteria.setMaxResults(pager.getPageSize()); // 查询的条数
 		pager.setDatas((List<T>) criteria.list());
 		return pager;
 	}
-	
-	
+
+	@Override
+	public <E> E uniqueResult(final String queryString, Object... values) {
+		return getHibernateTemplate().execute(new HibernateCallback<E>() {
+
+			@Override
+			public E doInHibernate(Session session) throws HibernateException {
+				return (E) session.createQuery(queryString).uniqueResult();
+			}
+		});
+	}
+
+	@Override
+	public <E> E findFirst(String queryString, Object... values) {
+		List  list = getHibernateTemplate().find(queryString, values);
+		if(list == null)
+			return null ;
+		return (E) list.get(0);
+	}
+
 }

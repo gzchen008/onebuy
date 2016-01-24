@@ -8,4 +8,11 @@ import com.vanroid.onebuy.entity.Stage;
 */
 public interface StageService extends BaseService<Stage> {
 
+	/**
+	 * 获取某商品最后一期期数
+	 * @param goodIdl 
+	 * @return
+	 */
+	Integer getLastStageNum(Long goodId);
+
 }

@@ -12,6 +12,7 @@
 	</div>
 </div>
 <!-- 内页导航结束 -->
+
 <div class="row">
                 <div class="col-lg-9">
                     <div class="wrapper wrapper-content animated fadeInUp">
@@ -20,7 +21,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="m-b-md">
-                                            <a href="project_detail.html#" class="btn btn-white btn-xs pull-right">编辑项目</a>
+                                            <a href="${rootPath}/admin/goods/edit/${(good.id)!}" class="btn btn-white btn-xs pull-right">编辑项目</a>
                                             <h2>${good.name}</h2>
                                         </div>
                                         <dl class="dl-horizontal">最新一期状态：
@@ -74,9 +75,11 @@
                                             <div class="panel-heading">
                                                 <div class="panel-options">
                                                     <ul class="nav nav-tabs">
-                                                        
-                                                        <li class=""><a data-toggle="tab">获奖用户</a>
+                                                        <li class="active"><a href="${rootPath}/admin/goods/detail/${good.id}#tab-1" data-toggle="tab">商品详情</a>
                                                         </li>
+                                                        <li class=""><a href="${rootPath}/admin/goods/detail/${good.id}#tab-2" data-toggle="tab">获奖用户</a>
+                                                        </li>
+                                                        
                                                     </ul>
                                                 </div>
                                             </div>
@@ -86,6 +89,29 @@
                                                 <div class="tab-content">
                                                     
                                                     <div class="tab-pane active" id="tab-1">
+                                                        <div class="feed-activity-list">
+                                                            <div class="feed-element">
+                                                                
+                                                                <div class="media-body ">
+                                                                    <small class="pull-right text-navy">1天前</small>
+                                                                    <div class="photos">
+                                                                        <a target="_blank" href="">
+                                                                            <img alt="image" class="feed-photo" src="${rootPath}/upload/goods/apple.png">
+                                                                        </a>
+                                                                        <a target="_blank" href="">
+                                                                            <img alt="image" class="feed-photo" src="${rootPath}/upload/goods/iphone6s.jpg">
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                         
+                                                        </div>
+
+                                                    </div>
+                                                    
+                                                    <div class="tab-pane" id="tab-2">
 
                                                         <table class="table table-striped">
                                                             <thead>
@@ -121,14 +147,18 @@
                 <div class="col-lg-3">
                     <div class="wrapper wrapper-content project-manager">
                         <h4>商品描述</h4>
-                        <img src="img/wenku_logo.png" class="img-responsive">
+                        <img src="${rootPath}/upload/goods/apple.png" class="img-responsive">
                         <p class="small">
-                            <br>${good.description!("无")}
+                            <br>${good.description!("描述无")}
                         </p>
                         
                         <div class="m-t-md">
                             <a href="project_detail.html#" class="btn btn-xs btn-primary">新增新的一期</a>
                         </div>
-                    </div>
-                </div>
+                        <br/>
+                        <a href="${rootPath}/admin/goods/uploadPage/${good.id}" class="btn btn-primary">上传商品详情图片</a>
+                        
             </div>
+       </div>
+</div>
+<#include "../include/footer.ftl"/>

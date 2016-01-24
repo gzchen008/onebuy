@@ -1,6 +1,7 @@
 package com.vanroid.onebuy.entity;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,8 @@ public class Code {
 	private User ownedUser;
 	private Stage stage;
 	private LatestStage latestStage;
+	/** 代码 */
+	private String code;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,6 +65,15 @@ public class Code {
 
 	public void setLatestStage(LatestStage latestStage) {
 		this.latestStage = latestStage;
+	}
+
+	@Column(length=10)
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	

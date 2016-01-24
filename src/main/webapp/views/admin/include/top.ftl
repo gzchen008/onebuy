@@ -25,7 +25,6 @@
 
 <link href="${rootPath}/resources/css/admin/animate.css" rel="stylesheet">
 <link href="${rootPath}/resources/css/admin/style.css" rel="stylesheet">
-
 </head>
 
 <body>

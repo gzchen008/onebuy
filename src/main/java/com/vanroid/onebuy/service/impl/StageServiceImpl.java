@@ -9,16 +9,22 @@ import com.vanroid.onebuy.entity.Stage;
 import com.vanroid.onebuy.service.StageService;
 
 /**
-*@author kaiscript
-*@date 2016年1月22日 下午6:09:13
-*/
+ * @author kaiscript
+ * @date 2016年1月22日 下午6:09:13
+ */
 @Service("stageService")
 public class StageServiceImpl extends BaseServiceImpl<Stage> implements StageService {
-	
+
 	@Override
-	@Resource(name= "stageDao")
+	@Resource(name = "stageDao")
 	public void setDao(BaseDao<Stage> dao) {
 		super.setDao(dao);
 	}
-	
+
+	@Override
+	public Integer getLastStageNum(Long goodId) {
+		String queryString = "SELECT stage.num FROM Stage stage WHERE stage.good.id = ? ORDER BY stage.id DESC";
+		return dao.findFirst(queryString, goodId);
+	}
+
 }

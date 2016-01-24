@@ -43,7 +43,15 @@
 	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀，返回普通的jsp视图 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
 		p:prefix="/" p:suffix=".jsp" /> -->
 	<context:component-scan base-package="com.vanroid.onebuy.controller" />
-
+	
+	 <!-- 配置springMVC处理上传文件的信息 -->  
+    <bean id="multipartResolver"  
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+        <property name="defaultEncoding" value="utf-8" />  
+        <property name="maxUploadSize" value="10485760000" />  
+        <property name="maxInMemorySize" value="40960" />  
+    </bean>  
+	
 	<mvc:interceptors>
 
 		<mvc:interceptor>

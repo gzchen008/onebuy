@@ -51,6 +51,7 @@
 	</div>
 </div>
 <!--COMMON FOOTER-->
+<#include "include/footer.ftl">
 <!--COMMON FOOTER-->
 </body>
 
