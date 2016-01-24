@@ -96,4 +96,22 @@ public class CoreBizServiceImpl implements CoreBizService {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public void sell(Stage stage) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void announce(Stage stage) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateNotify(int action) {
+		// TODO Auto-generated method stub
+		
+	}
 }
