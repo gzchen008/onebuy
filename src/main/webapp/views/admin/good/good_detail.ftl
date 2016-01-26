@@ -26,7 +26,11 @@
                                         </div>
                                         <dl class="dl-horizontal">最新一期状态：
                                             <#import "../macro/judge_stage.ftl" as s/>
-                                            <@s.judge latestStage.status />
+                                            <#if latestStage??>
+                                            	<@s.judge latestStage.status/>
+											<#else>
+												<span>无</span>
+                                            </#if> 
                                             
                                             <dd><span class="label label-primary"></span>
                                             </dd>
@@ -41,14 +45,14 @@
                                             <dd>Beaut-zihan</dd>
                                             
                                             <dt>当前期数：</dt> 
-                                            <dd>${latestStage.num}</dd>
+                                            <dd>${(latestStage.num)!("0")}</dd>
                                         </dl>
                                     </div>
                                     <div class="col-lg-7" id="cluster_info">
                                         <dl class="dl-horizontal">
 
                                             <dt>商品创建于：</dt> 
-                                            <dd>${good.time}</dd>
+                                            <dd>${(good.time)?time}</dd>
                                             <dt></dt>
                                             <dd class="project-people">
                                                 
@@ -61,10 +65,12 @@
                                         <dl class="dl-horizontal">
                                             <dt>最新一期进度</dt>
                                             <dd>
+                                            	<#if latestStage??>
                                                 <div class="progress progress-striped active m-b-sm">
                                                     <div style="width:${(latestStage.purchasedQuantity/latestStage.quantity)?string.percent};" class="progress-bar"></div>
                                                 </div>
                                                 <small>当前已完成本期总进度的 <strong>${(latestStage.purchasedQuantity/latestStage.quantity)?string.percent}</strong></small>
+                                                </#if>
                                             </dd>
                                         </dl>
                                     </div>
@@ -95,12 +101,13 @@
                                                                 <div class="media-body ">
                                                                     <small class="pull-right text-navy">1天前</small>
                                                                     <div class="photos">
+                                                                    <#if good??>
+                                                                    	<#list good.detailPhotos as photo>
                                                                         <a target="_blank" href="">
-                                                                            <img alt="image" class="feed-photo" src="${rootPath}/upload/goods/apple.png">
+                                                                            <img alt="image" class="feed-photo" src="${photo}">
                                                                         </a>
-                                                                        <a target="_blank" href="">
-                                                                            <img alt="image" class="feed-photo" src="${rootPath}/upload/goods/iphone6s.jpg">
-                                                                        </a>
+                                                                        </#list>
+                                                                    </#if>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -125,9 +132,10 @@
                                                             </thead>
                                                             <tbody>
                                                                 
+                                                                <#if stages??>
                                                                     <#import "../macro/luckey_user.ftl" as users/>
                                                                     <@users.showUser stages/>
-                                                               
+                                                               	</#if>	
 
                                                             </tbody>
                                                         </table>
@@ -147,17 +155,25 @@
                 <div class="col-lg-3">
                     <div class="wrapper wrapper-content project-manager">
                         <h4>商品描述</h4>
-                        <img src="${rootPath}/upload/goods/apple.png" class="img-responsive">
+                        <img src="${(good.mainPhoto)!}" class="img-responsive">
                         <p class="small">
                             <br>${good.description!("描述无")}
                         </p>
                         
                         <div class="m-t-md">
-                            <a href="project_detail.html#" class="btn btn-xs btn-primary">新增新的一期</a>
+                            <a href="" class="btn btn-xs btn-primary">新增新的一期</a>
                         </div>
                         <br/>
                         <a href="${rootPath}/admin/goods/uploadPage/${good.id}" class="btn btn-primary">上传商品详情图片</a>
-                        
+                        <div class="m-t-md">
+                        <span class="label label-info">在下方按钮上传主图片</span>
+                        </div>
+                        <div class="m-t-md">
+                        <form id="uploadMainForm">
+						<input type="file" id="mainImgFile" name="MainFileContent" value="浏览" class="btn-rounded"></input> 
+						<input type="submit" value="上传"/>
+						</form>
+						</div>
             </div>
        </div>
 </div>

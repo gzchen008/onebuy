@@ -4,7 +4,7 @@
 	<#local showPage = totalPage/>
 </#if>	
 <div class="btn-group">
-	<a type="button" class="btn btn-white" href="goods?page=1">
+	<a type="button" class="btn btn-white" href="goodsto?page=1">
 		<i class="fa fa-chevron-left"></i>
 	</a>
 	<#local half=(showPage/2)/>
@@ -16,7 +16,7 @@
 		<@show start=(curPage-half) end=(curPage+half) curPage=curPage/>
 	</#if>
 	
-	<a type="button" class="btn btn-white" href="goods?page=${totalPage}">
+	<a type="button" class="btn btn-white" href="goodsto?page=${totalPage}">
 		<i class="fa fa-chevron-right"></i>
 	</a>
 
@@ -27,7 +27,7 @@
 <#macro show start end curPage>
 	<#list start..end as num> 
 		<#if curPage !=num> 
-		<a href="goods?page=${num}" class="btn btn-white">${num} </a> 
+		<a href="goodsto?page=${num}" class="btn btn-white">${num} </a> 
 		<#else> 
 		<a class="btn btn-default active">${num}</a> 
 		</#if> 

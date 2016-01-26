@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.vanroid.onebuy.entity.Good;
+import com.vanroid.onebuy.util.PhotosStringUtil;
 
 /**
 *@author kaiscript
@@ -44,6 +45,9 @@ public class GoodServiceTest {
 		for(String pic:pics){
 			System.out.println(pic);
 		}
+	/*	String[] newP = PhotosStringUtil.addPhotoUrl(pics, "http://kaiscript-10009183.image.myqcloud.com/67becd30-9575-4f7b-969e-a1ee4d26471d");
+		good.setDetailPhotos(newP);
+		goodService.update(good);*/
 	}
 	
 }

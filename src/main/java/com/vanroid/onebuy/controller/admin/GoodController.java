@@ -6,17 +6,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.FileUtils;
-import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,6 +30,9 @@ import com.vanroid.onebuy.entity.LatestStage;
 import com.vanroid.onebuy.entity.Stage;
 import com.vanroid.onebuy.service.GoodService;
 import com.vanroid.onebuy.service.StageService;
+import com.vanroid.onebuy.util.DateUtil;
+
+import net.sf.json.JSONObject;
 
 /**
 *@author kaiscript
@@ -63,17 +61,18 @@ public class GoodController {
 		return "admin/good/goods";
 	}
 	
-	@RequestMapping(value ="/goods",method=RequestMethod.POST)
+	@RequestMapping(value ="/goodsto",method=RequestMethod.GET)
 	public String goodIndexPager(@RequestParam("page") int pageIndex,Model model,Pager goodPager){
+
 		if(goodPager.getTotalCount()==0){
 			goodPager = new Pager();
 			goodPager.setPageIndex(pageIndex);
-			goodPager.setPageSize(1);
+			goodPager.setPageSize(2);
 			
 		}
 		goodPager = goodService.findByPager(goodPager);
 		model.addAttribute("pager", goodPager);
-		return "admin/goods/goods";
+		return "admin/good/goods";
 	}
 	
 	@RequestMapping("/goods/detail/{goodId}")
@@ -93,12 +92,34 @@ public class GoodController {
 		return "admin/good/good_detail";
 	}
 	
+	/**
+	 * 创建商品页面
+	 * @return
+	 */
 	@RequestMapping("/goods/create")
 	public String createGood(){
 		return "admin/good/create_good";
 	}
 	
+	@RequestMapping("goods/creating")
+	public String createGoodWithParm(String goodName,String goodDescription,String url,String mainUrl,Model model){
+		Good good = new Good();
+		good.setName(goodName);
+		good.setDescription(goodDescription);
+		good.setTime(DateUtil.getDate());
+		good.setMainPhoto(mainUrl);
+		good.setDetailPhotos(url.split(","));
+		goodService.add(good);
+		model.addAttribute("good", good);
+		return "admin/good/good_detail";
+	}
 	
+	/**
+	 * 编辑商品页面
+	 * @param goodId
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/goods/edit/{goodId}")
 	public String editGood(@PathVariable int goodId,Model model){
 		Good good = goodService.get(goodId);
@@ -106,6 +127,36 @@ public class GoodController {
 		return "admin/good/edit_good";
 	}
 	
+	
+	/**
+	 * 上传图片页面
+	 * @param goodId
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/goods/uploadPage/{goodId}")
+	public String goodPhotoUploadPage(@PathVariable int goodId,Model model){
+		Good good = goodService.get(goodId);
+		String[] photos =good.getDetailPhotos();
+		
+		model.addAttribute("good", good);
+		model.addAttribute("photos", photos);
+		return "admin/good/photo_upload";
+	}
+	
+	
+	
+	
+	
+	
+
+	/**
+	 * 上传图片到项目
+	 * @param file
+	 * @param request
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value = "/goods/upload")
 	@ResponseBody
 	public JSONObject goodPictureUpload(@RequestParam("file")CommonsMultipartFile file,
@@ -159,15 +210,6 @@ public class GoodController {
 		return json;
 		
 	}
-	
-	
-	@RequestMapping("/goods/uploadPage/{goodId}")
-	public String goodPhotoUploadPage(@PathVariable int goodId,Model model){
-		Good good = goodService.get(goodId);
-		model.addAttribute("good", good);
-		return "admin/good/photo_upload";
-	}
-	
 	
 	@RequestMapping("/goods/upload2")  
 	public String uploadFile(@RequestParam("file") CommonsMultipartFile file,  

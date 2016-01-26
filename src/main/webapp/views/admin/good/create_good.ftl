@@ -28,32 +28,30 @@
 
 				</div>
 				<div class="ibox-content">
-					<form method="get" class="form-horizontal">
+					<form id="createGoodForm" method="get" class="form-horizontal" action="${rootPath}/admin/goods/creating">
 						<div class="form-group">
 							<label class="col-sm-2 control-label">商品名称</label>
 
 							<div class="col-sm-10">
-								<input type="text" class="form-control" >
+								<input name="goodName" type="text" class="form-control required" >
 							</div>
 						</div>
 						<div class="hr-line-dashed"></div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">商品描述</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control"> <span
-									class="help-block m-b-none"></span>
+								<input type="text" name="goodDescription" class="form-control required" > 
+								<span class="help-block m-b-none"></span>
 							</div>
 						</div>
 						<div class="hr-line-dashed"></div>
-
-						<div class="row">
+						<div class="form-group">
 						<div class="col-sm-2">
-						<form enctype="multipart/form-data" method="post"
-							action="${rootPath}/admin/goods/upload">
-							<input class="btn btn-primary btn-block" type="file" name="file" value="上传图片"/> 
-							<input class="btn btn-primary btn-block" type="submit" text="submit" />
-						</form>
+							在下方上传商品详情图片
+							<input id="allUrl" name="url" type="hidden" value="">
+							<input id="mainUrl" name="mainUrl" type="hidden" value="">
 						</div>
+							
 						</div>
 						<div class="hr-line-dashed"></div>
 						<div class="form-group">
@@ -66,9 +64,53 @@
 					</form>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+                            <span>主图片：</span>
+                                <form id="uploadMainForm">
+								<input type="file" id="mainImgFile" name="MainFileContent" value="浏览" class="btn-rounded"></input> 
+								<input type="submit" value="上传"/>
+								</form>
+                            </div>
+                        </div>
+                 </div>
+                    
+			</div>
+			<br/>
+			<div id="mainImg" class="col-sm-10">
+							
+			</div>
+			<br/>
+			<div class="col-lg-12">
+				<span>详情图片：</span>
+			</div>
+			<form id="uploadForm">
+				<input type="file" id="imgFile" name="FileContent" value="浏览" class="btn-rounded"></input> 
+				<input type="submit" value="上传"/>
+			</form>
+			<div id="uploadImg" class="col-sm-10">
+							
+			</div>
 		</div>
 	</div>
 </div>
 <!--COMMON FOOTER-->
 <#include "../include/footer.ftl">
+
+<script type="text/javascript" src="${rootPath}/resources/js/admin/jquery.form.min.js"></script>
+<script type="text/javascript" src="${rootPath}/resources/js/admin/jquery.validate.min.js"></script>
+<script type="text/javascript" src="${rootPath}/resources/js/admin/jquery.metadata.js"></script>
+<script type="text/javascript" src="${rootPath}/resources/js/admin/messages_zh.js"></script>
+
+<script>
+	$().ready(function() {
+		$("#createGoodForm").validate();
+	});
+	var BASE_URL='${rootPath}';
+	
+</script>
+<script type="text/javascript" src="${rootPath}/resources/js/admin/admin.create_good.upload.js"></script>
+
 <!--COMMON FOOTER-->
