@@ -52,7 +52,7 @@
                                         <dl class="dl-horizontal">
 
                                             <dt>商品创建于：</dt> 
-                                            <dd>${(good.time)?time}</dd>
+                                            <dd>${(good.time)?datetime}</dd>
                                             <dt></dt>
                                             <dd class="project-people">
                                                 
@@ -99,12 +99,11 @@
                                                             <div class="feed-element">
                                                                 
                                                                 <div class="media-body ">
-                                                                    <small class="pull-right text-navy">1天前</small>
                                                                     <div class="photos">
-                                                                    <#if good??>
+                                                                    <#if good.detailPhotos??>
                                                                     	<#list good.detailPhotos as photo>
                                                                         <a target="_blank" href="">
-                                                                            <img alt="image" class="feed-photo" src="${photo}">
+                                                                            <img class="feed-photo" src="${photo}">
                                                                         </a>
                                                                         </#list>
                                                                     </#if>
@@ -154,23 +153,26 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="wrapper wrapper-content project-manager">
-                        <h4>商品描述</h4>
-                        <img src="${(good.mainPhoto)!}" class="img-responsive">
+                        <h4>商品主图片、描述</h4>
+                        <img id="mainPhoto" src="${(good.mainPhoto)!}" class="img-responsive">
                         <p class="small">
                             <br>${good.description!("描述无")}
                         </p>
-                        
                         <div class="m-t-md">
-                            <a href="" class="btn btn-xs btn-primary">新增新的一期</a>
-                        </div>
+                        <#if latestStage.quantity=latestStage.purchasedQuantity>
+                            <a href="${rootPath}/admin/goods/stage/create/${good.id}" class="btn btn-xs btn-primary">新增新的一期</a>
+                        <#else>
+                        	<a onclick="createStageWarn()" class="btn btn-xs btn-primary">新增新的一期</a>
+                        </#if>
+						</div>
                         <br/>
                         <a href="${rootPath}/admin/goods/uploadPage/${good.id}" class="btn btn-primary">上传商品详情图片</a>
                         <div class="m-t-md">
-                        <span class="label label-info">在下方按钮上传主图片</span>
+                        <span class="label label-info">在下方按钮修改并上传主图片</span>
                         </div>
                         <div class="m-t-md">
-                        <form id="uploadMainForm">
-						<input type="file" id="mainImgFile" name="MainFileContent" value="浏览" class="btn-rounded"></input> 
+                        <form id="uploadForm">
+						<input type="file" id="mainImgFile" name="FileContent" value="浏览" class="btn-rounded"></input> 
 						<input type="submit" value="上传"/>
 						</form>
 						</div>
@@ -178,3 +180,10 @@
        </div>
 </div>
 <#include "../include/footer.ftl"/>
+
+<script type="text/javascript" src="${rootPath}/resources/js/admin/jquery.form.min.js"></script>
+
+<script>
+	var BASE_URL='${rootPath}';
+</script>
+<script id="uploadScript" type="text/javascript" src="${rootPath}/resources/js/admin/admin.good_detail.js" data="${(good.id)!}"></script>

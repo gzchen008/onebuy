@@ -3,6 +3,7 @@
 >>>>>>>=refs/remotes/origin/newmaster
 eclipse.preferences.version=1
 encoding//src/main/webapp/views/admin/good/create_good.ftl=UTF-8
+encoding//src/main/webapp/views/admin/good/create_stage.ftl=UTF-8
 encoding//src/main/webapp/views/admin/good/edit_good.ftl=UTF-8
 encoding//src/main/webapp/views/admin/good/good_detail.ftl=UTF-8
 encoding//src/main/webapp/views/admin/good/goods.ftl=UTF-8

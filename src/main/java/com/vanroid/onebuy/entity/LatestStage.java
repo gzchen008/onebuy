@@ -55,7 +55,7 @@ public class LatestStage {
 		this.id = id;
 	}
 	
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name = "good_id",nullable=false)
 	public Good getGood() {
 		return good;

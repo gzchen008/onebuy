@@ -10,6 +10,7 @@ import com.qcloud.PicCloud;
 import com.vanroid.onebuy.common.QCloud;
 import com.vanroid.onebuy.entity.Good;
 import com.vanroid.onebuy.service.GoodService;
+import com.vanroid.onebuy.service.GoodServiceTest;
 import com.vanroid.onebuy.util.PhotosStringUtil;
 
 import net.sf.json.JSONObject;
@@ -57,6 +58,23 @@ public class PhotoController {
 		json.put("message", "fail");
 		return json;
 		
+	}
+	
+	@RequestMapping("/uploadMainPhotoUrl")
+	@ResponseBody
+	public JSONObject uploadMainPicUrl(String goodId,String downloadUrl){
+		JSONObject json = new JSONObject();
+		Good good = goodService.get(Long.parseLong(goodId));
+		if(good!=null){
+			good.setMainPhoto(downloadUrl);
+			goodService.update(good);
+			json.put("code", 0);
+			json.put("message", "success");
+			return json;
+		}
+		json.put("code", 1);
+		json.put("message", "fail");
+		return json;
 	}
 	
 }

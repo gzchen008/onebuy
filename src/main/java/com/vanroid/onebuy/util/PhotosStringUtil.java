@@ -12,13 +12,20 @@ public class PhotosStringUtil {
 	 * @return
 	 */
 	public static String[] addPhotoUrl(String[] oldPhotos,String downloadUrl){
-		String[] newPhotos = new String[oldPhotos.length+1];
-		for(int i=0;i<oldPhotos.length;i++){
-			newPhotos[i] = oldPhotos[i];
+		String[] newPhotos;
+		if(oldPhotos!=null){
+			newPhotos = new String[oldPhotos.length+1];
+			for(int i=0;i<oldPhotos.length;i++){
+				newPhotos[i] = oldPhotos[i];
+			}
+			newPhotos[oldPhotos.length]=downloadUrl;
+			
 		}
-		newPhotos[oldPhotos.length]=downloadUrl;
+		else{
+			newPhotos = new String[1];
+			newPhotos[0] = downloadUrl;
+		}
 		return newPhotos;
-		
 	}
 	/**
 	 * 将上传的多张新图片链接添加到旧图片数组中

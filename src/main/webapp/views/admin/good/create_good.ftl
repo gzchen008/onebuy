@@ -70,7 +70,7 @@
                             <div class="ibox-content">
                             <span>主图片：</span>
                                 <form id="uploadMainForm">
-								<input type="file" id="mainImgFile" name="MainFileContent" value="浏览" class="btn-rounded"></input> 
+								<input type="file" id="mainImgFile" name="FileContent" value="浏览" class="btn-rounded"></input> 
 								<input type="submit" value="上传"/>
 								</form>
                             </div>

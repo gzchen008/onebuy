@@ -2,12 +2,12 @@ $(document).ready(function(){
 	initUploadForm(0);
 });
 
-$('input[name=FileContent]').change(function () {
+$('input[id=mainImgFile]').change(function () {
 	
 	initUploadForm(0);
 });
 
-$('input[name=MainFileContent]').change(function () {
+$('input[id=imgFile]').change(function () {
 	
 	initUploadForm(1);
 });
@@ -24,11 +24,12 @@ function initUploadForm (num) {
 			    	alert('上传图片成功');
 			    	if(num==0){
 			    		$('div#mainImg').append('<img src="'+ret.data.download_url+'"></img>');
-				    	$('input#mainUrl').attr('value',$('#mainUrl').value()+','+ret.data.download_url);
+				    	$('input#mainUrl').attr('value',ret.data.download_url);
+				    	
 			    	}
 			    	else{
 			    		$('div#uploadImg').append('<img src="'+ret.data.download_url+'"></img>');
-				    	$('input#allUrl').attr('value',$('#allUrl').value()+','+ret.data.download_url);
+				    	$('input#allUrl').attr('value',$('input#allUrl').attr('value')+','+ret.data.download_url);
 			    	}
 			    	
 			    	//alert(ret.data.download_url);
@@ -40,7 +41,14 @@ function initUploadForm (num) {
 			    }
 			}; 
 			// pass options to ajaxForm 
-			$('#uploadForm').ajaxForm(options);
+			if(num==0){
+				$('#uploadMainForm').ajaxForm(options);
+			}
+			else{
+				$('#uploadForm').ajaxForm(options);
+			}
+			
+			
 	});	
 }
 

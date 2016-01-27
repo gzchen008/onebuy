@@ -28,34 +28,24 @@
 
 				</div>
 				<div class="ibox-content">
-					<form method="get" class="form-horizontal">
+					<form method="get" class="form-horizontal" action="${rootPath}/admin/goods/update/${good.id}">
 						<div class="form-group">
 							<label class="col-sm-2 control-label">商品名称</label>
 
 							<div class="col-sm-10">
-								<input type="text" class="form-control" value="${good.name}">
+								<input type="text" name="goodName" class="form-control" value="${good.name}">
 							</div>
 						</div>
 						<div class="hr-line-dashed"></div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">商品描述</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control"> <span
-									class="help-block m-b-none" value="${(good.description)!("无")}"></span>
+								<input type="text" name="goodDescription" class="form-control" value="${(good.description)!("无")}"> 
+								<span class="help-block m-b-none" value=""></span>
 							</div>
 						</div>
 						<div class="hr-line-dashed"></div>
 
-						<div class="row">
-						<div class="col-sm-2">
-						<form enctype="multipart/form-data" method="post"
-							action="${rootPath}/admin/goods/upload">
-							<input class="btn btn-primary btn-block" type="file" name="file" value="上传图片"/> 
-							<input class="btn btn-primary btn-block" type="submit" text="submit" />
-						</form>
-						</div>
-						</div>
-						<div class="hr-line-dashed"></div>
 						<div class="form-group">
 							<div class="col-sm-4 col-sm-offset-2">
 								<button class="btn btn-primary" type="submit">保存内容</button>

@@ -48,8 +48,8 @@
 							<a href="">
 
 								<div class="image">
-									<img alt="image" class="feed-photo"
-										src="${photo!("暂无图片")}">
+									<img class="feed-photo"
+										src="${photo!}">
 								</div>
 								<div class="file-name">
 								</div>
