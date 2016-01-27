@@ -188,6 +188,7 @@ public class GoodController {
 		}
 		ls.setGood(good);
 		ls.setTotalPrice(itotalPrice);
+		ls.setPurchasedQuantity(0);
 		ls.setQuantity(iquantity);
 		ls.setPrice(itotalPrice/iquantity);
 		ls.setNum(num);
@@ -201,6 +202,7 @@ public class GoodController {
 		Stage stage = new Stage();
 		stage.setGood(good);
 		stage.setTotalPrice(itotalPrice);
+		stage.setPurchasedQuantity(0);
 		stage.setQuantity(iquantity);
 		stage.setPrice(itotalPrice/iquantity);
 		stage.setNum(num);

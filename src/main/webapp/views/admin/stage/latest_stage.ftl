@@ -9,7 +9,7 @@
 		<h2>${title  !}</h2>
 		<ol class="breadcrumb">
 			<li><a href="index">系统管理</a></li>
-			<li><strong>商品管理</strong></li>
+			<li><strong>正在进行</strong></li>
 		</ol>
 	</div>
 	<div class="col-lg-2"></div>
@@ -23,9 +23,8 @@
 
 				<div class="ibox">
 					<div class="ibox-title">
-						<h5>所有商品</h5>
+						<h5>正在进行</h5>
 						<div class="ibox-tools">
-							<a href="${rootPath}/admin/goods/create" class="btn btn-primary btn-xs">创建新商品</a>
 						</div>
 					</div>
 					<div class="ibox-content">
@@ -33,7 +32,7 @@
 							<div class="col-md-1">
 								<button type="button" id="loading-example-btn"
 									class="btn btn-white btn-sm">
-									<i class="fa fa-refresh"></i> 刷新
+									<i class="fa fa-refresh"></i>刷新
 								</button>
 							</div>
 							<div class="col-md-11">
@@ -51,10 +50,7 @@
 							<table class="table table-hover">
 
 								<tbody>
-									<#list pager.datas as good>
-									<#if good.latestStage??> 
-										<#assign stage = good.latestStage/>
-									</#if>
+									<#list pager.datas as stage>
 									
 									<tr>
 										<td class="project-status">
@@ -66,8 +62,8 @@
 										</#if>
 										
 										</td>
-										<td class="project-title"><a href="${rootPath}/admin/goods/detail/${good.id}">${good.name!}</a>
-											<br> <small>创建于${good.time}</small></td>
+										<td class="project-title"><a href="${rootPath}/admin/goods/detail/${stage.good.id}">${(stage.good.name)!}</a>
+											<br> <small>创建于${stage.good.time}</small></td>
 										<td class="project-completion">
 										<small>当前进度：
 										<#if stage??>
@@ -82,7 +78,7 @@
 										总价格:${stage.totalPrice}</td>
 										<#else>0
 										</#if>
-										<td class="project-actions"><a href="${rootPath}/admin/goods/detail/${good.id}"
+										<td class="project-actions"><a href="${rootPath}/admin/goods/detail/${(stage.good.id)!}"
 											class="btn btn-white btn-sm"><i class="fa fa-folder"></i>
 												查看编辑</a> </td>
 									</tr>
@@ -95,7 +91,7 @@
 					<br />
 					
 					<#import "../macro/pager.ftl" as page>
-					<@page.init pager.pageIndex pager.totalPage "${rootPath}/admin/goodsto?page="/>
+					<@page.init pager.pageIndex pager.totalPage "${rootPath}/admin/stagesto?page="/>
 					
 					
 				</div>

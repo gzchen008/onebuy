@@ -159,10 +159,14 @@
                             <br>${good.description!("描述无")}
                         </p>
                         <div class="m-t-md">
-                        <#if latestStage.quantity=latestStage.purchasedQuantity>
+                        <#if latestStage??>
+                        	<#if latestStage.quantity=latestStage.purchasedQuantity>
                             <a href="${rootPath}/admin/goods/stage/create/${good.id}" class="btn btn-xs btn-primary">新增新的一期</a>
+                            <#else>
+                            <a onclick="createStageWarn()" class="btn btn-xs btn-primary">新增新的一期</a>
+                            </#if>
                         <#else>
-                        	<a onclick="createStageWarn()" class="btn btn-xs btn-primary">新增新的一期</a>
+                        	<a href="${rootPath}/admin/goods/stage/create/${good.id}" class="btn btn-xs btn-primary">新增新的一期</a>
                         </#if>
 						</div>
                         <br/>

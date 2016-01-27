@@ -1,22 +1,22 @@
-<#macro init curPage totalPage showPage=10 url="">
+<#macro init curPage totalPage url="" showPage=10>
 <#if showPage gte totalPage>
 	<!--如果显示页数大于总页数，则显示总页数即可-->
 	<#local showPage = totalPage/>
 </#if>	
 <div class="btn-group">
-	<a type="button" class="btn btn-white" href="goodsto?page=1">
+	<a type="button" class="btn btn-white" href="${url}1">
 		<i class="fa fa-chevron-left"></i>
 	</a>
 	<#local half=(showPage/2)/>
 	<#if curPage lte half>
-		<@show start=1 end=showPage curPage=curPage/>
+		<@show start=1 end=showPage curPage=curPage url=url/>
 	<#elseif (curPage+showPage) gt totalPage >
-		<@show start=(totalPage-showPage+1) end=totalPage curPage=curPage/>
+		<@show start=(totalPage-showPage+1) end=totalPage curPage=curPage url=url/>
 	<#elseif curPage gt half>
-		<@show start=(curPage-half) end=(curPage+half) curPage=curPage/>
+		<@show start=(curPage-half) end=(curPage+half) curPage=curPage url=url/>
 	</#if>
 	
-	<a type="button" class="btn btn-white" href="goodsto?page=${totalPage}">
+	<a type="button" class="btn btn-white" href="${url}${totalPage}">
 		<i class="fa fa-chevron-right"></i>
 	</a>
 
@@ -24,10 +24,10 @@
 	
 </#macro>
 
-<#macro show start end curPage>
+<#macro show start end curPage url>
 	<#list start..end as num> 
 		<#if curPage !=num> 
-		<a href="goodsto?page=${num}" class="btn btn-white">${num} </a> 
+		<a href="${url}${num}" class="btn btn-white">${num} </a> 
 		<#else> 
 		<a class="btn btn-default active">${num}</a> 
 		</#if> 
