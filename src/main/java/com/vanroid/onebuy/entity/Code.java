@@ -1,6 +1,5 @@
 package com.vanroid.onebuy.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,12 +34,11 @@ public class Code {
 		this.id = id;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne()
 	@JoinColumn(name = "user_id")
 	public User getOwnedUser() {
 		return ownedUser;
 	}
-
 	public void setOwnedUser(User ownedUser) {
 		this.ownedUser = ownedUser;
 	}
@@ -50,7 +48,6 @@ public class Code {
 	public Stage getStage() {
 		return stage;
 	}
-
 	public void setStage(Stage stage) {
 		this.stage = stage;
 	}
@@ -59,7 +56,6 @@ public class Code {
 	public String getCode() {
 		return code;
 	}
-
 	public void setCode(String code) {
 		this.code = code;
 	}

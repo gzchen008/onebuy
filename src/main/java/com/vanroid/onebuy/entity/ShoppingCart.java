@@ -34,7 +34,7 @@ public class ShoppingCart {
 		this.id = id;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.MERGE,fetch=FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	public User getOwnedUser() {
 		return ownedUser;
@@ -52,7 +52,7 @@ public class ShoppingCart {
 		this.quality = quality;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.MERGE,fetch=FetchType.LAZY)
 	@JoinColumn(name = "stage_id")
 	public Stage getStage() {
 		return stage;
@@ -65,8 +65,5 @@ public class ShoppingCart {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-
-	
 	
 }

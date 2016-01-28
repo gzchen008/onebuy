@@ -38,20 +38,20 @@ public class GoodServiceTest {
 		
 	}*/
 	
-	@Test
+	/*@Test
 	public void goodPicTest(){
 		Good good = goodService.get(22);
 		String[] pics= good.getDetailPhotos();
-		/*pics = PhotosStringUtil.addPhotoUrl(pics, "http://kaiscript-10009183.image.myqcloud.com/8c7e618d-07d1-42ff-a16e-d1ab639612b2");
+		pics = PhotosStringUtil.addPhotoUrl(pics, "http://kaiscript-10009183.image.myqcloud.com/8c7e618d-07d1-42ff-a16e-d1ab639612b2");
 		good.setDetailPhotos(pics);
-		goodService.update(good);*/
+		goodService.update(good);
 		for(String pic:good.getDetailPhotos()){
 			System.out.println(pic);
 		}
 		
-	}
+	}*/
 	
-	@Test
+	/*@Test
 	public void goodCreateStage(){
 		Good good = goodService.get(7);
 		int num = good.getStages().size()+1;
@@ -59,14 +59,11 @@ public class GoodServiceTest {
 		int iquantity = Integer.valueOf(15);
 		
 		
-	}
+	}*/
 	
 	@Test
 	public void getGoodTest(){
-//		Good good = goodService.getGoodByNameAndDescription("sds", "s");
-//		System.out.println(good.getId());
-//		System.out.println(good.getName());
-		//Good good = goodService.get(12);
-		//System.out.println(goodService.get(12).getLatestStage());
+		Good good = goodService.get(1);
+		goodService.delete(good);
 	}
 }

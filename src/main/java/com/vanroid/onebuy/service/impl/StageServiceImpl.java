@@ -1,5 +1,7 @@
 package com.vanroid.onebuy.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -28,10 +30,10 @@ public class StageServiceImpl extends BaseServiceImpl<Stage> implements StageSer
 	}
 
 	@Override
-	public Stage getLastStage(Long goodId) {
+	public Stage getLastStageByGoodId(Long goodId) {
 		String queryString = "FROM Stage s WHERE s.good.id = ? ORDER BY s.id DESC";
 		return dao.findFirst(queryString, goodId);
 	}
-	
+
 	
 }

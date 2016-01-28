@@ -6,7 +6,7 @@
 
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-lg-10">
-		<h2>${title  !}</h2>
+		<h2>正在进行</h2>
 		<ol class="breadcrumb">
 			<li><a href="index">系统管理</a></li>
 			<li><strong>正在进行</strong></li>
@@ -63,7 +63,7 @@
 										
 										</td>
 										<td class="project-title"><a href="${rootPath}/admin/goods/detail/${stage.good.id}">${(stage.good.name)!}</a>
-											<br> <small>创建于${stage.good.time}</small></td>
+											<br> <small>创建于${stage.createTime}</small></td>
 										<td class="project-completion">
 										<small>当前进度：
 										<#if stage??>
@@ -78,9 +78,9 @@
 										总价格:${stage.totalPrice}</td>
 										<#else>0
 										</#if>
-										<td class="project-actions"><a href="${rootPath}/admin/goods/detail/${(stage.good.id)!}"
+										<td class="project-actions"><a href="${rootPath}/admin/stages/detail/${(stage.id)!}"
 											class="btn btn-white btn-sm"><i class="fa fa-folder"></i>
-												查看编辑</a> </td>
+												查看编辑本期</a> </td>
 									</tr>
 									</#list>
 								</tbody>
@@ -91,7 +91,7 @@
 					<br />
 					
 					<#import "../macro/pager.ftl" as page>
-					<@page.init pager.pageIndex pager.totalPage "${rootPath}/admin/stagesto?page="/>
+					<@page.init pager.pageIndex pager.totalPage "${rootPath}/admin/stages/latestto?page="/>
 					
 					
 				</div>
@@ -101,3 +101,7 @@
 <!--COMMON FOOTER-->
 <#include "../include/footer.ftl">
 <!--COMMON FOOTER-->
+<script>
+$('li[id$="Li"]').attr('class','');
+$('li#stageItemLi').attr('class','active');
+</script>

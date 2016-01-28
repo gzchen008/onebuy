@@ -1,5 +1,7 @@
 package com.vanroid.onebuy.service;
 
+import java.util.List;
+
 import com.vanroid.onebuy.entity.Stage;
 
 /**
@@ -16,9 +18,10 @@ public interface StageService extends BaseService<Stage> {
 	Integer getLastStageNum(Long goodId);
 	
 	/**
-	 * 获取最新一期
+	 * 获取某商品最新一期
 	 * @param goodId
 	 * @return
 	 */
-	Stage getLastStage(Long goodId);
+	Stage getLastStageByGoodId(Long goodId);
+	
 }

@@ -38,7 +38,7 @@ public class Order {
 		this.id = id;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne()
 	@JoinColumn(name = "stage_id")
 	public Stage getStage() {
 		return stage;
@@ -57,7 +57,7 @@ public class Order {
 		this.time = time;
 	}
 	
-	@OneToOne(mappedBy = "order")
+	@OneToOne(cascade = CascadeType.ALL,mappedBy = "order")
 	public ShowOrder getShowOrder() {
 		return showOrder;
 	}

@@ -54,13 +54,18 @@
 						</div>
 						<div class="logo-element">H+</div>
 					</li>
-					<li class="active">
+					<li id="goodItemLi" class="active">
 						<a href="${rootPath}/admin/goods">
 							<i class="fa fa-th-large"></i> <span class="nav-label">商品管理</span>
 						</a>
 						
 					</li>
-					
+					<li id="stageItemLi">
+						<a href="${rootPath}/admin/stages/latest">
+							<i class="fa fa-th-large"></i> <span class="nav-label">正在进行</span>
+						</a>
+						
+					</li>
 					<li>
 						<a href="/">
 							<i class="fa fa fa-globe"></i> <span class="nav-label">晒单管理</span><span class="fa arrow"></span>

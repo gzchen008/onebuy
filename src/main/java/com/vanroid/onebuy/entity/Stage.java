@@ -56,7 +56,7 @@ public class Stage {
 		this.id = id;
 	}
 	
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "good_id",nullable=false)
 	public Good getGood() {
 		return good;
@@ -155,7 +155,7 @@ public class Stage {
 		this.luckyCode = luckyCode;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	public User getLuckyUser() {
 		return luckyUser;

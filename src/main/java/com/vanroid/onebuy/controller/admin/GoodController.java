@@ -77,7 +77,7 @@ public class GoodController {
 	public String goodDetail(@PathVariable int goodId,Model model){
 		Good good = goodService.get(goodId);
 		Set<Stage> stages = good.getStages();
-		Stage latestStage = stageService.getLastStage((long) goodId);
+		Stage latestStage = stageService.getLastStageByGoodId((long) goodId);
 		if(stages!=null){
 			model.addAttribute("stages", stages);
 			model.addAttribute("latestStage", latestStage);

@@ -29,7 +29,7 @@ public class CarouselAds {
 		this.id = id;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne()
 	@JoinColumn(name = "stage_id")
 	public Stage getStage() {
 		return stage;

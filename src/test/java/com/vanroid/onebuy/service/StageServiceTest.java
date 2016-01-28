@@ -21,12 +21,19 @@ public class StageServiceTest {
 	private StageService stageService;
 	
 	
-	@Test
+	/*@Test
 	public void goodPicTest(){
 		 Integer lastNum = stageService.getLastStageNum(1l);
-		 Stage stage = stageService.getLastStage(1l);
+		 Stage stage = stageService.getLastStageByGoodId(1l);
 		 System.out.println(stage.getQuantity());
 		 System.out.println(lastNum);
+	}*/
+	
+	@Test
+	public void stageTest(){
+		Stage stage = stageService.get(1);
+		stageService.delete(stage);
 	}
+	
 	
 }

@@ -3,7 +3,6 @@ package com.vanroid.onebuy.entity;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -46,7 +45,7 @@ public class UserDetail {
 		this.user = user;
 	}
 	
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "userDetail")
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "userDetail")
 	public Set<Order> getOrders() {
 		return orders;
 	}
@@ -54,7 +53,7 @@ public class UserDetail {
 		this.orders = orders;
 	}
 	
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "userDetail")
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "userDetail")
 	@Column(nullable= true)
 	public Set<Good> getGoods() {
 		return goods;
@@ -68,14 +67,6 @@ public class UserDetail {
 		return address;
 	}
 	public void setAddress(String[] address) {
-		this.address = address;
-	}
-	public UserDetail(long id, User user, Set<Order> orders, Set<Good> goods, String[] address) {
-		super();
-		this.id = id;
-		this.user = user;
-		this.orders = orders;
-		this.goods = goods;
 		this.address = address;
 	}
 	public UserDetail() {

@@ -6,7 +6,7 @@
 
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-lg-10">
-		<h2>${title  !}</h2>
+		<h2>商品管理</h2>
 		<ol class="breadcrumb">
 			<li><a href="index">系统管理</a></li>
 			<li><strong>商品管理</strong></li>
