@@ -22,7 +22,7 @@ public class ShoppingCart {
 	
 	private Long id;
 	private User ownedUser;
-	private Good good;
+	private Stage stage;
 	private Integer quality;
 	
 	@Id
@@ -43,14 +43,6 @@ public class ShoppingCart {
 		this.ownedUser = ownedUser;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
-	@JoinColumn(name = "good_id")
-	public Good getGood() {
-		return good;
-	}
-	public void setGood(Good good) {
-		this.good = good;
-	}
 	
 	@Column
 	public Integer getQuality() {
@@ -59,13 +51,16 @@ public class ShoppingCart {
 	public void setQuality(Integer quality) {
 		this.quality = quality;
 	}
-	public ShoppingCart(Long id, User ownedUser, Good good, Integer quality) {
-		super();
-		this.id = id;
-		this.ownedUser = ownedUser;
-		this.good = good;
-		this.quality = quality;
+	
+	@OneToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinColumn(name = "stage_id")
+	public Stage getStage() {
+		return stage;
 	}
+	public void setStage(Stage stage) {
+		this.stage = stage;
+	}
+	
 	public ShoppingCart() {
 		super();
 		// TODO Auto-generated constructor stub

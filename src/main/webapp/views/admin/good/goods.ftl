@@ -52,36 +52,16 @@
 
 								<tbody>
 									<#list pager.datas as good>
-									<#if good.latestStage??> 
-										<#assign stage = good.latestStage/>
-									</#if>
 									
 									<tr>
 										<td class="project-status">
-										<#import "../macro/judge_stage.ftl" as s/>
-										<#if (stage.status)??>
-											<@s.judge stage.status/>
-										<#else>
-											<@s.judge 4/>
-										</#if>
 										
 										</td>
 										<td class="project-title"><a href="${rootPath}/admin/goods/detail/${good.id}">${good.name!}</a>
 											<br> <small>创建于${good.time}</small></td>
 										<td class="project-completion">
-										<small>当前进度：
-										<#if stage??>
-												${(stage.purchasedQuantity/stage.quantity)?string.percent}
-												(${stage.purchasedQuantity}/${stage.quantity})
-										</small>
-											<div class="progress progress-mini">
-												<div style="width: ${(stage.purchasedQuantity/stage.quantity)?string.percent};"
-													class="progress-bar"></div>
-											</div></td>
+										</td>
 										<td class="project-completion">
-										总价格:${stage.totalPrice}</td>
-										<#else>0
-										</#if>
 										<td class="project-actions"><a href="${rootPath}/admin/goods/detail/${good.id}"
 											class="btn btn-white btn-sm"><i class="fa fa-folder"></i>
 												查看编辑</a> </td>

@@ -30,7 +30,7 @@
                                             	<@s.judge latestStage.status/>
 											<#else>
 												<span>无</span>
-                                            </#if> 
+                                            </#if>
                                             
                                             <dd><span class="label label-primary"></span>
                                             </dd>

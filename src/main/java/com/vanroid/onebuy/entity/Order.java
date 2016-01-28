@@ -5,7 +5,6 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,10 +25,8 @@ public class Order {
 	
 	private Long  id;
 	private Stage stage;
-	private User user;
 	private Date time;
 	private ShowOrder showOrder;
-	private CarouselAds carouselAds;
 	private UserDetail userDetail;
 	
 	@Id
@@ -50,14 +47,6 @@ public class Order {
 		this.stage = stage;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id")
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
 	
 	@Temporal(value=TemporalType.TIMESTAMP)
 	@Column(nullable = false)
@@ -76,14 +65,6 @@ public class Order {
 		this.showOrder = showOrder;
 	}
 	
-	@OneToOne(mappedBy = "order")
-	public CarouselAds getCarouselAds() {
-		return carouselAds;
-	}
-	public void setCarouselAds(CarouselAds carouselAds) {
-		this.carouselAds = carouselAds;
-	}
-	
 	@ManyToOne()
 	@JoinColumn(name = "userdetail_id",nullable = false)
 	public UserDetail getUserDetail() {
@@ -97,17 +78,5 @@ public class Order {
 	public Order() {
 		super();
 	}
-	public Order(Long id, Stage stage, User user, Date time, ShowOrder showOrder, CarouselAds carouselAds,
-			UserDetail userDetail) {
-		super();
-		this.id = id;
-		this.stage = stage;
-		this.user = user;
-		this.time = time;
-		this.showOrder = showOrder;
-		this.carouselAds = carouselAds;
-		this.userDetail = userDetail;
-	}
-	
 	
 }

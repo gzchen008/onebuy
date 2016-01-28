@@ -1,6 +1,5 @@
 package com.vanroid.onebuy.service;
 
-import java.util.Set;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,9 +8,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.vanroid.onebuy.entity.Good;
-import com.vanroid.onebuy.entity.LatestStage;
-import com.vanroid.onebuy.entity.Stage;
-import com.vanroid.onebuy.util.PhotosStringUtil;
 
 /**
 *@author kaiscript
@@ -24,8 +20,6 @@ public class GoodServiceTest {
 	
 	@Autowired
 	private GoodService goodService;
-	@Autowired
-	private LatestStageService latestStageService;
 	@Autowired
 	private StageService stageService;
 	/*@Test
@@ -64,14 +58,6 @@ public class GoodServiceTest {
 		int itotalPrice = Integer.valueOf(30);
 		int iquantity = Integer.valueOf(15);
 		
-		LatestStage ls = new LatestStage();
-		ls.setGood(good);
-		ls.setTotalPrice(itotalPrice);
-		ls.setQuantity(iquantity);
-		ls.setPrice(itotalPrice/iquantity);
-		ls.setNum(num);
-		ls.setStatus(1);
-		latestStageService.add(ls);
 		
 	}
 	
@@ -82,6 +68,5 @@ public class GoodServiceTest {
 //		System.out.println(good.getName());
 		//Good good = goodService.get(12);
 		//System.out.println(goodService.get(12).getLatestStage());
-		System.out.println(latestStageService.getLatestStageByGood(goodService.get(1)));
 	}
 }

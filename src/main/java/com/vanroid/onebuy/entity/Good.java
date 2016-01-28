@@ -36,10 +36,8 @@ public class Good {
 	private String[] detailPhotos;
 	private Date time;	
 	private String description;
-	private ShoppingCart shoppingCart;
 	private UserDetail userDetail;
 	private Set<Stage> stages = new HashSet<Stage>();
-	private LatestStage latestStage;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -99,14 +97,6 @@ public class Good {
 		this.stages = stages;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY,mappedBy = "good")
-	public ShoppingCart getShoppingCart() {
-		return shoppingCart;
-	}
-	public void setShoppingCart(ShoppingCart shoppingCart) {
-		this.shoppingCart = shoppingCart;
-	}
-	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "userdetail_id",nullable= true)
 	public UserDetail getUserDetail() {
@@ -116,14 +106,6 @@ public class Good {
 		this.userDetail = userDetail;
 	}
 	
-	
-	@OneToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY,mappedBy = "good")
-	public LatestStage getLatestStage() {
-		return latestStage;
-	}
-	public void setLatestStage(LatestStage latestStage) {
-		this.latestStage = latestStage;
-	}
 	
 	public Good() {
 		super();

@@ -22,7 +22,6 @@ public class Code {
 	private Long id;
 	private User ownedUser;
 	private Stage stage;
-	private LatestStage latestStage;
 	/** 代码 */
 	private String code;
 	
@@ -56,17 +55,6 @@ public class Code {
 		this.stage = stage;
 	}
 	
-	
-	@ManyToOne()
-	@JoinColumn(name = "latest_stage_id", nullable = false)
-	public LatestStage getLatestStage() {
-		return latestStage;
-	}
-
-	public void setLatestStage(LatestStage latestStage) {
-		this.latestStage = latestStage;
-	}
-
 	@Column(length=10)
 	public String getCode() {
 		return code;

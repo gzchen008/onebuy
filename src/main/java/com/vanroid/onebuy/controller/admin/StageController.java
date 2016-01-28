@@ -9,8 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.vanroid.onebuy.common.Pager;
-import com.vanroid.onebuy.entity.LatestStage;
-import com.vanroid.onebuy.service.LatestStageService;
 
 /**
 *@author kaiscript
@@ -20,10 +18,8 @@ import com.vanroid.onebuy.service.LatestStageService;
 @RequestMapping("/admin")
 public class StageController {
 	
-	@Resource(name = "latestStageService")
-	private LatestStageService latestStageService;
 	
-	@RequestMapping("/stage/latest")
+	/*@RequestMapping("/stage/latest")
 	public String latestStageList(Pager pager,Model model){
 		if(pager.getTotalCount()==0){
 			pager = new Pager();
@@ -36,5 +32,5 @@ public class StageController {
 		model.addAttribute("pager", pager);
 		
 		return "admin/stage/latest_stage";
-	}
+	}*/
 }

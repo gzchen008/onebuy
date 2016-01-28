@@ -26,10 +26,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.vanroid.onebuy.common.Pager;
 import com.vanroid.onebuy.entity.Good;
-import com.vanroid.onebuy.entity.LatestStage;
 import com.vanroid.onebuy.entity.Stage;
 import com.vanroid.onebuy.service.GoodService;
-import com.vanroid.onebuy.service.LatestStageService;
 import com.vanroid.onebuy.service.StageService;
 import com.vanroid.onebuy.util.DateUtil;
 
@@ -47,8 +45,6 @@ public class GoodController {
 	private GoodService goodService;
 	@Resource(name = "stageService")
 	private StageService stageService;
-	@Resource(name = "latestStageService")
-	private LatestStageService latestStageService;
 	
 	@RequestMapping(value = "/goods",method=RequestMethod.GET)
 	public String goodIndex(Model model,Pager goodPager,HttpServletRequest request){
@@ -81,8 +77,8 @@ public class GoodController {
 	public String goodDetail(@PathVariable int goodId,Model model){
 		Good good = goodService.get(goodId);
 		Set<Stage> stages = good.getStages();
-		LatestStage latestStage = good.getLatestStage();
-		if(stages!=null && latestStage!=null){
+		Stage latestStage = stageService.getLastStage((long) goodId);
+		if(stages!=null){
 			model.addAttribute("stages", stages);
 			model.addAttribute("latestStage", latestStage);
 		}
@@ -102,7 +98,10 @@ public class GoodController {
 		return "admin/good/create_good";
 	}
 	
-	
+	/**
+	 * 增加新的商品
+	 * @return
+	 */
 	@RequestMapping("/goods/creating")
 	public String createGoodWithParm(String goodName,String goodDescription,
 			String url,String mainUrl,Model model){
@@ -163,6 +162,10 @@ public class GoodController {
 		return "admin/good/photo_upload";
 	}
 	
+	/**
+	 * 增加新的一期页面
+	 * @return
+	 */
 	@RequestMapping("/goods/stage/create/{goodId}")
 	public String goodCreateStagePage(@PathVariable int goodId,Model model){
 		model.addAttribute("goodId", goodId);
@@ -179,26 +182,6 @@ public class GoodController {
 		int num = good.getStages().size()+1;
 		int itotalPrice = Integer.valueOf(totalPrice);
 		int iquantity = Integer.valueOf(quantity);
-		LatestStage ls;
-		if(good.getLatestStage()==null){
-			ls = new LatestStage();
-		}
-		else{
-			ls = latestStageService.getLatestStageByGood(good);
-		}
-		ls.setGood(good);
-		ls.setTotalPrice(itotalPrice);
-		ls.setPurchasedQuantity(0);
-		ls.setQuantity(iquantity);
-		ls.setPrice(itotalPrice/iquantity);
-		ls.setNum(num);
-		ls.setStatus(1);
-		if(good.getLatestStage()==null){
-			latestStageService.add(ls);
-		}
-		else{
-			latestStageService.update(ls);
-		}
 		Stage stage = new Stage();
 		stage.setGood(good);
 		stage.setTotalPrice(itotalPrice);
@@ -207,10 +190,12 @@ public class GoodController {
 		stage.setPrice(itotalPrice/iquantity);
 		stage.setNum(num);
 		stage.setStatus(1);
+		stage.setCreateTime(DateUtil.getDate());
 		stageService.add(stage);
-		good.setLatestStage(ls);
 		Set<Stage> stages = good.getStages();
+		//待增加  期数缓存操作
 		stages.add(stage);
+		good.setStages(stages);
 		goodService.update(good);
 		return "admin/good/create_stage"; //要写成跳转到 新期列表
 	}
@@ -320,7 +305,6 @@ public class GoodController {
 	@RequestMapping("/goods/{goodId}")
 	public String text(@PathVariable int goodId){
 		Good good = goodService.get(goodId);
-		System.out.println(good.getLatestStage());
 		return "admin/good/create_stage";
 	}
 	

@@ -25,7 +25,6 @@ public class User {
 	private String phone;
 	private String wxOpenid;
 	private UserDetail userDetail;
-	private Order order;
 	private Stage stage;
 	private ShoppingCart shoppingCart;
 	private Code code;
@@ -79,14 +78,6 @@ public class User {
 	}
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
-	}
-	
-	@OneToOne(mappedBy = "user")
-	public Order getOrder() {
-		return order;
-	}
-	public void setOrder(Order order) {
-		this.order = order;
 	}
 	
 	@OneToOne(mappedBy = "luckyUser")

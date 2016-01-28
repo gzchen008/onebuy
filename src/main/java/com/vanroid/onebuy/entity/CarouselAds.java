@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class CarouselAds {
 	
 	private Integer id;
-	private Order order;
+	private Stage stage;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -30,22 +30,17 @@ public class CarouselAds {
 	}
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "order_id")
-	public Order getOrder() {
-		return order;
+	@JoinColumn(name = "stage_id")
+	public Stage getStage() {
+		return stage;
 	}
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setStage(Stage stage) {
+		this.stage = stage;
 	}
-	public CarouselAds(Integer id, Order order) {
-		super();
-		this.id = id;
-		this.order = order;
-	}
+	
 	public CarouselAds() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 	
 }

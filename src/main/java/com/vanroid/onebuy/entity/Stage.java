@@ -38,8 +38,9 @@ public class Stage {
 	private Date endTime;
 	private Date createTime;
 	private Order order;
-	
+	private ShoppingCart shoppingCart;
 	private Integer status;
+	private CarouselAds carouselAds;
 	private Date announceTime;
 	private String luckyCode;
 	private User luckyUser;
@@ -179,6 +180,23 @@ public class Stage {
 		this.codes = codes;
 	}
 	
+	@OneToOne(mappedBy = "stage")
+	public ShoppingCart getShoppingCart() {
+		return shoppingCart;
+	}
+	public void setShoppingCart(ShoppingCart shoppingCart) {
+		this.shoppingCart = shoppingCart;
+	}
 	
+	@OneToOne(mappedBy = "stage")
+	public CarouselAds getCarouselAds() {
+		return carouselAds;
+	}
+	public void setCarouselAds(CarouselAds carouselAds) {
+		this.carouselAds = carouselAds;
+	}
 
+	public Stage() {
+		super();
+	}
 }

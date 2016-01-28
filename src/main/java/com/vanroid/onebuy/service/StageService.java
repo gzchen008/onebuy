@@ -14,5 +14,11 @@ public interface StageService extends BaseService<Stage> {
 	 * @return
 	 */
 	Integer getLastStageNum(Long goodId);
-
+	
+	/**
+	 * 获取最新一期
+	 * @param goodId
+	 * @return
+	 */
+	Stage getLastStage(Long goodId);
 }

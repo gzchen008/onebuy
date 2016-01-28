@@ -27,4 +27,11 @@ public class StageServiceImpl extends BaseServiceImpl<Stage> implements StageSer
 		return dao.findFirst(queryString, goodId);
 	}
 
+	@Override
+	public Stage getLastStage(Long goodId) {
+		String queryString = "FROM Stage s WHERE s.good.id = ? ORDER BY s.id DESC";
+		return dao.findFirst(queryString, goodId);
+	}
+	
+	
 }
