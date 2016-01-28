@@ -24,4 +24,15 @@ public interface StageService extends BaseService<Stage> {
 	 */
 	Stage getLastStageByGoodId(Long goodId);
 	
+	/**
+	 * 根据Stage实体获取 stage 
+	 * @param stage
+	 * @return
+	 */
+	Stage findByExampleStage(Stage stage) ;
+	/**
+	 * 获取进行中的期
+	 * @return
+	 */
+	List<Stage> getProcessingStages();
 }

@@ -39,5 +39,11 @@ public class GoodServiceImpl extends BaseServiceImpl<Good> implements GoodServic
 		}
 		return good;
 	}
+
+	@Override
+	public Good findByExampleGood(Good good) {
+		List<Good> goods = goodDao.findByExampleEntity(good);
+		return goods.get(0);
+	}
 	
 }

@@ -28,5 +28,7 @@ public interface BaseService<T> {
 
 	List<T> findPageList(String queryString ,int pageIndex, int pageSizes);
 	
+	List<T> findByExampleEntity(T exampleEntity);
+	
 	Pager findByPager(Pager pager);
 }

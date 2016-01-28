@@ -83,9 +83,8 @@
                                                     <ul class="nav nav-tabs">
                                                         <li class="active"><a href="${rootPath}/admin/goods/detail/${good.id}#tab-1" data-toggle="tab">商品详情</a>
                                                         </li>
-                                                        <li class=""><a href="${rootPath}/admin/goods/detail/${good.id}#tab-2" data-toggle="tab">获奖用户</a>
+                                                        <li class=""><a href="${rootPath}/admin/goods/detail/${good.id}#tab-2" data-toggle="tab">所有期</a>
                                                         </li>
-                                                        
                                                     </ul>
                                                 </div>
                                             </div>
@@ -123,7 +122,7 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th>所属期数</th>
-                                                                    <th>用户名</th>
+                                                                    <th>获奖用户</th>
                                                                     <th>幸运码</th>
                                                                     <th>获奖时间</th>
                                                                     <th>是否发货</th>
@@ -140,6 +139,9 @@
                                                         </table>
 
                                                     </div>
+                                                    
+                                                    
+                                                    
                                                 </div>
 
                                             </div>

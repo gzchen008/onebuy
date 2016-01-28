@@ -62,7 +62,7 @@
 					</li>
 					<li id="stageItemLi">
 						<a href="${rootPath}/admin/stages/latest">
-							<i class="fa fa-th-large"></i> <span class="nav-label">正在进行</span>
+							<i class="fa fa-th-large"></i> <span class="nav-label">所有期数</span>
 						</a>
 						
 					</li>

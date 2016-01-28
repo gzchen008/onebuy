@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import com.mysql.jdbc.log.Log;
 import com.vanroid.onebuy.common.Pager;
 import com.vanroid.onebuy.entity.Good;
 import com.vanroid.onebuy.entity.Stage;
@@ -77,11 +78,10 @@ public class GoodController {
 	public String goodDetail(@PathVariable int goodId,Model model){
 		Good good = goodService.get(goodId);
 		Set<Stage> stages = good.getStages();
-		Stage latestStage = stageService.getLastStageByGoodId((long) goodId);
-		if(stages!=null){
-			model.addAttribute("stages", stages);
-			model.addAttribute("latestStage", latestStage);
-		}
+		Stage latestStage = null;
+		latestStage = stageService.getLastStageByGoodId((long) goodId);
+		model.addAttribute("latestStage", latestStage);
+		model.addAttribute("stages", stages);
 		if(good!=null){
 			model.addAttribute("good", good);
 		}
@@ -117,8 +117,18 @@ public class GoodController {
 		good.setMainPhoto(mainUrl);
 		good.setDetailPhotos(url.split(","));
 		goodService.add(good);
-		good = (Good) goodService.getGoodByNameAndDescription(goodName, goodDescription);
-		System.out.println("good"+good.getName());
+		good = goodService.findByExampleGood(good);
+		Stage stage = new Stage();
+		stage.setCreateTime(DateUtil.getDate());
+		stage.setNum(1);
+		stage.setPrice(0);
+		stage.setPurchasedQuantity(0);
+		stage.setQuantity(1);
+		stage.setStatus(0);
+		stage.setTotalPrice(0);
+		stage.setGood(good);
+		stageService.add(stage); //级联会更新good
+		
 		return "redirect:/admin/goods/detail/"+good.getId();
 	}
 	
@@ -192,14 +202,9 @@ public class GoodController {
 		stage.setStatus(1);
 		stage.setCreateTime(DateUtil.getDate());
 		stageService.add(stage);
-		Set<Stage> stages = good.getStages();
 		//待增加  期数缓存操作
-		stages.add(stage);
-		good.setStages(stages);
-		goodService.update(good);
-		return "admin/good/create_stage"; //要写成跳转到 新期列表
+		return "redirect:/admin/stages/latest"; //要写成跳转到 新期列表
 	}
-	
 	
 	
 

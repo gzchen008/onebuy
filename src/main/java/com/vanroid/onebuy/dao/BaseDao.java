@@ -58,7 +58,8 @@ public interface BaseDao<T> {
 	List<T> find(String queryString, Object... values);
 
 	List<T> find(String queryString, String[] paramNames, Object[] values);
-
+	
+	List<T> findByExampleEntity(T exampleEntity);
 	/**
 	 * 查找唯一值
 	 * 

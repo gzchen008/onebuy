@@ -10,4 +10,6 @@ import com.vanroid.onebuy.entity.Good;
 public interface GoodService extends BaseService<Good> {
 	
 	Good getGoodByNameAndDescription(String name,String description);
+	
+	Good findByExampleGood(Good good);
 }

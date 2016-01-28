@@ -1,5 +1,7 @@
 package com.vanroid.onebuy.controller.admin;
 
+import java.util.Set;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -26,7 +28,9 @@ public class StageController {
 	private StageService stageService;
 	@Resource(name = "goodService")
 	private GoodService goodService;
-	
+	/**
+	 * 进行中 主页
+	 */
 	@RequestMapping("/stages/latest")
 	public String latestStageList(Pager pager,Model model){
 		if(pager.getTotalCount()==0){
@@ -52,6 +56,7 @@ public class StageController {
 		model.addAttribute("pager",pager);
 		return "admin/stage/latest_stage";
 	}
+	
 	
 	@RequestMapping("/stages/detail/{stageId}")
 	public String stageDetail(@PathVariable int stageId,Model model){
@@ -80,10 +85,13 @@ public class StageController {
 	
 	
 	//text
-	@RequestMapping("/stages")
+	/*@RequestMapping("/stages")
 	public String deleteProcessingStage(){
-	
+		Set<Stage> stages = goodService.get(6l).getStages();
+		for(Stage s:stages){
+			System.out.println(s.getCreateTime());
+		}
 		
 		return "redirect:/admin/stages/latest";
-	}
+	}*/
 }

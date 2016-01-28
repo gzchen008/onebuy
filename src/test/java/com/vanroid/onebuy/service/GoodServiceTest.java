@@ -1,13 +1,15 @@
 package com.vanroid.onebuy.service;
 
 
+import java.util.Set;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.vanroid.onebuy.entity.Good;
+import com.vanroid.onebuy.entity.Stage;
 
 /**
 *@author kaiscript
@@ -63,7 +65,16 @@ public class GoodServiceTest {
 	
 	@Test
 	public void getGoodTest(){
-		Good good = goodService.get(1);
-		goodService.delete(good);
+//		Good good = goodService.get(1);
+//		goodService.delete(good);
+//		Good good = new Good();
+//		good.setDescription("666");
+//		good.setName("6s");
+//		Good g1 = (Good) goodService.findByExampleGood(good);
+//		System.out.println(g1.getTime());
+		Set<Stage> stages = goodService.get(5l).getStages();
+		for(Stage s:stages){
+			System.out.println(s.getCreateTime());
+		}
 	}
 }

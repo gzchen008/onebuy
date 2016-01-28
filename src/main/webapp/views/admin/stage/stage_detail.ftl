@@ -159,11 +159,12 @@
                         <#if createStage>
                             <a href="${rootPath}/admin/goods/stage/create/${stage.good.id}" class="btn btn-xs btn-primary">新增新的一期</a>
                         <#else>
-                        	<a onclick="createStageWarn()" class="btn btn-xs btn-primary">新增新的一期</a>
+                        	<a onclick="createStageWarn()" class="btn btn-xs btn-primary">该商品最新一期进度未完成，无法开始新一期!!!</a>
                         </#if>
 						</div>
                         <br/>
                         <div class="m-t-md">
+                        <a href="${rootPath}/admin/goods/detail/${stage.good.id}" class="btn btn-xs btn-primary">查看此商品</a>
                         </div>
                         <div class="m-t-md">
 						</div>
@@ -176,4 +177,6 @@
 function createStageWarn(){
 	alert("该商品最新一期进度未完成，无法开始新一期!!!");
 }
+$('li[id$="Li"]').attr('class','');
+$('li#stageItemLi').attr('class','active');
 </script>

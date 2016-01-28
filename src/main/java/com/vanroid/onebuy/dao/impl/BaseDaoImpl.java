@@ -152,7 +152,13 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	public List find(String queryString, String[] paramNames, Object[] values) {
 		return getHibernateTemplate().findByNamedParam(queryString, paramNames, values);
 	}
-
+	
+	// 根据example实体 返回查询对象集合
+	public List<T> findByExampleEntity(Object exampleEntity) {
+		return (List<T>) this.getHibernateTemplate().findByExample(exampleEntity);
+	}
+	
+	
 	// 使用HSQL语句检索数据，返回 Iterator
 	public Iterator iterator(String queryString, Object... values) {
 		return getHibernateTemplate().iterate(queryString);

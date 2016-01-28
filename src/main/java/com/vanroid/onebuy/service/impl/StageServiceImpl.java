@@ -1,6 +1,7 @@
 package com.vanroid.onebuy.service.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -32,8 +33,21 @@ public class StageServiceImpl extends BaseServiceImpl<Stage> implements StageSer
 	@Override
 	public Stage getLastStageByGoodId(Long goodId) {
 		String queryString = "FROM Stage s WHERE s.good.id = ? ORDER BY s.id DESC";
-		return dao.findFirst(queryString, goodId);
+		Stage stage = dao.findFirst(queryString, goodId);
+			return stage;
 	}
 
+	@Override
+	public Stage findByExampleStage(Stage stage) {
+		List<Stage> stages = dao.findByExampleEntity(stage);
+		return stages.get(0);
+	}
+
+	@Override
+	public List<Stage> getProcessingStages() {
+		String queryString = "FROM Stage s WHERE s.status = 1 OR s.status = 2 ORDER BY s.id DESC";
+		return dao.find(queryString);
+	}
+	
 	
 }

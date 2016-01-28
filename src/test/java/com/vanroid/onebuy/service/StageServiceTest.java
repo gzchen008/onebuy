@@ -1,11 +1,17 @@
 package com.vanroid.onebuy.service;
 
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.hibernate.Hibernate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.vanroid.onebuy.entity.Good;
 import com.vanroid.onebuy.entity.Stage;
 
 /**
@@ -15,6 +21,7 @@ import com.vanroid.onebuy.entity.Stage;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:applicationContext.xml" })
+@Transactional
 public class StageServiceTest {
 	
 	@Autowired
@@ -31,8 +38,13 @@ public class StageServiceTest {
 	
 	@Test
 	public void stageTest(){
-		Stage stage = stageService.get(1);
-		stageService.delete(stage);
+		List<Stage> stages = stageService.getProcessingStages();
+		int i=0;
+		for(Stage s:stages){
+			System.out.println(":"+s.getGood().getName());
+			i++;
+			System.out.println(i);
+		}
 	}
 	
 	

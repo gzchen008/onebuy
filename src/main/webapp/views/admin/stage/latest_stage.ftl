@@ -6,10 +6,10 @@
 
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-lg-10">
-		<h2>正在进行</h2>
+		<h2>所有期数</h2>
 		<ol class="breadcrumb">
 			<li><a href="index">系统管理</a></li>
-			<li><strong>正在进行</strong></li>
+			<li><strong>所有期数</strong></li>
 		</ol>
 	</div>
 	<div class="col-lg-2"></div>
@@ -23,7 +23,7 @@
 
 				<div class="ibox">
 					<div class="ibox-title">
-						<h5>正在进行</h5>
+						<h5>所有期数</h5>
 						<div class="ibox-tools">
 						</div>
 					</div>
@@ -81,6 +81,9 @@
 										<td class="project-actions"><a href="${rootPath}/admin/stages/detail/${(stage.id)!}"
 											class="btn btn-white btn-sm"><i class="fa fa-folder"></i>
 												查看编辑本期</a> </td>
+										<td class="project-actions"><a href="${rootPath}/admin/stages/delete/${(stage.id)!}"
+											class="btn btn-white btn-sm"><i class="fa fa-folder"></i>
+												删除此期</a> </td>
 									</tr>
 									</#list>
 								</tbody>

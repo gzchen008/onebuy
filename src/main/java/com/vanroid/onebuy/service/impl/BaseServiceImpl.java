@@ -60,7 +60,7 @@ public class BaseServiceImpl<T> implements BaseService<T>{
 	public List findAll() {
 		return dao.findAll();
 	}
-
+	
 	@Override
 	public List findPageList(String queryString,int pageIndex, int pageSize) {
 		return dao.find(queryString, pageIndex*pageSize,pageSize);
@@ -74,6 +74,12 @@ public class BaseServiceImpl<T> implements BaseService<T>{
 	@Override
 	public void saveOrUpdateAll(Collection<T> entities) {
 		dao.saveOrUpdateAll(entities);
+	}
+	
+	
+	@Override
+	public List<T> findByExampleEntity(T exampleEntity) {
+		return dao.findByExampleEntity(exampleEntity);
 	}
 
 	@Override
