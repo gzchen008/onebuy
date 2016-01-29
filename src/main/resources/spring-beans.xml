@@ -17,6 +17,7 @@
 		<property name="secret" value="19339cf31bae1c6c161596fbaaa1150c" />
 		<property name="weixinCallbackUrl" value="http://xianchumo.eicp.net/shop/user/weixinCallback" />
 	</bean>
+	
 	<!-- 获得token的线程 -->
 	<!-- <bean id="tokenThread" class="com.vanroid.weixin.thread.TokenThread"> </bean> -->
 	<!-- 初始化程序操作 -->

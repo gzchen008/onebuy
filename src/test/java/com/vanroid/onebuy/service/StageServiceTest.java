@@ -4,14 +4,13 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.Hibernate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.vanroid.onebuy.entity.Good;
+import com.vanroid.onebuy.common.Pager;
 import com.vanroid.onebuy.entity.Stage;
 
 /**
@@ -36,7 +35,8 @@ public class StageServiceTest {
 		 System.out.println(lastNum);
 	}*/
 	
-	@Test
+	
+	/*@Test
 	public void stageTest(){
 		List<Stage> stages = stageService.getProcessingStages();
 		int i=0;
@@ -45,7 +45,29 @@ public class StageServiceTest {
 			i++;
 			System.out.println(i);
 		}
+	}*/
+	
+	/*@Test
+	public void stageToGoodTest(){
+		Stage stage = stageService.get(5l);
+		Good good = stage.getGood();
+		Set<Stage> stages =good.getStages();
+		for(Stage s:stages){
+			System.out.println(s.getId());
+			System.out.println(s.getStatus());
+			System.out.println("__------");
+		}
+	}*/
+	
+	@Test
+	public void processingStagePager(){
+		Pager pager = new Pager();
+		pager.setPageIndex(2);
+		pager.setPageSize(1);
+		List<Stage> stages = (List<Stage>) stageService.getProcessingStagesPagerByPager(pager).getDatas();
+		for(Stage s:stages){
+			System.out.println(s.getId());
+		}
+		
 	}
-	
-	
 }

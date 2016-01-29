@@ -4,10 +4,9 @@
 <!-- 内页导航开始 -->
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-sm-4">
-		<h2>商品详情</h2>
+		<h2>详情</h2>
 		<ol class="breadcrumb">
-			<li><a href="${rootPath}/admin/goods">商品管理</a></li>
-			<li><a href="${rootPath}/admin/stages/latest">正在进行</a></li>
+			<li><a href="${rootPath}/admin/stages/latest">所有期数</a></li>
 			<li><strong><a href="${rootPath}/admin/stages/detail/${stage.id}">详情</a></strong></li>
 		</ol>
 	</div>
@@ -22,7 +21,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="m-b-md">
-                                            <a href="${rootPath}/admin/stages/edit/${(stage.id)!}" class="btn btn-white btn-xs pull-right">编辑本期</a>
+                                            <a href="${rootPath}/admin/stages/edit/${(stage.id)!}" class="btn btn-white btn-xs pull-right">修改本期</a>
                                             <h2>${stage.good.name}</h2>
                                         </div>
                                         <dl class="dl-horizontal">最新一期状态：

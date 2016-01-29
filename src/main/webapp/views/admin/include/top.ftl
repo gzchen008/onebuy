@@ -60,22 +60,16 @@
 						</a>
 						
 					</li>
-					<li id="stageItemLi">
-						<a href="${rootPath}/admin/stages/latest">
-							<i class="fa fa-th-large"></i> <span class="nav-label">所有期数</span>
-						</a>
-						
-					</li>
-					<li>
+					<li id = "stageItemLi">
 						<a href="/">
-							<i class="fa fa fa-globe"></i> <span class="nav-label">晒单管理</span><span class="fa arrow"></span>
+							<i class="fa fa fa-globe"></i> <span class="nav-label">活动管理</span><span class="fa arrow"></span>
 						</a>
 						<ul class="nav nav-second-level">
 							<li>
-								<a href="${rootPath}/resources/admin/setting/caseType">投诉角色设置</a>
+								<a href="${rootPath}/admin/stages/latest">所有期数</a>
 							</li>
 							<li>
-								<a href="${rootPath}/resources/admin/setting/caseTitle">投诉渠道/问题设置</a>
+								<a href="${rootPath}/admin/stages/processing">正在进行</a>
 							</li>
 						</ul>
 					</li>

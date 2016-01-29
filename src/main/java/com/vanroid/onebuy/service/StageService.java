@@ -2,6 +2,7 @@ package com.vanroid.onebuy.service;
 
 import java.util.List;
 
+import com.vanroid.onebuy.common.Pager;
 import com.vanroid.onebuy.entity.Stage;
 
 /**
@@ -35,4 +36,9 @@ public interface StageService extends BaseService<Stage> {
 	 * @return
 	 */
 	List<Stage> getProcessingStages();
+	/**
+	 * 根据分页实例获取进行中的"期分页实例"
+	 * @return
+	 */
+	Pager getProcessingStagesPagerByPager(Pager pager);
 }

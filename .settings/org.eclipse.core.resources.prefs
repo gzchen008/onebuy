@@ -14,6 +14,7 @@ encoding//src/main/webapp/views/admin/index.ftl=UTF-8
 encoding//src/main/webapp/views/admin/macro/judge_stage.ftl=UTF-8
 encoding//src/main/webapp/views/admin/macro/luckey_user.ftl=UTF-8
 encoding//src/main/webapp/views/admin/macro/pager.ftl=UTF-8
+encoding//src/main/webapp/views/admin/stage/edit_stage.ftl=UTF-8
 encoding//src/main/webapp/views/admin/stage/latest_stage.ftl=UTF-8
 encoding//src/main/webapp/views/admin/stage/stage_detail.ftl=UTF-8
 encoding//src/main/webapp/views/admin/test/goods_test.ftl=UTF-8

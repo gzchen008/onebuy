@@ -6,10 +6,10 @@
 
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-lg-10">
-		<h2>所有期数</h2>
+		<h2>${title!}</h2>
 		<ol class="breadcrumb">
 			<li><a href="index">系统管理</a></li>
-			<li><strong>所有期数</strong></li>
+			<li><strong>${title!}</strong></li>
 		</ol>
 	</div>
 	<div class="col-lg-2"></div>
@@ -94,7 +94,7 @@
 					<br />
 					
 					<#import "../macro/pager.ftl" as page>
-					<@page.init pager.pageIndex pager.totalPage "${rootPath}/admin/stages/latestto?page="/>
+					<@page.init pager.pageIndex pager.totalPage "${rootPath}/admin/stages/processingto?page="/>
 					
 					
 				</div>

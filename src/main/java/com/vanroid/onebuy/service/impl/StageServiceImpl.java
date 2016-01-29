@@ -1,12 +1,12 @@
 package com.vanroid.onebuy.service.impl;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.vanroid.onebuy.common.Pager;
 import com.vanroid.onebuy.dao.BaseDao;
 import com.vanroid.onebuy.entity.Stage;
 import com.vanroid.onebuy.service.StageService;
@@ -48,6 +48,16 @@ public class StageServiceImpl extends BaseServiceImpl<Stage> implements StageSer
 		String queryString = "FROM Stage s WHERE s.status = 1 OR s.status = 2 ORDER BY s.id DESC";
 		return dao.find(queryString);
 	}
-	
+
+	@Override
+	public Pager getProcessingStagesPagerByPager(Pager pager) {
+		String queryString = "FROM Stage s WHERE s.status = 1 OR s.status = 2 ORDER BY s.id DESC";
+		List<Stage> datas = dao.find(queryString);
+		List<Stage> pagerDatas = dao.find(queryString, pager.getPageIndex()-1, pager.getPageSize());
+		pager.setTotalCount(datas.size());
+		pager.init();
+		pager.setDatas(pagerDatas);
+		return pager;
+	}
 	
 }
