@@ -8,6 +8,7 @@ import java.util.Random;
 /**
 *@author kaiscript
 *@date 2016年1月30日 上午11:49:14
+*@description 生成代码及抽奖工具类
 */
 public class LotteryUtil {
 	/**

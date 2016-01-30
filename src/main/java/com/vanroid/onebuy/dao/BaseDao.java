@@ -59,7 +59,18 @@ public interface BaseDao<T> {
 
 	List<T> find(String queryString, String[] paramNames, Object[] values);
 	
+	/**
+	 * 提供带参数分页 查询
+	 * @param queryString
+	 * @param values
+	 * @param firstResult
+	 * @param maxResult
+	 * @return
+	 */
+	List<T> find(String queryString,Object[] values,int firstResult,int maxResult);
+	
 	List<T> findByExampleEntity(T exampleEntity);
+	
 	/**
 	 * 查找唯一值
 	 * 

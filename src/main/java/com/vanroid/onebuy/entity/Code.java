@@ -1,5 +1,6 @@
 package com.vanroid.onebuy.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,8 +22,10 @@ public class Code {
 	private Long id;
 	private User ownedUser;
 	private Stage stage;
+	private Order order;
 	/** 代码 */
 	private String code;
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +38,7 @@ public class Code {
 	}
 
 	@OneToOne()
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "user_id",nullable=true)
 	public User getOwnedUser() {
 		return ownedUser;
 	}
@@ -52,6 +55,15 @@ public class Code {
 		this.stage = stage;
 	}
 	
+	@ManyToOne()
+	@JoinColumn(name = "order_id",nullable = true)
+	public Order getOrder() {
+		return order;
+	}
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+	
 	@Column(length=10)
 	public String getCode() {
 		return code;
@@ -60,5 +72,4 @@ public class Code {
 		this.code = code;
 	}
 
-	
 }

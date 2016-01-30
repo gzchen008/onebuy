@@ -41,4 +41,9 @@ public interface StageService extends BaseService<Stage> {
 	 * @return
 	 */
 	Pager getProcessingStagesPagerByPager(Pager pager);
+	/**
+	 * 
+	 * @param stageId
+	 */
+	void lotteryLuckyCode(Stage stage);
 }

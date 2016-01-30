@@ -8,6 +8,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
@@ -153,6 +154,16 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 		return getHibernateTemplate().findByNamedParam(queryString, paramNames, values);
 	}
 	
+	
+	//待参数的hql语句检索数据（分页）
+	public List<T> find(String queryString, Object[] values, int firstResult, int maxResult) {
+		Query query = getHibernateTemplate().getSessionFactory().openSession().createQuery(queryString);
+		for(int i=0;i<values.length;i++){
+			query.setParameter(i, values[i]);
+		}
+		return query.setFirstResult(firstResult).setMaxResults(maxResult).list();
+	}
+
 	// 根据example实体 返回查询对象集合
 	public List<T> findByExampleEntity(Object exampleEntity) {
 		return (List<T>) this.getHibernateTemplate().findByExample(exampleEntity);

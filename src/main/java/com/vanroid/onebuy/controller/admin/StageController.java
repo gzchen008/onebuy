@@ -43,6 +43,7 @@ public class StageController {
 		pager = stageService.findByPager(pager);
 		model.addAttribute("pager",pager);
 		model.addAttribute("title", "所有期数");
+		model.addAttribute("url", "/admin/stages/latestto?page=");
 		return "admin/stage/latest_stage";
 	}
 	/**
@@ -63,6 +64,7 @@ public class StageController {
 		pager = stageService.findByPager(pager);
 		model.addAttribute("pager",pager);
 		model.addAttribute("title", "所有期数");
+		model.addAttribute("url", "/admin/stages/latestto?page=");
 		return "admin/stage/latest_stage";
 	}
 	/**
@@ -76,12 +78,13 @@ public class StageController {
 		if(pager.getTotalCount()==0){
 			pager = new Pager();
 			pager.setPageIndex(1);
-			pager.setPageSize(4);
+			pager.setPageSize(2);
 			
 		}
 		pager = stageService.getProcessingStagesPagerByPager(pager);
 		model.addAttribute("pager", pager);
 		model.addAttribute("title", "正在进行");
+		model.addAttribute("url", "/admin/stages/processingto?page=");
 		return "admin/stage/latest_stage";
 	}
 	
@@ -91,12 +94,13 @@ public class StageController {
 		if(pager.getTotalCount()==0){
 			pager = new Pager();
 			pager.setPageIndex(page);
-			pager.setPageSize(4);
+			pager.setPageSize(2);
 			
 		}
 		pager = stageService.getProcessingStagesPagerByPager(pager);
 		model.addAttribute("pager", pager);
 		model.addAttribute("title", "正在进行");
+		model.addAttribute("url", "/admin/stages/processingto?page=");
 		return "admin/stage/latest_stage";
 	}
 	

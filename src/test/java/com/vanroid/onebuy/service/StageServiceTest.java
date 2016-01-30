@@ -1,6 +1,6 @@
 package com.vanroid.onebuy.service;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.vanroid.onebuy.common.Pager;
+import com.vanroid.onebuy.entity.Code;
 import com.vanroid.onebuy.entity.Stage;
 
 /**
@@ -25,8 +25,8 @@ public class StageServiceTest {
 	
 	@Autowired
 	private StageService stageService;
-	
-	
+	@Autowired
+	private CodeService codeService;
 	/*@Test
 	public void goodPicTest(){
 		 Integer lastNum = stageService.getLastStageNum(1l);
@@ -59,7 +59,7 @@ public class StageServiceTest {
 		}
 	}*/
 	
-	@Test
+	/*@Test
 	public void processingStagePager(){
 		Pager pager = new Pager();
 		pager.setPageIndex(2);
@@ -69,5 +69,29 @@ public class StageServiceTest {
 			System.out.println(s.getId());
 		}
 		
+	}*/
+	
+	//生成抽奖码
+	@Test
+	public void setStageCodeTest(){
+		Stage stage = stageService.get(1l);
+		Set<Code> codes = codeService.createCodesByStage(stage);
+		
+		codeService.saveOrUpdateAll(codes);
+		stage.setCodes(codes);
+		stageService.update(stage);
+		
+		for(Code c:stageService.get(1l).getCodes()){
+			System.out.println(c.getCode());
+		}
 	}
+	
+	/*@Test
+	public void getCodeTest(){
+		Stage stage = stageService.get(1l);
+		Set<Code> codes = stage.getCodes();
+		for(Code c:codes){
+			System.out.println(c.getCode());
+		}
+	}*/
 }

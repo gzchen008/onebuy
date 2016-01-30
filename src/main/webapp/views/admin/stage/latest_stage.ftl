@@ -94,7 +94,7 @@
 					<br />
 					
 					<#import "../macro/pager.ftl" as page>
-					<@page.init pager.pageIndex pager.totalPage "${rootPath}/admin/stages/processingto?page="/>
+					<@page.init pager.pageIndex pager.totalPage "${rootPath}${url}"/>
 					
 					
 				</div>
