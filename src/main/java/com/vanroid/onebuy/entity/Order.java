@@ -25,6 +25,7 @@ public class Order {
 	
 	private Long  id;
 	private Stage stage;
+	private Integer purchasedQuantity;
 	private Date time;
 	private ShowOrder showOrder;
 	private UserDetail userDetail;
@@ -47,6 +48,13 @@ public class Order {
 		this.stage = stage;
 	}
 	
+	@Column
+	public Integer getPurchasedQuantity() {
+		return purchasedQuantity;
+	}
+	public void setPurchasedQuantity(Integer purchasedQuantity) {
+		this.purchasedQuantity = purchasedQuantity;
+	}
 	
 	@Temporal(value=TemporalType.TIMESTAMP)
 	@Column(nullable = false)

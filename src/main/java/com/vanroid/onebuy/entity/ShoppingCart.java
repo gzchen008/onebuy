@@ -23,7 +23,7 @@ public class ShoppingCart {
 	private Long id;
 	private User ownedUser;
 	private Stage stage;
-	private Integer quality;
+	private Integer purchasedQuality;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -46,10 +46,10 @@ public class ShoppingCart {
 	
 	@Column
 	public Integer getQuality() {
-		return quality;
+		return purchasedQuality;
 	}
 	public void setQuality(Integer quality) {
-		this.quality = quality;
+		this.purchasedQuality = quality;
 	}
 	
 	@OneToOne(cascade = CascadeType.MERGE,fetch=FetchType.LAZY)
