@@ -73,6 +73,10 @@
 							</li>
 						</ul>
 					</li>
+					<li id = "orderItemLi">
+					<a href="${rootPath}/admin/orders">
+							<i class="fa fa fa-globe"></i> <span class="nav-label">订单管理</span><span class="fa arrow"></span>
+						</a>
 					<li>
 						<a href="#">
 							<i class="fa fa-bar-chart-o"></i> <span class="nav-label">界面设置</span><span class="fa arrow"></span>
