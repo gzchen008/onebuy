@@ -20,10 +20,7 @@ public class OrderServiceImpl extends BaseServiceImpl<Order> implements OrderSer
 	public void setDao(BaseDao<Order> dao) {
 		super.setDao(dao);
 	}
-
-	@Override
-	public void pushCodeToOrder(int orderId) {
-		
-	}
+	
+	
 	
 }

@@ -56,7 +56,7 @@ public class LotteryUtil {
 	 * @param quantity 份数
 	 * @return
 	 */
-	public static int getLuckyCode(List<Date> dates,int quantity){
+	public static String getLuckyCode(List<Date> dates,int quantity){
 		Calendar cal = Calendar.getInstance();
 		long sum=0;
 		int luckyCode;
@@ -68,7 +68,7 @@ public class LotteryUtil {
 		}
 		sum+=System.currentTimeMillis();
 		luckyCode = (int) (sum % quantity+10001);
-		return luckyCode;
+		return String.valueOf(luckyCode);
 	}
 	
 	/**

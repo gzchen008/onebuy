@@ -27,7 +27,7 @@ import javax.persistence.TemporalType;
 @Table(name = "ob_order")
 public class Order {
 	
-	private Long  id;
+	private long  id;
 	private Stage stage;
 	private Integer purchasedQuantity;
 	private Date time;
@@ -37,14 +37,14 @@ public class Order {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	
-	@OneToOne()
+	@ManyToOne()
 	@JoinColumn(name = "stage_id")
 	public Stage getStage() {
 		return stage;

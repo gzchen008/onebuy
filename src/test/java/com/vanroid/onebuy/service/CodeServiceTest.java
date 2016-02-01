@@ -20,7 +20,6 @@ import com.vanroid.onebuy.entity.Stage;
 */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:applicationContext.xml" })
-@Transactional
 public class CodeServiceTest {
 	
 	@Autowired
@@ -29,6 +28,8 @@ public class CodeServiceTest {
 	private StageService stageService;
 	@Autowired
 	private OrderService orderService;
+	@Autowired
+	private LotteryService lotteryService;
 	/*@Test
 	public void saveTest(){
 		Stage stage = stageService.get(1l);
@@ -45,7 +46,7 @@ public class CodeServiceTest {
 	}	
 	*/
 	//测试生成分发抽奖码给订单，parameters:  stage , order
-	@Test
+	/*@Test
 	public void pushCodeTest(){
 		Stage stage = stageService.getLastStageByGoodId(1l);
 		Order order = orderService.get(1l);
@@ -61,11 +62,30 @@ public class CodeServiceTest {
 		Set<Code> getCodes = codeService.getCodesByStageAndOrder(stage, order);
 		order.setCodes(getCodes);
 		orderService.update(order);
+		System.out.println("--");
 		for(Code c:orderService.get(1l).getCodes()){
-			System.out.println("--");
 			System.out.println(c.getCode());
 		}
 		
+	}*/
+	
+	@Test
+	public void luckyCodeTest(){
+		Stage stage = stageService.get(1);
+//		lotteryService.createCodesByStage(1);
+		lotteryService.pushCodesToOrder(2);
+//		lotteryService.lotteryLuckyCode(1);
+		
 	}
 	
+	/*@Test
+	public void orderCodeTest(){
+		Order order = orderService.get((long)1);
+		Stage stage = stageService.get(1);
+		System.out.println("--");
+		for(Code c:order.getCodes()){
+			System.out.println("++++");
+			System.out.println(c.getCode());
+		}
+	}*/
 }

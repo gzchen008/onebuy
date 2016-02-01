@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Table(name = "ob_code")
 public class Code {
 
-	private Long id;
+	private long id;
 	private User ownedUser;
 	private Stage stage;
 	private Order order;
@@ -29,15 +29,14 @@ public class Code {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
-
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	@OneToOne()
+	@ManyToOne()
 	@JoinColumn(name = "user_id",nullable=true)
 	public User getOwnedUser() {
 		return ownedUser;
@@ -55,7 +54,7 @@ public class Code {
 		this.stage = stage;
 	}
 	
-	@ManyToOne()
+	@ManyToOne(cascade =CascadeType.ALL)
 	@JoinColumn(name = "order_id",nullable = true)
 	public Order getOrder() {
 		return order;

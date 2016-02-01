@@ -37,7 +37,6 @@ public class Stage {
 	private Integer price;
 	private Date endTime;
 	private Date createTime;
-	private Order order;
 	private ShoppingCart shoppingCart;
 	private Integer status;
 	private CarouselAds carouselAds;
@@ -46,6 +45,7 @@ public class Stage {
 	private User luckyUser;
 	private Integer ifDelivery;
 	private Set<Code> codes = new HashSet<Code>();
+	private Set<Order> orders = new HashSet<Order>();
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -114,12 +114,12 @@ public class Stage {
 		this.endTime = endTime;
 	}
 	
-	@OneToOne(mappedBy = "stage")
-	public Order getOrder() {
-		return order;
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "stage")
+	public Set<Order> getOrders() {
+		return orders;
 	}
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
 	}
 	
 	@Column

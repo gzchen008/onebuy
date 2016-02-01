@@ -71,20 +71,6 @@ public class StageServiceTest {
 		
 	}*/
 	
-	//生成抽奖码
-	@Test
-	public void setStageCodeTest(){
-		Stage stage = stageService.get(1l);
-		Set<Code> codes = codeService.createCodesByStage(stage);
-		
-		codeService.saveOrUpdateAll(codes);
-		stage.setCodes(codes);
-		stageService.update(stage);
-		
-		for(Code c:stageService.get(1l).getCodes()){
-			System.out.println(c.getCode());
-		}
-	}
 	
 	/*@Test
 	public void getCodeTest(){

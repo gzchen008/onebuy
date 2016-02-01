@@ -1,5 +1,7 @@
 package com.vanroid.onebuy.dao;
 
+import com.vanroid.onebuy.entity.User;
+
 /**
  * 
 *  @company vanroid.com
@@ -8,6 +10,6 @@ package com.vanroid.onebuy.dao;
  * @version 1.0
  * @description TODO
  */
-public interface UserDao {
+public interface UserDao extends BaseDao<User>{
 	
 }

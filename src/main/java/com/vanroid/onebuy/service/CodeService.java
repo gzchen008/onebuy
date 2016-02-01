@@ -18,17 +18,4 @@ public interface CodeService extends BaseService<Code>{
 
 	Set<Code> findByStage(Stage stage);
 	
-	/**
-	 * 生成并获取某期所有抽奖码 (抽奖码没有存入数据库)
-	 * @param stage
-	 * @return
-	 */
-	Set<Code> createCodesByStage(Stage stage);
-	/**
-	 * 获取订单的抽奖码
-	 * @param stage
-	 * @param order
-	 * @return
-	 */
-	Set<Code> getCodesByStageAndOrder(Stage stage,Order order);
 }

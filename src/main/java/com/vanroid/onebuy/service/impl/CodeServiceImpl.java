@@ -42,29 +42,4 @@ public class CodeServiceImpl extends BaseServiceImpl<Code> implements CodeServic
 		return new HashSet<Code>(codes);
 	}
 
-	@Override
-	public Set<Code> createCodesByStage(Stage stage) {
-		String[] codeStrs = LotteryUtil.getAllCodeByQuantity(stage.getQuantity());
-		Set<Code> stageCodes = new HashSet<Code>();
-		for(String c:codeStrs){
-			Code code = new Code();
-			code.setCode(c);
-			code.setStage(stage);
-			stageCodes.add(code); 
-		}
-		
-		return stageCodes;
-	}
-
-	@Override
-	public Set<Code> getCodesByStageAndOrder(Stage stage,Order order) {
-		int quantity = order.getPurchasedQuantity();//购买的份数
-		Object[] values = new Object[1];
-		values[0] = stage;
-		String queryString="FROM Code c WHERE c.stage=?";
-		
-		List<Code> codes = dao.find(queryString, values, stage.getPurchasedQuantity(), order.getPurchasedQuantity());
-		return new HashSet<Code>(codes);
-	}
-	
 }

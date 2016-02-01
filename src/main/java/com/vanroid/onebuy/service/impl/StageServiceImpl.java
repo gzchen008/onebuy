@@ -1,7 +1,8 @@
 package com.vanroid.onebuy.service.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.vanroid.onebuy.common.Pager;
 import com.vanroid.onebuy.dao.BaseDao;
-import com.vanroid.onebuy.entity.Code;
 import com.vanroid.onebuy.entity.Stage;
 import com.vanroid.onebuy.service.StageService;
 import com.vanroid.onebuy.util.LotteryUtil;
@@ -63,9 +63,4 @@ public class StageServiceImpl extends BaseServiceImpl<Stage> implements StageSer
 		return pager;
 	}
 
-	@Override
-	public void lotteryLuckyCode(Stage stage) {
-		
-	}
-	
 }
