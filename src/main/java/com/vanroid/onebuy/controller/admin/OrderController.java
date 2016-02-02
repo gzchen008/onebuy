@@ -61,7 +61,7 @@ public class OrderController {
 	
 	
 	@RequestMapping("/orders/delete/{orderId}")
-	public String deleteProcessingStage(@PathVariable int orderId){
+	public String deleteOrder(@PathVariable int orderId){
 		Order order = orderService.get(orderId);
 		orderService.delete(order);
 		

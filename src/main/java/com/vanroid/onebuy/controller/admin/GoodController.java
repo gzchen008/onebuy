@@ -116,7 +116,7 @@ public class GoodController {
 		good.setMainPhoto(mainUrl);
 		good.setDetailPhotos(url.split(","));
 		goodService.add(good);
-		good = goodService.findByExampleGood(good);
+		/*good = goodService.findByExampleGood(good);
 		Stage stage = new Stage();
 		stage.setCreateTime(DateUtil.getDate());
 		stage.setNum(1);
@@ -126,7 +126,7 @@ public class GoodController {
 		stage.setStatus(0);
 		stage.setTotalPrice(0);
 		stage.setGood(good);
-		stageService.add(stage); //级联会更新good
+		stageService.add(stage);*/ //级联会更新good
 		
 		return "redirect:/admin/goods/detail/"+good.getId();
 	}

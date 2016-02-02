@@ -21,4 +21,6 @@ encoding//src/main/webapp/views/admin/stage/stage_detail.ftl=UTF-8
 encoding//src/main/webapp/views/admin/test/goods_test.ftl=UTF-8
 encoding//src/main/webapp/views/admin/test/pagerTest.ftl=UTF-8
 encoding//src/main/webapp/views/admin/test/photo_upload.ftl=UTF-8
+encoding//src/main/webapp/views/admin/user/user.ftl=UTF-8
+encoding//src/main/webapp/views/admin/user/user_detail.ftl=UTF-8
 encoding/<project>=UTF-8

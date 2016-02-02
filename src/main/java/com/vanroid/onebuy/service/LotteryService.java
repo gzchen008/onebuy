@@ -24,5 +24,4 @@ public interface LotteryService extends BaseService<Stage> {
 	 */
 	void lotteryLuckyCode(int stageId);
 	
-	
 }
