@@ -23,7 +23,7 @@ public class OrderServiceTest {
 	@Autowired
 	private OrderService orderService;
 	
-	@Test
+	/*@Test
 	public void testManyToOneLazy(){
 		Order order = orderService.get(1);
 //		System.out.println(order.getClass());
@@ -33,5 +33,15 @@ public class OrderServiceTest {
 			System.out.println(c.getCode());
 		}
 
+	}*/
+	
+	
+	@Test
+	public void orderCodeTest(){
+		Order order = orderService.get(2);
+		for(Code code:order.getCodes()){
+			System.out.println(code.getCode());
+		}
 	}
+	
 }

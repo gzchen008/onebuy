@@ -38,7 +38,7 @@
 							<span> <img alt="image" class="img-circle" src="" height="70" />
 							</span>
 							<a data-toggle="dropdown" class="dropdown-toggle" href="/">
-								<span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">CGZ</strong>
+								<span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">管理员</strong>
 								</span> <span class="text-muted text-xs block">323<b class="caret"></b></span>
 								</span>
 							</a>
@@ -73,6 +73,15 @@
 							</li>
 						</ul>
 					</li>
+					<li id = "orderItemLi">
+					<a href="${rootPath}/admin/orders">
+							<i class="fa fa fa-globe"></i> <span class="nav-label">订单管理</span><span class="fa arrow"></span>
+						</a>
+					<li>
+					<li id = "userItemLi">
+					<a href="${rootPath}/admin/users">
+							<i class="fa fa fa-globe"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span>
+						</a>
 					<li>
 						<a href="#">
 							<i class="fa fa-bar-chart-o"></i> <span class="nav-label">界面设置</span><span class="fa arrow"></span>

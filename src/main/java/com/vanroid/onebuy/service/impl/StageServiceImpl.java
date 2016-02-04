@@ -36,8 +36,11 @@ public class StageServiceImpl extends BaseServiceImpl<Stage> implements StageSer
 	@Override
 	public Stage getLastStageByGoodId(Long goodId) {
 		String queryString = "FROM Stage s WHERE s.good.id = ? ORDER BY s.id DESC";
-		Stage stage = dao.findFirst(queryString, goodId);
-			return stage;
+		List<Stage> stage = dao.find(queryString, goodId);
+		if(stage.size()==0)
+			return null;
+		else
+			return stage.get(0);
 	}
 
 	@Override

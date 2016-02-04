@@ -45,7 +45,10 @@
                                             <dd>Beaut-zihan</dd>
                                             
                                             <dt>当前期数：</dt> 
-                                            <dd>${(latestStage.num)!("0")}</dd>
+                                            <dd><#if latestStage??>
+											${(latestStage.num)!("0")}
+											<#else>0
+											</#if></dd>
                                         </dl>
                                     </div>
                                     <div class="col-lg-7" id="cluster_info">
@@ -63,13 +66,14 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <dl class="dl-horizontal">
-                                            <dt>最新一期进度</dt>
+                                            <dt>最新一期进度:</dt>
                                             <dd>
                                             	<#if latestStage??>
                                                 <div class="progress progress-striped active m-b-sm">
                                                     <div style="width:${(latestStage.purchasedQuantity/latestStage.quantity)?string.percent};" class="progress-bar"></div>
                                                 </div>
                                                 <small>当前已完成本期总进度的 <strong>${(latestStage.purchasedQuantity/latestStage.quantity)?string.percent}</strong></small>
+                                                <#else>无
                                                 </#if>
                                             </dd>
                                         </dl>
@@ -81,9 +85,9 @@
                                             <div class="panel-heading">
                                                 <div class="panel-options">
                                                     <ul class="nav nav-tabs">
-                                                        <li class="active"><a href="${rootPath}/admin/goods/detail/${good.id}#tab-1" data-toggle="tab">商品详情</a>
+                                                        <li class="active"><a href="${rootPath}/admin/goods/detail/${(good.id)!}#tab-1" data-toggle="tab">商品详情</a>
                                                         </li>
-                                                        <li class=""><a href="${rootPath}/admin/goods/detail/${good.id}#tab-2" data-toggle="tab">所有期</a>
+                                                        <li class=""><a href="${rootPath}/admin/goods/detail/${(good.id)!}#tab-2" data-toggle="tab">所有期</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -102,7 +106,7 @@
                                                                     <#if good.detailPhotos??>
                                                                     	<#list good.detailPhotos as photo>
                                                                         <a target="_blank" href="">
-                                                                            <img class="feed-photo" src="${photo}">
+                                                                            <img class="feed-photo" src="${(photo)!}">
                                                                         </a>
                                                                         </#list>
                                                                     </#if>

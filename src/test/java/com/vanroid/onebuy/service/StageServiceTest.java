@@ -1,7 +1,5 @@
 package com.vanroid.onebuy.service;
 
-import java.util.Set;
-
 import javax.transaction.Transactional;
 
 import org.junit.Test;
@@ -10,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.vanroid.onebuy.entity.Code;
 import com.vanroid.onebuy.entity.Stage;
+import com.vanroid.onebuy.entity.User;
 
 /**
 *@author kaiscript
@@ -20,13 +18,14 @@ import com.vanroid.onebuy.entity.Stage;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:applicationContext.xml" })
-@Transactional
 public class StageServiceTest {
 	
 	@Autowired
 	private StageService stageService;
 	@Autowired
 	private CodeService codeService;
+	@Autowired
+	private UserService userService;
 	/*@Test
 	public void goodPicTest(){
 		 Integer lastNum = stageService.getLastStageNum(1l);
@@ -72,12 +71,14 @@ public class StageServiceTest {
 	}*/
 	
 	
-	/*@Test
+	@Test
 	public void getCodeTest(){
 		Stage stage = stageService.get(1l);
-		Set<Code> codes = stage.getCodes();
+		/*Set<Code> codes = stage.getCodes();
 		for(Code c:codes){
 			System.out.println(c.getCode());
-		}
-	}*/
+		}*/
+		User user = userService.get((long)1);
+		stage.setLuckyUser(user);
+	}
 }

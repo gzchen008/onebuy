@@ -77,11 +77,12 @@
                                             <div class="panel-heading">
                                                 <div class="panel-options">
                                                     <ul class="nav nav-tabs">
-                                                        <li class=""><a href="${rootPath}/admin/stages/detail/${stage.good.id}#tab-1" data-toggle="tab">商品详情</a>
+                                                        <li class="active"><a href="${rootPath}/admin/stages/detail/${stage.good.id}#tab-1" data-toggle="tab">商品详情</a>
                                                         </li>
-                                                        <li class="active"><a href="${rootPath}/admin/stages/detail/${stage.good.id}#tab-2" data-toggle="tab">获奖用户</a>
+                                                        <li class=""><a href="${rootPath}/admin/stages/detail/${stage.good.id}#tab-2" data-toggle="tab">获奖用户</a>
                                                         </li>
-                                                        
+                                                        <li class=""><a href="${rootPath}/admin/stages/detail/${stage.good.id}#tab-3" data-toggle="tab">此期订单</a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -127,15 +128,59 @@
                                                             </thead>
                                                             <tbody>
                                                                 
-                                                                <#if stages??>
-                                                                    <#import "../macro/luckey_user.ftl" as users/>
-                                                                    <@users.showUser stage/>
+                                                                <#if stage??>
+                                                                    <tr>
+																	<td><span class="label label-primary">第 ${stage.num} 期</span></td>
+																	<td>${(stage.luckyUser.username)!("匿名")}</td>
+																	<td>${(stage.luckyCode)!("无")}</td>
+																	<td>${(stage.announceTime)!("未揭晓")}</td>
+																	<td><#if stage.ifDelivery??> 未发货
+	 																		<#if stage.ifDelivery=1> 已发货
+																			</#if> 
+																		</#if></td>
+																	</tr>	
                                                                	</#if>	
 
                                                             </tbody>
                                                         </table>
 
                                                     </div>
+                                                    
+                                                    <div class="tab-pane" id="tab-3">
+
+                                                        <table class="table table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>订单遍号</th>
+                                                                    <th>用户名</th>
+                                                                    <th>抽奖码</th>
+                                                                    <th>下单时间</th>
+                                                                    <th>购买数量</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                
+                                                                <#if stage.orders??>
+                                                                	<#list stage.orders as order>
+                                                                    <tr>
+																	<td><span class="label label-primary">第 ${(order.id)!("#")} 期</span></td>
+																	<td><a>${(order.userDetail.user.username)!("无")}</a></td>
+																	<td><#list order.codes as code>
+																		${(code.code)!("#")},
+																		</#list>
+																	</td>
+																	<td>${(order.time)!("#")}</td>
+																	<td>${(order.purchasedQuantity)!("0")}</td>
+																	</tr>
+																	</#list>	
+                                                               	</#if>	
+
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+                                                    
+                                                    
                                                 </div>
 
                                             </div>
