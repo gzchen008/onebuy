@@ -10,37 +10,54 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
-*@author kaiscript
-*@date 2016年1月17日 下午3:49:39
-*/
+ * @author kaiscript
+ * @date 2016年1月17日 下午3:49:39 首页轮播图片
+ */
 @Entity
 @Table(name = "ob_carousel_ads")
 public class CarouselAds {
-	
+
 	private Integer id;
-	private Stage stage;
-	
+
+	/**
+	 * 超链接
+	 */
+	private String link;
+
+	/**
+	 * 图片地址
+	 */
+	private String photo;
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	@OneToOne()
-	@JoinColumn(name = "stage_id")
-	public Stage getStage() {
-		return stage;
+
+	public String getLink() {
+		return link;
 	}
-	public void setStage(Stage stage) {
-		this.stage = stage;
+
+	public void setLink(String link) {
+		this.link = link;
 	}
-	
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
 	public CarouselAds() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 }
