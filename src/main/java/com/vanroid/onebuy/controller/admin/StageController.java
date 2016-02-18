@@ -43,6 +43,7 @@ public class StageController {
 		pager = stageService.findByPager(pager);
 		model.addAttribute("pager",pager);
 		model.addAttribute("title", "所有期数");
+		model.addAttribute("actionUrl", "/admin/stages/search");
 		model.addAttribute("url", "/admin/stages/latestto?page=");
 		return "admin/stage/latest_stage";
 	}
@@ -64,6 +65,7 @@ public class StageController {
 		pager = stageService.findByPager(pager);
 		model.addAttribute("pager",pager);
 		model.addAttribute("title", "所有期数");
+		model.addAttribute("actionUrl", "/admin/stages/search");
 		model.addAttribute("url", "/admin/stages/latestto?page=");
 		return "admin/stage/latest_stage";
 	}
@@ -84,6 +86,7 @@ public class StageController {
 		pager = stageService.getProcessingStagesPagerByPager(pager);
 		model.addAttribute("pager", pager);
 		model.addAttribute("title", "正在进行");
+		model.addAttribute("actionUrl", "/admin/stages/processing/search");
 		model.addAttribute("url", "/admin/stages/processingto?page=");
 		return "admin/stage/latest_stage";
 	}
@@ -100,6 +103,7 @@ public class StageController {
 		pager = stageService.getProcessingStagesPagerByPager(pager);
 		model.addAttribute("pager", pager);
 		model.addAttribute("title", "正在进行");
+		model.addAttribute("actionUrl", "/admin/stages/processing/search");
 		model.addAttribute("url", "/admin/stages/processingto?page=");
 		return "admin/stage/latest_stage";
 	}
@@ -139,6 +143,97 @@ public class StageController {
 		model.addAttribute("stage", stage);
 		return "admin/stage/edit_stage";
 	}
+	
+	/**
+	 * 根据商品名搜索所有期
+	 * @param goodName
+	 * @param pager
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/stages/search")
+	public String searchStage(String goodName,Pager pager,Model model){
+		if(pager.getTotalCount()==0){
+			pager = new Pager();
+			pager.setPageIndex(1);
+			pager.setPageSize(4);
+		}
+		pager = stageService.getStagesFuzzyPagerByPager(goodName, pager);
+		model.addAttribute("goodName", goodName);
+		model.addAttribute("pager",pager);
+		model.addAttribute("title", "搜索期");
+		model.addAttribute("actionUrl", "/admin/stages/search");
+		return "admin/stage/stage_search";
+	}
+	
+	
+	/**
+	 * 根据商品名搜索所有期（分页）
+	 * @param page
+	 * @param goodName
+	 * @param pager
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/stages/searchto")
+	public String searchStagePage(int page,String goodName,Pager pager,Model model){
+		if(pager.getTotalCount()==0){
+			pager = new Pager();
+			pager.setPageIndex(page);
+			pager.setPageSize(4);
+		}
+		pager = stageService.getStagesFuzzyPagerByPager(goodName, pager);
+		model.addAttribute("goodName", goodName);
+		model.addAttribute("pager",pager);
+		model.addAttribute("title", "搜索期");
+		model.addAttribute("actionUrl", "/admin/stages/search");
+		return "admin/stage/stage_search";
+	}
+	
+	/**
+	 * 根据商品名搜索进行中的期
+	 * @param goodName
+	 * @param pager
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/stages/processing/search")
+	public String searchProcessingStage(String goodName,Pager pager,Model model){
+		if(pager.getTotalCount()==0){
+			pager = new Pager();
+			pager.setPageIndex(1);
+			pager.setPageSize(4);
+		}
+		pager = stageService.getProcessingStagesFuzzyPagerByPager(goodName, pager);
+		model.addAttribute("goodName", goodName);
+		model.addAttribute("pager",pager);
+		model.addAttribute("title", "搜索进行中期");
+		model.addAttribute("actionUrl", "/admin/stages/processing/search");
+		return "admin/stage/stage_search";
+	}
+	
+	/**
+	 * 根据商品名搜索进行中的期（分页）
+	 * @param goodName
+	 * @param pager
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/stages/processing/searchto")
+	public String searchProcessingStagePage(int page,String goodName,Pager pager,Model model){
+		if(pager.getTotalCount()==0){
+			pager = new Pager();
+			pager.setPageIndex(page);
+			pager.setPageSize(4);
+		}
+		pager = stageService.getProcessingStagesFuzzyPagerByPager(goodName, pager);
+		model.addAttribute("goodName", goodName);
+		model.addAttribute("pager",pager);
+		model.addAttribute("title", "搜索进行中期");
+		model.addAttribute("actionUrl", "/admin/stages/processing/searchto");
+		return "admin/stage/stage_search";
+	}
+	
 	
 	/**
 	 * 更新 期

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.vanroid.onebuy.entity.Admin;
 import com.vanroid.onebuy.entity.User;
 
 /**
@@ -23,7 +24,9 @@ import com.vanroid.onebuy.entity.User;
 public class UserServiceTest {
 	@Autowired
 	private UserService userService;
-
+	@Autowired
+	private AdminService adminService;
+	/*
 	@Test
 	public void testSave() {
 		for (int i = 0; i < 10; i++) {
@@ -54,5 +57,15 @@ public class UserServiceTest {
 		System.out.println(u.getUserDetail().getClass()); //proxy: UserDetail_$$xxxxx 
 		System.out.println(u.getUserDetail().getId());
 		
+	}*/
+	
+	@Test
+	public void adminTest(){
+		Admin admin = new Admin();
+		admin.setName("admin1");
+		admin.setPassword("admin");
+		adminService.add(admin);
+		List<Admin> admins = adminService.findAll();
+		System.out.println(admins);
 	}
 }

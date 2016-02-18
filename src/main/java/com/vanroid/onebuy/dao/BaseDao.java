@@ -56,7 +56,9 @@ public interface BaseDao<T> {
 	List<T> find(String queryString, int firstResult, int maxResult);
 
 	List<T> find(String queryString, Object... values);
-
+	
+	List<T> find(String queryString,String paramName,Object value);
+	
 	List<T> find(String queryString, String[] paramNames, Object[] values);
 	
 	/**

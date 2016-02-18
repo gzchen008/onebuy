@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -205,6 +206,25 @@ public class GoodController {
 		return "redirect:/admin/stages/latest"; //要写成跳转到 新期列表
 	}
 	
+	/**
+	 * 模糊查询 商品名称
+	 * @param goodName
+	 * @param pager
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/goods/search")
+	public String searchGood(String goodName,Pager pager,Model model){
+		if(pager.getTotalCount()==0){
+			pager = new Pager();
+			pager.setPageIndex(1);
+			pager.setPageSize(4);
+			
+		}
+		pager = goodService.findGoodFuzzyPager(goodName, pager);
+		model.addAttribute("pager", pager);
+		return "/admin/good/goods";
+	}
 	
 
 	/**

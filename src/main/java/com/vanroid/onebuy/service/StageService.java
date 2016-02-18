@@ -37,8 +37,22 @@ public interface StageService extends BaseService<Stage> {
 	 */
 	List<Stage> getProcessingStages();
 	/**
-	 * 根据分页实例获取进行中的"期分页实例"
+	 * 根据分页实例获取进行中的"期 
 	 * @return
 	 */
 	Pager getProcessingStagesPagerByPager(Pager pager);
+	
+	/**
+	 * 模糊查询商品名的所有"期分页实例"
+	 * @param pager
+	 * @return
+	 */
+	Pager getStagesFuzzyPagerByPager(String goodName,Pager pager);
+	/**
+	 * 模糊查询商品名的所有进行中的"期 分页实例"
+	 * @param goodName
+	 * @param pager
+	 * @return
+	 */
+	Pager getProcessingStagesFuzzyPagerByPager(String goodName,Pager pager);
 }

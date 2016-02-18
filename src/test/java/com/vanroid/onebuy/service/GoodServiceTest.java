@@ -1,7 +1,7 @@
 package com.vanroid.onebuy.service;
 
 
-import java.util.Set;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.vanroid.onebuy.entity.Stage;
+import com.vanroid.onebuy.entity.Good;
 
 /**
 *@author kaiscript
@@ -63,7 +63,7 @@ public class GoodServiceTest {
 		
 	}*/
 	
-	@Test
+	/*@Test
 	public void getGoodTest(){
 //		Good good = goodService.get(1);
 //		goodService.delete(good);
@@ -75,6 +75,14 @@ public class GoodServiceTest {
 		Set<Stage> stages = goodService.get(5l).getStages();
 		for(Stage s:stages){
 			System.out.println(s.getCreateTime());
+		}
+	}*/
+	
+	@Test //模糊查询
+	public void goodTest(){
+		List<Good> goods = goodService.findGoodFuzzy("6");
+		for(Good g:goods){
+			System.out.println("--"+g.getId());
 		}
 	}
 }

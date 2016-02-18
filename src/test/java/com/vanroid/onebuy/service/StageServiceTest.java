@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.vanroid.onebuy.entity.Stage;
-import com.vanroid.onebuy.entity.User;
+import com.vanroid.onebuy.common.Pager;
 
 /**
 *@author kaiscript
@@ -18,6 +17,7 @@ import com.vanroid.onebuy.entity.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:applicationContext.xml" })
+@Transactional
 public class StageServiceTest {
 	
 	@Autowired
@@ -71,14 +71,31 @@ public class StageServiceTest {
 	}*/
 	
 	
-	@Test
+	/*@Test
 	public void getCodeTest(){
 		Stage stage = stageService.get(1l);
-		/*Set<Code> codes = stage.getCodes();
+		Set<Code> codes = stage.getCodes();
 		for(Code c:codes){
 			System.out.println(c.getCode());
-		}*/
+		}
 		User user = userService.get((long)1);
 		stage.setLuckyUser(user);
+		for(Code c:stage.getCodes()){
+			System.out.println(c.getCode());
+		}
+	}*/
+	
+	/*@Test
+	public void stageFuzzyTest(){
+		Pager pager = new Pager();
+		pager = stageService.getStagesFuzzyPagerByPager("6", pager);
+	}*/
+	
+	@Test
+	public void processinStageFuzzyTest(){
+		Pager pager = new Pager();
+		pager.setPageIndex(1);
+		pager.setPageSize(4);
+		pager = stageService.getProcessingStagesFuzzyPagerByPager("5", pager);
 	}
 }

@@ -23,7 +23,7 @@
 
 				<div class="ibox">
 					<div class="ibox-title">
-						<h5>正在进行</h5>
+						<h5>所有期数</h5>
 						<div class="ibox-tools">
 						</div>
 					</div>
@@ -36,7 +36,9 @@
 								<div class="input-group">
 									<form id="searchForm" method="get" action="${rootPath}${actionUrl}">
 									<input type="text" name="goodName" placeholder="请输入商品名称"
-										class="input-sm form-control" value="${goodName!}"></form> 
+										class="input-sm form-control" value="${goodName!}"> 
+									<input type="hidden" name="page" value="">
+									</form>
 									<span class="input-group-btn">
 										<button type="button" onclick="submitForm()" class="btn btn-sm btn-primary">
 											搜索</button>
@@ -92,9 +94,11 @@
 						</div>
 					</div>
 					<br />
-					<#if pager??>
-					<#import "../macro/pager.ftl" as page>
-					<@page.init pager.pageIndex pager.totalPage "${rootPath}${url}"/>
+					<#if pager.totalCount!=0>
+					<#import "../macro/stage_pager.ftl" as page>
+					<@page.init pager.pageIndex pager.totalPage/>
+					<#else>
+					<h2>无结果</h2>
 					</#if>
 					
 				</div>
@@ -109,7 +113,8 @@ $('li[id$="Li"]').attr('class','');
 $('li#stageItemLi').attr('class','active');
 
 
-function submitForm(){
+function submitForm(page){
+	$('input[name="page"]').attr('value',page);	
 	$('#searchForm').submit();
 }
 

@@ -148,6 +148,11 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	public List find(String queryString, Object... values) {
 		return getHibernateTemplate().find(queryString, values);
 	}
+	
+	//使用单个参数的HQL语句检索数据
+	public List find(String queryString, String paramName, Object value) {
+		return getHibernateTemplate().findByNamedParam(queryString, paramName, value);
+	}
 
 	// 使用带命名的参数的HSQL语句检索数据
 	public List find(String queryString, String[] paramNames, Object[] values) {

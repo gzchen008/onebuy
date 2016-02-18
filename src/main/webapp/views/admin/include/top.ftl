@@ -39,16 +39,16 @@
 							</span>
 							<a data-toggle="dropdown" class="dropdown-toggle" href="/">
 								<span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">管理员</strong>
-								</span> <span class="text-muted text-xs block">323<b class="caret"></b></span>
+								</span> <span class="text-muted text-xs block"><b class="caret"></b></span>
 								</span>
 							</a>
 							<ul class="dropdown-menu animated fadeInRight m-t-xs">
 								<li>
-									<a href="${rootPath}/resources/admin/modifyAdmin.jsp">修改密码</a>
+									<a href="${rootPath}/admin/edit">修改密码</a>
 								</li>
 								<li class="divider"></li>
 								<li>
-									<a href="${rootPath}/resources/admin/logout">安全退出</a>
+									<a href="${rootPath}/valicate/logout">安全退出</a>
 								</li>
 							</ul>
 						</div>
@@ -77,62 +77,18 @@
 					<a href="${rootPath}/admin/orders">
 							<i class="fa fa fa-globe"></i> <span class="nav-label">订单管理</span><span class="fa arrow"></span>
 						</a>
-					<li>
+					</li>
 					<li id = "userItemLi">
 					<a href="${rootPath}/admin/users">
 							<i class="fa fa fa-globe"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span>
 						</a>
-					<li>
-						<a href="#">
-							<i class="fa fa-bar-chart-o"></i> <span class="nav-label">界面设置</span><span class="fa arrow"></span>
-						</a>
-						<ul class="nav nav-second-level">
-							<li>
-								<a href="${rootPath}/resources/admin/setting/indexPhoto"?id=1">首页图片一</a>
-							</li>
-							<li>
-								<a href="${rootPath}/resources/admin/setting/indexPhoto"?id=2">首页图片二</a>
-							</li>
-						</ul>
 					</li>
-					<li>
-						<a href="mailbox.html">
-							<i class="fa fa-envelope"></i> <span class="nav-label">帐号设置</span>
+					<li id = "adItemLi">
+						<a href="${rootPath}/admin/ad">
+							<i class="fa fa-bar-chart-o"></i> <span class="nav-label">首页广告设置</span><span class="fa arrow"></span>
 						</a>
-						<ul class="nav nav-second-level">
-							<li>
-								<a href="${rootPath}/resources/admin/listAdmin">帐号列表</a>
-							</li>
-							<li>
-								<a href="${rootPath}/resources/admin/addAdminView">添加帐号</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="">
-							<i class="fa fa-envelope"></i> <span class="nav-label">更新网站缓存</span>
-						</a>
-						<ul class="nav nav-second-level">
-							<li>
-								<a href="${rootPath}/resources/admin/setting/updateCache">更新网站缓存</a>
-							</li>
-						</ul>
 					</li>
 					
-					<li>
-						<a href="/">
-							<i class="fa fa fa-globe"></i> <span class="nav-label">邮件设置</span><span class="fa arrow"></span>
-						</a>
-						<ul class="nav nav-second-level">
-
-							<li>
-								<a href="${rootPath}/resources/admin/setting/mailAccount">邮件帐户</a>
-							</li>
-							<li>
-								<a href="${rootPath}/resources/admin/setting/mailContent">内容设置</a>
-							</li>
-						</ul>
-					</li>
 				</ul>
 			</div>
 		</nav>
@@ -147,24 +103,20 @@
 							<i class="fa fa-bars"></i>
 						</a>
 						<form role="search" class="navbar-form-custom" method="post" action="search_results.html">
-							<div class="form-group">
-								<input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">
-							</div>
+							
 						</form>
 					</div>
 					<ul class="nav navbar-top-links navbar-right">
 						<li>
-							<span class="m-r-sm text-muted welcome-message"><a href="${rootPath}/resources/admin/index" title="返回首页">
+							<span class="m-r-sm text-muted welcome-message"><a href="${rootPath}/admin/goods" title="返回首页">
 									<i class="fa fa-home"></i>
 								</a>欢迎使用管理系统</span>
 						</li>
 						<li class="dropdown">
-                            <a class="dropdown-toggle count-info" href="${rootPath}/resources/admin/reply/unReadList">
-                                <i class="fa fa-envelope"></i> <span class="label label-warning">50</span>
-                            </a>
+                           
                         </li>
 						<li>
-							<a href="${rootPath}/resources/admin/logout">
+							<a href="${rootPath}/valicate/logout">
 								<i class="fa fa-sign-out"></i> 退出
 							</a>
 						</li>

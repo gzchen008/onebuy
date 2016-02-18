@@ -30,19 +30,16 @@
 					</div>
 					<div class="ibox-content">
 						<div class="row m-b-sm m-t-sm">
-							<div class="col-md-1">
-								<button type="button" id="loading-example-btn"
-									class="btn btn-white btn-sm">
-									<i class="fa fa-refresh"></i> 刷新
-								</button>
-							</div>
-							<div class="col-md-11">
+							
+							<div class="col-md-12">
 								<div class="input-group">
-									<input type="text" placeholder="请输入商品名称"
-										class="input-sm form-control"> <span
-										class="input-group-btn">
-										<button type="button" class="btn btn-sm btn-primary">
-											搜索</button>
+									<form id="searchForm" method="get" action="${rootPath}/admin/goods/search">
+									<input type="text" name="goodName" placeholder="请输入商品名称" value=""
+										class="input-sm form-control">
+									</form> 
+									<span class="input-group-btn">
+										<a onclick="submitForm()" type="button" class="btn btn-sm btn-primary">
+									搜索</a>
 									</span>
 								</div>
 							</div>
@@ -73,15 +70,21 @@
 						</div>
 					</div>
 					<br />
-					
+					<#if pager.totalCount!=0>
 					<#import "../macro/pager.ftl" as page>
 					<@page.init pager.pageIndex pager.totalPage "${rootPath}/admin/goodsto?page="/>
-					
-					
+					<#else> 
+					<h2>无商品</h2>
+					</#if>
 				</div>
 			</div>
 		</div>
 	</div>
+<script>
+	function submitForm(){
+		$('#searchForm').submit();
+	}
+</script>
 <!--COMMON FOOTER-->
 <#include "../include/footer.ftl">
 <!--COMMON FOOTER-->

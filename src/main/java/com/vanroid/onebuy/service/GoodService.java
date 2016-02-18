@@ -1,6 +1,9 @@
 package com.vanroid.onebuy.service;
 
 
+import java.util.List;
+
+import com.vanroid.onebuy.common.Pager;
 import com.vanroid.onebuy.entity.Good;
 
 /**
@@ -12,4 +15,8 @@ public interface GoodService extends BaseService<Good> {
 	Good getGoodByNameAndDescription(String name,String description);
 	
 	Good findByExampleGood(Good good);
+	
+	List<Good> findGoodFuzzy(String goodName);
+	
+	Pager findGoodFuzzyPager(String goodName,Pager pager);
 }
