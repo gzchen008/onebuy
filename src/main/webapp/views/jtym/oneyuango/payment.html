@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <title>一元云购</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="css/amazeui.min.css">
+    <link rel="stylesheet" href="css/frozen.css">
+    <link rel="stylesheet" href="css/main.css">
+    </head>
+<body>
+    <!-- 底部 -->
+    <footer class="am-topbar am-topbar-fixed-bottom" >
+        <ul class="ui-tiled" style="font-size:14px;color:#666;">
+            <a href="index.html"><li class="ui-border-r"><span class="am-icon-home am-icon-md"></span>首页</li></a>
+            <a href="product.html"><li class="ui-border-r "><i class="am-icon-shopping-bag am-icon-sm"></i><div>最新揭晓</div></li></a>
+            <a href="post.html"><li class="ui-border-r active"><i class="am-icon-camera-retro am-icon-sm"></i><div>晒单</div></li></a>
+            <a href="cart.html"><li class="ui-border-r "><span class="am-icon-shopping-cart am-icon-sm"></span><div>购物车</div></li></a>
+            <a href="mine.html"><li><i class="am-icon-user-plus am-icon-sm"></i><div>我的</div></li></a>
+        </ul>
+    </footer>
+    
+    <div class="acc-menu">
+        <h4>微信支付</h4>
+    </div>
+    <div class="g-accounts-details">
+        <h4 class="gray9">
+            您的当前余额:
+            <em class="green">￥0.00</em>
+            元
+        </h4>
+    </div>
+    <div class="g-Recharge clearfix">
+        <ul id="ulOption">
+            <li money="50" class="checked">
+                <a href="javascript:;">50元<s class="am-icon-check"></s></a>
+            </li>
+            <li money="100">
+                <a href="javascript:;">100元<s class="am-icon-check"></s></a>
+            </li>
+            <li money="200">
+                <a href="javascript:;">200元<s class="am-icon-check"></s></a>
+            </li>
+            <li money="500">
+                <a href="javascript:;">500元<s class="am-icon-check"></s></a>
+            </li>
+            <li money="1000">
+                <a href="javascript:;">1000元<s class="am-icon-check"></s></a>
+            </li>
+            <li>
+                <input type="text" placeholder="请输入" maxlength="8">
+                <s class="am-icon-check"></s>
+            </li>
+        </ul>
+    </div>
+    <div class="g-accounts-details">
+         <h4 class="gray6">
+            充值金额：
+            <em class="green" id="iRechargeMoney">50.00</em>
+            元
+        </h4>
+    </div>
+    <div class="online-banking clearfix">
+        <dl id="ulBankList">
+            <dt>
+                <a href="javascript:;">选择网银</a>
+            </dt>
+            <dd>
+                <a href="javascript:;">微信支付</a>
+            </dd>
+        </dl>
+    </div>
+    <div class="f-Recharge-btn">
+        <a href="javascript:;" id="btnSubmit">确认充值</a>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/amazeui.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

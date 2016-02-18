@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <title>一元云购</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="css/amazeui.min.css">
+    <link rel="stylesheet" href="css/frozen.css">
+    <link rel="stylesheet" href="css/main.css">
+    </head>
+<body>
+<!-- 底部 -->
+    <footer class="am-topbar am-topbar-fixed-bottom" >
+        <ul class="ui-tiled" style="font-size:14px;color:#666;">
+            <a href="index.html"><li class="ui-border-r"><span class="am-icon-home am-icon-md"></span>首页</li></a>
+            <a href="product.html"><li class="ui-border-r "><i class="am-icon-shopping-bag am-icon-sm"></i><div>最新揭晓</div></li></a>
+            <a href="post.html"><li class="ui-border-r active"><i class="am-icon-camera-retro am-icon-sm"></i><div>晒单</div></li></a>
+            <a href="cart.html"><li class="ui-border-r "><span class="am-icon-shopping-cart am-icon-sm"></span><div>购物车</div></li></a>
+            <a href="mine.html"><li><i class="am-icon-user-plus am-icon-sm"></i><div>我的</div></li></a>
+        </ul>
+    </footer>
+    <header class="ui-header ui-header-positive headh1" style="background-color: #ff0000!important;">
+        <a href="index.html"><i class="am-header-icon am-icon-home am-icon-sm"></i></a>
+        <h1>一元云购</h1>
+        <i class="am-header-icon am-icon-bars am-icon-sm" id="fenlei"></i>
+    </header>
+    <section class="ui-container">
+        <div class="ui-form">
+            <form action="#">
+                <div class="ui-form-item ui-form-item-fix ui-form-item-show ui-border-b">
+                    <input type="text" id="loginid" name="loginid" value="" placeholder="账号/手机号" />
+                </div>
+                <div class="ui-form-item ui-form-item-fix ui-form-item-show ui-border-b">
+                    <input type="password" id="pwd" name="pwd" value="" placeholder="请输入登录密码" />
+                </div>
+                <div class="ui-form-item ui-form-item-fix ui-form-item-show ui-form-item-r ui-border-b">
+                    <input type="tel" id="verify" name="verify" placeholder="请输入验证码">
+                    <button type="button" id="verify_code" class="ui-border-l"><img src="/lib/code.php?type=number" /></button>
+                </div>
+            </form>
+        </div>
+        <div class="ui-btn-wrap ui-align-center" style="padding:20px 20%;">
+            <button class="ui-btn ui-btn-lg btnbg" data-toggle="登录中" data-url="">登 录</button>
+            <h5 class="ui-txt-info" style="margin:10px auto;" data-href="">没有账号？现在就注册</h5>
+        </div>
+    </section>
+    <script type="text/javascript">
+        $('#verify_code').tap(function(){
+            $(this).find('img').attr('src', '/lib/code.php?type=number&_='+ new Date().getTime());
+        });
+        $('.btnbg').tap(function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+
+            //数据
+            var f = $('form')[0], dlg = null;
+            var data = {
+                'loginid': f.loginid.value,
+                'pwd': f.pwd.value,
+                'verify': f.verify.value
+            };
+            if(data.loginid.length == 0){
+                dlg = $.dialog({
+                    title: '温馨提示',
+                    content: '亲，登录账号要输入哦。'
+                });
+                dlg.on('dialog:hide', function(){
+                    f.loginid.focus();
+                });
+                return;
+            }
+            if(data.pwd.length == 0){
+                dlg = $.dialog({
+                    title: '温馨提示',
+                    content: '亲，登录密码要输入哦。'
+                });
+                dlg.on('dialog:hide', function(){
+                    f.pwd.focus();
+                });
+                return;
+            }
+            if(data.verify.length == 0){
+                dlg = $.dialog({
+                    title: '温馨提示',
+                    content: '亲，验证码要输入哦。'
+                });
+                dlg.on('dialog:hide', function(){
+                    f.verify.focus();
+                });
+                return;
+            }
+
+            //防止重复提交
+            var obj = $(this), otxt = obj.html(), toggle = obj.data('toggle'), url = obj.data('url'), stat = obj.data('submited') || 0;
+            if(stat == 1){
+                $.dialog({
+                    title: '温馨提示',
+                    content: '请稍等等，正在登录中...'
+                });
+                return;
+            }
+            obj.html(toggle);
+            obj.data('submited', 1);
+
+            //提交数据
+            $.post('user.html?do=login_save', data, function(res){
+                obj.html(otxt);
+                obj.data('submited', 0);
+                if(res == 'ok') {
+                    window.location.href = url;
+                }else{
+                    $.dialog({
+                        title: '温馨提示',
+                        content: res
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
