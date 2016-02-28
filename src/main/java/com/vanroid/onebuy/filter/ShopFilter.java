@@ -29,11 +29,16 @@ public class ShopFilter extends CharacterEncodingFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 		// 获取根地址
-		request.setAttribute("rootPath", getRootPath(request));
+		String rootPath = getRootPath(request);
+		// 微信资源目录
+		String wxAssets = rootPath + "/resources/wechat_assets";
+		request.setAttribute("rootPath", rootPath);
+		request.setAttribute("wxAssets", wxAssets);
+
 		super.setEncoding(encoding);
 		super.setForceEncoding(forceEncoding);
 		super.doFilterInternal(request, response, filterChain);
-		//输入调试信息
+		// 输入调试信息
 		debugOutput(request);
 	}
 

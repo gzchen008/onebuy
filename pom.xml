@@ -243,6 +243,13 @@
 			<artifactId>fastweixin</artifactId>
 			<version>1.3.6</version>
 		</dependency>
+		<!-- freemarker 模板继承 -->
+		<dependency>
+			<groupId>com.googlecode.rapid-framework</groupId>
+			<artifactId>rapid-core</artifactId>
+			<version>4.0.5</version>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<plugins>

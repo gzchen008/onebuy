@@ -10,5 +10,5 @@ import com.vanroid.onebuy.entity.GlobalConfig;
  * @description TODO
  */
 public interface GlobalConfigService extends BaseService<GlobalConfig>{
-
+	public static int DEFAULT_CONFIG_ID = 1;
 }

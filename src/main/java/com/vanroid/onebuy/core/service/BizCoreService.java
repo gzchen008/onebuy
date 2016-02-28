@@ -6,7 +6,7 @@ import com.vanroid.onebuy.entity.Code;
 import com.vanroid.onebuy.entity.Good;
 import com.vanroid.onebuy.entity.Stage;
 
-public interface CoreBizService {
+public interface BizCoreService {
 
 	/**
 	 * <p>

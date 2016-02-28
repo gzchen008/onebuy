@@ -1,9 +1,7 @@
 package com.vanroid.onebuy.core.holder;
 
-import javax.annotation.Resource;
-
-import com.vanroid.onebuy.entity.GlobalConfig;
-import com.vanroid.onebuy.service.GlobalConfigService;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 
@@ -11,22 +9,23 @@ import com.vanroid.onebuy.service.GlobalConfigService;
  * @author cgz
  * @date 2016年2月10日
  * @version 1.0
- * @description 全局信息緩存
+ * @description 全局緩存
  */
 public class GlobalHolder {
-	private GlobalConfig globalConfig;
-	@Resource(name = "globalConfigService")
-	private GlobalConfigService globalConfigService;
+	private Map<String, Object> values = new HashMap<String, Object>();
 
-	public GlobalConfig getGlobalConfig() {
-		if (globalConfig == null) {
-			globalConfig = globalConfigService.get(1);
-		}
-		return globalConfig;
+	
+	/**
+	 * 全局配置
+	 */
+	public static String GLOBAL_CONFIG = "global_config";
+
+	public Object get(String key) {
+		return values.get(key);
 	}
 
-	public void setGlobalConfig(GlobalConfig globalConfig) {
-		this.globalConfig = globalConfig;
+	public Object set(String key, Object value) {
+		return values.put(key, value);
 	}
 
 }

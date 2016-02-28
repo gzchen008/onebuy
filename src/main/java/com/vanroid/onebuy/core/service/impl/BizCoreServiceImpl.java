@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.vanroid.onebuy.core.holder.StageHolder;
-import com.vanroid.onebuy.core.service.CoreBizService;
+import com.vanroid.onebuy.core.service.BizCoreService;
 import com.vanroid.onebuy.entity.Code;
 import com.vanroid.onebuy.entity.Good;
 import com.vanroid.onebuy.entity.Stage;
@@ -25,8 +25,8 @@ import com.vanroid.onebuy.util.DateUtil;
  * @version 1.0
  * @description 核心业务服务
  */
-@Service("coreBizService")
-public class CoreBizServiceImpl implements CoreBizService {
+@Service("bizCoreService")
+public class BizCoreServiceImpl implements BizCoreService {
 	@Resource(name = "codeService")
 	private CodeService codeService;
 	@Resource(name = "stageService")

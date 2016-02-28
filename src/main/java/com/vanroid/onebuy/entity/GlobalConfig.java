@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -22,7 +23,7 @@ public class GlobalConfig {
 	/**
 	 * 主键
 	 */
-	private Integer id;
+	private Long id;
 	/**
 	 * 首页轮播图片
 	 */
@@ -35,14 +36,15 @@ public class GlobalConfig {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
+	@OneToMany(mappedBy="globalConfig")
 	public List<CarouselAds> getCarouselAds() {
 		return carouselAds;
 	}

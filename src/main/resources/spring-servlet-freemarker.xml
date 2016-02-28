@@ -20,18 +20,30 @@
 
 	<!-- freemarker -->
 	<bean id="freemarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-		<property name="templateLoaderPath" value="/views/" />
-		<property name="defaultEncoding" value="utf-8" />
-		<property name="freemarkerSettings">
-			<props>
-				<prop key="template_update_delay">0</prop>
-				<prop key="locale">zh_CN</prop>
-				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
-				<prop key="date_format">yyyy-MM-dd</prop>
-				<prop key="number_format">#.##</prop>
-			</props>
-		</property>
+			<property name="templateLoaderPath" value="/views/" />
+			<property name="defaultEncoding" value="utf-8" />
+			<property name="freemarkerSettings">
+				<props>
+					<prop key="template_update_delay">0</prop>
+					<prop key="locale">zh_CN</prop>
+					<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+					<prop key="date_format">yyyy-MM-dd</prop>
+					<prop key="number_format">#.##</prop>
+				</props>
+			</property>
+			<property name="freemarkerVariables">  
+		        <map>  
+		            <entry key="block" value-ref="block" />  
+		            <entry key="override" value-ref="override" />  
+		            <entry key="extends" value-ref="extends" />  
+		        </map>  
+	   	 	</property> 
 	</bean>
+		<!--freemarker 模板继承配置-->  
+	<bean id="block" class="cn.org.rapid_framework.freemarker.directive.BlockDirective" />  
+	<bean id="override" class="cn.org.rapid_framework.freemarker.directive.OverrideDirective" />  
+	<bean id="extends" class="cn.org.rapid_framework.freemarker.directive.ExtendsDirective" /> 
+	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
 		<property name="contentType" value="text/html;charset=utf-8" />

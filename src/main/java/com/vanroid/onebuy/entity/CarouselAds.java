@@ -1,12 +1,11 @@
 package com.vanroid.onebuy.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -17,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "ob_carousel_ads")
 public class CarouselAds {
 
-	private Integer id;
+	private Long id;
 
 	/**
 	 * 超链接
@@ -29,13 +28,18 @@ public class CarouselAds {
 	 */
 	private String photo;
 
+	/**
+	 * 网站配置
+	 */
+	private GlobalConfig globalConfig;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -53,6 +57,16 @@ public class CarouselAds {
 
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+
+	@ManyToOne()
+	@JoinColumn(name = "global_config_id")
+	public GlobalConfig getGlobalConfig() {
+		return globalConfig;
+	}
+
+	public void setGlobalConfig(GlobalConfig globalConfig) {
+		this.globalConfig = globalConfig;
 	}
 
 	public CarouselAds() {

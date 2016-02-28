@@ -22,6 +22,8 @@
 	<!-- <bean id="tokenThread" class="com.vanroid.weixin.thread.TokenThread"> </bean> -->
 	<!-- 初始化程序操作 -->
 	<!-- <bean id="initShop" class="com.xianchumo.shop.conf.InitShop"> </bean> -->
+	<!-- 全局信息缓存 -->
+	<bean id ="globalHolder" class="com.vanroid.onebuy.core.holder.GlobalHolder"></bean>
 	<!-- 进行中的期缓存 -->
 	<bean id="processStageHolder" class= "com.vanroid.onebuy.core.holder.StageHolder">
 	</bean>
