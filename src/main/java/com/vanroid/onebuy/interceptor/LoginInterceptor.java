@@ -36,7 +36,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp,
 			Object arg2) throws Exception {
-		System.out.println("---preHandle---");
+		/*System.out.println("---preHandle---");
 		HttpSession session = req.getSession();
 		String login =(String) session.getAttribute("login");
 		System.out.println("login"+login);
@@ -45,7 +45,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 			return false;
 		}
 		else 
-			return true;
+			return true;*/
+		return true;
 	}
 	
 }

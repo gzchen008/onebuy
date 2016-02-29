@@ -15,7 +15,7 @@
 	</div>
 	<!-- 今日上新 -->
 	<ul class="ui-row ui-row-padding" style="margin-top:10px;background:#fff;">
-            <li class="ui-col ui-col-50"><span style="color:red;">即将揭晓</span></li>
+            <li class="ui-col ui-col-50"><span style="color:red;">今日新品</span></li>
             <li class="ui-col ui-col-50 txt-right"><span class="ui-txt-info" data-href="latests.html">更多</span></li>
     </ul>
 	<ul class="ui-row ui-row-padding ui-border-r zxpadding" style="background-color:#fff;">
@@ -45,23 +45,25 @@
     </ul>
 	
 	<ul id="lists" class="ui-row ui-row-padding ui-border-b index-list" style="background:#ffffff;">
-        <li class="ui-col ui-col-50 zxli" data-href="product-info-208.html" style="position:relative;">
-	       	<div class="ui-list-pic" style="margin:0 auto;">
-                 <img src="images/1.jpg" alt="左边">
-            </div>	 
-	        <h4 class="ui-nowrap">旺旺 旺仔牛奶 250ml*24包 大盒整箱装 营养儿童奶</h4>
-	        <h5 class="ui-txt-info">价值：￥158.00</h5>
-	     	<div class="ui-progress ui-border-radius">
-	            <span style="width:94.3%"></span>
-	        </div>
-	      <!--   <ul class="ui-row ui-txt-info ui-fontsize-14" style="line-height:120%;">
-	            <li class="ui-col ui-col-50" style="text-align:left;">14 已参与</li>
-	            <li class="ui-col ui-col-50" style="text-align:right;">剩余 9</li>
-	        </ul> -->
-            <div class="btn-wrap">
-                <a href="javascript:;" class="buy-btn">立即一元云购</a>
-            </div>
-        </li>
+       <#list recommendStageList as stage>
+	        <li class="ui-col ui-col-50 zxli" data-href="product-info-208.html" style="position:relative;">
+		       	<div class="ui-list-pic" style="margin:0 auto;">
+	                 <img src="images/1.jpg" alt="左边">
+	            </div>	 
+		        <h4 class="ui-nowrap">${stage.name}</h4>
+		        <h5 class="ui-txt-info">价值：￥${stage.price!}</h5>
+		     	<div class="ui-progress ui-border-radius">
+		            <span style="width:94.3%"></span>
+		        </div>
+		      <!--   <ul class="ui-row ui-txt-info ui-fontsize-14" style="line-height:120%;">
+		            <li class="ui-col ui-col-50" style="text-align:left;">14 已参与</li>
+		            <li class="ui-col ui-col-50" style="text-align:right;">剩余 9</li>
+		        </ul> -->
+	            <div class="btn-wrap">
+	                <a href="javascript:;" class="buy-btn">立即一元云购</a>
+	            </div>
+	        </li>
+        </#list>
         <li class="ui-col ui-col-50 zxli" data-href="product-info-190.html" style="position:relative;">
            	<div class="ui-list-pic" style="margin:0 auto;">
                  <img src="images/2.jpg" alt="左边">

@@ -42,6 +42,7 @@ public class Stage {
 	private String luckyCode;
 	private User luckyUser;
 	private Integer ifDelivery;
+	private Boolean recommend;
 	private Set<Code> codes = new HashSet<Code>();
 	private Set<Order> orders = new HashSet<Order>();
 
@@ -201,6 +202,14 @@ public class Stage {
 
 	public void setShoppingCart(ShoppingCart shoppingCart) {
 		this.shoppingCart = shoppingCart;
+	}
+	@Column(name = "recommend", columnDefinition = "boolean default true", nullable = false)
+	public Boolean getRecommend() {
+		return recommend;
+	}
+
+	public void setRecommend(Boolean recommend) {
+		this.recommend = recommend;
 	}
 
 	public Stage() {

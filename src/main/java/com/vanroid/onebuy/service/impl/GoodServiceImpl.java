@@ -32,7 +32,7 @@ public class GoodServiceImpl extends BaseServiceImpl<Good> implements GoodServic
 
 	@Override
 	public Good getGoodByNameAndDescription(String name, String description) {
-		List<Good> goodList = goodDao.find("from Good g where g.name = ? and g.description = ?", name,description);
+		List<Good> goodList = goodDao.find("from Good g where g.name = ? and g.description = ?", new String[]{name,description});
 		Set<Good> goods = new HashSet<Good>(goodList);
 		Good good = new Good();
 		for(Good g:goods){

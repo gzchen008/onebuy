@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.vanroid.onebuy.core.service.IndexCoreService;
 import com.vanroid.onebuy.entity.CarouselAds;
+import com.vanroid.onebuy.entity.Stage;
 
 /**
  * 
@@ -21,17 +22,20 @@ import com.vanroid.onebuy.entity.CarouselAds;
  */
 @Controller
 public class IndexController {
-	@Resource(name="indexCoreService")
-	private IndexCoreService indexCoreService; 
+	@Resource(name = "indexCoreService")
+	private IndexCoreService indexCoreService;
+
 	@RequestMapping("/")
 	public String indexPage(Model model) {
-		//加载首页图片
+		// 加载首页图片
 		List<CarouselAds> carouselAdsList = indexCoreService.getCarouselAdsList();
-		//即将揭晓
-		
-		//人气精选
-		
+		// 最新上架
+
+		// 人气精选
+		List<Stage> recommendStageList = indexCoreService.getRecommendStageList(0);
+
 		model.addAttribute("carouselAdsList", carouselAdsList);
+		model.addAttribute("recommendStageList", recommendStageList);
 		return "weixin/index";
 	}
 
