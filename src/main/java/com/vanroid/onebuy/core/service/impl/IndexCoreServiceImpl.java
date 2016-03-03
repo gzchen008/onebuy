@@ -24,8 +24,9 @@ public class IndexCoreServiceImpl implements IndexCoreService {
 	private GlobalHolder globalHolder;
 	@Resource(name = "goodDao")
 	private GoodDao goodDao;
-	@Resource(name="stageDao")
+	@Resource(name = "stageDao")
 	private StageDao stageDao;
+
 	@Override
 	public List<CarouselAds> getCarouselAdsList() {
 		GlobalConfig globalConfig = (GlobalConfig) globalHolder.get(GlobalHolder.GLOBAL_CONFIG);
@@ -40,13 +41,22 @@ public class IndexCoreServiceImpl implements IndexCoreService {
 	public List<Good> getRecommendGoodList(int pageNum) {
 		StringBuilder hql = new StringBuilder();
 		hql.append("FROM Good ");
-		return goodDao.find(hql.toString(), pageNum * IndexCoreService.RECOMD_PAGE_SIZE, IndexCoreService.RECOMD_PAGE_SIZE);
+		return goodDao.find(hql.toString(), pageNum * IndexCoreService.RECOMD_PAGE_SIZE,
+				IndexCoreService.RECOMD_PAGE_SIZE);
 	}
 
 	@Override
 	public List<Stage> getRecommendStageList(int pageNum) {
-		String queryString = "FROM Stage s where s.recommend = true  ";
-		return stageDao.find(queryString, pageNum * IndexCoreService.RECOMD_PAGE_SIZE, IndexCoreService.RECOMD_PAGE_SIZE);
+		String queryString = "FROM Stage stage WHERE  stage.recommend = true  ";
+		List<Stage> stageList = stageDao.find(queryString, pageNum * IndexCoreService.RECOMD_PAGE_SIZE,IndexCoreService.RECOMD_PAGE_SIZE);
+		return stageList;
+	}
+
+	@Override
+	public List<Good> getNewGoodList(int size) {
+		String queryString = "FROM Good good ORDER BY good.id DESC";
+		List<Good> goodList = goodDao.find(queryString, 0, size);
+		return goodList;
 	}
 
 }

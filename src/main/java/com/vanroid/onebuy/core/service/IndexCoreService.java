@@ -41,4 +41,11 @@ public interface IndexCoreService {
 	 */
 	public List<Stage> getRecommendStageList(int pageNum);
 
+	/**
+	 * 获取最新上架的商品
+	 * @param size 条数
+	 * @return
+	 */
+	public List<Good> getNewGoodList(int size);
+
 }
