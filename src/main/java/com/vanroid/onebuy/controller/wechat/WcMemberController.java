@@ -22,7 +22,7 @@ import com.vanroid.onebuy.util.RequestUtils;
  */
 @Controller
 @RequestMapping("/member")
-public class MemberController {
+public class WcMemberController {
 	@Resource(name = "indexCoreService")
 	private IndexCoreService indexCoreService;
 

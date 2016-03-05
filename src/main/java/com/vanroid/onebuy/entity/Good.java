@@ -34,6 +34,7 @@ public class Good {
 	private String description;
 	private UserDetail userDetail;
 	private Boolean recommend;
+	private Category category;
 	private Set<Stage> stages = new HashSet<Stage>();
 
 	@Id
@@ -116,6 +117,16 @@ public class Good {
 
 	public void setRecommend(Boolean recommend) {
 		this.recommend = recommend;
+	}
+
+	@ManyToOne(targetEntity = Category.class)
+	@JoinColumn(name = "category_id")
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public Good() {

@@ -22,7 +22,7 @@ import com.vanroid.onebuy.entity.Stage;
  * @description TODO
  */
 @Controller
-public class IndexController {
+public class WcIndexController {
 	@Resource(name = "indexCoreService")
 	private IndexCoreService indexCoreService;
 

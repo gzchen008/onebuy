@@ -8,7 +8,6 @@
 			</#list>
 		</#if>
 	    <li><img src="${wxAssets}/images/2.jpg" /></li>
-	    <li><img src="${wxAssets}/images/3.jpg" /></li>
 	  </ul>
 	</div>
 	<!-- 今日上新 -->
@@ -58,38 +57,6 @@
     </#if>
     </ul class="end">
    <!--  <div class="load-more" data-loading="正在加载中..." data-done="加载完成"></div> -->
-   <!-- topbtn -->
-   	<div id="div_fastnav" class="fast-nav-wrapper">
-   		<ul class="fast-nav">
-			<li id="li_top" style="display:list-item">
-				<a href="javascript:;">
-					<i class="am-icon-angle-up am-icon-md"></i>
-				</a>
-			</li>
-		</ul>	
-   	</div>
-    <div class="ui-actionsheet">
-        <div class="ui-actionsheet-cnt">
-            <ul class="ui-list ui-list-text ui-list-cover">
-                    <li class="ui-border-t" data-href="product-list-2.html">
-                        <span>手机数码</span>
-                    </li>
-                                <li class="ui-border-t" data-href="product-list-3.html">
-                        <span>家用电器</span>
-                    </li>
-                                <li class="ui-border-t" data-href="product-list-4.html">
-                        <span>化妆个护</span>
-                    </li>
-                                <li class="ui-border-t" data-href="product-list-5.html">
-                        <span>日常生活</span>
-                    </li>
-                                <li class="ui-border-t" data-href="product-list-6.html">
-                        <span>美森造型</span>
-                    </li>
-                        </ul>
-            <button class="ui-actionsheet-cancel">取消</button>
-        </div>
-    </div>
 </@override>
 <@override name="nav_index">active</@override>
 <@extends name="common/base.ftl"/>
