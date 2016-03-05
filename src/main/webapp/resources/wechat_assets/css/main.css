@@ -50,7 +50,6 @@ html,body{
 	padding:0;
 	color:#000;
 	font-size:16px;
-	font-family: Arial;
 	position:relative;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -71,6 +70,7 @@ a:hover {
 }
 ul{
 	list-style: none;
+	padding-left: 0em;
 }
 img{
 	width:100%;
@@ -971,4 +971,163 @@ a.z-CloseBtn, a.z-DefineBtn, a.z-ShoppingBtn, a.z-cartBtn, a.z-grayBtn {
 	line-height: 33px;
 	border: 1px solid #42ccb6;
 	background: #42ccb6;
+}
+/*edit_message.html */
+.link-wrapper {
+	margin-top: 10px;
+}
+.link-wrapper span {
+	color: rgb(102, 102, 102);
+	padding-right: 12px;
+}
+.fr{
+	float: right;
+}
+
+/*edit_name.html*/
+.edit-wrapper {
+	padding: 10px;
+}
+.edit-wrapper .inp-info {
+	display: block;
+	height: 36px;
+	border: 1px solid rgb(230, 230, 230);
+	border-radius: 3px;
+	background-color: rgb(255, 255, 255);
+	padding: 8px 10px;
+	box-sizing: border-box;
+	width: 100%;
+	line-height: 20px;
+	color: rgb(102, 102, 102);
+}
+.edit-wrapper .txt {
+	font-size: 13px;
+	line-height: 20px;
+	white-space: nowrap;
+	margin-top: 0.3em;
+	padding-left: 2px;
+}
+.edit-wrapper .s-btn {
+	margin: 26px 5px 0;
+	display: block;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	font-size: 18px;
+	color: rgb(255, 255, 255);
+	background-color:#42ccb6;
+	border-radius: 5px;
+}
+.sub_nav a {
+	border-bottom: 0px solid rgb(222, 222, 222); 
+	margin-top: 0px;
+}
+.edit_nameDialog,.edit_namesuccess,.edit_PhoneDialog,.sugDialog{
+	width: 110px;
+	height: 45px;
+	position: fixed;
+	margin:22px 0 0 -55px;
+	left:50%;
+	top:25%;
+	border-radius:5px;
+	color: #ffffff;
+	text-align: center;
+	display: block;
+	padding-top: 10px;
+	background-color:rgba(0,0,0,0.5);
+	display: none;
+}
+.edit_PhoneDialog{
+	width: 200px;
+	margin: 22px 0 0 -100px;
+}
+.sugDialog{
+	width :250px;
+	margin: 22px 0 0 -125px; 
+}
+.sub_nav a select.sex, .sub_nav a input.date {
+	width: 100%;
+	height: 48px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+/*edit_qianming.html*/
+.edit-wrapper textarea.inp-info {
+	height: 92px;
+	line-height: 20px;
+	padding: 6px 10px;
+	resize: none;
+}
+/*edit_select.html*/
+.edit-wrapper .briday, .edit-wrapper .sex-info {
+	width: 100%;
+	color: rgb(102, 102, 102);
+}
+.edit-wrapper .address-list li {
+	margin-bottom: 10px;
+}
+.edit-wrapper .address-list span {
+	height: 36px;
+	line-height: 36px;
+}
+.edit-wrapper .address-list span {
+	display: block;
+	width: 100%;
+	height: 32px;
+	line-height: 32px;
+	border: 1px solid rgb(222, 222, 222);
+	border-radius: 3px;
+	background-color: rgb(255, 255, 255);
+	position: relative;
+	overflow: hidden;
+	text-indent: 10px;
+}
+.edit-wrapper .s-icon {
+	position: absolute;
+	top:0px;
+	right: 11px;
+	display: block;
+}
+/*Suggestion.html*/
+.g-acc-bg{
+	background:rgb(247,247,247);
+}
+.feedback-inner {
+	padding: 10px 10px 0;
+}
+.feedback-inner .back-info {
+	width: 100%;
+	height: 100px;
+	padding: 4px 8px;
+	line-height: 20px;
+	border: 1px solid rgb(229, 229, 229);
+	box-sizing: border-box;
+	color: rgb(102, 102, 102);
+	border-radius: 3px;
+	resize: none;
+	font-size: 15px;
+}
+.feedback-inner .back-find {
+	width: 100%;
+	height: 34px;
+	line-height: 34px;
+	border: 1px solid rgb(229, 229, 229);
+	box-sizing: border-box;
+	padding: 0 8px;
+	margin: 15px 0 2px;
+	border-radius: 3px;
+	color: rgb(102, 102, 102);
+}
+.feedback-inner .back-btn {
+	display: block;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	font-size: 16px;
+	color: rgb(255, 255, 255);
+	background-color: #42ccb6;
+	border-radius: 4px;
+	margin: 32px 5px 0;
 }

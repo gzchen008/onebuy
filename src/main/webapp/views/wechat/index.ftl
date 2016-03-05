@@ -47,13 +47,13 @@
 	                 <img src="${stage.good.mainPhoto!}" alt="${stage.good.name!}">
 	            </div>	 
 		        <h4 class="ui-nowrap">${stage.good.name!}</h4>
-		        <h5 class="ui-txt-info">价值：￥${stage.price!}</h5>
+		        <h5 class="ui-txt-info">价值：￥${stage.totalPrice!}</h5>
 		     	<div class="ui-progress ui-border-radius">
 		            <span style="width:94.3%"></span>
 		        </div>
 		       <ul class="ui-row ui-txt-info ui-fontsize-14" style="line-height:120%;">
-		            <li class="ui-col ui-col-50" style="text-align:left;">14 已参与</li>
-		            <li class="ui-col ui-col-50" style="text-align:right;">剩余 9</li>
+		            <li class="ui-col ui-col-50" style="text-align:left;">${stage.purchasedQuantity!}已参与</li>
+		            <li class="ui-col ui-col-50" style="text-align:right;">剩余 ${stage.quantity - stage.purchasedQuantity }</li>
 		        </ul>
 	            <div class="btn-wrap">
 	                <a href="javascript:;" class="buy-btn">立即一元云购</a>

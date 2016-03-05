@@ -71,7 +71,13 @@
 			<mvc:mapping path="/admin/users/**" />
 			<mvc:mapping path="/admin/goods/**" />
 			<mvc:mapping path="/admin/orders/**" />
-			<bean class="com.vanroid.onebuy.interceptor.LoginInterceptor">
+			<bean class="com.vanroid.onebuy.interceptor.admin.AdminLoginInterceptor">
+			</bean>
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/member/**" />
+			<bean class="com.vanroid.onebuy.interceptor.wechat.WechatInterceptor">
 			</bean>
 		</mvc:interceptor>
 

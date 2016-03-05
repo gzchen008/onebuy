@@ -1,4 +1,4 @@
-package com.vanroid.onebuy.controller.weixin;
+package com.vanroid.onebuy.controller.wechat;
 
 import java.util.List;
 
@@ -15,11 +15,11 @@ import com.vanroid.onebuy.entity.Stage;
 
 /**
  * 
- * Copyright 2015 xianchumo.com
- * 
- * @Team xianchumo
- * @data：2015年9月20日 @author CGZ
- * @description 首页控制器
+*  @company vanroid.com
+ * @author cgz
+ * @date 2016年3月5日
+ * @version 1.0
+ * @description TODO
  */
 @Controller
 public class IndexController {

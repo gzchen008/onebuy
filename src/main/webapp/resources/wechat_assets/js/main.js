@@ -65,6 +65,7 @@ $(function() {
 	    	});
 	    });
 
+	    //edit_message.html
 });
 //function:go back to 
 window.onload=function(){
@@ -91,3 +92,4 @@ window.onload=function(){
 		},30);                                 //30ms run one time  
 	}
 }
+
