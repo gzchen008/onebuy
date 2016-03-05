@@ -9,5 +9,5 @@ public class BizConstant {
 	/**
 	 * 用户信息
 	 */
-	public static final String REQUEST_USER_INFO =  "user.info";
+	public static final String REQUEST_USER_INFO =  "userInfo";
 }

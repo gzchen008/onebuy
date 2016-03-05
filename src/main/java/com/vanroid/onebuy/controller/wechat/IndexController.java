@@ -38,13 +38,8 @@ public class IndexController {
 		model.addAttribute("carouselAdsList", carouselAdsList);
 		model.addAttribute("recommendStageList", recommendStageList);
 		model.addAttribute("newGoodList", newGoodList);
-		return "weixin/index";
+		return "wechat/index";
 	}
 
-	@RequestMapping("freemarker")
-	public String freemarker(Model model) {
-		model.addAttribute("name", "cgz");
-		return "weixin/test";
-	}
 
 }

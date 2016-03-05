@@ -34,11 +34,11 @@
 <@block name="footer">
 	<footer class="am-topbar am-topbar-fixed-bottom" >
   		<ul class="ui-tiled" style="font-size:14px;color:#666;">
-	        <a href="index.html"><li class="ui-border-r active"><span class="am-icon-home am-icon-md"></span>首页</li></a>
-	        <a href="product.html"><li class="ui-border-r "><i class="am-icon-shopping-bag am-icon-sm"></i><div>最新揭晓</div></li></a>
-	        <a href="post.html"><li class="ui-border-r "><i class="am-icon-camera-retro am-icon-sm"></i><div>晒单</div></li></a>
-	        <a href="cart.html"><li class="ui-border-r "><span class="am-icon-shopping-cart am-icon-sm"></span><div>购物车</div></li></a>
-	        <a href="mine.html"><li href="mine.html" ><i class="am-icon-user-plus am-icon-sm"></i><div>我的</div></li></a>
+	        <a href="${rootPath}/"><li class="ui-border-r <@block name="nav_index"></@block>"><span class="am-icon-home am-icon-md"></span>首页</li></a>
+	        <a href="${rootPath}/stage/newest"><li class="ui-border-r <@block name="nav_newest"></@block>"><i class="am-icon-shopping-bag am-icon-sm"></i><div>最新揭晓</div></li></a>
+	        <a href="${rootPath}/order/lucky/show"><li class="ui-border-r <@block name="nav_show"></@block>"><i class="am-icon-camera-retro am-icon-sm"></i><div>晒单</div></li></a>
+	        <a href="${rootPath}/member/cart"><li class="ui-border-r <@block name="nav_cart"></@block>"><span class="am-icon-shopping-cart am-icon-sm"></span><div>购物车</div></li></a>
+	        <a href="${rootPath}/member/profile"><li   class="ui-border-r <@block name="nav_profile"></@block>"><i class="am-icon-user-plus am-icon-sm"></i><div>我的</div></li></a>
     	</ul>
 	</footer>
 </@block>

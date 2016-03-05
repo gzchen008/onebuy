@@ -77,6 +77,7 @@
 		
 		<mvc:interceptor>
 			<mvc:mapping path="/member/**" />
+			<mvc:mapping path="/order/**" />
 			<bean class="com.vanroid.onebuy.interceptor.wechat.WechatInterceptor">
 			</bean>
 		</mvc:interceptor>

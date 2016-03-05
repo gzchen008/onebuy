@@ -31,7 +31,12 @@ public class WechatInterceptor implements HandlerInterceptor {
 			user.setUsername("cgzjava");
 			user.setWxOpenid("123456789abc");
 			user.setId(1l);
+			user.setExp(100);
+			user.setPhone("18624243872");
+			user.setBalance(0);
+			user.setLuckPoint(0);
 			UserDetail userDetail = new UserDetail();
+			userDetail.setAddress(new String[]{"广州市广东金融学院XX号"});
 			user.setUserDetail(userDetail);
 
 			RequestUtils.setSessionAttr(request, BizConstant.REQUEST_USER_INFO, user);

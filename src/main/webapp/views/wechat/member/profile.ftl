@@ -1,20 +1,20 @@
-
+<@override name="header"/>
 <@override name="content">
     <div class="m_myInfo">
         <dl>
             <dt class="gray6" onclick="mine()">
                 <a href="userpage">
-                    <img src="images/1.jpg"/>
+                    <img src="${wxAssets}/images/1.jpg"/>
                 </a>
                 <p>
-                    janna62<em class="gray9">(手机号码)</em>
+                    ${user.username!}<em class="gray9">(id:${user.id!})</em>
                     <cite class="gray9">
                         <span>
                             <s class="am-icon-empire"></s>
                             云购小将
                         </span>
                         经验值:
-                        <em>0</em>
+                        <em>${user.exp!}</em>
                     </cite>
                 </p>
                 <i class="am-icon-angle-right"></i>
@@ -22,7 +22,7 @@
             <dd class="clearfix">
                 <b>
                     <a href="#">
-                        <em class="green">40</em>
+                        <em class="green">${user.luckPoint!}</em>
                         可用福分
                     </a>
                 </b>
@@ -30,7 +30,7 @@
                     <a href="#">
                         <em class="green">
                             <i>￥</i>
-                            0.00
+                            ${user.balance?string('0.00')!}
                         </em>
                         可用余额
                     </a>
@@ -48,7 +48,8 @@
         <a href="#"><s class="am-icon-question-circle"></s>帮助与反馈<i class="am-icon-angle-right"></i></a>
         <a href="#"><s class="am-icon-expeditedssl"></s>安全设置<i class="am-icon-angle-right"></i></a>
         <a href="#"><s class="am-icon-gear"></s>账号设置<i class="am-icon-angle-right"></i></a>
-        <p class="colorbb">客服热线：手机号码（工作时间：9:00 - 21:00）</p>
+        <p class="colorbb">客服热线：4001139887（工作时间：9:00 - 21:00）</p>
     </div>
     </@override>
+   <@override name="nav_profile">active</@override>
 <@extends name="../common/base.ftl"/>

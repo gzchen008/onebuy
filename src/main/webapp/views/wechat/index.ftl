@@ -9,8 +9,6 @@
 		</#if>
 	    <li><img src="${wxAssets}/images/2.jpg" /></li>
 	    <li><img src="${wxAssets}/images/3.jpg" /></li>
-	    <li><img src="${wxAssets}/images/4.jpg" /></li>
-	    <li><img src="${wxAssets}/images/1.jpg" /></li>
 	  </ul>
 	</div>
 	<!-- 今日上新 -->
@@ -26,9 +24,6 @@
 		                 <img src="${good.mainPhoto!}" alt="${good.name!}">
 		            </div>	       
 		        	<h4 class="ui-nowrap" style="margin-top:5px;">${good.name!}</h4>
-		            <div class="btn-wrap">
-		                <a href="javascript:;" class="buy-btn">立即一元云购</a>
-		            </div>
 		        </li>
 	        </#list>
 	    </#if>
@@ -96,4 +91,5 @@
         </div>
     </div>
 </@override>
+<@override name="nav_index">active</@override>
 <@extends name="common/base.ftl"/>
