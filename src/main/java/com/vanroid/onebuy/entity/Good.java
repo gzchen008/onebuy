@@ -34,7 +34,14 @@ public class Good {
 	private String description;
 	private UserDetail userDetail;
 	private Boolean recommend;
+	/**
+	 * 商品分类
+	 */
 	private Category category;
+	/**
+	 * 商品的市场价
+	 */
+	private Integer price;
 	private Set<Stage> stages = new HashSet<Stage>();
 
 	@Id
@@ -127,6 +134,14 @@ public class Good {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
 	}
 
 	public Good() {
