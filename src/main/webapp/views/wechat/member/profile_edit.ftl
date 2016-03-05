@@ -1,3 +1,4 @@
+<@override name="header"/>
 <@override name="content">
 <div style="background-color: #f7f7f7;zoom:1;">
     <div class="sub_nav">
@@ -52,4 +53,5 @@
         </div>
     </div>
  </@override>
+ <@override name="nav_profile">active</@override>
  <@extends name="../common/base.ftl"/>

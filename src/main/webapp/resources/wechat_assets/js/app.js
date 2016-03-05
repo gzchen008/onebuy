@@ -3,5 +3,5 @@
  * 
  */
 $("[data-url]").on("click", function() {
-	window.location.herf = $(this).data("url");
+	window.location = $(this).data("url");
 });

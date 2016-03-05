@@ -39,9 +39,13 @@ public class WcMemberController {
 		return "wechat/member/cart";
 	}
 	
-	@RequestMapping(value="/profile/edit",method=RequestMethod.POST)
+	@RequestMapping(value="/profile/edit",method=RequestMethod.GET)
 	public String profileEditPage(){
 		return "wechat/member/profile_edit";
 	}
-
+	
+	@RequestMapping(value="/profile/edit",method=RequestMethod.POST)
+	public String updatePprofileEdit(){
+		return "wechat/member/profile_edit";
+	}
 }

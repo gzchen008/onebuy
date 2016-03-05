@@ -2,7 +2,7 @@
 <@override name="content">
     <div class="m_myInfo">
         <dl>
-            <dt class="gray6" data-url="profile_edit">
+            <dt class="gray6" data-url="profile/edit">
                 <a href="#">
                     <img src="${wxAssets}/images/1.jpg"/>
                 </a>

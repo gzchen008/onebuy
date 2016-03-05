@@ -19,6 +19,7 @@
 	所有Controller,都要加Wc前缀,为了避免和后台Controller产生同名的Bean
 	
 	5.
-	一般Get请求,只为了显示页面的,方法中加上page后缀,如profilePage
+	一般Get请求,只为了显示页面的,方法中加上page后缀,如profilePage,接收表单进行更新的方法加update作为前缀
+	
 	6.
 	对于展示,和修改页相同的,使用同一个URL,使用GET\POST方法区分是展示还是提交
