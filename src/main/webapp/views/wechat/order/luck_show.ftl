@@ -264,4 +264,5 @@
       </div>
   </div>
   </@override>
+  <@override name="nav_luck_show">active</@override>
   <@extends name="../common/base.ftl"/>

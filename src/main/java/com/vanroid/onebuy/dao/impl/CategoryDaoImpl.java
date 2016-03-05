@@ -13,7 +13,7 @@ import com.vanroid.onebuy.entity.Category;
  * @version 1.0
  * @description TODO
  */
-@Repository("luckShowDao")
+@Repository("categoryDao")
 public class CategoryDaoImpl extends BaseDaoImpl<Category> implements CategoryDao {
 
 }

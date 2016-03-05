@@ -17,7 +17,7 @@ import com.vanroid.onebuy.service.CategoryService;
  * @version 1.0
  * @description TODO
  */
-@Service("luckShowService")
+@Service("categoryService")
 public class CategoryServiceImpl extends BaseServiceImpl<Category> implements CategoryService {
 
 	@Override

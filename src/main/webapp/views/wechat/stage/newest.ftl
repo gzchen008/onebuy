@@ -18,4 +18,5 @@
         </div>
     </div>
 </@override>
+<@override name="nav_newest">active</@override>
 <@extends name="../common/base.ftl"/>

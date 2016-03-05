@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.vanroid.onebuy.core.common.BizConstant;
 import com.vanroid.onebuy.core.service.IndexCoreService;
@@ -31,6 +32,16 @@ public class WcMemberController {
 		User user = (User) RequestUtils.getSessionAttr(request, BizConstant.REQUEST_USER_INFO);
 		model.addAttribute("user", user);
 		return "wechat/member/profile";
+	}
+
+	@RequestMapping("/cart")
+	public String cartPage(HttpServletRequest request, Model model) {
+		return "wechat/member/cart";
+	}
+	
+	@RequestMapping(value="/profile/edit",method=RequestMethod.POST)
+	public String profileEditPage(){
+		return "wechat/member/profile_edit";
 	}
 
 }

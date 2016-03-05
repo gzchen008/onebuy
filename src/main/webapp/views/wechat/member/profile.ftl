@@ -2,8 +2,8 @@
 <@override name="content">
     <div class="m_myInfo">
         <dl>
-            <dt class="gray6" onclick="mine()">
-                <a href="userpage">
+            <dt class="gray6" data-url="profile_edit">
+                <a href="#">
                     <img src="${wxAssets}/images/1.jpg"/>
                 </a>
                 <p>
