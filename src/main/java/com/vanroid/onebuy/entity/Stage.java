@@ -19,6 +19,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Type;
+
 /**
  * @author kaiscript
  * @date 2016年1月17日 下午3:01:36
@@ -203,7 +205,8 @@ public class Stage {
 	public void setShoppingCart(ShoppingCart shoppingCart) {
 		this.shoppingCart = shoppingCart;
 	}
-	@Column(name = "recommend", columnDefinition = "boolean default true", nullable = false)
+	@Column(name = "recommend", nullable = false)
+	@Type(type = "org.hibernate.type.NumericBooleanType")
 	public Boolean getRecommend() {
 		return recommend;
 	}

@@ -47,7 +47,7 @@ public class IndexCoreServiceImpl implements IndexCoreService {
 
 	@Override
 	public List<Stage> getRecommendStageList(int pageNum) {
-		String queryString = "FROM Stage stage WHERE  stage.recommend = true  ";
+		String queryString = "FROM Stage stage WHERE  stage.recommend = true  ORDER BY stage.id ";
 		List<Stage> stageList = stageDao.find(queryString, pageNum * IndexCoreService.RECOMD_PAGE_SIZE,IndexCoreService.RECOMD_PAGE_SIZE);
 		return stageList;
 	}

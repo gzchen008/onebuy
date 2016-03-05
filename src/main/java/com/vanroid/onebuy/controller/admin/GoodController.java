@@ -186,13 +186,17 @@ public class GoodController {
 	 * 根据商品id 创建新的一期
 	 */
 	@RequestMapping("/goods/stage/creating/{goodId}")
-	public String goodCreateStage(@PathVariable int goodId,String totalPrice,String quantity,
+	public String goodCreateStage(@PathVariable int goodId,String totalPrice,String quantity,Boolean recommend,
 			Model model){
 		Good good = goodService.get(goodId);
 		int num = good.getStages().size()+1;
 		int itotalPrice = Integer.valueOf(totalPrice);
 		int iquantity = Integer.valueOf(quantity);
 		Stage stage = new Stage();
+		if(recommend == null){
+			recommend = true;
+		}
+		stage.setRecommend(recommend);
 		stage.setGood(good);
 		stage.setTotalPrice(itotalPrice);
 		stage.setPurchasedQuantity(0);

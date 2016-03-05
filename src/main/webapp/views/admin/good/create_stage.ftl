@@ -29,7 +29,7 @@
 
 				</div>
 				<div class="ibox-content">
-					<form method="get" class="form-horizontal" action="${rootPath}/admin/goods/stage/creating/${goodId!}">
+					<form method="POST" class="form-horizontal" action="${rootPath}/admin/goods/stage/creating/${goodId!}">
 						<div class="form-group">
 							<label class="col-sm-2 control-label">总价格</label>
 
@@ -45,6 +45,16 @@
 									class="help-block m-b-none"></span>
 							</div>
 						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label">是否推荐</label>
+
+							<div class="col-sm-2">
+								<input type="checkbox" name="recommend" checked="checked" class="form-control" >
+							</div>
+						</div>
+						
+						
 						<div class="hr-line-dashed"></div>
 							<div class="form-group">
 							<label class="col-sm-2 control-label">截止时间(待)</label>
