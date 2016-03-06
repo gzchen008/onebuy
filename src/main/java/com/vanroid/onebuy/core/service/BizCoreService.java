@@ -1,7 +1,9 @@
 package com.vanroid.onebuy.core.service;
 
+import java.util.List;
 import java.util.Set;
 
+import com.vanroid.onebuy.entity.Category;
 import com.vanroid.onebuy.entity.Code;
 import com.vanroid.onebuy.entity.Good;
 import com.vanroid.onebuy.entity.Stage;
@@ -45,5 +47,11 @@ public interface BizCoreService {
 	 * 获得所有商品列表
 	 */
 	void getAllGoods();
+
+	/**
+	 * 获取商品分类列表
+	 * @return
+	 */
+	List<Category> getGoodCategoryList();
 
 }

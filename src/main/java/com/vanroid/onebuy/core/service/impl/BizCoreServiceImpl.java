@@ -1,6 +1,7 @@
 package com.vanroid.onebuy.core.service.impl;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -8,11 +9,14 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.vanroid.onebuy.core.holder.GlobalHolder;
 import com.vanroid.onebuy.core.holder.StageHolder;
 import com.vanroid.onebuy.core.service.BizCoreService;
+import com.vanroid.onebuy.entity.Category;
 import com.vanroid.onebuy.entity.Code;
 import com.vanroid.onebuy.entity.Good;
 import com.vanroid.onebuy.entity.Stage;
+import com.vanroid.onebuy.service.CategoryService;
 import com.vanroid.onebuy.service.CodeService;
 import com.vanroid.onebuy.service.StageService;
 import com.vanroid.onebuy.util.DateUtil;
@@ -31,7 +35,10 @@ public class BizCoreServiceImpl implements BizCoreService {
 	private CodeService codeService;
 	@Resource(name = "stageService")
 	private StageService stageService;
-
+	@Resource(name = "globalHolder")
+	private GlobalHolder globalHolder;
+	@Resource(name = "categoryService")
+	private CategoryService categoryService;
 	/** 进行中的期 */
 	@Resource(name = "processStageHolder")
 	private StageHolder processStageHolder;
@@ -100,18 +107,28 @@ public class BizCoreServiceImpl implements BizCoreService {
 	@Override
 	public void sell(Stage stage) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void announce(Stage stage) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void updateNotify(int action) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public List<Category> getGoodCategoryList() {
+		List<Category> categoryList = (List<Category>) globalHolder.get(GlobalHolder.GOOD_CATEGORY_LIST);
+		if (categoryList == null) {
+			categoryList = categoryService.findAll();
+			globalHolder.set(GlobalHolder.GOOD_CATEGORY_LIST, categoryList);
+		}
+		return categoryList;
 	}
 }

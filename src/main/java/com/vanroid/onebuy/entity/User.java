@@ -28,6 +28,18 @@ public class User {
 	private String password;
 	private String phone;
 	private String wxOpenid;
+	/**
+	 * 性别 女1 男2 保密 -1
+	 */
+	private Integer sex;
+	/**
+	 * 生日： YYYY-MM-DD
+	 */
+	private String birthday;
+	/**
+	 * 居信地
+	 */
+	private String residence;
 	private UserDetail userDetail;
 	private Stage stage;
 	private ShoppingCart shoppingCart;
@@ -146,6 +158,15 @@ public class User {
 		this.luckPoint = luckPoint;
 	}
 
+	@Column(name = "residence", length = 50)
+	public String getResidence() {
+		return residence;
+	}
+
+	public void setResidence(String residence) {
+		this.residence = residence;
+	}
+
 	@Column(name = "balance", nullable = false, columnDefinition = "int default 0")
 	public Integer getBalance() {
 		return balance;
@@ -153,6 +174,23 @@ public class User {
 
 	public void setBalance(Integer balance) {
 		this.balance = balance;
+	}
+
+	@Column(name = "sex", nullable = false, columnDefinition = "int default -1", length = 3)
+	public Integer getSex() {
+		return sex;
+	}
+
+	public void setSex(Integer sex) {
+		this.sex = sex;
+	}
+
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
 	}
 
 }

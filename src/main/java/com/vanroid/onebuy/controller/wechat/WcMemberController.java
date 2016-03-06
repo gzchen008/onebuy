@@ -40,7 +40,9 @@ public class WcMemberController {
 	}
 	
 	@RequestMapping(value="/profile/edit",method=RequestMethod.GET)
-	public String profileEditPage(){
+	public String profileEditPage(HttpServletRequest request, Model model){
+		User user = (User) RequestUtils.getSessionAttr(request, BizConstant.REQUEST_USER_INFO);
+		model.addAttribute("user", user);
 		return "wechat/member/profile_edit";
 	}
 	

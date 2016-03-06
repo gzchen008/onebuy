@@ -7,7 +7,7 @@
 		晒单 lucky/show
 	期数相关 stage/*
 		最新揭晓 newest
-		商品列表 product/list	
+		商品列表 product/list/{categoryId}	
 		
 	2.
 	所有微信相关的命名,使用wechat,(chat不需要大写)不使用weixin

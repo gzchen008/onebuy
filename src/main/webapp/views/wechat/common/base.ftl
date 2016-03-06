@@ -45,22 +45,14 @@
     <div class="ui-actionsheet">
         <div class="ui-actionsheet-cnt">
             <ul class="ui-list ui-list-text ui-list-cover">
-                    <li class="ui-border-t" data-href="product-list-2.html">
-                        <span>手机数码</span>
-                    </li>
-                                <li class="ui-border-t" data-href="product-list-3.html">
-                        <span>家用电器</span>
-                    </li>
-                                <li class="ui-border-t" data-href="product-list-4.html">
-                        <span>化妆个护</span>
-                    </li>
-                                <li class="ui-border-t" data-href="product-list-5.html">
-                        <span>日常生活</span>
-                    </li>
-                                <li class="ui-border-t" data-href="product-list-6.html">
-                        <span>美森造型</span>
-                    </li>
-                        </ul>
+	            		<#if categoryList ??>
+	            			<#list categoryList as category>
+		                    	<li class="ui-border-t" data-href="${rootPath}/stage/product/${category.id!}">
+		                        	<span>${category.name!}</span>
+		                    	</li>
+		                    </#list>
+	                    </#if>
+            </ul>
             <button class="ui-actionsheet-cancel">取消</button>
         </div>
     </div>

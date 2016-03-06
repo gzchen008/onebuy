@@ -14,11 +14,15 @@ import java.util.Map;
 public class GlobalHolder {
 	private Map<String, Object> values = new HashMap<String, Object>();
 
-	
 	/**
 	 * 全局配置
 	 */
 	public static String GLOBAL_CONFIG = "global_config";
+
+	/**
+	 * 商品分类列表
+	 */
+	public static String GOOD_CATEGORY_LIST = "good_category_list";
 
 	public Object get(String key) {
 		return values.get(key);

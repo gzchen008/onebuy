@@ -12,4 +12,10 @@ import com.vanroid.onebuy.entity.User;
  */
 public interface UserService extends BaseService<User>{
 
+	/**
+	 * 通过openId ,加载用户实体
+	 * @return
+	 */
+	public User getByOpenId(String openId);
+
 }

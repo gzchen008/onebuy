@@ -11,7 +11,7 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<mvc:annotation-driven />
-	
+
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources 
 		directory -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
@@ -20,30 +20,30 @@
 
 	<!-- freemarker -->
 	<bean id="freemarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-			<property name="templateLoaderPath" value="/views/" />
-			<property name="defaultEncoding" value="utf-8" />
-			<property name="freemarkerSettings">
-				<props>
-					<prop key="template_update_delay">0</prop>
-					<prop key="locale">zh_CN</prop>
-					<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
-					<prop key="date_format">yyyy-MM-dd</prop>
-					<prop key="number_format">#.##</prop>
-				</props>
-			</property>
-			<property name="freemarkerVariables">  
-		        <map>  
-		            <entry key="block" value-ref="block" />  
-		            <entry key="override" value-ref="override" />  
-		            <entry key="extends" value-ref="extends" />  
-		        </map>  
-	   	 	</property> 
+		<property name="templateLoaderPath" value="/views/" />
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="template_update_delay">0</prop>
+				<prop key="locale">zh_CN</prop>
+				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+				<prop key="date_format">yyyy-MM-dd</prop>
+				<prop key="number_format">#.##</prop>
+			</props>
+		</property>
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="block" value-ref="block" />
+				<entry key="override" value-ref="override" />
+				<entry key="extends" value-ref="extends" />
+			</map>
+		</property>
 	</bean>
-		<!--freemarker 模板继承配置-->  
-	<bean id="block" class="cn.org.rapid_framework.freemarker.directive.BlockDirective" />  
-	<bean id="override" class="cn.org.rapid_framework.freemarker.directive.OverrideDirective" />  
-	<bean id="extends" class="cn.org.rapid_framework.freemarker.directive.ExtendsDirective" /> 
-	
+	<!--freemarker 模板继承配置 -->
+	<bean id="block" class="cn.org.rapid_framework.freemarker.directive.BlockDirective" />
+	<bean id="override" class="cn.org.rapid_framework.freemarker.directive.OverrideDirective" />
+	<bean id="extends" class="cn.org.rapid_framework.freemarker.directive.ExtendsDirective" />
+
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
 		<property name="contentType" value="text/html;charset=utf-8" />
@@ -55,15 +55,14 @@
 	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀，返回普通的jsp视图 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
 		p:prefix="/" p:suffix=".jsp" /> -->
 	<context:component-scan base-package="com.vanroid.onebuy.controller" />
-	
-	 <!-- 配置springMVC处理上传文件的信息 -->  
-    <bean id="multipartResolver"  
-        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
-        <property name="defaultEncoding" value="utf-8" />  
-        <property name="maxUploadSize" value="10485760000" />  
-        <property name="maxInMemorySize" value="40960" />  
-    </bean>  
-	
+
+	<!-- 配置springMVC处理上传文件的信息 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="maxUploadSize" value="10485760000" />
+		<property name="maxInMemorySize" value="40960" />
+	</bean>
+
 	<mvc:interceptors>
 
 		<mvc:interceptor>
@@ -74,11 +73,21 @@
 			<bean class="com.vanroid.onebuy.interceptor.admin.AdminLoginInterceptor">
 			</bean>
 		</mvc:interceptor>
-		
+
 		<mvc:interceptor>
 			<mvc:mapping path="/member/**" />
 			<mvc:mapping path="/order/**" />
 			<bean class="com.vanroid.onebuy.interceptor.wechat.WechatInterceptor">
+			</bean>
+		</mvc:interceptor>
+
+		<mvc:interceptor>
+			<mvc:mapping path="/member/**" />
+			<mvc:mapping path="/order/**" />
+			<mvc:mapping path="/stage/**" />
+			<mvc:mapping path="/order/**" />
+			<mvc:mapping path="/" />
+			<bean class="com.vanroid.onebuy.interceptor.wechat.CategoryInterceptor">
 			</bean>
 		</mvc:interceptor>
 
