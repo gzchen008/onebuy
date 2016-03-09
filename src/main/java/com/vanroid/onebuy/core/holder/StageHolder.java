@@ -15,7 +15,7 @@ import com.vanroid.onebuy.entity.Stage;
  * @description stage缓存
  */
 public class StageHolder implements CacheHandler<Stage> {
-	private List<Stage> stages;
+	private List<Stage> stages = new ArrayList<Stage>();;
 
 	public List<Stage> getStages() {
 		return stages;
@@ -39,8 +39,6 @@ public class StageHolder implements CacheHandler<Stage> {
 
 	@Override
 	public void add(Stage entity) {
-		if (stages == null)
-			stages = new ArrayList<Stage>();
 		stages.add(entity);
 	}
 

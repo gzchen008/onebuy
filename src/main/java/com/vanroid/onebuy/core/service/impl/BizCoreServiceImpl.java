@@ -1,7 +1,9 @@
 package com.vanroid.onebuy.core.service.impl;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -9,15 +11,21 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.vanroid.onebuy.common.BizConstant;
 import com.vanroid.onebuy.core.holder.GlobalHolder;
 import com.vanroid.onebuy.core.holder.StageHolder;
 import com.vanroid.onebuy.core.service.BizCoreService;
 import com.vanroid.onebuy.entity.Category;
 import com.vanroid.onebuy.entity.Code;
 import com.vanroid.onebuy.entity.Good;
+import com.vanroid.onebuy.entity.Order;
 import com.vanroid.onebuy.entity.Stage;
+import com.vanroid.onebuy.entity.User;
 import com.vanroid.onebuy.service.CategoryService;
 import com.vanroid.onebuy.service.CodeService;
+import com.vanroid.onebuy.service.GoodService;
+import com.vanroid.onebuy.service.LotteryService;
+import com.vanroid.onebuy.service.OrderService;
 import com.vanroid.onebuy.service.StageService;
 import com.vanroid.onebuy.util.DateUtil;
 
@@ -39,88 +47,12 @@ public class BizCoreServiceImpl implements BizCoreService {
 	private GlobalHolder globalHolder;
 	@Resource(name = "categoryService")
 	private CategoryService categoryService;
-	/** 进行中的期 */
-	@Resource(name = "processStageHolder")
-	private StageHolder processStageHolder;
-
-	@Override
-	public Set<Code> getAllCode(Stage stage) {
-		// 在缓存中找
-		Set<Code> codes = getAllCodeInCache(stage);
-		if (codes == null || codes.size() == 0) {
-			// 在数据库中找
-			codes = getAllCodeInPersistent(stage);
-		}
-		if (codes == null || codes.size() == 0) {
-			// 创建保存至数据库和缓存
-			codes = createCodeByStage(stage);
-		}
-		return codes;
-	}
-
-	private Set<Code> createCodeByStage(Stage stage) {
-		long stageId = stage.getGood().getId();
-		int quantity = stage.getQuantity().intValue();
-		Set<Code> codeList = new HashSet<Code>();
-		for (int i = 1; i <= quantity; i++) {
-			Code code = new Code();
-			code.setCode("" + stageId + i);
-			code.setStage(stage);
-			codeList.add(code);
-		}
-		// insert into database
-		codeService.saveOrUpdateAll(codeList);
-		stage.setCodes(codeList);
-		return codeList;
-	}
-
-	private Set<Code> getAllCodeInPersistent(Stage stage) {
-		return codeService.findByStage(stage);
-	}
-
-	private Set<Code> getAllCodeInCache(Stage stage) {
-		return processStageHolder.get(stage.getId()).getCodes();
-	}
-
-	@Override
-	@Transactional
-	public void pushGoodStage(Good good, Stage stage) {
-		// 添加stage
-		stage.setGood(good);
-		stage.setCreateTime(DateUtil.getDate());
-		stage.setNum(stageService.getLastStageNum(good.getId()) + 1);
-		stageService.add(stage);
-
-		// 添加和stage相关的code
-		createCodeByStage(stage);
-
-		// 添加进缓存
-		processStageHolder.add(stage);
-	}
-
-	@Override
-	public void getAllGoods() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void sell(Stage stage) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void announce(Stage stage) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void updateNotify(int action) {
-		// TODO Auto-generated method stub
-
-	}
+	@Resource(name = "lotteryService")
+	private LotteryService lotteryService;
+	@Resource
+	private GoodService goodService;
+	@Resource(name = "orderService")
+	private OrderService orderService;
 
 	@Override
 	public List<Category> getGoodCategoryList() {
@@ -130,5 +62,55 @@ public class BizCoreServiceImpl implements BizCoreService {
 			globalHolder.set(GlobalHolder.GOOD_CATEGORY_LIST, categoryList);
 		}
 		return categoryList;
+	}
+
+	@Override
+	public Order makeOrder(Stage stage, Integer quantity, User user) {
+		Order order = new Order();
+		order.setPurchasedQuantity(quantity);
+		order.setStatus(BizConstant.ORDER_STATUS_DEFAULT);
+		order.setStage(stage);
+		order.setUserDetail(user.getUserDetail());
+		order.setOrderTime(new Date());
+
+		orderService.add(order);
+		return order;
+	}
+
+	@Override
+	public Boolean pay(Order order) {
+
+		// TODO 整理微信支付数据，跳至微信支付
+		// prePay
+
+		return true;
+	}
+
+	@Override
+	public void payNotify(Long orderId) {
+		// 分配Code
+		lotteryService.pushCodesToOrder(orderId);
+		// 修改支付状态
+		Order order = orderService.load(orderId);
+		order.setStatus(BizConstant.ORDER_STATUS_PAID);
+		orderService.update(order);
+
+	}
+
+	@Override
+	public Stage getStageDetailByProduct(Long productId) {
+		Stage stage = stageService.get(productId);
+		if (stage == null) {
+			Good good = goodService.get(productId);
+			stage = new Stage();
+			stage.setGood(good);
+		}
+		return stage;
+	}
+
+	@Override
+	public void getAllGoods() {
+		// TODO Auto-generated method stub
+
 	}
 }

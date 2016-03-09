@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.vanroid.onebuy.core.common.BizConstant;
+import com.vanroid.onebuy.common.BizConstant;
 import com.vanroid.onebuy.core.service.IndexCoreService;
 import com.vanroid.onebuy.entity.User;
 import com.vanroid.onebuy.util.RequestUtils;

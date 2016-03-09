@@ -6,42 +6,11 @@ import java.util.Set;
 import com.vanroid.onebuy.entity.Category;
 import com.vanroid.onebuy.entity.Code;
 import com.vanroid.onebuy.entity.Good;
+import com.vanroid.onebuy.entity.Order;
 import com.vanroid.onebuy.entity.Stage;
+import com.vanroid.onebuy.entity.User;
 
 public interface BizCoreService {
-
-	/**
-	 * <p>
-	 * 
-	 * 根据期数ID获取，当期所有抽奖代码 调用该方法前,stage已是持久化对象
-	 * 
-	 * @param stageId
-	 * @return
-	 */
-	Set<Code> getAllCode(Stage stage);
-
-	/**
-	 * 发布商品的某一期 注意：调用该方法前，stage已通过表单接收了相关的信息，如价格
-	 * 
-	 * @param good
-	 * @param stage
-	 */
-	void pushGoodStage(Good good, Stage stage);
-
-	/**
-	 * 卖出一个code
-	 */
-	void sell(Stage stage);
-
-	/**
-	 * 揭晓结果
-	 */
-	void announce(Stage stage);
-
-	/**
-	 * 更新通知
-	 */
-	void updateNotify(int action);
 
 	/**
 	 * 获得所有商品列表
@@ -50,8 +19,39 @@ public interface BizCoreService {
 
 	/**
 	 * 获取商品分类列表
+	 * 
 	 * @return
 	 */
 	List<Category> getGoodCategoryList();
+
+	/**
+	 * 创建订单方法
+	 * 
+	 * @param stage
+	 * @param quantity
+	 * @param user
+	 * @return
+	 */
+	Order makeOrder(Stage stage, Integer quantity, User user);
+	
+	/**
+	 * 支付方法
+	 * @param order
+	 * @return
+	 */
+	Boolean pay(Order order);
+	
+	/**
+	 * 支付成功，回调方法
+	 */
+	void payNotify(Long orderId);
+
+	/**
+	 * 获取商品当期的详细信息
+	 * 若当期未开始，返回的Stage没有ID
+	 * @param productId
+	 * @return
+	 */
+	Stage getStageDetailByProduct(Long productId);
 
 }

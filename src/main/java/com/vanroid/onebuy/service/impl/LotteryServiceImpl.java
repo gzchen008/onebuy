@@ -69,8 +69,8 @@ public class LotteryServiceImpl extends BaseServiceImpl<Stage> implements Lotter
 	
 	
 	@Override
-	public void pushCodesToOrder(int orderId) {
-		Order order = orderDao.get((long) orderId);
+	public void pushCodesToOrder(Long orderId) {
+		Order order = orderDao.get(orderId);
 		User ownedUser = order.getUserDetail().getUser(); //得到订单所属用户
 		int quantity = order.getPurchasedQuantity();//此订单购买的份数
 		Stage stage = order.getStage();
@@ -98,7 +98,7 @@ public class LotteryServiceImpl extends BaseServiceImpl<Stage> implements Lotter
 		values[0] = stage;
 		List<Order> orders = orderDao.find(queryString, values, 6, 10);
 		for(Order o:orders){
-			dates.add(o.getTime());  //提取 第7-第10个订单的下单时间
+			dates.add(o.getOrderTime());  //提取 第7-第10个订单的下单时间
 		}
 		//幸运码
 		String luckyCode = LotteryUtil.getLuckyCode(dates, stage.getQuantity());

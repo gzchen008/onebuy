@@ -25,22 +25,37 @@ public class InitDataTest {
 	 */
 	@Test
 	public void initData() {
+		initCategoryData();
+	}
+	
+	public void initCategoryData(){
 		List<Category> categoryList = new ArrayList<Category>();
 		Category category = new Category();
 		category.setName("手机数码");
 		categoryList.add(category);
-
+		
 		category = new Category();
 		category.setName("广金特色");
 		categoryList.add(category);
-
+		
 		category = new Category();
 		category.setName("日常生活");
 		categoryList.add(category);
-
+		
 		// 初始化分类
 		categoryService.saveOrUpdateAll(categoryList);
 		Assert.assertNotNull(categoryList.get(0).getId());
 	}
 
+	public void initGoodData(){
+		
+	}
+	
+	public void initStage(){
+		
+	}
+	
+	public void initLuckShow(){
+		
+	}
 }

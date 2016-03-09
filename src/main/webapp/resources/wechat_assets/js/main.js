@@ -39,31 +39,7 @@ $(function() {
 	    	}
 	    });
 
-	    //cart.html
-	    //confirm delete
-	    $("#delLink").on('click',function(){
-	    	$(".mask").fadeIn(200);
-	    	setTimeout(function time(){
-	    		$("#pageDialog").css("display","block")
-	    	}, 300);
-	    	$("#btnMsgCancel").on('click',function(){
-	    		$("#pageDialog").css("display","none");
-	    		$(".mask").fadeOut(200);
-	    	});
-	    	$("#btnMsgOk").on('click',function(){
-	    		$("#delLink").closest("#cartBody").detach();
-	    		$("#pageDialog").css("display","none");
-	    		$(".mask").fadeOut(200);//!!!!当id多的时候，存在一个就近选择的问题
-	    		$("#mycartpay").css("display","none");
-	    		setTimeout(function empty(){
-	    			$("#divNone").css("display","block");	
-	    		},300);
-	    		$("#numadd").on('click',function(){
-	    			var value =  parseInt($("#txtNum").val())+1;
-	    			$("#txtNum").value = value + "";
-	    		});
-	    	});
-	    });
+
 
 	    //edit_message.html
 });

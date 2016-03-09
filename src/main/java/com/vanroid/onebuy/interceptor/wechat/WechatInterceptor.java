@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.vanroid.onebuy.core.common.BizConstant;
+import com.vanroid.onebuy.common.BizConstant;
 import com.vanroid.onebuy.entity.User;
 import com.vanroid.onebuy.entity.UserDetail;
 import com.vanroid.onebuy.service.UserService;
