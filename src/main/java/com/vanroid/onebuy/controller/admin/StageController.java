@@ -247,7 +247,12 @@ public class StageController {
 			@RequestParam int statusRadio,@RequestParam int deliveryRadio){
 		Stage stage = stageService.get(stageId);
 		stage.setStatus(statusRadio); //设置状态码
-		stage.setIfDelivery(deliveryRadio); //设置是否发货
+		if(deliveryRadio==1){
+			stage.setIfDelivery(true); //设置是否发货
+		}
+		else{
+			stage.setIfDelivery(false);
+		}
 		stageService.update(stage);
 		return "redirect:/admin/stages/detail/"+stageId;
 	}

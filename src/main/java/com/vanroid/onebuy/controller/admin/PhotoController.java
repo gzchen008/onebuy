@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qcloud.PicCloud;
+import com.vanroid.onebuy.common.QCTest;
 import com.vanroid.onebuy.common.QCloud;
 import com.vanroid.onebuy.entity.Good;
 import com.vanroid.onebuy.service.GoodService;
@@ -25,6 +26,8 @@ import net.sf.json.JSONObject;
 @RequestMapping("/photo")
 public class PhotoController {
 	
+	@Autowired
+	private QCTest qcloud;
 	
 	@Resource(name = "goodService")
 	private GoodService goodService;

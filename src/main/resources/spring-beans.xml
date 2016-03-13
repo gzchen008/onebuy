@@ -10,7 +10,11 @@
 	http://www.springframework.org/schema/aop/spring-aop.xsd
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
-
+	
+	<bean id="qcloud" class="com.vanroid.onebuy.common.QCTest">
+		<property name="app" value="111"/>
+	</bean>
+	
 	<!-- 微信配置 -->
 	<bean id="shopConfig" class="com.vanroid.onebuy.conf.ShopConfig">
 		<property name="appid" value="wx360ead161feb89ca" />

@@ -43,7 +43,7 @@ public class Stage {
 	private Date announceTime;
 	private String luckyCode;
 	private User luckyUser;
-	private Integer ifDelivery;
+	private Boolean ifDelivery;
 	private Boolean recommend;
 	private Set<Code> codes = new HashSet<Code>();
 	private Set<Order> orders = new HashSet<Order>();
@@ -179,12 +179,11 @@ public class Stage {
 		this.luckyUser = luckyUser;
 	}
 
-	@Column(columnDefinition = "Integer default 0")
-	public Integer getIfDelivery() {
+	public Boolean getIfDelivery() {
 		return ifDelivery;
 	}
 
-	public void setIfDelivery(Integer ifDelivery) {
+	public void setIfDelivery(Boolean ifDelivery) {
 		this.ifDelivery = ifDelivery;
 	}
 

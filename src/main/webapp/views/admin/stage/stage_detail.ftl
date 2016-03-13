@@ -134,10 +134,13 @@
 																	<td>${(stage.luckyUser.username)!("匿名")}</td>
 																	<td>${(stage.luckyCode)!("无")}</td>
 																	<td>${(stage.announceTime)!("未揭晓")}</td>
-																	<td><#if stage.ifDelivery??> 未发货
-	 																		<#if stage.ifDelivery=1> 已发货
-																			</#if> 
-																		</#if></td>
+																	<td><#if (stage.ifDelivery)??>
+	 																		<#if (stage.ifDelivery)?c='true'> 已发货
+					 														<#else>未发货				
+																			</#if>
+ 																		<#else>未发货
+																		</#if>
+																	</td>
 																	</tr>	
                                                                	</#if>	
 
@@ -163,7 +166,7 @@
                                                                 <#if stage.orders??>
                                                                 	<#list stage.orders as order>
                                                                     <tr>
-																	<td><span class="label label-primary">第 ${(order.id)!("#")} 期</span></td>
+																	<td><span class="label label-primary">${(order.id)!("#")}</span></td>
 																	<td><a>${(order.userDetail.user.username)!("无")}</a></td>
 																	<td><#list order.codes as code>
 																		${(code.code)!("#")},

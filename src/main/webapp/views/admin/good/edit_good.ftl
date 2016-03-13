@@ -45,7 +45,23 @@
 							</div>
 						</div>
 						<div class="hr-line-dashed"></div>
+						<div class="form-group">
+                                        <label class="col-sm-2 control-label">
+                                            <small class="text-navy">是否自动延期</small>
+                                        </label>
 
+                               <div class="col-sm-10">
+                                     <div class="radio">
+                                          <label>
+                                          	<input type="radio"  value="1" id="optionsRadios1" name="delay">是
+                                          </label>
+                                     </div>
+                                     <div class="radio">
+                                          <label><input type="radio" value="0" id="optionsRadios2" name="delay">否</label>
+                                     </div>
+                              </div>
+                        </div>
+						<div class="hr-line-dashed"></div>
 						<div class="form-group">
 							<div class="col-sm-4 col-sm-offset-2">
 								<button class="btn btn-primary" type="submit">保存内容</button>
@@ -62,3 +78,14 @@
 <!--COMMON FOOTER-->
 <#include "../include/footer.ftl">
 <!--COMMON FOOTER-->
+<script>
+<#if (good.delay)??>
+	<#if ((good.delay)?c)='true'>
+	$('#optionsRadios1').attr('checked','');
+	<#else>
+	$('#optionsRadios2').attr('checked','');
+	</#if>
+<#else>
+	$('#optionsRadios2').attr('checked','');
+</#if>
+</script>

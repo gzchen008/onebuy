@@ -146,11 +146,17 @@ public class GoodController {
 	}
 	
 	@RequestMapping("/goods/update/{goodId}")
-	public String updateGood(String goodName,String goodDescription,@PathVariable int goodId){
+	public String updateGood(String goodName,String goodDescription,@PathVariable int goodId
+			,@RequestParam int delay){
 		Good good = goodService.get(goodId);
 		if(good!=null){
 			good.setName(goodName);
 			good.setDescription(goodDescription);
+			if(delay==1){
+				good.setDelay(true);
+			}else{
+				good.setDelay(false);
+			}
 			goodService.update(good);
 		}
 		return "redirect:/admin/goods/detail/"+goodId;

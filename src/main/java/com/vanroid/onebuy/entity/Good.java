@@ -33,6 +33,10 @@ public class Good {
 	private Date time;
 	private String description;
 	private UserDetail userDetail;
+	/**
+	 * 是否自动延期
+	 */
+	private Boolean delay;
 	private Boolean recommend;
 	/**
 	 * 商品分类
@@ -116,6 +120,14 @@ public class Good {
 
 	public void setUserDetail(UserDetail userDetail) {
 		this.userDetail = userDetail;
+	}
+	
+	public Boolean getDelay() {
+		return delay;
+	}
+
+	public void setDelay(Boolean delay) {
+		this.delay = delay;
 	}
 
 	public Boolean getRecommend() {

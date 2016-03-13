@@ -36,13 +36,13 @@
 
                                         <div class="col-sm-10">
                                             <div class="radio">
-                                                <label><input type="radio" checked="" value="0" id="optionsRadios1" name="statusRadio">未开始</label>
+                                                <label><input type="radio" value="0" id="statusRadio1" name="statusRadio">未开始</label>
                                             </div>
                                             <div class="radio">
-                                                <label><input type="radio" value="1" id="optionsRadios2" name="statusRadio">开始进行</label>
+                                                <label><input type="radio" value="1" id="statusRadio2" name="statusRadio">开始进行</label>
                                             </div>
                                             <div class="radio">
-                                                <label><input type="radio" value="4" id="optionsRadios3" name="statusRadio">结束</label>
+                                                <label><input type="radio" value="4" id="statusRadio3" name="statusRadio">结束</label>
                                             </div>
                                             
                                         </div>
@@ -55,13 +55,13 @@
 
                                         <div class="col-sm-10">
                                             <div class="radio">
-                                                <label><input type="radio"  value="1" id="optionsRadios1" name="deliveryRadio">是</label>
+                                                <label><input type="radio"  value="1" id="deliveryRadio1" name="deliveryRadio">是</label>
                                             </div>
                                             <div class="radio">
-                                                <label><input type="radio" checked="" value="0" id="optionsRadios2" name="deliveryRadio">否</label>
+                                                <label><input type="radio" value="0" id="deliveryRadio2" name="deliveryRadio">否</label>
                                             </div>
                                         </div>
-                                    </div>
+                        </div>
 						<div class="hr-line-dashed"></div>
 
 						<div class="form-group">
@@ -80,3 +80,27 @@
 <!--COMMON FOOTER-->
 <#include "../include/footer.ftl">
 <!--COMMON FOOTER-->
+<script>
+<#if (stage.delivery)??>
+	<#if ((stage.delivery)?c)='true'>
+		$('#deliveryRadio1').attr('checked','');
+	<#else>
+		$('#deliveryRadio2').attr('checked','');
+	</#if>
+<#else>
+		$('#deliveryRadio2').attr('checked','');
+</#if>
+<#if (stage.status)??>
+	<#if (stage.status)=0>
+		$('#statusRadio1').attr('checked','');
+	<#elseif (stage.status)=1 || (stage.status) =2>
+		$('#statusRadio2').attr('checked','');
+	<#else>
+		$('#statusRadio3').attr('checked','');
+	</#if>
+<#else>
+		$('#statusRadio1').attr('checked','');
+</#if>
+
+
+</script>

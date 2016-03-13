@@ -57,7 +57,7 @@
 										
 										</td>
 										<td class="project-title"><a href="${rootPath}/admin/orders/detail/${order.id}">${(order.stage.good.name)!}</a>
-											<br> <small>创建于${order.time}</small></td>
+											<br> <small>创建于${(order.orderTime)!("error time")}</small></td>
 										<td class="project-completion">
 											<small>用户:<a href="">${(order.userDetail.user.username)!("显示用户名错误")}</a></small>
 										</td>
