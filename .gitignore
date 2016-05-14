@@ -1,2 +1,9 @@
 /target
 *.class
+*.iml
+.classpath
+/.gitignore
+*.log
+.settings
+.idea
+ehcache

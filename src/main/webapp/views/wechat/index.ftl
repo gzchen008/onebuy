@@ -18,7 +18,7 @@
 	<ul class="ui-row ui-row-padding ui-border-r zxpadding" style="background-color:#fff;">
 		<#if newGoodList ??>
 			<#list newGoodList as good>
-		        <li class="ui-col ui-col-50 ui-border-r zxli" data-href="buy-78.html">
+		        <li data-url="${rootPath}/stage/product/${good.id!}/detail" class="ui-col ui-col-50 ui-border-r zxli" data-href="buy-78.html">
 		        	<div class="ui-list-pic" style="margin:0 auto;">
 		                 <img src="${good.mainPhoto!}" alt="${good.name!}">
 		            </div>	       
@@ -30,7 +30,7 @@
 	<#-- 人气精选 -->
 	<ul class="ui-row ui-row-padding" style="margin-top:8px;background:#fff;">
         <li class="ui-col ui-col-50"><span style="color:red;">人气精选</span></li>
-        <li class="ui-col ui-col-50 txt-right"><span class="ui-txt-info" data-href="product.html">更多</span></li>
+        <li class="ui-col ui-col-50 txt-right"><span class="ui-txt-info" data-url="product.html">更多</span></li>
     </ul>
 	
 	<ul id="lists" class="ui-row ui-row-padding ui-border-b index-list" style="background:#ffffff;">
@@ -58,5 +58,6 @@
     </ul class="end">
    <!--  <div class="load-more" data-loading="正在加载中..." data-done="加载完成"></div> -->
 </@override>
+<@override name="scripts"><script  src="${wxAssets}/js/pages/index.js"></script></@override>
 <@override name="nav_index">active</@override>
 <@extends name="common/base.ftl"/>

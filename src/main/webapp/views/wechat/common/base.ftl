@@ -70,10 +70,11 @@
 	</footer>
 </@block>
 
-    <script type="text/javascript" src="${wxAssets}/js/jquery.min.js"></script>
-    <script type="text/javascript" src="${wxAssets}/js/amazeui.min.js"></script>
-    <script type="text/javascript" src="${wxAssets}/js/main.js"></script>
-    <script type="text/javascript" src="${wxAssets}/js/app.js"></script>
+	<script type="text/javascript" >
+		var jsBase = "${wxAssets}/js";
+	</script>
+    <script type="text/javascript"  src="${wxAssets}/js/corelib/require.js"></script>
+    <script type="text/javascript"  src="${wxAssets}/js/require.config.js"></script>
     <@block name="scripts"></@block>
 </body>
 </html>

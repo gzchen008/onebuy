@@ -17,16 +17,16 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
-      <profile default="false" name="Annotation profile for shop" enabled="true">
+      <profile default="false" name="Annotation profile for onebuy" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="shop" />
+        <module name="onebuy" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="shop" target="1.6" />
+      <module name="onebuy" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>
